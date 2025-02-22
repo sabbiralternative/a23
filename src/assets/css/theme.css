@@ -1,0 +1,21 @@
+:root {
+  --bg-primary: #b6842d;
+  --bg-primary65: #b18c14a5;
+  --bg-primary90: #0b3b90e6;
+  --text-primary: #ffffff;
+  --bg-secondary: #202020;
+  --bg-secondary70: #0f2039b3;
+  --bg-secondary85: #0f2039d9;
+  --text-secondary: #ffffff;
+  --color1: #fab841;
+  --color2: #cd890e;
+  --headerBG: #303030;
+  --headerText: #fff;
+  --footerBG: #303030;
+  --footerCircle:#535353;
+  --footerText: #ffffff;
+  --footerIcon: #000;
+}
+
+
+
