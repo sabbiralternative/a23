@@ -17,12 +17,23 @@ export const handlePlaceBet = (
       (runner?.status === "OPEN" || runner?.status === "ACTIVE")
     ) {
       const updatedPnl = [];
-      item?.runners?.forEach((runner) => {
-        const pnl = pnlBySelection?.find(
-          (p) => p?.RunnerId === runner?.id || runner?.selectionId
-        );
+      item?.runners?.forEach((rnr) => {
+        const pnl = pnlBySelection?.find((p) => p?.RunnerId === rnr?.id);
         if (pnl) {
-          updatedPnl.push(pnl?.pnl);
+          updatedPnl.push({
+            exposure: pnl?.pnl,
+            id: pnl?.RunnerId,
+            isBettingOnThisRunner: rnr?.id === runner?.id,
+            name: rnr?.name,
+            updatedExposure: pnl?.pnl,
+          });
+        } else {
+          updatedPnl.push({
+            exposure: 0,
+            id: rnr?.id,
+            isBettingOnThisRunner: rnr?.id === runner?.id,
+            name: rnr?.name,
+          });
         }
       });
 
@@ -56,7 +67,7 @@ export const handlePlaceBet = (
         maxLiabilityPerMarket: item?.maxLiabilityPerMarket,
         isBettable: item?.isBettable,
         maxLiabilityPerBet: item?.maxLiabilityPerBet,
-        pnl: updatedPnl,
+        exposure: updatedPnl,
         marketName: item?.name,
         eventId: item?.eventId,
         cashout: false,

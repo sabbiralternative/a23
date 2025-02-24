@@ -18,6 +18,7 @@ const StateProvider = ({ children }) => {
   const [noticeLoaded, setNoticeLoaded] = useState(false);
   const [wallet, setWallet] = useState("main");
   const [showWarning, setShowWarning] = useState(false);
+  const [predictOdds, setPredictOdds] = useState([]);
 
   useEffect(() => {
     getSetApis(setNoticeLoaded, baseUrl);
@@ -100,6 +101,8 @@ const StateProvider = ({ children }) => {
     setWallet,
     showWarning,
     setShowWarning,
+    predictOdds,
+    setPredictOdds,
   };
   return (
     <StateContext.Provider value={stateInfo}>{children}</StateContext.Provider>

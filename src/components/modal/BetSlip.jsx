@@ -18,12 +18,17 @@ const BetSlip = ({
   refetchCurrentBets,
 }) => {
   const { language } = useLanguage();
-  const { token } = useContextState();
+  const { token, setPredictOdds, predictOdds } = useContextState();
   /* Close modal click outside */
   const betSlipRef = useRef();
   useCloseModalClickOutside(betSlipRef, () => {
-    setOpenBetSlip(false);
+    closeBetSlip();
   });
+
+  const closeBetSlip = () => {
+    setOpenBetSlip(false);
+    setPredictOdds([]);
+  };
   /* Button values from locale storage */
   const buttonGameValue = JSON.parse(localStorage.getItem("buttonValue"));
   const [totalSize, setTotalSize] = useState("");
@@ -32,9 +37,6 @@ const BetSlip = ({
   const { refetchBalance } = useBalance();
   const [stakeErr, setStakeErr] = useState("");
   const [price, setPrice] = useState(null);
-  const [oddStake, setOddStake] = useState(null);
-  const [oddStakeLay1, setOddStakeLay1] = useState(null);
-  const [oddStakeLay2, setOddStakeLay2] = useState(null);
 
   /* Set price */
   useEffect(() => {
@@ -119,14 +121,14 @@ const BetSlip = ({
             refetchBalance();
             refetchCurrentBets();
             setLoader(false);
-            setOpenBetSlip(false);
+            closeBetSlip();
             toast.success(data?.result?.result?.placed?.[0]?.message);
           } else {
             toast.error(
               data?.error?.status?.[0]?.description || data?.error?.errorMessage
             );
             setLoader(false);
-            setOpenBetSlip(false);
+            closeBetSlip();
             refetchExposure();
             refetchBalance();
             refetchCurrentBets();
@@ -177,23 +179,13 @@ const BetSlip = ({
     }
   };
 
-  /* Place bet calculate */
-  const pnl1 =
-    placeBetValues?.pnl && placeBetValues?.pnl[0] ? placeBetValues?.pnl[0] : 0;
-  const pnl2 =
-    placeBetValues?.pnl && placeBetValues?.pnl[1] ? placeBetValues?.pnl[1] : 0;
-  const pnl3 =
-    placeBetValues?.pnl && placeBetValues?.pnl[2] ? placeBetValues?.pnl[2] : 0;
-  const selectionId = placeBetValues?.selectionId?.toString();
-
   useEffect(() => {
+    let total;
     if (
       placeBetValues?.btype === "MATCH_ODDS" ||
       placeBetValues?.btype === "BOOKMAKER"
     ) {
       if (placeBetValues?.back) {
-        let total;
-
         if (placeBetValues?.btype === "MATCH_ODDS") {
           total = price * totalSize - totalSize;
         }
@@ -202,21 +194,23 @@ const BetSlip = ({
           total = bookmaker * totalSize - totalSize;
         }
 
-        if (selectionId && selectionId.includes(".1")) {
-          setOddStake(formatNumber(total + pnl1));
-          setOddStakeLay1(formatNumber(pnl2 + -1 * totalSize));
-          setOddStakeLay2(formatNumber(pnl3 + -1 * totalSize));
-        } else if (selectionId && selectionId.includes(".2")) {
-          setOddStake(formatNumber(total + pnl2));
-          setOddStakeLay1(formatNumber(pnl3 + -1 * totalSize));
-          setOddStakeLay2(formatNumber(pnl1 + -1 * totalSize));
-        } else {
-          setOddStake(formatNumber(total + pnl3));
-          setOddStakeLay1(formatNumber(pnl1 + -1 * totalSize));
-          setOddStakeLay2(formatNumber(pnl2 + -1 * totalSize));
-        }
+        const currentExposure = placeBetValues?.exposure?.map((exp) => {
+          return {
+            updatedExposure: totalSize
+              ? exp?.isBettingOnThisRunner
+                ? formatNumber(exp?.exposure + total)
+                : formatNumber(exp?.exposure + -1 * totalSize)
+              : null,
+
+            id: exp?.id,
+            isBettingOnThisRunner: exp?.isBettingOnThisRunner,
+            name: exp?.name,
+            exposure: exp?.exposure,
+          };
+        });
+
+        setPredictOdds(currentExposure);
       } else if (placeBetValues?.lay) {
-        let total;
         if (placeBetValues?.btype === "MATCH_ODDS") {
           total = -1 * (price * totalSize - totalSize);
         }
@@ -225,46 +219,29 @@ const BetSlip = ({
           total = -1 * (bookmaker * totalSize - totalSize);
         }
 
-        if (selectionId && selectionId.includes(".1")) {
-          setOddStake(formatNumber(total + pnl1));
-          setOddStakeLay1(formatNumber(1 * pnl2 + 1 * totalSize));
-          setOddStakeLay2(formatNumber(1 * pnl3 + 1 * totalSize));
-        } else if (selectionId && selectionId.includes(".2")) {
-          setOddStake(formatNumber(total + pnl2));
-          setOddStakeLay1(formatNumber(1 * pnl3 + 1 * totalSize));
-          setOddStakeLay2(formatNumber(1 * pnl1 + 1 * totalSize));
-        } else {
-          setOddStake(formatNumber(total + pnl3));
-          setOddStakeLay1(formatNumber(1 * pnl1 + 1 * totalSize));
-          setOddStakeLay2(formatNumber(1 * pnl2 + 1 * totalSize));
-        }
+        const currentExposure = placeBetValues?.exposure?.map((exp) => {
+          return {
+            updatedExposure: totalSize
+              ? exp?.isBettingOnThisRunner
+                ? formatNumber(exp?.exposure + total)
+                : formatNumber(1 * exp?.exposure + 1 * totalSize)
+              : null,
+            id: exp?.id,
+            isBettingOnThisRunner: exp?.isBettingOnThisRunner,
+            name: exp?.name,
+            exposure: exp?.exposure,
+          };
+        });
+        setPredictOdds(currentExposure);
       }
     }
-  }, [price, totalSize, placeBetValues, pnl1, pnl2, pnl3, selectionId]);
+  }, [price, totalSize, placeBetValues, setPredictOdds]);
 
   /* Format number */
   const formatNumber = (value) => {
     const hasDecimal = value % 1 !== 0;
     return hasDecimal ? value.toFixed(2) : value;
   };
-  /* Adding red or green color on odd */
-  const updateElementClass = (elementId) => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      if (parseFloat(element.innerText) > 0) {
-        element.removeAttribute("class");
-        element.classList.add("text-success");
-      } else {
-        element.removeAttribute("class");
-        element.classList.add("text-danger");
-      }
-    }
-  };
-  useEffect(() => {
-    updateElementClass("oddOne");
-    updateElementClass("oddTwo");
-    updateElementClass("oddThree");
-  }, [oddStake, oddStakeLay1, oddStakeLay2]);
 
   useEffect(() => {
     if (betDelay > 0) {
@@ -319,7 +296,7 @@ const BetSlip = ({
                         style={{ top: "-5px", right: "-5px" }}
                       >
                         <button
-                          onClick={() => setOpenBetSlip(false)}
+                          onClick={closeBetSlip}
                           className="modal-close-btn mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base"
                           type="button"
                         >
@@ -482,186 +459,45 @@ const BetSlip = ({
                         placeBetValues?.btype === "BOOKMAKER" ||
                         placeBetValues?.btype === "BOOKMAKER2" ? (
                           <div className="pred-pl-wrap">
-                            <p className="pred-pl-row ng-star-inserted">
-                              <strong> {placeBetValues?.name[0]}</strong>
-                              <span
-                                className={`${
-                                  placeBetValues?.pnl &&
-                                  placeBetValues?.pnl[0] > 0
-                                    ? "text-success"
-                                    : "text-danger"
-                                }`}
-                                style={{ fontSize: "10px", textAlign: "right" }}
-                              >
-                                {placeBetValues?.pnl[0]}
-                              </span>
-                              <span
-                                id="oddOne"
-                                style={{ fontSize: "10px", textAlign: "right" }}
-                              >
-                                {placeBetValues?.back &&
-                                  oddStake != 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".1") &&
-                                  oddStake}
-
-                                {placeBetValues?.back &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".2") &&
-                                  oddStakeLay2}
-
-                                {placeBetValues?.back &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".3") &&
-                                  oddStakeLay1}
-                                {placeBetValues?.lay &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".1") &&
-                                  oddStake}
-
-                                {placeBetValues?.lay &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".2") &&
-                                  oddStakeLay2}
-
-                                {placeBetValues?.lay &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".3") &&
-                                  oddStakeLay1}
-                              </span>
-                            </p>
-                            <p className="pred-pl-row ng-star-inserted">
-                              <strong>
-                                {" "}
-                                {placeBetValues?.name?.length > 0
-                                  ? placeBetValues?.name[1]
-                                  : null}
-                              </strong>
-                              <span
-                                className={`${
-                                  placeBetValues?.pnl &&
-                                  placeBetValues?.pnl[1] > 0
-                                    ? "text-success"
-                                    : "text-danger"
-                                }`}
-                                style={{ fontSize: "10px", textAlign: "right" }}
-                              >
-                                {placeBetValues?.pnl?.length > 1 &&
-                                  placeBetValues?.pnl[1]}
-                              </span>
-                              <span
-                                id="oddTwo"
-                                style={{ fontSize: "10px", textAlign: "right" }}
-                              >
-                                {placeBetValues?.back &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".1") &&
-                                  oddStakeLay1}
-
-                                {placeBetValues?.back &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".2") &&
-                                  oddStake}
-
-                                {placeBetValues?.back &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".3") &&
-                                  oddStakeLay2}
-
-                                {placeBetValues?.lay &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".1") &&
-                                  oddStakeLay1}
-
-                                {placeBetValues?.lay &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".2") &&
-                                  oddStake}
-
-                                {placeBetValues?.lay &&
-                                  oddStake !== 0 &&
-                                  totalSize?.toString().length > 0 &&
-                                  selectionId.includes(".3") &&
-                                  oddStakeLay2}
-                              </span>
-                            </p>
-                            {placeBetValues?.name?.length > 2 && (
-                              <p className="pred-pl-row ng-star-inserted">
-                                <strong>
-                                  {" "}
-                                  {placeBetValues?.name?.length > 2
-                                    ? placeBetValues?.name[2]
-                                    : null}
-                                </strong>
-                                <span
-                                  className={`${
-                                    placeBetValues?.pnl &&
-                                    placeBetValues?.pnl[1] > 0
-                                      ? "text-success"
-                                      : "text-danger"
-                                  }`}
-                                  style={{
-                                    fontSize: "10px",
-                                    textAlign: "right",
-                                  }}
+                            {predictOdds?.map((predictOdd, i) => {
+                              return (
+                                <p
+                                  key={i}
+                                  className="pred-pl-row ng-star-inserted"
                                 >
-                                  {placeBetValues?.pnl?.length > 2 &&
-                                    placeBetValues?.pnl[2]}
-                                </span>
-                                <span
-                                  id="oddThree"
-                                  style={{
-                                    fontSize: "10px",
-                                    textAlign: "right",
-                                  }}
-                                >
-                                  {placeBetValues?.back &&
-                                    oddStake !== 0 &&
-                                    totalSize?.toString().length > 0 &&
-                                    selectionId.includes(".1") &&
-                                    oddStakeLay2}
-
-                                  {placeBetValues?.back &&
-                                    oddStake !== 0 &&
-                                    totalSize?.toString().length > 0 &&
-                                    selectionId.includes(".2") &&
-                                    oddStakeLay1}
-
-                                  {placeBetValues?.back &&
-                                    oddStake !== 0 &&
-                                    totalSize?.toString().length > 0 &&
-                                    selectionId.includes(".3") &&
-                                    oddStake}
-                                  {placeBetValues?.lay &&
-                                    oddStake !== 0 &&
-                                    totalSize?.toString().length > 0 &&
-                                    selectionId.includes(".1") &&
-                                    oddStakeLay2}
-
-                                  {placeBetValues?.lay &&
-                                    oddStake !== 0 &&
-                                    totalSize?.toString().length > 0 &&
-                                    selectionId.includes(".2") &&
-                                    oddStakeLay1}
-
-                                  {placeBetValues?.lay &&
-                                    oddStake !== 0 &&
-                                    totalSize?.toString().length > 0 &&
-                                    selectionId.includes(".3") &&
-                                    oddStake}
-                                </span>
-                              </p>
-                            )}
+                                  <strong> {predictOdd?.name}</strong>
+                                  <span
+                                    className={`${
+                                      placeBetValues?.exposure &&
+                                      placeBetValues?.exposure > 0
+                                        ? "text-success"
+                                        : "text-danger"
+                                    }`}
+                                    style={{
+                                      fontSize: "10px",
+                                      textAlign: "right",
+                                    }}
+                                  >
+                                    {predictOdd?.exposure !== 0 &&
+                                      predictOdd?.exposure}
+                                  </span>
+                                  <span
+                                    className={`${
+                                      predictOdd?.updatedExposure &&
+                                      predictOdd?.updatedExposure > 0
+                                        ? "text-success"
+                                        : "text-danger"
+                                    }`}
+                                    style={{
+                                      fontSize: "10px",
+                                      textAlign: "right",
+                                    }}
+                                  >
+                                    {predictOdd?.updatedExposure}
+                                  </span>
+                                </p>
+                              );
+                            })}
                           </div>
                         ) : (
                           <div></div>
