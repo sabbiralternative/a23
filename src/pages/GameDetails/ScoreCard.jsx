@@ -136,7 +136,9 @@ const ScoreCard = ({ score2 }) => {
             <div className="sc_cw-over">
               <span
                 style={{
-                  border: ".25px solid #000000",
+                  border: score2?.recent_overs?.[0]?.title
+                    ? ".25px solid #000000"
+                    : "none",
                   borderRadius: "2px",
                   paddingLeft: "5px",
                   paddingRight: "5px",
@@ -153,7 +155,9 @@ const ScoreCard = ({ score2 }) => {
             <div className="sc_cw-over">
               <span
                 style={{
-                  border: ".25px solid #000000",
+                  border: score2?.recent_overs?.[1]?.title
+                    ? ".25px solid #000000"
+                    : "none",
                   borderRadius: "2px",
                   paddingLeft: "5px",
                   paddingRight: "5px",
