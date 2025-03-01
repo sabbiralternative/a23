@@ -1,7 +1,7 @@
 const Score = ({ score2 }) => {
   return (
     <div
-      style={{ marginTop: "2px" }}
+      style={{ marginTop: "2px", padding: "5px 12px" }}
       id="score-board"
       className="score-board  show mb-md-3"
     >
