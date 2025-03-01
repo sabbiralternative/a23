@@ -51,7 +51,7 @@ const GameDetails = () => {
         <OpenBets myBets={myBets} setShowOpenBets={setShowMyBets} />
       )}
       <ScoreCardSlider />
-      {eventsData?.score && (
+      {Array.isArray(eventsData?.result?.[0]?.score2) && eventsData?.score && (
         <ScoreBoardCard
           eventTypeId={eventTypeId}
           score={eventsData?.score}
