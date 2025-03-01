@@ -1,7 +1,7 @@
-const ScoreCard = ({ score2 }) => {
+const Score = ({ score2 }) => {
   return (
     <div
-      style={{ marginTop: "2px", padding: "5px 12px" }}
+      style={{ marginTop: "2px" }}
       id="score-board"
       className="score-board  show mb-md-3"
     >
@@ -14,9 +14,9 @@ const ScoreCard = ({ score2 }) => {
             <div
               style={{
                 width: "100%",
-                display: "grid",
-                gridTemplateColumns: "auto auto auto",
-                gridTemplateRows: "auto auto",
+                display: "flex",
+                alignItems: "start",
+                justifyContent: "space-between",
               }}
             >
               <div
@@ -36,57 +36,41 @@ const ScoreCard = ({ score2 }) => {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  height: "100%!important",
-                  textAlign: "center",
-                  gridColumn: 2,
-                  gridRow: "1/span 2",
                 }}
               >
                 <span
                   style={{
                     width: "100%",
                     fontWeight: 500,
-                    fontSize: "12px",
-                    paddingLeft: "50px",
-                    paddingRight: "50px",
+                    fontSize: "14px",
+                    paddingLeft: "10px",
+
                     textTransform: "capitalize!important",
                   }}
                 >
                   {score2?.status}
                 </span>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  height: "100%!important",
-                  textAlign: "right",
-                  gridColumn: 3,
-                  gridRow: "1/span 2",
-                }}
-              >
-                <span
-                  style={{
-                    width: "100%",
-                    fontWeight: 500,
-                    fontSize: "10px",
-                    textTransform: "capitalize!important",
-                  }}
-                />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                justifyContent: "space-between",
+              }}
+            >
+              <div>
+                <span style={{ fontWeight: 500, fontSize: "10px" }}>
+                  {score2?.crr && (
+                    <>
+                      CRR:
+                      <span style={{ fontWeight: 100 }}>{score2?.crr}</span>
+                    </>
+                  )}
+                </span>
               </div>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
-                <div>
-                  <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                    {score2?.crr && (
-                      <>
-                        CRR:
-                        <span style={{ fontWeight: 100 }}>{score2?.crr}</span>
-                      </>
-                    )}
-                  </span>
-                </div>
+              {score2?.rrr !== null && score2?.rrr != 0 && (
                 <div>
                   <span style={{ fontWeight: 500, fontSize: "10px" }}>
                     {score2?.rrr && (
@@ -97,18 +81,12 @@ const ScoreCard = ({ score2 }) => {
                     )}
                   </span>
                 </div>
-                <div>
-                  <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                    {score2?.status2 && (
-                      <>
-                        RRR:
-                        <span style={{ fontWeight: 100 }}>
-                          {score2?.status2}
-                        </span>
-                      </>
-                    )}
-                  </span>
-                </div>
+              )}
+
+              <div>
+                <span style={{ fontWeight: 500, fontSize: "10px" }}>
+                  <span style={{ fontWeight: 100 }}>{score2?.status2}</span>
+                </span>
               </div>
             </div>
           </div>
@@ -130,7 +108,7 @@ const ScoreCard = ({ score2 }) => {
               justifyContent: "space-between",
               gap: "16px",
               overflowX: "auto",
-              fontSize: "12px",
+              fontSize: "10px",
             }}
           >
             <div className="sc_cw-over">
@@ -179,17 +157,14 @@ const ScoreCard = ({ score2 }) => {
             display: "flex",
             justifyContent: "space-between",
             overflowX: "auto",
-            fontSize: "12px",
+            fontSize: "10px",
           }}
         >
           <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-            <span style={{ fontWeight: 600 }}>PSHIP R:</span>{" "}
-            {score2?.partnership_runs}
+            <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
+            {score2?.partnership_runs} ({score2?.partnership_balls})
           </div>
-          <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-            <span style={{ fontWeight: 600 }}>PSHIP B:</span>{" "}
-            {score2?.partnership_balls}
-          </div>
+
           <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
             <span style={{ fontWeight: 600 }}>LAST WICKET:</span>{" "}
             {score2?.last_wicket}
@@ -213,6 +188,7 @@ const ScoreCard = ({ score2 }) => {
                 paddingTop: "2px",
                 paddingBottom: "2px",
                 fontWeight: 600,
+                fontSize: "10px",
               }}
             >
               <div
@@ -234,7 +210,11 @@ const ScoreCard = ({ score2 }) => {
               <div
                 key={i}
                 className="sc_cw-table-row sc_cw-desktop-row"
-                style={{ paddingTop: "2px", paddingBottom: "2px" }}
+                style={{
+                  paddingTop: "2px",
+                  paddingBottom: "2px",
+                  fontSize: "10px",
+                }}
               >
                 <div
                   style={{
@@ -245,6 +225,7 @@ const ScoreCard = ({ score2 }) => {
                     alignItems: "center",
                     justifyContent: "center",
                     gap: "5px",
+                    fontSize: "10px",
                   }}
                 >
                   {batMen?.strike == 1 && (
@@ -357,6 +338,7 @@ const ScoreCard = ({ score2 }) => {
               width: "max-content",
               display: "flex",
               flexDirection: "column",
+              fontSize: "10px",
             }}
           >
             <div
@@ -369,6 +351,7 @@ const ScoreCard = ({ score2 }) => {
                 backgroundColor: "#cbcbcb",
                 color: " #000000",
                 fontWeight: 600,
+                fontSize: "10px",
               }}
             >
               <div
@@ -382,7 +365,7 @@ const ScoreCard = ({ score2 }) => {
                   height: "100%",
                 }}
               >
-                <span style={{ marginLeft: "5px" }}>Bowler</span>
+                <span style={{}}>Bowler</span>
               </div>
               <div style={{ minWidth: "40px!important" }}>O</div>
               <div style={{ minWidth: "40px!important" }}>M</div>
@@ -398,6 +381,7 @@ const ScoreCard = ({ score2 }) => {
                 justifyContent: "space-between",
                 paddingTop: "2px",
                 paddingBottom: "2px",
+                fontSize: "10px",
               }}
             >
               <div
@@ -409,6 +393,7 @@ const ScoreCard = ({ score2 }) => {
                   whiteSpace: "nowrap",
                   textAlign: "left!important",
                   height: "100%",
+                  fontSize: "10px",
                 }}
               >
                 <span style={{ marginLeft: "5px" }}>
@@ -438,4 +423,4 @@ const ScoreCard = ({ score2 }) => {
   );
 };
 
-export default ScoreCard;
+export default Score;

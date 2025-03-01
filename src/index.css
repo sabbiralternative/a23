@@ -856,7 +856,7 @@ button.btn {
 }
 /* referral modal */
 
-/*!-------------- Score card start-------------- */
+/*!-------------- Score card-------------- */
 
 *,
 ::after,
@@ -917,10 +917,10 @@ html * {
 }
 .sc_cw-team-info-desktop {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   padding: 0 0;
-  gap: 16px;
-  width: 75%;
+  gap: 5px;
+  width: 100%;
 }
 .sc_cw-team-info-mobile {
   display: none;
@@ -947,8 +947,8 @@ html * {
   color: #000000 !important;
   padding-left: 5px;
   padding-right: 5px;
-  border: 0.25px solid #000000;
-  border-radius: 2px;
+  border: 0px solid #000000;
+  border-radius: 10px;
 }
 .sc_cw-other-info {
   width: 100%;
@@ -1170,5 +1170,3 @@ html * {
     color: #7d16a9;
   }
 }
-
-/*!------------------ Score card finish------------ */
