@@ -41,6 +41,7 @@ export const API = {
   bonus: "",
   index: "",
   language: "",
+  utr: "",
 };
 
 export const Settings = {

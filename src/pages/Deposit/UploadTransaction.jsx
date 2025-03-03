@@ -8,11 +8,13 @@ import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 import axios from "axios";
+import useUTR from "../../hooks/utr";
 
 const UploadTransaction = ({ paymentId, amount }) => {
+  const { mutate: getUTR } = useUTR();
+  const [utr, setUTR] = useState(null);
   const { token } = useContextState();
   const navigate = useNavigate();
-  const [utr, setUtr] = useState(null);
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
@@ -31,14 +33,21 @@ const UploadTransaction = ({ paymentId, amount }) => {
         });
         const data = res.data;
         if (data?.success) {
+          getUTR(data?.filePath, {
+            onSuccess: (data) => {
+              if (data?.success) {
+                setUTR(data?.utr);
+              }
+            },
+          });
           setLoading(false);
           setUploadedImage(data?.fileName);
-          setUtr(data?.utr);
+
           setFilePath(data?.filePath);
           setImage(null);
         } else {
           setLoading(false);
-          setUtr(null);
+
           setImage(null);
           setFilePath("");
           setUploadedImage(null);
@@ -47,7 +56,7 @@ const UploadTransaction = ({ paymentId, amount }) => {
       };
       handleSubmitImage();
     }
-  }, [image, token]);
+  }, [image, token, getUTR]);
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
@@ -70,14 +79,13 @@ const UploadTransaction = ({ paymentId, amount }) => {
       const res = await AxiosSecure.post(API.bankAccount, screenshotPostData);
       const result = res?.data;
       if (result?.success) {
-        setUtr(null);
+        setUTR(null);
         setImage(null);
         toast.success(result?.result?.message);
         setTimeout(() => {
           navigate("/");
         }, 2000);
       } else {
-        setUtr("");
         setImage(null);
         setFilePath("");
         setUploadedImage(null);
@@ -88,7 +96,7 @@ const UploadTransaction = ({ paymentId, amount }) => {
   const handleUTRChange = (e) => {
     const value = e.target.value;
     if (/^[0-9]*$/.test(value)) {
-      setUtr(value);
+      setUTR(value);
     }
   };
   const handleKeyDown = (e) => {

@@ -11,6 +11,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
       if (data?.result?.endpoint) {
         API.groupSportsBook = data?.result?.endpoint?.groupSportsBook;
         API.index = data?.result?.endpoint?.index;
+        API.utr = data?.result?.endpoint?.utr;
         API.language = data?.result?.endpoint?.language;
         API.bonus = data?.result?.endpoint?.bonus;
         API.banner = data?.result?.endpoint?.banner;
