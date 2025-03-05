@@ -270,19 +270,24 @@ const UploadTransaction = ({ paymentId, amount }) => {
           </div>
         </div>
       </div>
-      <div className="makepayment ng-tns-c159-2">
-        <div className="madepay ng-tns-c159-2">
-          <button
-            disabled={!filePath || !utr}
-            style={{
-              cursor: `${!filePath || !utr ? "not-allowed" : "pointer"}`,
-            }}
-            onClick={handleDepositSubmit}
-            className="ng-tns-c159-2"
-          >
-            I have Made The Payment
-          </button>
-        </div>
+
+      <div
+        style={{ padding: "0px" }}
+        className="makepayment madepay ng-tns-c159-2"
+      >
+        <button
+          disabled={!filePath || !utr}
+          style={{
+            cursor: `${!filePath || !utr ? "not-allowed" : "pointer"}`,
+            width: "100%",
+            height: "100%",
+            padding: "0.5rem",
+          }}
+          onClick={handleDepositSubmit}
+          className="ng-tns-c159-2"
+        >
+          I have Made The Payment
+        </button>
       </div>
     </>
   );
