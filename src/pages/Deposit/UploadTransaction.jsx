@@ -36,7 +36,9 @@ const UploadTransaction = ({ paymentId, amount }) => {
           getUTR(data?.filePath, {
             onSuccess: (data) => {
               if (data?.success) {
-                setUTR(data?.utr);
+                if (data?.utr !== null) {
+                  setUTR(data?.utr);
+                }
               }
             },
           });
@@ -261,22 +263,25 @@ const UploadTransaction = ({ paymentId, amount }) => {
                   style={{ width: "100%" }}
                   className="ng-tns-c159-0 ng-pristine ng-invalid ng-touched"
                   placeholder="Enter UTR/Transaction ID/ Ref ID"
-                  value={utr}
+                  value={utr !== null && utr}
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        style={{
-          cursor: `${!filePath || !utr ? "not-allowed" : "pointer"}`,
-        }}
-        onClick={handleDepositSubmit}
-        className="makepayment ng-tns-c159-2"
-      >
+      <div className="makepayment ng-tns-c159-2">
         <div className="madepay ng-tns-c159-2">
-          <button className="ng-tns-c159-2">I have Made The Payment</button>
+          <button
+            disabled={!filePath || !utr}
+            style={{
+              cursor: `${!filePath || !utr ? "not-allowed" : "pointer"}`,
+            }}
+            onClick={handleDepositSubmit}
+            className="ng-tns-c159-2"
+          >
+            I have Made The Payment
+          </button>
         </div>
       </div>
     </>
