@@ -108,11 +108,14 @@ const PaymentMethods = ({
       };
 
       const res = await AxiosSecure.post(API.bankAccount, depositDetail);
-
       const data = res?.data;
 
       if (data?.success) {
-        setDepositData(data?.result);
+        if (method?.type === "whatsapp") {
+          window.location.href = data?.result?.link;
+        } else {
+          setDepositData(data?.result);
+        }
       }
     }
   };
@@ -169,6 +172,12 @@ const PaymentMethods = ({
                       <img
                         style={{ height: "20px", width: "20px" }}
                         src={images.ustd}
+                      />
+                    ) : null}
+                    {method?.type == "whatsapp" ? (
+                      <img
+                        style={{ height: "17px", width: "17px" }}
+                        src={images.whatsapp}
                       />
                     ) : null}
                   </div>
