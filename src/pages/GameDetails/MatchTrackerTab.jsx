@@ -47,6 +47,11 @@ const MatchTrackerTab = ({ score }) => {
     }
   }, [eventId, eventTypeId, score, toggle]);
 
+  useEffect(() => {
+    setToggle("");
+    setIframe("");
+  }, [eventTypeId, eventId]);
+
   return (
     <>
       {(score && score?.hasVideo) || score?.tracker ? (

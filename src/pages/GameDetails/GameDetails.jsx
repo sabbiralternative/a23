@@ -59,7 +59,8 @@ const GameDetails = () => {
         />
       )}
       <MatchTrackerTab eventTypeId={eventTypeId} score={eventsData?.score} />
-      {eventsData?.result?.[0]?.score2?.length !== 0 &&
+      {eventTypeId == 4 &&
+        eventsData?.result?.[0]?.score2?.length !== 0 &&
         !Array.isArray(eventsData?.result?.[0]?.score2) && (
           <ScoreCard score2={eventsData?.result?.[0]?.score2} />
         )}

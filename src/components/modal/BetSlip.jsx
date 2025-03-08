@@ -115,7 +115,6 @@ const BetSlip = ({
       price > 3 &&
       placeBetValues?.name?.length === 2
     ) {
-      setBetDelay(9);
       delay = 9000;
     }
     if (
@@ -124,7 +123,6 @@ const BetSlip = ({
       price > 7 &&
       placeBetValues?.name?.length === 3
     ) {
-      setBetDelay(9);
       delay = 9000;
     } else {
       setBetDelay(placeBetValues?.betDelay);
