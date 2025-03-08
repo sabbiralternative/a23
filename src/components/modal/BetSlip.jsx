@@ -46,6 +46,8 @@ const BetSlip = ({
     setTotalSize(placeBetValues?.totalSize?.toFixed(2));
   }, [placeBetValues]);
 
+  console.log(placeBetValues);
+
   let payload = {};
   if (price) {
     if (Settings.language) {
@@ -110,7 +112,17 @@ const BetSlip = ({
     if (
       (eventTypeId == 4 || eventTypeId == 2) &&
       placeBetValues?.btype === "MATCH_ODDS" &&
-      price > 3
+      price > 3 &&
+      placeBetValues?.name?.length === 2
+    ) {
+      setBetDelay(9);
+      delay = 9000;
+    }
+    if (
+      (eventTypeId == 4 || eventTypeId == 2) &&
+      placeBetValues?.btype === "MATCH_ODDS" &&
+      price > 7 &&
+      placeBetValues?.name?.length === 3
     ) {
       setBetDelay(9);
       delay = 9000;
