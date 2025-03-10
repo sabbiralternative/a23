@@ -19,7 +19,6 @@ const Odds = ({
   prevPrices,
   setPrevPrices,
   data,
-  horseGreyhound,
   match_odds,
   setMatch_odds,
   refetchCurrentBets,
@@ -144,7 +143,7 @@ const Odds = ({
         )}
         {eventTypeId == 7 || eventTypeId == 4339 ? (
           <HorseGreyhound
-            data={horseGreyhound}
+            data={data}
             setOpenBetSlip={setOpenBetSlip}
             setPlaceBetValues={setPlaceBetValues}
             exposer={exposer}

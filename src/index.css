@@ -1170,3 +1170,82 @@ html * {
     color: #7d16a9;
   }
 }
+
+/* Horse Banner */
+.horse-banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+  height: 100px;
+}
+.horse-banner > img {
+  height: 100%;
+}
+
+.horse-banner-detail {
+  position: absolute;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+
+.horse-banner .horse-banner-detail div:first-child {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #00b900 !important;
+}
+
+.horse-timer {
+  font-weight: bold;
+  color: #fdcf13;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.time-detail {
+  color: #eee;
+  text-align: right;
+}
+
+.horse-timer small {
+  color: #fff;
+  font-weight: bold;
+}
+
+.horse-timer > span:last-child {
+  font-size: 14px;
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+}
+
+.jockey-detail .jockey-detail-box {
+  background-color: #cccccc;
+  color: #000000;
+  padding: 0 3px;
+  margin-right: 5px;
+  font-size: 13px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+  .sm-d-none {
+    display: none !important
+;
+  }
+}

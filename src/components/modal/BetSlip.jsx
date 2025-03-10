@@ -18,6 +18,7 @@ const BetSlip = ({
   refetchExposure,
   refetchCurrentBets,
 }) => {
+  console.log(placeBetValues);
   const { eventTypeId } = useParams();
   const { language } = useLanguage();
   const { token, setPredictOdds, predictOdds } = useContextState();
