@@ -203,6 +203,7 @@ const HorseGreyhound = ({
                               <div>
                                 <img src={runner?.image_id} />
                               </div>
+
                               <div>
                                 <span
                                   className="bt6598"
