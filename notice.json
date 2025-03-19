@@ -24,7 +24,7 @@
       "mac88": true,
       "b2c": true,
       "language": true,
-      "build": "production",
+      "build": "development",
       "betDelay": true
     },
     "logo": {

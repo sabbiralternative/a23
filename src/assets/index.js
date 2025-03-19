@@ -16,8 +16,10 @@ import checked from "./img/checked.png";
 import whatsapp from "./img/whatsapp.png";
 import kabaddi from "./img/kabbadi.svg";
 import ustd from "./img/usdt.png";
+import logo from "./img/logo.svg";
 
 export const images = {
+  logo,
   star,
   deleteIcon,
   backArrow,

@@ -3,6 +3,7 @@ import { API, Settings } from "../api";
 export const StateContext = createContext(null);
 import { getSetApis } from "../api/config";
 import notice from "../../notice.json";
+import { images } from "../assets";
 const StateProvider = ({ children }) => {
   const baseUrl = notice?.result?.settings?.baseUrl;
   /* Global state this states we are using in full project */
@@ -53,8 +54,13 @@ const StateProvider = ({ children }) => {
   useEffect(() => {
     if (noticeLoaded) {
       /* Get site logo */
-      const logo = `${API.assets}/${Settings.siteUrl}/logo.${Settings.logoFormat}`;
-      setLogo(logo);
+      if (Settings.build === "production") {
+        const logo = `${API.assets}/${Settings.siteUrl}/logo.${Settings.logoFormat}`;
+        setLogo(logo);
+      } else {
+        setLogo(images.logo);
+      }
+
       /* Theme css */
       const link = document.createElement("link");
       link.rel = "stylesheet";
