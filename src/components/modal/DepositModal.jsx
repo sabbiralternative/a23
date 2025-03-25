@@ -4,7 +4,7 @@ import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import useDepositBreakDown from "../../hooks/useDepositBreakDown";
 import toast from "react-hot-toast";
 const DepositModal = ({ setShowModal, setPaymentMethods, amount }) => {
-  const { depositBreakdown } = useDepositBreakDown(amount);
+  const { depositBreakdown } = useDepositBreakDown(parseFloat(amount));
   /* close modal click outside */
   const depositRef = useRef();
   useCloseModalClickOutside(depositRef, () => {
@@ -12,17 +12,20 @@ const DepositModal = ({ setShowModal, setPaymentMethods, amount }) => {
   });
 
   useEffect(() => {
+    const floatAmount = parseFloat(amount);
+
+    if (typeof floatAmount !== "number") {
+      return toast.error("Please enter a valid number");
+    }
     if (
       depositBreakdown?.minimumDeposit &&
-      amount < depositBreakdown?.minimumDeposit
+      floatAmount < depositBreakdown?.minimumDeposit
     ) {
       toast.error(
         `Minimum deposit amount is ${depositBreakdown?.minimumDeposit}`
       );
     }
   }, [amount, depositBreakdown]);
-
-
 
   return (
     <>

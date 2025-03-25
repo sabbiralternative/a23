@@ -13,7 +13,7 @@ const AmountBox = ({ amount, setAmount, setShowModal }) => {
                 value={amount !== null && amount !== undefined ? amount : ""}
                 id="depositamount"
                 name="depositamount"
-                type="text"
+                type="number"
                 className="deposit_form_input  form-control-input-bc ng-untouched ng-pristine ng-valid"
                 placeholder="Amount"
               />
