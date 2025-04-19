@@ -105,7 +105,7 @@ const BettingProfitLoss = () => {
                   </div>
                 </div>
 
-                {passbook?.map((item, i) => {
+                {filterByDate?.map((item, i) => {
                   return (
                     <div
                       onClick={() => handleNavigateSinglePassbook(item)}
