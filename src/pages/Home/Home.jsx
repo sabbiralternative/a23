@@ -69,6 +69,32 @@ const Home = () => {
       )}
       {sportsType ? <Sports sportsType={sportsType} sports={sports} /> : null}
 
+      {socialLink?.telegramLink ? (
+        <div
+          onClick={() => window.open(socialLink?.telegramLink, "_blank")}
+          className="tabbar-item"
+        >
+          <div className="ob_button" style={{ zIndex: 100, bottom: "20%" }}>
+            <div className="bt1043">
+              <div
+                style={{ background: "none", height: "32px", width: "32px" }}
+                className="open_bets_button"
+                data-editor-id="betslipMobileButtonGradient"
+              >
+                <img
+                  style={{ height: "32px", width: "32px" }}
+                  src={images.telegram}
+                  alt=""
+                />
+                <div
+                  id="bt-header-total"
+                  className="bt1054 bt1063 bt1052 bt1042"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
       {socialLink?.whatsapplink || socialLink?.branchWhatsapplink ? (
         <div onClick={navigateWhatsApp} className="tabbar-item">
           <div className="ob_button" style={{ zIndex: 100, bottom: "13%" }}>

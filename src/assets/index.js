@@ -17,9 +17,11 @@ import whatsapp from "./img/whatsapp.png";
 import kabaddi from "./img/kabbadi.svg";
 import ustd from "./img/usdt.png";
 import logo from "./img/logo.svg";
+import telegram from "./img/telegram.png";
 
 export const images = {
   logo,
+  telegram,
   star,
   deleteIcon,
   backArrow,
