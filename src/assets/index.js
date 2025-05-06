@@ -18,8 +18,10 @@ import kabaddi from "./img/kabbadi.svg";
 import ustd from "./img/usdt.png";
 import logo from "./img/logo.svg";
 import telegram from "./img/telegram.png";
+import instagram from "./img/instagram.png";
 
 export const images = {
+  instagram,
   logo,
   telegram,
   star,
