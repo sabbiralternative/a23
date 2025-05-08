@@ -29,6 +29,7 @@ import ReferralStatement from "../pages/ReferralStatement/ReferralStatement";
 import HorseRacing from "../pages/HorseRacing/HorseRacing";
 import GreyhoundRacing from "../pages/GreyhoundRacing/GreyhoundRacing";
 import MyBankDetails from "../pages/MyBankDetails/MyBankDetails";
+import Funbar from "../pages/Funbar/Funbar";
 
 export const router = createBrowserRouter(
   [
@@ -76,6 +77,10 @@ export const router = createBrowserRouter(
         {
           path: "/:route/:name/:gameId",
           element: <IFrame />,
+        },
+        {
+          path: "/funbar",
+          element: <Funbar />,
         },
         {
           path: "/betting-profit-loss",
