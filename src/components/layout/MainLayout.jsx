@@ -66,7 +66,8 @@ const MainLayout = () => {
       !addBank &&
       !location.pathname.includes("/1") &&
       !location.pathname.includes("/2") &&
-      !location.pathname.includes("/4") ? (
+      !location.pathname.includes("/4") &&
+      !location.pathname.includes("/funbar") ? (
         <Footer />
       ) : null}
     </div>
