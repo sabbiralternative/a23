@@ -482,7 +482,7 @@ const Header = () => {
                 </button>
                 <button
                   onClick={() => {
-                    navigate("/funbar");
+                    navigate(token ? "/funbar" : "/login");
                   }}
                   className={`mb-top-navigate-item ${
                     location.pathname == "/funbar" ? "active" : ""
