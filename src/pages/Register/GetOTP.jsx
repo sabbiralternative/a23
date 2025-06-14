@@ -113,7 +113,7 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
                     <span> {Settings.otp ? "Get OTP on SMS" : "Proceed"}</span>
                   </button>
 
-                  {Settings.otpless && (
+                  {Settings.otpWhatsapp && (
                     <button
                       onClick={handleGetOtpOnWhatsapp}
                       disabled={mobileNo?.length < 10}

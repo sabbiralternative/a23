@@ -25,7 +25,8 @@
       "b2c": true,
       "language": true,
       "build": "development",
-      "betDelay": true
+      "betDelay": true,
+      "otpWhatsapp": true
     },
     "logo": {
       "height": 55,

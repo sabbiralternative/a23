@@ -58,6 +58,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         Settings.referral = data?.result?.settings.referral;
         Settings.balanceApiLoop = data?.result?.settings?.balanceApiLoop;
         Settings.register = data?.result?.settings?.registration;
+        Settings.otpWhatsapp = data?.result?.settings?.otpWhatsapp;
         Settings.mac88 = data?.result?.settings?.mac88;
         Settings.otp = data?.result?.settings?.otp;
         Settings.disabledDevtool = data?.result?.settings?.disabledDevtool;
