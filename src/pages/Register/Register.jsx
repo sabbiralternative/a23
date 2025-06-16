@@ -226,7 +226,7 @@ const Register = () => {
                       <div className="otp-input-box">
                         <span>Enter OTP*</span>
                         <div className="input-boxes">
-                          {[...Array(4)].map((_, index) => (
+                          {[...Array(6)].map((_, index) => (
                             <input
                               key={index}
                               ref={(el) => (inputs.current[index] = el)}
