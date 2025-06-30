@@ -14,7 +14,7 @@ export const handleSportsBookPlaceBet = (
         setPlaceBetValues({});
         setPlaceBetValues({
           price: column?.Price?.toFixed(2),
-          back:true,
+          back: true,
           side: 0,
           selectionId: column?.Id,
           btype: "SPORTSBOOK",
@@ -22,8 +22,8 @@ export const handleSportsBookPlaceBet = (
           eventTypeId: sportsBook?.EventTypeId,
           betDelay: sportsBook?.betDelay,
           marketId: item?.Id,
-          maxLiabilityPerMarket: sportsBook?.maxLiabilityPerMarket,
-          maxLiabilityPerBet: sportsBook?.maxLiabilityPerBet,
+          maxLiabilityPerMarket: item?.maxLiabilityPerMarket,
+          maxLiabilityPerBet: item?.maxLiabilityPerBet,
           isBettable: sportsBook?.isBettable,
           isWeak: sportsBook?.isWeak,
           marketName: item?.Name,
