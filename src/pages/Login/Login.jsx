@@ -46,6 +46,10 @@ const Login = () => {
       localStorage.setItem("bonusToken", data?.result?.bonusToken);
       /* Set login name to locale storage */
       localStorage.setItem("loginName", data.result.loginName);
+      const banner = data.result.banner;
+      if (banner) {
+        localStorage.setItem("banner", banner);
+      }
       const buttonValue = JSON.stringify(data.result.buttonValue.game);
       /* set button value to locale storage */
       localStorage.setItem("buttonValue", buttonValue);
@@ -89,6 +93,10 @@ const Login = () => {
     console.log(data);
     if (data?.success) {
       setDisable(false);
+      const banner = data.result.banner;
+      if (banner) {
+        localStorage.setItem("banner", banner);
+      }
       /* Set token to localeStorage */
       localStorage.setItem("token", data.result.token);
       localStorage.setItem("branchMobile", data.result.branchMobile);

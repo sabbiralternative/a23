@@ -47,8 +47,6 @@ const BetSlip = ({
     setTotalSize(placeBetValues?.totalSize?.toFixed(2));
   }, [placeBetValues]);
 
-  console.log(placeBetValues);
-
   let payload = {};
   if (price) {
     if (Settings.language) {

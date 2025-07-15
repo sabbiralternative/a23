@@ -97,7 +97,10 @@ const Register = () => {
           localStorage.setItem("depositMethod", JSON.stringify(res?.result));
         }
       }
-
+      const banner = data.result.banner;
+      if (banner) {
+        localStorage.setItem("banner", banner);
+      }
       /* Set token to localeStorage */
       localStorage.setItem("token", data.result.token);
       /* Set bonus token in locale storage */

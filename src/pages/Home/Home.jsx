@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Banner from "../../components/ui/Home/Banner";
+import BannerModal from "../../components/modal/Banner";
 import Casino from "../../components/ui/Home/Casino";
 import LiveSports from "../../components/ui/Home/LiveSports/LiveSports";
 import Slider from "../../components/ui/Slider/Slider";
@@ -47,8 +48,22 @@ const Home = () => {
     }
   };
 
+  const [showModal, setShowModal] = useState(false);
+  const banner = localStorage.getItem("banner");
+
+  useEffect(() => {
+    const hasModalBeenShown = localStorage.getItem("hasModalBeenShown");
+    if (!hasModalBeenShown) {
+      setShowModal(true);
+    }
+  }, []);
+
   return (
     <>
+      {token && showModal && banner && (
+        <BannerModal setShowModal={setShowModal} banner={banner} />
+      )}
+
       {!sportsType && (
         <>
           {bannerImage?.banner?.length > 0 && (
