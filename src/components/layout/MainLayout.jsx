@@ -45,6 +45,13 @@ const MainLayout = () => {
     }
   };
 
+  useEffect(() => {
+    const changePassword = localStorage.getItem("changePassword");
+    if (changePassword) {
+      navigate("/change-password");
+    }
+  }, [location.pathname, navigate]);
+
   return (
     <div
       className="centered-div"

@@ -71,6 +71,7 @@ const Login = () => {
         navigate("/");
       }
       if (data?.result?.changePassword) {
+        localStorage.setItem("changePassword", true);
         navigate("/change-password");
       }
     } else {

@@ -35,6 +35,7 @@ const ChangePassword = () => {
       setTimeout(() => {
         // handleLogOut();
         setGetToken((prev) => !prev);
+        localStorage.removeItem("changePassword");
         navigate("/");
       }, 1000);
     } else {
