@@ -138,58 +138,60 @@ const PaymentMethods = ({
 
           {Array.isArray(depositMethods) &&
             depositMethods?.length > 0 &&
-            depositMethods?.map((method) => {
-              return (
-                <div
-                  style={{ cursor: "pointer" }}
-                  onClick={(e) => handleVisibleBankMethod(e, method)}
-                  key={method?.paymentId}
-                  _ngcontent-kdb-c159=""
-                  className="accountdetailss  "
-                >
+            depositMethods
+              ?.sort((a, b) => a?.sort - b?.sort)
+              ?.map((method) => {
+                return (
                   <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
-                    className="payment_container"
+                    style={{ cursor: "pointer" }}
+                    onClick={(e) => handleVisibleBankMethod(e, method)}
+                    key={method?.paymentId}
+                    _ngcontent-kdb-c159=""
+                    className="accountdetailss  "
                   >
-                    <span>{method?.title?.toUpperCase()}</span>
-                    {method?.type == "qr" && (
-                      <FaQrcode size={20} color="gray" />
-                    )}
-                    {method?.type == "bank" && (
-                      <CiBank size={20} color="gray" />
-                    )}
-                    {method?.type == "upi" || method?.type == "pg" ? (
-                      <img
-                        style={{ height: "20px", width: "20px" }}
-                        src={images.upi}
-                      />
-                    ) : null}
-                    {method?.type == "usdt" ? (
-                      <img
-                        style={{ height: "20px", width: "20px" }}
-                        src={"/img/trc20.svg"}
-                      />
-                    ) : null}
-                    {method?.type == "usdt_bep20" ? (
-                      <img
-                        style={{ height: "20px", width: "20px" }}
-                        src={"/img/bep20.svg"}
-                      />
-                    ) : null}
-                    {method?.type == "whatsapp" ? (
-                      <img
-                        style={{ height: "17px", width: "17px" }}
-                        src={images.whatsapp}
-                      />
-                    ) : null}
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        width: "100%",
+                      }}
+                      className="payment_container"
+                    >
+                      <span>{method?.title?.toUpperCase()}</span>
+                      {method?.type == "qr" && (
+                        <FaQrcode size={20} color="gray" />
+                      )}
+                      {method?.type == "bank" && (
+                        <CiBank size={20} color="gray" />
+                      )}
+                      {method?.type == "upi" || method?.type == "pg" ? (
+                        <img
+                          style={{ height: "20px", width: "20px" }}
+                          src={images.upi}
+                        />
+                      ) : null}
+                      {method?.type == "usdt" ? (
+                        <img
+                          style={{ height: "20px", width: "20px" }}
+                          src={"/img/trc20.svg"}
+                        />
+                      ) : null}
+                      {method?.type == "usdt_bep20" ? (
+                        <img
+                          style={{ height: "20px", width: "20px" }}
+                          src={"/img/bep20.svg"}
+                        />
+                      ) : null}
+                      {method?.type == "whatsapp" ? (
+                        <img
+                          style={{ height: "17px", width: "17px" }}
+                          src={images.whatsapp}
+                        />
+                      ) : null}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
 
           {isFetched && depositMethods?.length === 0 && (
             <h2>No payment method available right now.</h2>
