@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import ImageModal from "./ImageModal";
 import { RxCrossCircled } from "react-icons/rx";
 import { MdOutlinePendingActions } from "react-icons/md";
+import Complaint from "../../components/modal/Complaint/Complaint";
+import { Settings } from "../../api";
 
 const WithdrawReport = () => {
+  const [complaintId, setComplaintId] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState("");
   const { withdrawStatement } = useWithdrawStatement();
@@ -21,6 +24,13 @@ const WithdrawReport = () => {
 
   return (
     <>
+      {complaintId && (
+        <Complaint
+          setComplaintId={setComplaintId}
+          complaintId={complaintId}
+          method="withdraw"
+        />
+      )}
       {showModal && image && (
         <ImageModal setShowModal={setShowModal} image={image} />
       )}
@@ -119,6 +129,22 @@ const WithdrawReport = () => {
                               {" "}
                               {data?.remark}{" "}
                             </span>
+                            {Settings.complaint && (
+                              <button
+                                style={{
+                                  backgroundColor: "rgb(255 131 46)",
+                                  borderRadius: "5px",
+                                  fontSize: "12px",
+                                  padding: "5px 8px",
+                                  color: "white",
+                                }}
+                                onClick={() =>
+                                  setComplaintId(data?.referenceNo)
+                                }
+                              >
+                                Raise Complaint
+                              </button>
+                            )}
                             {/* <span className="right-bottom-date ">
                               {" "}
                               {data?.date}{" "}
