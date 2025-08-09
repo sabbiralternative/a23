@@ -147,7 +147,7 @@ const DepositReport = () => {
                                   setComplaintId(data?.referenceNo)
                                 }
                               >
-                                Raise Complaint
+                                Report Issue
                               </button>
                             )}
                             {/* <span className="right-bottom-date ">
