@@ -24,6 +24,8 @@ const PaymentMethods = ({
   setPaymentMethods,
   setPaymentId,
   amount,
+  tabs,
+  setTabs,
 }) => {
   const {
     bankData: depositMethods,
@@ -33,7 +35,7 @@ const PaymentMethods = ({
     type: "depositMethods",
     amount,
   });
-  const [tabs, setTabs] = useState("");
+
   const [qrcode, setQrcode] = useState("");
   const [depositData, setDepositData] = useState({});
   const [time, setTime] = useState(null);

@@ -10,7 +10,7 @@ import { AxiosSecure } from "../../lib/AxiosSecure";
 import axios from "axios";
 import useUTR from "../../hooks/utr";
 
-const UploadTransaction = ({ paymentId, amount }) => {
+const UploadTransaction = ({ paymentId, amount, tabs }) => {
   const { mutate: getUTR } = useUTR();
   const [utr, setUTR] = useState(null);
   const { token } = useContextState();
@@ -19,6 +19,7 @@ const UploadTransaction = ({ paymentId, amount }) => {
   const [image, setImage] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [filePath, setFilePath] = useState(null);
+  const [receipt, setReceipt] = useState(null);
 
   useEffect(() => {
     if (image) {
@@ -70,13 +71,16 @@ const UploadTransaction = ({ paymentId, amount }) => {
       return;
     }
     if (uploadedImage || utr) {
-      const screenshotPostData = {
+      let screenshotPostData = {
         type: "depositSubmit",
         paymentId,
         amount: amount,
         fileName: uploadedImage,
         utr: String(utr),
       };
+      if (tabs === "usdt" || tabs === "usdt_bep20") {
+        screenshotPostData.receipt_no = receipt;
+      }
 
       const res = await AxiosSecure.post(API.bankAccount, screenshotPostData);
       const result = res?.data;
@@ -249,7 +253,9 @@ const UploadTransaction = ({ paymentId, amount }) => {
           <div className="u-i-p-control-item-holder-bc ng-tns-c159-0">
             <p className="ng-tns-c159-0" style={{ color: "black" }}>
               {" "}
-              Enter UTR/Trans ID/Ref ID number to proceed further
+              {tabs === "usdt" || tabs === "usdt_bep20"
+                ? "Hash Code"
+                : "Enter UTR/Trans ID/Ref ID number to proceed further"}
             </p>
 
             <div className="u-i-p-control-item-holder-bc mb-3 ng-tns-c159-0">
@@ -262,14 +268,42 @@ const UploadTransaction = ({ paymentId, amount }) => {
                   type="text"
                   style={{ width: "100%" }}
                   className="ng-tns-c159-0 ng-pristine ng-invalid ng-touched"
-                  placeholder="Enter UTR/Transaction ID/ Ref ID"
-                  value={utr !== null && utr}
+                  placeholder={
+                    tabs === "usdt" || tabs === "usdt_bep20"
+                      ? "Enter Hash code"
+                      : "Enter UTR/Transaction ID/ Ref ID"
+                  }
+                  value={utr ? utr : null}
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
+      {tabs === "usdt" || tabs === "usdt_bep20" ? (
+        <div className="utrbox ng-tns-c159-0">
+          <div className="utrtxt ng-tns-c159-0">
+            <div className="u-i-p-control-item-holder-bc ng-tns-c159-0">
+              <p className="ng-tns-c159-0" style={{ color: "black" }}>
+                Receipt Number
+              </p>
+
+              <div className="u-i-p-control-item-holder-bc mb-3 ng-tns-c159-0">
+                <div className="utrinput form-control-bc ng-tns-c159-0 ng-pristine ng-invalid ng-touched">
+                  <input
+                    onChange={(e) => setReceipt(e.target.value)}
+                    type="text"
+                    style={{ width: "100%" }}
+                    className="ng-tns-c159-0 ng-pristine ng-invalid ng-touched"
+                    placeholder={"Enter Receipt Number"}
+                    value={receipt}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       <div
         style={{ padding: "0px" }}
