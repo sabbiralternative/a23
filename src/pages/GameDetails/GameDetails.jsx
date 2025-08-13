@@ -10,7 +10,8 @@ import useContextState from "../../hooks/useContextState";
 import useBalance from "../../hooks/useBalance";
 import useCurrentBets from "../../hooks/useCurrentBets";
 import OpenBets from "../../components/modal/OpenBets";
-import ScoreCard from "./ScoreCard";
+// import ScoreCard from "./ScoreCard";
+import CricketScore from "./CricketScore";
 
 const GameDetails = () => {
   const { tokenLoading } = useContextState();
@@ -59,11 +60,14 @@ const GameDetails = () => {
         />
       )}
       <MatchTrackerTab eventTypeId={eventTypeId} score={eventsData?.score} />
-      {eventTypeId == 4 &&
+      {/* {eventTypeId == 4 &&
         eventsData?.result?.[0]?.score2?.length !== 0 &&
         !Array.isArray(eventsData?.result?.[0]?.score2) && (
           <ScoreCard score2={eventsData?.result?.[0]?.score2} />
-        )}
+        )} */}
+      {eventTypeId == 4 && eventsData?.iscore && (
+        <CricketScore iscore={eventsData?.iscore} />
+      )}
       {eventsData && (
         <Odds
           refetchCurrentBets={refetchCurrentBets}
