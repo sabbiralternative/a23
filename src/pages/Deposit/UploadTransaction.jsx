@@ -19,7 +19,7 @@ const UploadTransaction = ({ paymentId, amount, tabs }) => {
   const [image, setImage] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [filePath, setFilePath] = useState(null);
-  const [receipt, setReceipt] = useState(null);
+  // const [receipt, setReceipt] = useState(null);
 
   useEffect(() => {
     if (image) {
@@ -78,9 +78,9 @@ const UploadTransaction = ({ paymentId, amount, tabs }) => {
         fileName: uploadedImage,
         utr: String(utr),
       };
-      if (tabs === "usdt" || tabs === "usdt_bep20") {
-        screenshotPostData.receipt_no = receipt;
-      }
+      // if (tabs === "usdt" || tabs === "usdt_bep20") {
+      //   screenshotPostData.receipt_no = receipt;
+      // }
 
       const res = await AxiosSecure.post(API.bankAccount, screenshotPostData);
       const result = res?.data;
@@ -280,7 +280,7 @@ const UploadTransaction = ({ paymentId, amount, tabs }) => {
           </div>
         </div>
       </div>
-      {tabs === "usdt" || tabs === "usdt_bep20" ? (
+      {/* {tabs === "usdt" || tabs === "usdt_bep20" ? (
         <div className="utrbox ng-tns-c159-0">
           <div className="utrtxt ng-tns-c159-0">
             <div className="u-i-p-control-item-holder-bc ng-tns-c159-0">
@@ -303,7 +303,7 @@ const UploadTransaction = ({ paymentId, amount, tabs }) => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : null} */}
 
       <div
         style={{ padding: "0px" }}
