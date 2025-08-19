@@ -226,13 +226,18 @@ const CricketScore = ({ iscore }) => {
                               ? "#999"
                               : cv == "1"
                               ? "#48a23c"
-                              : cv == "W"
+                              : cv.split().includes("W")
                               ? "#c9362b"
                               : cv == "4"
                               ? "#2d90d4"
                               : cv == "6"
                               ? "#601c78"
-                              : "#c2ad7b",
+                              : cv.split().includes("b") ||
+                                cv.split().includes("lb") ||
+                                cv.split().includes("wd") ||
+                                cv.split().includes("nb")
+                              ? "#c2ad7b"
+                              : "#999",
                         }}
                       >
                         <span>{cv}</span>
@@ -305,13 +310,18 @@ const CricketScore = ({ iscore }) => {
                               ? "#999"
                               : pv == "1"
                               ? "#48a23c"
-                              : pv == "W"
+                              : pv.split().includes("W")
                               ? "#c9362b"
                               : pv == "4"
                               ? "#2d90d4"
                               : pv == "6"
                               ? "#601c78"
-                              : "#c2ad7b",
+                              : pv.split().includes("b") ||
+                                pv.split().includes("lb") ||
+                                pv.split().includes("wd") ||
+                                pv.split().includes("nb")
+                              ? "#c2ad7b"
+                              : "#999",
                         }}
                       >
                         <span>{pv}</span>
