@@ -10,7 +10,7 @@ const ScoreBoardCard = ({ score, eventTypeId, match_odds }) => {
                   className="bt273 bt276"
                   data-editor-id="eventCardStatusLabel"
                 >
-                  {score?.timeStatus}
+                  {/* {score?.timeStatus} */}
                 </div>
               </div>
               <div className="bt237"></div>
@@ -381,7 +381,7 @@ const ScoreBoardCard = ({ score, eventTypeId, match_odds }) => {
                     className="bt6541 bt12616"
                     data-editor-id="eventCardStatusLabel"
                   >
-                    {score?.timeStatus}
+                    {/* {score?.timeStatus} */}
                   </div>
                 </div>
                 <div className="bt12617 bt12594">

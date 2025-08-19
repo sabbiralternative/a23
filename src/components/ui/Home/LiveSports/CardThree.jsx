@@ -22,7 +22,7 @@ const CardThree = ({ liveSports, keys }) => {
           <p className="name">{liveSports[keys]?.seriesName}</p>
         </div>
         <div className="t-right">
-          <p className="status">{liveSports?.[keys]?.timeStatus}</p>
+          {/* <p className="status">{liveSports?.[keys]?.timeStatus}</p> */}
           {/* <div className="live ttu">Live</div> */}
         </div>
       </div>

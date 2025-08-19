@@ -135,7 +135,7 @@ const ScoreCardSlider = () => {
                                         className="bt6541 bt12528 bt12519 bt12520 bt12526"
                                         data-editor-id="horizontalNavigationEventCrumbs"
                                       >
-                                        {sports?.[key]?.timeStatus}
+                                        {/* {sports?.[key]?.timeStatus} */}
                                       </div>
                                     </div>
                                     <div className="bt12517">

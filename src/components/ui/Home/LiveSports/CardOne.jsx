@@ -22,7 +22,7 @@ const CardOne = ({ liveSports, keys }) => {
                   className="bt273 bt276"
                   data-editor-id="eventCardStatusLabel"
                 >
-                  {liveSports?.[keys]?.timeStatus}
+                  {/* {liveSports?.[keys]?.timeStatus} */}
                 </div>
               </div>
               <div className="bt237"></div>

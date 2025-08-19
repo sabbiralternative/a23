@@ -87,7 +87,6 @@ const CardTwo = ({ liveSports, keys, sportsType }) => {
                       style={{ verticalAlign: "middle", width: "100%" }}
                     >
                       <h4 style={{ fontSize: "10px" }}>
-                        
                         {
                           liveSports?.[keys]?.[0]?.ex?.availableToBack?.[0]
                             ?.price
@@ -112,7 +111,6 @@ const CardTwo = ({ liveSports, keys, sportsType }) => {
                       style={{ verticalAlign: "middle", width: "100%" }}
                     >
                       <h4 style={{ fontSize: "10px" }}>
-                       
                         {
                           liveSports?.[keys]?.[0]?.ex?.availableToLay?.[0]
                             ?.price
@@ -225,7 +223,6 @@ const CardTwo = ({ liveSports, keys, sportsType }) => {
                       style={{ verticalAlign: "middle", width: "100%" }}
                     >
                       <h4 style={{ fontSize: "10px" }}>
-                  
                         {
                           liveSports?.[keys]?.[1]?.ex?.availableToBack?.[0]
                             ?.price
@@ -250,7 +247,6 @@ const CardTwo = ({ liveSports, keys, sportsType }) => {
                       style={{ verticalAlign: "middle", width: "100%" }}
                     >
                       <h4 style={{ fontSize: "10px" }}>
-                     
                         {
                           liveSports?.[keys]?.[1]?.ex?.availableToLay?.[0]
                             ?.price
@@ -300,7 +296,7 @@ const CardTwo = ({ liveSports, keys, sportsType }) => {
               className="bt6541 bt12616"
               data-editor-id="eventCardStatusLabel"
             >
-              {liveSports?.[keys]?.timeStatus}
+              {/* {liveSports?.[keys]?.timeStatus} */}
             </div>
           </div>
           <div className="bt12617 bt12594" style={{ marginTop: "5px" }}>
@@ -353,7 +349,6 @@ const CardTwo = ({ liveSports, keys, sportsType }) => {
                       style={{ verticalAlign: "middle", width: "100%" }}
                     >
                       <h4 style={{ fontSize: "10px" }}>
-                        
                         {
                           liveSports?.[keys]?.[2]?.ex?.availableToBack?.[0]
                             ?.price
@@ -378,7 +373,6 @@ const CardTwo = ({ liveSports, keys, sportsType }) => {
                       style={{ verticalAlign: "middle", width: "100%" }}
                     >
                       <h4 style={{ fontSize: "10px" }}>
-                        
                         {
                           liveSports?.[keys]?.[2]?.ex?.availableToLay?.[0]
                             ?.price
