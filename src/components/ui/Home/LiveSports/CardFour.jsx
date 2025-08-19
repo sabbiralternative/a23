@@ -3,7 +3,7 @@ import { handleNavigateEventPage } from "../../../../utils/handleNavigateEventPa
 
 const CardFour = ({ liveSports, keys }) => {
   const navigate = useNavigate();
-
+  console.log(liveSports);
   return (
     <div
       onClick={() => {
@@ -26,7 +26,7 @@ const CardFour = ({ liveSports, keys }) => {
                   className="bt273 bt276"
                   data-editor-id="eventCardStatusLabel"
                 >
-                  {liveSports?.[keys]?.timeStatus}
+                  {/* {liveSports?.[keys]?.timeStatus} */}
                 </div>
               </div>
               <div className="bt237"></div>
