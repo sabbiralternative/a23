@@ -52,13 +52,15 @@ const GameDetails = () => {
         <OpenBets myBets={myBets} setShowOpenBets={setShowMyBets} />
       )}
       <ScoreCardSlider />
-      {Array.isArray(eventsData?.result?.[0]?.score2) && eventsData?.score && (
-        <ScoreBoardCard
-          eventTypeId={eventTypeId}
-          score={eventsData?.score}
-          match_odds={match_odds}
-        />
-      )}
+      {Array.isArray(eventsData?.result?.[0]?.score2) &&
+        eventsData?.score &&
+        eventTypeId != 4 && (
+          <ScoreBoardCard
+            eventTypeId={eventTypeId}
+            score={eventsData?.score}
+            match_odds={match_odds}
+          />
+        )}
       <MatchTrackerTab eventTypeId={eventTypeId} score={eventsData?.score} />
       {/* {eventTypeId == 4 &&
         eventsData?.result?.[0]?.score2?.length !== 0 &&

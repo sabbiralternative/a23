@@ -2,7 +2,7 @@ const CricketScore = ({ iscore }) => {
   return (
     <div
       style={{
-        marginTop: "8px",
+        margin: "10px",
         display: "block",
       }}
       id="score-board"
@@ -10,9 +10,11 @@ const CricketScore = ({ iscore }) => {
       <div
         style={{
           width: "100%",
-          backgroundColor: "var(--secondary-color)",
+          backgroundColor: "#fff",
           paddingLeft: 0,
           paddingRight: 0,
+          borderTopLeftRadius: "5px",
+          borderTopRightRadius: "5px",
         }}
       >
         <div
@@ -363,10 +365,12 @@ const CricketScore = ({ iscore }) => {
       >
         <div
           style={{
-            backgroundColor: "var(--secondary-color)",
+            backgroundColor: "#fff",
 
             paddingTop: "0.25rem", // py-1
             paddingBottom: "0.25rem",
+            borderBottomLeftRadius: "5px",
+            borderBottomRightRadius: "5px",
           }}
         >
           <div
