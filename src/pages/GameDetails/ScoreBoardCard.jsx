@@ -1,4 +1,4 @@
-const ScoreBoardCard = ({ score, eventTypeId, match_odds }) => {
+const ScoreBoardCard = ({ score, eventTypeId }) => {
   return (
     <>
       {eventTypeId == 2 ? (
@@ -405,7 +405,7 @@ const ScoreBoardCard = ({ score, eventTypeId, match_odds }) => {
                     </div>
                   )}
                 </div>
-                {eventTypeId == 4 &&
+                {/* {eventTypeId == 4 &&
                   match_odds?.[0]?.score?.[0]?.recent?.length > 0 && (
                     <div className="bt12613">
                       <p style={{ marginRight: "10px", fontWeight: "bold" }}>
@@ -426,7 +426,7 @@ const ScoreBoardCard = ({ score, eventTypeId, match_odds }) => {
                         })
                       )}
                     </div>
-                  )}
+                  )} */}
               </div>
               <div className="bt12593">
                 <div className="bt12600 bt12601">

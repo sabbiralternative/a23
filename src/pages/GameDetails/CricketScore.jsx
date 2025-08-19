@@ -220,6 +220,19 @@ const CricketScore = ({ iscore }) => {
                           boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
                           borderRadius: "50%",
                           padding: "0.25rem",
+                          color: "white",
+                          backgroundColor:
+                            cv == "0"
+                              ? "#999"
+                              : cv == "1"
+                              ? "#48a23c"
+                              : cv == "W"
+                              ? "#c9362b"
+                              : cv == "4"
+                              ? "#2d90d4"
+                              : cv == "6"
+                              ? "#601c78"
+                              : "#c2ad7b",
                         }}
                       >
                         <span>{cv}</span>
@@ -286,6 +299,19 @@ const CricketScore = ({ iscore }) => {
                           boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
                           borderRadius: "50%",
                           padding: "0.25rem",
+                          color: "white",
+                          backgroundColor:
+                            pv == "0"
+                              ? "#999"
+                              : pv == "1"
+                              ? "#48a23c"
+                              : pv == "W"
+                              ? "#c9362b"
+                              : pv == "4"
+                              ? "#2d90d4"
+                              : pv == "6"
+                              ? "#601c78"
+                              : "#c2ad7b",
                         }}
                       >
                         <span>{pv}</span>
