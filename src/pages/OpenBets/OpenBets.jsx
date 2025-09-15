@@ -1,7 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import useCurrentBets from "../../hooks/useCurrentBets";
 
 const OpenBets = () => {
+  const navigate = useNavigate();
   const { myBets } = useCurrentBets();
+
+  const navigateGameList = (item) => {
+    navigate(`/game-details/${item?.eventTypeId}/${item?.eventId}`);
+  };
+
   return (
     <>
       {myBets?.length > 0 ? (
@@ -25,6 +32,7 @@ const OpenBets = () => {
               {myBets?.map((item, i) => {
                 return (
                   <div
+                    onClick={() => navigateGameList(item)}
                     key={i}
                     className={`allbet-datalist ${
                       item?.betType === "Back" ? "forback " : "forlay "
