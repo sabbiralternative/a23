@@ -71,4 +71,5 @@ export const Settings = {
   betDelay: "",
   otpWhatsapp: "",
   complaint: "",
+  registrationWhatsapp: "",
 };

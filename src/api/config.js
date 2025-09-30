@@ -78,6 +78,8 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         Settings.bookmakerCashOut = data?.result?.settings?.bookmakerCashOut;
         Settings.betDelay = data?.result?.settings?.betDelay;
         Settings.complaint = data?.result?.settings?.complaint;
+        Settings.registrationWhatsapp =
+          data?.result?.settings?.registrationWhatsapp;
 
         setNoticeLoaded(true);
       }

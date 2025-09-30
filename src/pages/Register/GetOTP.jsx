@@ -3,10 +3,13 @@ import indFlag from "../../../src/assets/img/ind-flag-icon.svg";
 import { API, Settings } from "../../api";
 import toast from "react-hot-toast";
 import useGetSocialLink from "../../hooks/useGetSocialLink";
-import getOtpOnWhatsapp from "../../utils/getOtpOnWhatsapp";
+// import getOtpOnWhatsapp from "../../utils/getOtpOnWhatsapp";
 import { images } from "../../assets";
 import { AxiosSecure } from "../../lib/AxiosSecure";
+import { Fragment } from "react";
+import useContextState from "../../hooks/useContextState";
 const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
+  const { token } = useContextState();
   /* get social link */
   const { socialLink } = useGetSocialLink();
   const getOtp = async (e) => {
@@ -34,8 +37,8 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
     }
   };
 
-  const getWhatsAppId = (links) => {
-    window.open(links?.link, "_blank");
+  const getWhatsAppId = (link) => {
+    window.open(link, "_blank");
   };
 
   const handleMobileNo = (e) => {
@@ -44,9 +47,9 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
     }
   };
 
-  const handleGetOtpOnWhatsapp = async () => {
-    await getOtpOnWhatsapp(mobileNo, setOrderId, setShowRegister);
-  };
+  // const handleGetOtpOnWhatsapp = async () => {
+  //   await getOtpOnWhatsapp(mobileNo, setOrderId, setShowRegister);
+  // };
 
   return (
     <div className="" style={{ backdropFilter: "blur(1px)" }}>
@@ -113,7 +116,7 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
                     <span> {Settings.otp ? "Get OTP on SMS" : "Proceed"}</span>
                   </button>
 
-                  {Settings.otpWhatsapp && (
+                  {/* {Settings.otpWhatsapp && (
                     <button
                       onClick={handleGetOtpOnWhatsapp}
                       disabled={mobileNo?.length < 10}
@@ -122,24 +125,67 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
                     >
                       <span> Get OTP on Whatsapp</span>
                     </button>
-                  )}
+                  )} */}
                 </div>
               </form>
-              {socialLink?.link && (
-                <div
-                  onClick={() => getWhatsAppId(socialLink)}
-                  className="whatsup-card"
-                  style={{ cursor: "pointer" }}
-                >
-                  <img
-                    style={{ height: "20px" }}
-                    loading="lazy"
-                    src={images.whatsapp}
-                    alt=""
-                  />
-                  <span>Get Instant ID on Whatsapp</span>
-                </div>
-              )}
+
+              {!token &&
+                socialLink?.whatsapplink &&
+                Settings.registrationWhatsapp && (
+                  <Fragment>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "10px",
+
+                        width: "100%",
+                      }}
+                    >
+                      <div
+                        style={{
+                          border: "0.5px solid gray",
+                          width: "100%",
+                          opacity: "0.3",
+                        }}
+                      />
+                      <span
+                        style={{
+                          opacity: "0.5",
+                          fontSize: "13px",
+                        }}
+                      >
+                        Or
+                      </span>
+                      <div
+                        style={{
+                          border: "1px solid gray",
+                          width: "100%",
+                          opacity: "0.3",
+                        }}
+                      />
+                    </div>
+                    <div
+                      onClick={() => getWhatsAppId(socialLink?.whatsapplink)}
+                      className="whatsup-card"
+                      style={{
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img
+                        style={{ height: "20px" }}
+                        loading="lazy"
+                        src={images.whatsapp}
+                        alt=""
+                      />
+                      <span>Get OTP on Whatsapp</span>
+                    </div>
+                  </Fragment>
+                )}
             </div>
           </div>
         </div>

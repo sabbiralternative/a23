@@ -27,7 +27,8 @@
       "build": "development",
       "betDelay": true,
       "otpWhatsapp": true,
-      "complaint": true
+      "complaint": true,
+      "registrationWhatsapp": true
     },
     "logo": {
       "height": 55,
