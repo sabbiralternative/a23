@@ -72,7 +72,9 @@ const Odds = ({
   useEffect(() => {
     const filterMatch_odds = data?.filter(
       (match_odd) =>
-        match_odd?.btype === "MATCH_ODDS" && match_odd?.visible == true
+        match_odd?.btype === "MATCH_ODDS" &&
+        match_odd?.visible == true &&
+        match_odd?.name !== "tied match"
     );
     setMatch_odds(filterMatch_odds);
 
@@ -113,6 +115,13 @@ const Odds = ({
     // setOverByOver(overByOverFilter);
   }, [data]);
 
+  const tiedMatch = data?.filter(
+    (tiedMatch) =>
+      tiedMatch?.btype === "MATCH_ODDS" &&
+      tiedMatch?.visible == true &&
+      tiedMatch?.name === "tied match"
+  );
+
   return (
     <div className="bt12498">
       <div className="bt12671">
@@ -149,6 +158,14 @@ const Odds = ({
             exposer={exposer}
           />
         ) : null}
+        {tiedMatch?.length > 0 && (
+          <MatchOdds
+            setOpenBetSlip={setOpenBetSlip}
+            setPlaceBetValues={setPlaceBetValues}
+            exposer={exposer}
+            match_odds={tiedMatch}
+          />
+        )}
         {openBetSlip && (
           <BetSlip
             refetchCurrentBets={refetchCurrentBets}
