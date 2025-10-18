@@ -3,7 +3,6 @@ import { API, Settings } from "../api";
 export const StateContext = createContext(null);
 import { getSetApis } from "../api/config";
 import notice from "../../notice.json";
-import { images } from "../assets";
 const StateProvider = ({ children }) => {
   const baseUrl = notice?.result?.settings?.baseUrl;
   /* Global state this states we are using in full project */
@@ -58,7 +57,7 @@ const StateProvider = ({ children }) => {
         const logo = `${API.assets}/${Settings.siteUrl}/logo.${Settings.logoFormat}`;
         setLogo(logo);
       } else {
-        setLogo(images.logo);
+        setLogo(`/src/assets/img/logo.${Settings.logoFormat}`);
       }
 
       /* Theme css */
