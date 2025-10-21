@@ -69,8 +69,14 @@ const DepositReport = () => {
                             />
                           )}
                         </div>
-                        <div className="card-content ">
-                          <div className="top-content ">
+                        <div
+                          className="card-content "
+                          style={{ padding: "0px" }}
+                        >
+                          <div
+                            className="top-content "
+                            style={{ padding: "0.75rem" }}
+                          >
                             <div className="left-top-text ">
                               <span className="">
                                 {data?.referenceNo}
@@ -129,8 +135,14 @@ const DepositReport = () => {
                               ₹ {data?.amount}{" "}
                             </span>
                           </div>
-                          <div className="bottom-content ">
-                            <span className="left-bottom-id ">
+                          <div
+                            className="bottom-content "
+                            style={{ alignItems: "initial" }}
+                          >
+                            <span
+                              className="left-bottom-id "
+                              style={{ padding: "0.75rem" }}
+                            >
                               {" "}
                               {data?.remark}{" "}
                             </span>
@@ -138,10 +150,12 @@ const DepositReport = () => {
                               <button
                                 style={{
                                   backgroundColor: "rgb(255 131 46)",
-                                  borderRadius: "5px",
-                                  fontSize: "12px",
-                                  padding: "5px 8px",
+                                  borderTopLeftRadius: "5px",
+                                  fontSize: "11px",
+                                  padding: "4px 8px",
                                   color: "white",
+                                  height: "fit-content",
+                                  marginTop: "auto",
                                 }}
                                 onClick={() =>
                                   setComplaintId(data?.referenceNo)

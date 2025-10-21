@@ -91,7 +91,11 @@ export const router = createBrowserRouter(
           element: <SingleProfitLoss />,
         },
         {
-          path: "deposit-withdraw-report",
+          path: "deposit-report",
+          element: <DepositWithdrawReport />,
+        },
+        {
+          path: "withdraw-report",
           element: <DepositWithdrawReport />,
         },
         {

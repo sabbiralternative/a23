@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import DepositReport from "./DepositReport";
 import WithdrawReport from "./WithdrawReport";
 import { Settings } from "../../api";
+import { useLocation } from "react-router-dom";
 
 const DepositWithdrawReport = () => {
-  const [depositWithdraw, setDepositWithdraw] = useState("deposit");
+  const location = useLocation();
+  const isDeposit = location.pathname.includes("deposit");
   const depositTab = [
     'If you face any issue with your deposit, click the "Report Issue" button next to your deposit details to let us know.',
     "यदि आपकी जमा राशि में कोई समस्या आती है, तो हमें बताने के लिए अपनी डिपॉज़िट विवरण के पास दिए गए Report Issue बटन पर क्लिक करें",
@@ -24,10 +26,7 @@ const DepositWithdrawReport = () => {
 
       setTimeout(() => {
         setCurrentIndex((prev) => {
-          const arrLength =
-            depositWithdraw === "deposit"
-              ? depositTab.length
-              : withdrawTab.length;
+          const arrLength = isDeposit ? depositTab.length : withdrawTab.length;
           return (prev + 1) % arrLength;
         });
         setFade(true);
@@ -35,10 +34,10 @@ const DepositWithdrawReport = () => {
     }, 10000); // 10s display time
 
     return () => clearInterval(interval);
-  }, [depositWithdraw]);
+  }, [location.pathname]);
   return (
     <>
-      <div className="deposit-withdraw-btns  ">
+      {/* <div className="deposit-withdraw-btns  ">
         <div className="btns-animation ">
           <div className="btnBox ">
             <button
@@ -62,7 +61,7 @@ const DepositWithdrawReport = () => {
             }`}
           ></div>
         </div>
-      </div>
+      </div> */}
       {Settings.complaint && (
         <div
           style={{
@@ -94,13 +93,11 @@ const DepositWithdrawReport = () => {
             alt=""
           />
           <span>
-            {depositWithdraw === "deposit"
-              ? depositTab[currentIndex]
-              : withdrawTab[currentIndex]}
+            {isDeposit ? depositTab[currentIndex] : withdrawTab[currentIndex]}
           </span>
         </div>
       )}
-      {depositWithdraw === "deposit" ? <DepositReport /> : <WithdrawReport />}
+      {isDeposit ? <DepositReport /> : <WithdrawReport />}
     </>
   );
 };

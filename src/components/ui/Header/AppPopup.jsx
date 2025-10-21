@@ -48,7 +48,7 @@ const AppPopup = ({ setIsModalOpen }) => {
         </div>
         <div className="app-text">
           <h2>Download Android Application</h2>
-          <span>Instant Download on your device</span>
+
           <div className="star">
             <img src={images.appStar} alt="star" />
             <img src={images.appStar} alt="star" />
@@ -58,7 +58,11 @@ const AppPopup = ({ setIsModalOpen }) => {
           </div>
         </div>
       </div>
-      <a onClick={handleDownload} className="install-btn">
+      <a
+        style={{ textDecoration: "none" }}
+        onClick={handleDownload}
+        className="install-btn"
+      >
         <button>Install</button>
       </a>
     </div>
