@@ -876,7 +876,7 @@ const Account = () => {
               </div>
             </li>
 
-            {socialLink?.whatsapplink && (
+            {/* {socialLink?.whatsapplink && (
               <li
                 onClick={() => navigateWhatsApp(socialLink?.whatsapplink)}
                 className="profile-menu-items ng-star-inserted"
@@ -913,7 +913,7 @@ const Account = () => {
                   </div>
                 </div>
               </li>
-            )}
+            )} */}
           </ul>
         </div>
         <div
