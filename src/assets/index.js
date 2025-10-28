@@ -19,8 +19,10 @@ import ustd from "./img/usdt.png";
 import logo from "./img/logo.svg";
 import telegram from "./img/telegram.png";
 import instagram from "./img/instagram.png";
+import brandsm from "./img/brand-sm.svg";
 
 export const images = {
+  brandsm,
   instagram,
   logo,
   telegram,

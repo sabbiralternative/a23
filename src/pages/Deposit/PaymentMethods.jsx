@@ -82,14 +82,15 @@ const PaymentMethods = ({
     setTabs(method?.type);
     setPaymentId(method?.paymentId);
 
-    if (method?.type === "pg") {
+    if (method?.type === "upigateway") {
       const depositDetailForPg = {
         paymentId: method?.paymentId,
         amount,
       };
+      console.log(depositDetailForPg);
       const res = await AxiosSecure.post(API.pg, depositDetailForPg);
       const data = res?.data;
-
+      // console.log(data);
       if (data?.success) {
         if (Settings?.paymentIntent) {
           setPgPaymentMethods(data?.result);
@@ -196,6 +197,12 @@ const PaymentMethods = ({
                         <img
                           style={{ height: "17px", width: "17px" }}
                           src={images.whatsapp}
+                        />
+                      ) : null}
+                      {method?.type == "upigateway" ? (
+                        <img
+                          style={{ height: "17px", width: "17px" }}
+                          src={images.brandsm}
                         />
                       ) : null}
                     </div>
