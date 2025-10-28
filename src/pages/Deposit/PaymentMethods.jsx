@@ -87,10 +87,10 @@ const PaymentMethods = ({
         paymentId: method?.paymentId,
         amount,
       };
-      console.log(depositDetailForPg);
+
       const res = await AxiosSecure.post(API.pg, depositDetailForPg);
       const data = res?.data;
-      // console.log(data);
+
       if (data?.success) {
         if (Settings?.paymentIntent) {
           setPgPaymentMethods(data?.result);

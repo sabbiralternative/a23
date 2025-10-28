@@ -67,7 +67,7 @@ const BetSlip = ({
         totalSize: totalSize,
         isBettable: placeBetValues?.isBettable,
         eventId: placeBetValues?.eventId,
-        cashout: false,
+        cashout: placeBetValues?.cashout || false,
         b2c: Settings.b2c,
       };
     } else {
@@ -84,7 +84,7 @@ const BetSlip = ({
         isBettable: placeBetValues?.isBettable,
         maxLiabilityPerBet: placeBetValues?.maxLiabilityPerBet,
         eventId: placeBetValues?.eventId,
-        cashout: placeBetValues?.cashout,
+        cashout: placeBetValues?.cashout || false,
         b2c: Settings.b2c,
       };
     }
@@ -386,54 +386,62 @@ const BetSlip = ({
                           >
                             <input
                               onChange={(e) => setPrice(e.target.value)}
-                              readOnly={placeBetValues?.isWeak}
+                              readOnly={
+                                placeBetValues?.isWeak ||
+                                placeBetValues?.cashout
+                              }
                               type="number"
                               defaultValue={price}
                               className="rate-inp"
                             />
-                            {!placeBetValues?.isWeak && (
-                              <div
-                                style={{
-                                  position: "absolute",
-                                  top: "3px",
-                                  right: "5px",
-                                  display: "flex",
-                                  flexDirection: "column",
-                                }}
-                              >
-                                <svg
-                                  onClick={handleIncreasePrice}
-                                  stroke="currentColor"
-                                  fill="currentColor"
-                                  strokeWidth="0"
-                                  viewBox="0 0 24 24"
-                                  height="15"
-                                  width="15"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  style={{ cursor: "pointer" }}
+                            {!placeBetValues?.isWeak &&
+                              !placeBetValues?.cashout && (
+                                <div
+                                  style={{
+                                    position: "absolute",
+                                    top: "3px",
+                                    right: "5px",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                  }}
                                 >
-                                  <path fill="none" d="M0 0h24v24H0z"></path>
-                                  <path d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
-                                </svg>
-                                <svg
-                                  onClick={handleDecreasePrice}
-                                  stroke="currentColor"
-                                  fill="currentColor"
-                                  strokeWidth="0"
-                                  viewBox="0 0 24 24"
-                                  height="15"
-                                  width="15"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  style={{ cursor: "pointer" }}
-                                >
-                                  <path fill="none" d="M0 0h24v24H0V0z"></path>
-                                  <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-                                </svg>
-                              </div>
-                            )}
+                                  <svg
+                                    onClick={handleIncreasePrice}
+                                    stroke="currentColor"
+                                    fill="currentColor"
+                                    strokeWidth="0"
+                                    viewBox="0 0 24 24"
+                                    height="15"
+                                    width="15"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    style={{ cursor: "pointer" }}
+                                  >
+                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                    <path d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
+                                  </svg>
+                                  <svg
+                                    onClick={handleDecreasePrice}
+                                    stroke="currentColor"
+                                    fill="currentColor"
+                                    strokeWidth="0"
+                                    viewBox="0 0 24 24"
+                                    height="15"
+                                    width="15"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    style={{ cursor: "pointer" }}
+                                  >
+                                    <path
+                                      fill="none"
+                                      d="M0 0h24v24H0V0z"
+                                    ></path>
+                                    <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+                                  </svg>
+                                </div>
+                              )}
                           </div>
                           <div className="bet-action-item">
                             <input
+                              readOnly={placeBetValues?.cashout}
                               onChange={(e) => setTotalSize(e.target.value)}
                               type="number"
                               name="betStake"
@@ -465,6 +473,7 @@ const BetSlip = ({
                           {buttonGameValue?.slice(0, 8).map(({ value }, i) => {
                             return (
                               <button
+                                disabled={placeBetValues?.cashout}
                                 key={i}
                                 onClick={() => setTotalSize(value)}
                                 className="chip-grid-item mdc-button mdc-button--unelevated mat-mdc-unelevated-button mat-unthemed mat-mdc-button-base ng-star-inserted"
