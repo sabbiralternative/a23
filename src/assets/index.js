@@ -11,7 +11,6 @@ import playStore from "./img/playstore.svg";
 import paytm from "./img/PYTM_WEB.png";
 import phonePay from "./img/PHONEPE_WEB.png";
 import gpay from "./img/gpay.webp";
-import bhim from "./img/BHIM_WEB.png";
 import checked from "./img/checked.png";
 import whatsapp from "./img/whatsapp.png";
 import kabaddi from "./img/kabbadi.svg";
@@ -20,6 +19,7 @@ import logo from "./img/logo.svg";
 import telegram from "./img/telegram.png";
 import instagram from "./img/instagram.png";
 import brandsm from "./img/brand-sm.svg";
+import bhim from "./img/bhim.png";
 
 export const images = {
   brandsm,

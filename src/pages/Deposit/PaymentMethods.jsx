@@ -202,7 +202,7 @@ const PaymentMethods = ({
                       {method?.type == "upigateway" ? (
                         <img
                           style={{ height: "17px", width: "17px" }}
-                          src={images.brandsm}
+                          src={images.bhim}
                         />
                       ) : null}
                     </div>
