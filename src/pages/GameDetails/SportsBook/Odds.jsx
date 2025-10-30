@@ -11,6 +11,7 @@ import useContextState from "../../../hooks/useContextState";
 import { useParams } from "react-router-dom";
 import useExposer from "../../../hooks/useExposer";
 import HorseGreyhound from "../GameType/HorseGreyhound";
+import { handleCashOutSportsBook } from "../../../utils/handleCashOutShortsBook";
 const Odds = ({
   sportsBook,
   eventTypeId,
@@ -22,6 +23,7 @@ const Odds = ({
   match_odds,
   setMatch_odds,
   refetchCurrentBets,
+  myBets,
 }) => {
   const { eventId } = useParams();
   const { placeBetValues, setPlaceBetValues, openBetSlip, setOpenBetSlip } =
@@ -179,12 +181,23 @@ const Odds = ({
           sports?.map((group) =>
             group?.Items?.map((item, iIdx) => {
               const isOpen = openItems[iIdx];
+              const cashOutMarket = myBets?.find(
+                (bet) => bet?.marketId == item?.Id
+              );
+              const column = item?.Items?.find(
+                (col) => col?.Id === cashOutMarket?.selectionId
+              );
 
               return (
                 <div key={iIdx} className="bt12687">
-                  <div onClick={() => toggleItem(iIdx)} className="bt12695">
-                    <div className="bt12689" data-editor-id="marketTitle">
+                  <div className="bt12695">
+                    <div
+                      onClick={() => toggleItem(iIdx)}
+                      className="bt12689"
+                      data-editor-id="marketTitle"
+                    >
                       {item?.Name}
+
                       <div
                         className="bt6471 bt12696 bt12690"
                         style={{ width: "16px", height: "16px" }}
@@ -201,6 +214,33 @@ const Odds = ({
                       </svg> */}
                       </div>
                     </div>
+                    {cashOutMarket && (
+                      <button
+                        disabled={column?.IsActive !== 1 || !column?.IsActive}
+                        onClick={() =>
+                          handleCashOutSportsBook(
+                            cashOutMarket,
+                            item,
+                            sportsBook,
+                            setOpenBetSlip,
+                            setPlaceBetValues
+                          )
+                        }
+                        type="button"
+                        className="btn_box "
+                        style={{
+                          width: "100px",
+                          backgroundColor: "#c9c9c9",
+                          display: "flex",
+                          alignItems: "center",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <span style={{ fontSize: "10px", color: "black" }}>
+                          Cashout
+                        </span>
+                      </button>
+                    )}
                   </div>
 
                   {item?.MColumnCount === 3 && (

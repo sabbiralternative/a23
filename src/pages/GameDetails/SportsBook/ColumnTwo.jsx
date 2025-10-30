@@ -68,6 +68,7 @@ const ColumnTwo = ({
               {item?.Items?.map((column, i) => {
                 const isActive =
                   column?.Price > 0 && !isSportsRunnerSuspended(column, item);
+
                 return (
                   <div
                     onClick={() =>

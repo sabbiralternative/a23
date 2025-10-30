@@ -82,6 +82,7 @@ const GameDetails = () => {
           setPriceClasses={setPriceClasses}
           prevPrices={prevPrices}
           setPrevPrices={setPrevPrices}
+          myBets={myBets}
         />
       )}
 
