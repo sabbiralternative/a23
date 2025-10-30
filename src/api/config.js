@@ -52,6 +52,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         API.slotsWolf = data?.result?.endpoint?.slotsWolf;
         API.bonusClaim = data?.result?.endpoint?.bonusClaim;
         API.royalCasino = data?.result?.endpoint?.royalCasino;
+        API.sb_cashout = data?.result?.endpoint?.sb_cashout;
         Settings.siteUrl = data?.result?.settings?.siteUrl;
         Settings.interval = data?.result?.settings?.interval;
         Settings.siteTitle = data?.result?.settings?.siteTitle;

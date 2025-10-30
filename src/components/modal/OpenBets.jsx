@@ -1,12 +1,11 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { useNavigate } from "react-router-dom";
-// import { handleCashOutSportsBook } from "../../utils/handleCashOutShortsBook";
-// import useContextState from "../../hooks/useContextState";
+import useSBCashOut from "../../hooks/sb_cashout";
 
 const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
-  /* close modal click outside */
-  // const { setPlaceBetValues, setOpenBetSlip } = useContextState();
+  const { mutate: cashOut } = useSBCashOut();
+
   const navigate = useNavigate();
   const openBetsRef = useRef();
   useCloseModalClickOutside(openBetsRef, () => {
@@ -21,7 +20,49 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
         group?.Name !== "Fast Markets" &&
         group?.Name !== "Player Specials"
     );
+  const handleCashOut = (betHistory, sportsBook, price) => {
+    const sports =
+      sportsBook &&
+      sportsBook?.MarketGroups?.filter(
+        (group) =>
+          group?.Name !== "Bet Builder" &&
+          group?.Name !== "Fast Markets" &&
+          group?.Name !== "Player Specials"
+      );
+    let item;
+    sports?.forEach((group) => {
+      group?.Items?.forEach((data) => {
+        if (betHistory?.marketId == data?.Id) {
+          item = data;
+        }
+      });
+    });
 
+    const column = item?.Items?.find(
+      (col) => col?.Id === betHistory?.selectionId
+    );
+
+    const payload = {
+      price,
+      back: true,
+      side: 0,
+      selectionId: column?.Id,
+      btype: "SPORTSBOOK",
+      placeName: column?.Name,
+      eventTypeId: sportsBook?.EventTypeId,
+      betDelay: sportsBook?.betDelay,
+      marketId: item?.Id,
+      maxLiabilityPerMarket: item?.maxLiabilityPerMarket,
+      maxLiabilityPerBet: item?.maxLiabilityPerBet,
+      isBettable: sportsBook?.isBettable,
+      isWeak: sportsBook?.isWeak,
+      marketName: item?.Name,
+      eventId: sportsBook?.eventId,
+      betId: betHistory?.betId,
+    };
+
+    cashOut(payload);
+  };
   return (
     <div className="Modal-Background ng-tns-c159-13 ng-star-inserted">
       <div
@@ -86,6 +127,12 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
                     });
                   });
 
+                  const price = (
+                    0.92 *
+                    item?.amount *
+                    (item?.userRate / column?.Price)
+                  )?.toFixed(2);
+
                   return (
                     <div
                       onClick={() => {
@@ -111,21 +158,44 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
                       <div className="allbet-odds-stake-wrap">
                         {item?.cashout && (
                           <button
-                            // onClick={() =>
-                            //   handleCashOutSportsBook(
-                            //     item,
-                            //     sportsBook,
-                            //     setOpenBetSlip,
-                            //     setPlaceBetValues
-                            //   )
-                            // }
-                            style={{ fontSize: "12px" }}
+                            onClick={() =>
+                              handleCashOut(item, sportsBook, price)
+                            }
+                            type="button"
+                            className="btn_box "
+                            style={{
+                              width: "100px",
+                              backgroundColor: "#f3f3f3ff",
+                              display: "flex",
+                              alignItems: "center",
+                              cursor: `pointer`,
+                            }}
                           >
-                            Cashout
+                            <span style={{ fontSize: "10px", color: "black" }}>
+                              Cashout
+                            </span>
+                            {price && (
+                              <span
+                                style={{ color: "black", fontSize: "10px" }}
+                              >
+                                :
+                              </span>
+                            )}
+
+                            {price && (
+                              <span
+                                style={{
+                                  color: `${price > 0 ? "green" : "red"}`,
+                                  fontSize: "10px",
+                                }}
+                              >
+                                {price}
+                              </span>
+                            )}
                           </button>
                         )}
 
-                        {column && <h3>{column?.Price}</h3>}
+                        <h3></h3>
                         <h3>{item?.userRate} </h3>
                         <h3> {item?.amount}</h3>
                       </div>

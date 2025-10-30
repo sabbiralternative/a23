@@ -42,6 +42,7 @@ export const API = {
   index: "",
   language: "",
   utr: "",
+  sb_cashout: "",
 };
 
 export const Settings = {
