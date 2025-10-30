@@ -1,17 +1,26 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { useNavigate } from "react-router-dom";
-import { handleCashOutSportsBook } from "../../utils/handleCashOutShortsBook";
-import useContextState from "../../hooks/useContextState";
+// import { handleCashOutSportsBook } from "../../utils/handleCashOutShortsBook";
+// import useContextState from "../../hooks/useContextState";
 
 const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
   /* close modal click outside */
-  const { setPlaceBetValues, setOpenBetSlip } = useContextState();
+  // const { setPlaceBetValues, setOpenBetSlip } = useContextState();
   const navigate = useNavigate();
   const openBetsRef = useRef();
   useCloseModalClickOutside(openBetsRef, () => {
     setShowOpenBets(false);
   });
+
+  const sports =
+    sportsBook &&
+    sportsBook?.MarketGroups?.filter(
+      (group) =>
+        group?.Name !== "Bet Builder" &&
+        group?.Name !== "Fast Markets" &&
+        group?.Name !== "Player Specials"
+    );
 
   return (
     <div className="Modal-Background ng-tns-c159-13 ng-star-inserted">
@@ -66,6 +75,17 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
                   </div>
                 </div>
                 {myBets?.map((item, i) => {
+                  let column;
+                  sports?.forEach((group) => {
+                    group?.Items?.forEach((data) => {
+                      if (item?.marketId == data?.Id) {
+                        column = data?.Items?.find(
+                          (col) => col?.Id === item?.selectionId
+                        );
+                      }
+                    });
+                  });
+
                   return (
                     <div
                       onClick={() => {
@@ -91,21 +111,21 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
                       <div className="allbet-odds-stake-wrap">
                         {item?.cashout && (
                           <button
-                            onClick={() =>
-                              handleCashOutSportsBook(
-                                item,
-                                sportsBook,
-                                setOpenBetSlip,
-                                setPlaceBetValues
-                              )
-                            }
+                            // onClick={() =>
+                            //   handleCashOutSportsBook(
+                            //     item,
+                            //     sportsBook,
+                            //     setOpenBetSlip,
+                            //     setPlaceBetValues
+                            //   )
+                            // }
                             style={{ fontSize: "12px" }}
                           >
                             Cashout
                           </button>
                         )}
 
-                        <h3></h3>
+                        {column && <h3>{column?.Price}</h3>}
                         <h3>{item?.userRate} </h3>
                         <h3> {item?.amount}</h3>
                       </div>
