@@ -1,9 +1,12 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { useNavigate } from "react-router-dom";
+import { handleCashOutSportsBook } from "../../utils/handleCashOutShortsBook";
+import useContextState from "../../hooks/useContextState";
 
-const OpenBets = ({ setShowOpenBets, myBets }) => {
+const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
   /* close modal click outside */
+  const { setPlaceBetValues, setOpenBetSlip } = useContextState();
   const navigate = useNavigate();
   const openBetsRef = useRef();
   useCloseModalClickOutside(openBetsRef, () => {
@@ -86,7 +89,22 @@ const OpenBets = ({ setShowOpenBets, myBets }) => {
                         </div>
                       </div>
                       <div className="allbet-odds-stake-wrap">
-                        <h3> </h3>
+                        {item?.cashout && (
+                          <button
+                            onClick={() =>
+                              handleCashOutSportsBook(
+                                item,
+                                sportsBook,
+                                setOpenBetSlip,
+                                setPlaceBetValues
+                              )
+                            }
+                            style={{ fontSize: "12px" }}
+                          >
+                            Cashout
+                          </button>
+                        )}
+
                         <h3></h3>
                         <h3>{item?.userRate} </h3>
                         <h3> {item?.amount}</h3>

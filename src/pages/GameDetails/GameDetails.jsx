@@ -49,7 +49,11 @@ const GameDetails = () => {
   return (
     <>
       {showMyBets && (
-        <OpenBets myBets={myBets} setShowOpenBets={setShowMyBets} />
+        <OpenBets
+          myBets={myBets}
+          setShowOpenBets={setShowMyBets}
+          sportsBook={eventsData?.sportsbook?.Result}
+        />
       )}
       <ScoreCardSlider />
       {Array.isArray(eventsData?.result?.[0]?.score2) &&
@@ -83,6 +87,7 @@ const GameDetails = () => {
           prevPrices={prevPrices}
           setPrevPrices={setPrevPrices}
           myBets={myBets}
+          setShowMyBets={setShowMyBets}
         />
       )}
 

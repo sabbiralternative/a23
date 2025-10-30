@@ -11,7 +11,7 @@ import useContextState from "../../../hooks/useContextState";
 import { useParams } from "react-router-dom";
 import useExposer from "../../../hooks/useExposer";
 import HorseGreyhound from "../GameType/HorseGreyhound";
-import { handleCashOutSportsBook } from "../../../utils/handleCashOutShortsBook";
+
 const Odds = ({
   sportsBook,
   eventTypeId,
@@ -24,6 +24,7 @@ const Odds = ({
   setMatch_odds,
   refetchCurrentBets,
   myBets,
+  setShowMyBets,
 }) => {
   const { eventId } = useParams();
   const { placeBetValues, setPlaceBetValues, openBetSlip, setOpenBetSlip } =
@@ -184,9 +185,6 @@ const Odds = ({
               const cashOutMarket = myBets?.find(
                 (bet) => bet?.marketId == item?.Id
               );
-              const column = item?.Items?.find(
-                (col) => col?.Id === cashOutMarket?.selectionId
-              );
 
               return (
                 <div key={iIdx} className="bt12687">
@@ -216,16 +214,7 @@ const Odds = ({
                     </div>
                     {cashOutMarket && (
                       <button
-                        disabled={column?.IsActive !== 1 || !column?.IsActive}
-                        onClick={() =>
-                          handleCashOutSportsBook(
-                            cashOutMarket,
-                            item,
-                            sportsBook,
-                            setOpenBetSlip,
-                            setPlaceBetValues
-                          )
-                        }
+                        onClick={() => setShowMyBets(true)}
                         type="button"
                         className="btn_box "
                         style={{
