@@ -20,15 +20,8 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
         group?.Name !== "Fast Markets" &&
         group?.Name !== "Player Specials"
     );
+
   const handleCashOut = (betHistory, sportsBook, price) => {
-    const sports =
-      sportsBook &&
-      sportsBook?.MarketGroups?.filter(
-        (group) =>
-          group?.Name !== "Bet Builder" &&
-          group?.Name !== "Fast Markets" &&
-          group?.Name !== "Player Specials"
-      );
     let item;
     sports?.forEach((group) => {
       group?.Items?.forEach((data) => {
