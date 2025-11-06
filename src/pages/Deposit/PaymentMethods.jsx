@@ -82,13 +82,14 @@ const PaymentMethods = ({
     setTabs(method?.type);
     setPaymentId(method?.paymentId);
 
-    if (method?.type === "upigateway") {
-      const depositDetailForPg = {
+    if (method?.type === "upigateway" || method?.type === "toitgateway") {
+      const upiPaymentPayload = {
         paymentId: method?.paymentId,
         amount,
+        method: method?.type,
       };
 
-      const res = await AxiosSecure.post(API.pg, depositDetailForPg);
+      const res = await AxiosSecure.post(API.pg, upiPaymentPayload);
       const data = res?.data;
 
       if (data?.success) {
@@ -199,7 +200,8 @@ const PaymentMethods = ({
                           src={images.whatsapp}
                         />
                       ) : null}
-                      {method?.type == "upigateway" ? (
+                      {method?.type == "upigateway" ||
+                      method?.type === "toitgateway" ? (
                         <img
                           style={{ height: "17px", width: "17px" }}
                           src={images.bhim}
