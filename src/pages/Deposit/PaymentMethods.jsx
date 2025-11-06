@@ -129,7 +129,13 @@ const PaymentMethods = ({
   };
 
   useEffect(() => {
-    if (paymentMethodRef && paymentMethodRef.current && tabs && tabs !== "pg") {
+    if (
+      paymentMethodRef &&
+      paymentMethodRef.current &&
+      tabs &&
+      tabs !== "upigateway" &&
+      tabs !== "toitgateway"
+    ) {
       paymentMethodRef.current.scrollIntoView({
         behavior: "smooth",
       });
