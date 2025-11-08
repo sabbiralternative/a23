@@ -120,6 +120,7 @@ const BettingProfitLoss = () => {
                           <div className="mat-expansion-panel-header-title ">
                             <h3>{item?.narration}</h3>
                             <h3>Balance: {item?.balance}</h3>
+                            <h3 style={{ color: "gray" }}>{item?.time}</h3>
                           </div>
                           <div className="mat-expansion-panel-header-description ">
                             <span> PL:</span>{" "}
