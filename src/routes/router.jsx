@@ -30,6 +30,7 @@ import HorseRacing from "../pages/HorseRacing/HorseRacing";
 import GreyhoundRacing from "../pages/GreyhoundRacing/GreyhoundRacing";
 import MyBankDetails from "../pages/MyBankDetails/MyBankDetails";
 import Funbar from "../pages/Funbar/Funbar";
+import Affiliate from "../pages/Affiliate/Affiliate";
 
 export const router = createBrowserRouter(
   [
@@ -152,6 +153,7 @@ export const router = createBrowserRouter(
         },
         { path: "bonus-statement", element: <BonusStatement /> },
         { path: "referral-statement", element: <ReferralStatement /> },
+        { path: "affiliate", element: <Affiliate /> },
         {
           path: "apk",
           element: <APK />,

@@ -20,8 +20,22 @@ import telegram from "./img/telegram.png";
 import instagram from "./img/instagram.png";
 import brandsm from "./img/brand-sm.svg";
 import bhim from "./img/bhim.png";
+import elipBg from "./img/ellip-bg.2ee3d7a6.svg";
+import affiInvite from "./img/affi-invite-img.ac7efafa.svg";
+import affiAddUser from "./img/affi-add-user.e0201da7.svg";
+import affiInviteGift from "./img/affi-invite-img.ac7efafa.svg";
+import affiCopy from "./img/affi-copy.6ddf100b.svg";
+import affiBonus1 from "./img/affi-bonus-1.4907c6fe.svg";
+import affiBonus2 from "./img/affi-bonus-2.b3bc4c43.svg";
 
 export const images = {
+  affiBonus1,
+  affiBonus2,
+  affiCopy,
+  affiInviteGift,
+  affiAddUser,
+  affiInvite,
+  elipBg,
   brandsm,
   instagram,
   logo,
