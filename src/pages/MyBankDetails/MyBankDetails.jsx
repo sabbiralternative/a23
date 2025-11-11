@@ -7,8 +7,10 @@ import Swal from "sweetalert2";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 import { API } from "../../api";
 import toast from "react-hot-toast";
+import AddUSDTAccount from "../../components/modal/bank/AddUSDTAccount";
 
 const MyBankDetails = () => {
+  const [showUSDTModal, setShowUSDTModal] = useState(false);
   const [showAddBank, setShowAddBank] = useState(false);
   const [showDetails, setShowDetails] = useState(null);
   const [tab, setTab] = useState(1);
@@ -87,6 +89,13 @@ const MyBankDetails = () => {
         />
       )}
 
+      {showUSDTModal && (
+        <AddUSDTAccount
+          setShowUSDTModal={setShowUSDTModal}
+          refetchBankData={refetchBankData}
+        />
+      )}
+
       <div className="deposit-withdraw-btns">
         <div className="btns-animation ">
           <div className="btnBox ">
@@ -109,6 +118,17 @@ const MyBankDetails = () => {
           style={{ background: "var(--color1)", color: "white" }}
         >
           Add New Bank
+        </button>
+        <button
+          onClick={() => setShowUSDTModal(true)}
+          className="btn"
+          style={{
+            background: "var(--color1)",
+            color: "white",
+            marginTop: "5px",
+          }}
+        >
+          Add USDT Account
         </button>
         <h2 style={{ marginTop: "5px", fontWeight: "500" }}>Bank Details</h2>
 
@@ -143,7 +163,7 @@ const MyBankDetails = () => {
                       gap: "3px",
                     }}
                   >
-                    <img
+                    {/* <img
                       style={{
                         height: "30px",
                         width: "30px",
@@ -151,7 +171,7 @@ const MyBankDetails = () => {
                       }}
                       alt="Bank Icon"
                       src={`/src/assets/img/${bank?.bankCode}.png`}
-                    />
+                    /> */}
                     <div>
                       <p> {bank?.bankName}</p>
                       {bank?.isDefault === 1 && (
