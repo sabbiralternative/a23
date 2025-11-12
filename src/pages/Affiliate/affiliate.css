@@ -1,5 +1,5 @@
 .nw-affi-how-to-get-bonus {
-  background-color: #1e8067;
+  background-color: #fff;
   padding: 15px;
   border: 1px solid #ffffff29;
   border-radius: 8px;
@@ -26,7 +26,7 @@
 .nw-affi-heading-text {
   font-size: 16px;
   font-weight: 600;
-  color: #f4d821;
+  color: var(--color1);
   text-transform: capitalize;
 }
 
@@ -49,7 +49,7 @@
   flex-direction: column;
   width: calc ↳ calc(558.672px - 10px) ↳ 548.672px (50% - 10px);
   white-space: normal;
-  border-right: 1px solid #14676e;
+  border-right: 1px solid var(--color1);
   padding: 10px 0;
 }
 
@@ -65,7 +65,7 @@
   margin: 0 auto;
   font-size: 18px;
   font-weight: 400;
-  color: #fff;
+  color: #000;
 }
 
 .nw-affi-status-digit-para p {
@@ -76,7 +76,7 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #fff;
+  color: #000;
   text-transform: capitalize;
 }
 
@@ -89,7 +89,7 @@
   flex-direction: column;
   width: calc(50% - 10px);
   white-space: normal;
-  border-right: 1px solid #14676e;
+  border-right: 1px solid var(--color1);
   padding: 10px 0;
 }
 .nw-affi-how-to-get-bonus-content,
@@ -104,7 +104,7 @@
   margin: 0 auto;
   font-size: 18px;
   font-weight: 400;
-  color: #fff;
+  color: #000;
 }
 
 .nw-affi-status-digit-para p {
@@ -115,7 +115,7 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #fff;
+  color: #000;
   text-transform: capitalize;
 }
 
@@ -124,7 +124,7 @@
   flex-direction: column;
   width: calc(50% - 10px);
   white-space: normal;
-  border-right: 1px solid #14676e;
+  border-right: 1px solid var(--color1);
   padding: 10px 0;
 }
 
@@ -140,7 +140,7 @@
   margin: 0 auto;
   font-size: 18px;
   font-weight: 400;
-  color: #fff;
+  color: #000;
 }
 
 .nw-affi-status-digit-para p {
@@ -151,7 +151,7 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #fff;
+  color: #000;
   text-transform: capitalize;
 }
 
@@ -164,7 +164,7 @@
   flex-direction: column;
   width: calc(50% - 10px);
   white-space: normal;
-  border-right: 1px solid #14676e;
+  border-right: 1px solid var(--color1);
   padding: 10px 0;
 }
 .nw-affi-how-to-get-bonus-content,
@@ -179,7 +179,7 @@
   margin: 0 auto;
   font-size: 18px;
   font-weight: 400;
-  color: #fff;
+  color: #000;
 }
 
 .nw-affi-status-digit-para p {
@@ -190,7 +190,7 @@
   padding: 15px;
   border-radius: 8px;
   border: 1px solid #ffffff29;
-  background-color: #1e8067;
+  background-color: #fff;
 }
 
 .nw-affi-invite-content-wrapper {
@@ -200,7 +200,7 @@
 }
 
 .nw-affi-invite-sec h2 {
-  color: #ffb412;
+  color: var(--color1);
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 2px;
@@ -208,7 +208,7 @@
 }
 
 .nw-affi-invite-sec p {
-  color: #fff;
+  color: #000;
   font-size: 14px;
   font-weight: 500;
   text-transform: capitalize;
@@ -230,15 +230,15 @@
   content: "";
   display: block;
   position: absolute;
-  background: linear-gradient(90deg, #096a72, #054146);
+  background: linear-gradient(90deg, var(--color1), var(--color2));
   height: 2px;
   width: 100%;
 }
 
 .nw-affi-add-new-user-btn {
-  background: #3eba9b;
+  background: var(--color1);
   position: relative;
-  color: #fff;
+  color: #000;
   padding: 16px;
   display: block;
   width: 100%;
@@ -257,7 +257,7 @@
   content: "";
   display: block;
   position: absolute;
-  background: linear-gradient(90deg, #096a72, #054146);
+  background: linear-gradient(90deg, var(--color1), var(--color2));
   height: 2px;
   width: 100%;
 }
@@ -276,7 +276,7 @@
 
 .nw-affi-qr-invite-code {
   width: 100%;
-  background: #05373b;
+  background: #fff;
   padding: 15px;
   border-radius: 8px;
 }
@@ -288,14 +288,14 @@
 }
 
 .nw-affi-qr-invite-heading h3 {
-  color: #ffb412;
+  color: var(--color1);
   font-size: 16px;
   font-weight: 700;
 }
 
 .nw-affi-share-link-sec {
   display: flex;
-  background-color: #1e8067;
+  background-color: var(--color1);
   padding: 10px 15px;
   margin: 15px 0;
   overflow: auto;
@@ -305,7 +305,7 @@
 .nw-affi-share-link-sec span {
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: #000;
   white-space: nowrap;
 }
 
@@ -318,13 +318,13 @@
 
 .nw-affi-qr-sec {
   width: 100px;
-  background-color: #05373b;
+  background-color: #fff;
   border-radius: 8px;
   text-align: center;
 }
 
 .nw-affi-qr-sec span {
-  color: #d89400;
+  color: var(--color1);
   text-decoration: underline;
   font-size: 14px;
   font-weight: 600;
@@ -359,6 +359,7 @@
   min-width: 140px;
   height: 45px;
   width: 48%;
+  color: #000;
 }
 
 .af-form-btn-sec button {
@@ -370,11 +371,11 @@
   border-radius: 100px !important;
   background-color: #444;
   border: none;
-  color: #fff !important;
+  color: #000 !important;
 }
 
 .affi-yellow-btn {
-  background-color: #d89400 !important;
+  background-color: var(--color1) !important;
 }
 
 .thm-but {
@@ -387,19 +388,21 @@
 }
 
 .thm-but {
-  background: #1e8067;
+  background: #fff;
 }
 
 .nw-affi-qr-invite-wrapper .af-form-btn-sec button[data-v-4c49d924] {
   min-width: 140px;
   height: 45px;
   width: 48%;
+  color: #000;
 }
 
 .nw-affi-qr-invite-wrapper .af-form-btn-sec button {
   min-width: 140px;
   height: 54px;
   width: 48%;
+  color: #000;
 }
 .nw-affi-add-new-user-btn[data-v-4c49d924] {
   height: 45px;
@@ -420,7 +423,7 @@ button:not(:disabled) {
   font-size: 16px !important;
 }
 .nw-affi-add-new-user-btn {
-  background: #3eba9b;
+  background: var(--color1);
   position: relative;
   color: #fff;
   padding: 16px;
@@ -434,9 +437,9 @@ button:not(:disabled) {
 .nw-affi-add-new-user-btn:after {
   background: linear-gradient(
     90deg,
-    rgba(19, 167, 179, 0.4),
-    #fff 47.5%,
-    rgba(19, 167, 179, 0.4)
+    var(--color1),
+    var(--bg-primary) 47.5%,
+    var(--color2)
   );
   content: "";
   z-index: 1;
@@ -451,7 +454,7 @@ button:not(:disabled) {
 }
 
 .nw-affi-graph-wrapper {
-  background-color: #1e8067;
+  background-color: #fff;
   border: 1px solid #ffffff29;
   border-radius: 8px;
   margin: 20px 0;
@@ -464,7 +467,7 @@ button:not(:disabled) {
 .nw-affi-heading-text {
   font-size: 16px;
   font-weight: 600;
-  color: #f4d821;
+  color: var(--color1);
   text-transform: capitalize;
 }
 
@@ -479,7 +482,7 @@ button:not(:disabled) {
 }
 
 .nw-affi-how-to-get-bonus {
-  background-color: #1e8067;
+  background-color: #fff;
   padding: 15px;
   border: 1px solid #ffffff29;
   border-radius: 8px;
@@ -506,7 +509,7 @@ button:not(:disabled) {
 .nw-affi-heading-text {
   font-size: 16px;
   font-weight: 600;
-  color: #f4d821;
+  color: var(--color1);
   text-transform: capitalize;
 }
 
@@ -529,7 +532,7 @@ button:not(:disabled) {
   flex-direction: column;
   width: calc(50% - 10px);
   white-space: normal;
-  border-right: 1px solid #14676e;
+  border-right: 1px solid var(--color1);
   padding: 10px 0;
 }
 
@@ -550,7 +553,7 @@ button:not(:disabled) {
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #fff;
+  color: #000;
   text-transform: capitalize;
 }
 
@@ -563,7 +566,7 @@ button:not(:disabled) {
   flex-direction: column;
   width: calc(50% - 10px);
   white-space: normal;
-  border-right: 1px solid #14676e;
+  border-right: 1px solid var(--color1);
   padding: 10px 0;
 }
 .nw-affi-how-to-get-bonus-content,
@@ -583,7 +586,7 @@ button:not(:disabled) {
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #fff;
+  color: #000;
   text-transform: capitalize;
 }
 
@@ -596,9 +599,9 @@ button:not(:disabled) {
 }
 
 .af-new-user-add-sec {
-  background: #1e8067;
+  background: #fff;
   padding: 10px 15px;
-  border-radius: 5px;
+
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -607,7 +610,7 @@ button:not(:disabled) {
 
 .af-top-user-head h6 {
   font-size: 14px;
-  color: #fff;
+  color: #000;
   font-weight: 500;
 }
 
@@ -618,7 +621,8 @@ button:not(:disabled) {
 
 .af-top-user-sec table {
   background-color: #fff;
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .table {

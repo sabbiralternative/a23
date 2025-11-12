@@ -19,39 +19,35 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
   });
   const [isFormValid, setIsFormValid] = useState(false);
   const [bankDetails, setBankDetails] = useState({
-    accountName: "",
-    ifsc: "",
-    accountNumber: "",
-    confirmAccountNumber: "",
-    upiId: "",
+    userId: "",
+    password: "",
+    confirmPassword: "",
+    selfPassword: "",
     otp: "",
   });
 
   /* Handle add bank function */
   const handleAddBank = async (e) => {
     e.preventDefault();
-    if (bankDetails.accountNumber !== bankDetails.confirmAccountNumber) {
-      return toast.error("Bank account number did not matched!");
-    }
 
     if (mobile && !bankDetails.otp && Settings.otp) {
       return toast.error("Please enter otp to add new account");
     }
 
-    let bankData = {
-      accountName: bankDetails.accountName,
-      ifsc: bankDetails.ifsc,
-      accountNumber: bankDetails.accountNumber,
-      upiId: bankDetails.upiId,
+    let payload = {
+      userId: bankDetails.userId,
+      password: bankDetails.password,
+      confirmPassword: bankDetails.confirmPassword,
+      selfPassword: bankDetails.selfPassword,
       type: "addBankAccount",
     };
     if (mobile) {
-      bankData.mobile = mobile;
-      bankData.otp = bankDetails.otp;
-      bankData.orderId = orderId;
+      payload.mobile = mobile;
+      payload.otp = bankDetails.otp;
+      payload.orderId = orderId;
     }
 
-    const res = await AxiosSecure.post(API.bankAccount, bankData);
+    const res = await AxiosSecure.post(API.bankAccount, payload);
     const data = res?.data;
 
     if (data?.success) {
@@ -64,15 +60,17 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
   };
 
   const validateForm = (bankDetails) => {
-    const isaccountNameFilled = bankDetails.accountName.trim() !== "";
-    const isaccountNumberFilled = bankDetails.accountNumber.trim() !== "";
-    const isIfscFilled = bankDetails.ifsc.trim() !== "";
+    const isUserIdFilled = bankDetails.userId.trim() !== "";
+    const isPasswordFilled = bankDetails.password.trim() !== "";
+    const isConfirmPasswordFilled = bankDetails.confirmPassword.trim() !== "";
+    const isSelfPasswordFilled = bankDetails.selfPassword.trim() !== "";
     const isOTPFilled =
       mobile && Settings.otp ? bankDetails.otp.trim() !== "" : true;
     const isFormValid =
-      isaccountNameFilled &&
-      isIfscFilled &&
-      isaccountNumberFilled &&
+      isUserIdFilled &&
+      isConfirmPasswordFilled &&
+      isPasswordFilled &&
+      isSelfPasswordFilled &&
       isOTPFilled;
     setIsFormValid(isFormValid);
   };
@@ -159,67 +157,6 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
         <div className="card-body">
           <div className="bank-popup">
             <form onSubmit={handleAddBank}>
-              <div
-                onChange={(e) => {
-                  setBankDetails({
-                    ...bankDetails,
-                    upiId: e.target.value,
-                  });
-                }}
-                className="input-box "
-              >
-                <input type="text" placeholder="Enter UPI ID (Optional)" />
-              </div>
-              <div className="input-box ">
-                <input
-                  onChange={(e) => {
-                    setBankDetails({
-                      ...bankDetails,
-                      accountName: e.target.value,
-                    });
-                  }}
-                  type="text"
-                  placeholder="Enter Account Holder Name"
-                  name=""
-                />
-              </div>
-              <div className="input-box ">
-                <input
-                  onChange={(e) => {
-                    setBankDetails({
-                      ...bankDetails,
-                      accountNumber: e.target.value,
-                    });
-                  }}
-                  placeholder="Enter Bank Account Number"
-                  type="text"
-                />
-              </div>
-              <div className="input-box ">
-                <input
-                  onChange={(e) => {
-                    setBankDetails({
-                      ...bankDetails,
-                      confirmAccountNumber: e.target.value,
-                    });
-                  }}
-                  type="text"
-                  name=""
-                  placeholder="Re-enter Bank Account Number"
-                />
-              </div>
-
-              <div
-                onChange={(e) => {
-                  setBankDetails({
-                    ...bankDetails,
-                    ifsc: e.target.value,
-                  });
-                }}
-                className="input-box "
-              >
-                <input type="text" placeholder="Enter IFSC" name="" />
-              </div>
               {mobile && Settings.otp && (
                 <div style={{ position: "relative" }} className="input-box ">
                   <input
@@ -304,6 +241,97 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                   />
                 </div>
               )}
+              <div
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  margin: "10px 0px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "100%",
+                    alignItems: "center",
+                    display: "flex",
+                    height: "1px",
+                    background: "rgba(158, 158, 158, 0.2)",
+                  }}
+                ></div>
+                <span
+                  style={{
+                    width: "100%",
+                    color: "#000",
+                    textAlign: "center",
+                    fontFamily: "Inter",
+                    fontSize: "0.75rem",
+                    fontStyle: "normal",
+                    fontWeight: 400,
+                    lineHeight: "150%",
+                    letterSpacing: "0.01875rem",
+                  }}
+                >
+                  OR{" "}
+                </span>
+                <div
+                  style={{
+                    width: "100%",
+                    alignItems: "center",
+                    display: "flex",
+                    height: "1px",
+                    background: "rgba(158, 158, 158, 0.2)",
+                  }}
+                ></div>
+              </div>
+              <div
+                onChange={(e) => {
+                  setBankDetails({
+                    ...bankDetails,
+                    userId: e.target.value,
+                  });
+                }}
+                className="input-box "
+              >
+                <input type="text" placeholder="Enter User ID" />
+              </div>
+              <div className="input-box ">
+                <input
+                  onChange={(e) => {
+                    setBankDetails({
+                      ...bankDetails,
+                      password: e.target.value,
+                    });
+                  }}
+                  type="password"
+                  placeholder="Enter Password"
+                />
+              </div>
+              <div className="input-box ">
+                <input
+                  onChange={(e) => {
+                    setBankDetails({
+                      ...bankDetails,
+                      confirmPassword: e.target.value,
+                    });
+                  }}
+                  placeholder="Enter Confirm Password"
+                  type="password"
+                />
+              </div>
+              <div className="input-box ">
+                <input
+                  onChange={(e) => {
+                    setBankDetails({
+                      ...bankDetails,
+                      selfPassword: e.target.value,
+                    });
+                  }}
+                  type="text"
+                  name=""
+                  placeholder="Enter Self Password"
+                />
+              </div>
 
               <div className="btn-box ">
                 <button

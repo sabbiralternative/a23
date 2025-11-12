@@ -2,7 +2,9 @@ const TodayProfitLoss = () => {
   return (
     <div data-v-4c49d924 className="af-top-user-sec">
       <div data-v-4c49d924 className="af-top-user-head af-new-user-add-sec">
-        <h6 data-v-4c49d924>Today Profit and Loss</h6>
+        <h6 style={{ margin: "0px" }} data-v-4c49d924>
+          Today Profit and Loss
+        </h6>
       </div>
       <div data-v-4c49d924 className="table-responsive">
         <table data-v-4c49d924 className="table">
