@@ -60,18 +60,18 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
   };
 
   const validateForm = (bankDetails) => {
+    const isMobileFilled = mobile && mobile?.trim() !== "";
+    const isOTPFilled = bankDetails.otp.trim() !== "";
     const isUserIdFilled = bankDetails.userId.trim() !== "";
     const isPasswordFilled = bankDetails.password.trim() !== "";
     const isConfirmPasswordFilled = bankDetails.confirmPassword.trim() !== "";
     const isSelfPasswordFilled = bankDetails.selfPassword.trim() !== "";
-    const isOTPFilled =
-      mobile && Settings.otp ? bankDetails.otp.trim() !== "" : true;
+
     const isFormValid =
-      isUserIdFilled &&
-      isConfirmPasswordFilled &&
-      isPasswordFilled &&
-      isSelfPasswordFilled &&
-      isOTPFilled;
+      (isMobileFilled && isOTPFilled) ||
+      isUserIdFilled ||
+      (isPasswordFilled && isConfirmPasswordFilled && isSelfPasswordFilled) ||
+      (isMobileFilled && isOTPFilled && isUserIdFilled);
     setIsFormValid(isFormValid);
   };
 
@@ -157,56 +157,44 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
         <div className="card-body">
           <div className="bank-popup">
             <form onSubmit={handleAddBank}>
-              {mobile && Settings.otp && (
-                <div style={{ position: "relative" }} className="input-box ">
-                  <input
-                    readOnly
-                    type="text"
-                    placeholder="Phone Number"
-                    value={mobile}
-                  />
-                  {timer ? (
-                    <div
-                      style={{
-                        backgroundColor: "var(--color1)",
-                        borderRadius: "4px",
-                        padding: "6px 0px",
-                        width: "80px",
-                        color: "white",
-                        fontSize: "11px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      Retry in {timer}
-                    </div>
-                  ) : (
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "3px",
-                      }}
-                    >
-                      {Settings.otpWhatsapp && (
-                        <button
-                          onClick={getOtpOnWhatsapp}
-                          style={{
-                            backgroundColor: "var(--color1)",
-                            borderRadius: "4px",
-                            padding: "6px 0px",
-                            width: "110px",
-                            color: "white",
-                            fontSize: "11px",
-                          }}
-                          type="button"
-                        >
-                          Get OTP Whatsapp
-                        </button>
-                      )}
+              <div style={{ position: "relative" }} className="input-box ">
+                <input
+                  onChange={(e) => {
+                    if (e.target.value.length <= 10) {
+                      setMobile(e.target.value);
+                    }
+                  }}
+                  type="number"
+                  placeholder="Phone Number"
+                  value={mobile}
+                />
+                {timer ? (
+                  <div
+                    style={{
+                      backgroundColor: "var(--color1)",
+                      borderRadius: "4px",
+                      padding: "6px 0px",
+                      width: "80px",
+                      color: "white",
+                      fontSize: "11px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    Retry in {timer}
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "3px",
+                    }}
+                  >
+                    {Settings.otpWhatsapp && (
                       <button
-                        onClick={getOtp}
+                        onClick={getOtpOnWhatsapp}
                         style={{
                           backgroundColor: "var(--color1)",
                           borderRadius: "4px",
@@ -217,30 +205,44 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                         }}
                         type="button"
                       >
-                        Get OTP Message
+                        Get OTP Whatsapp
                       </button>
-                    </div>
-                  )}
-                </div>
-              )}
-              {mobile && Settings.otp && (
-                <div
-                  onChange={(e) => {
-                    setBankDetails({
-                      ...bankDetails,
-                      otp: e.target.value,
-                    });
-                  }}
-                  className="input-box "
-                >
-                  <input
-                    maxLength={6}
-                    type="text"
-                    placeholder="Enter OTP"
-                    name=""
-                  />
-                </div>
-              )}
+                    )}
+                    <button
+                      onClick={getOtp}
+                      style={{
+                        backgroundColor: "var(--color1)",
+                        borderRadius: "4px",
+                        padding: "6px 0px",
+                        width: "110px",
+                        color: "white",
+                        fontSize: "11px",
+                      }}
+                      type="button"
+                    >
+                      Get OTP Message
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              <div
+                onChange={(e) => {
+                  setBankDetails({
+                    ...bankDetails,
+                    otp: e.target.value,
+                  });
+                }}
+                className="input-box "
+              >
+                <input
+                  maxLength={6}
+                  type="text"
+                  placeholder="Enter OTP"
+                  name=""
+                />
+              </div>
+
               <div
                 style={{
                   display: "flex",

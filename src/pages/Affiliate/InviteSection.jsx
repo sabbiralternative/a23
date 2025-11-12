@@ -37,6 +37,7 @@ const InviteSection = () => {
           >
             <span data-v-4c49d924>
               <img
+                style={{ height: "20px", width: "20px" }}
                 src={images.affiAddUser}
                 alt="affi-add-user"
                 data-v-4c49d924
@@ -57,36 +58,14 @@ const InviteSection = () => {
             </div>
             <div data-v-4c49d924 className="nw-affi-share-link-sec">
               <span data-v-4c49d924>{data?.link}</span>
-            </div>
-            <div data-v-4c49d924 className="affi-qr-btn-wrapper">
-              <div data-v-4c49d924 className="nw-affi-qr-sec">
-                <canvas
-                  id="qrCanvas"
-                  width={120}
-                  height={120}
-                  style={{ width: "100px", height: "100px" }}
-                />
-
-                <span data-v-4c49d924>Download</span>
-              </div>
-              <div data-v-4c49d924 className="af-form-btn-sec">
-                <button
-                  onClick={() => handleCopyToClipBoard(data?.text)}
-                  data-v-4c49d924
-                  className="thm-but thm-bdr-btn affi-cancel-btn affi-yellow-btn"
-                >
-                  <img data-v-4c49d924 src={images.affiCopy} alt="affi-copy" />{" "}
-                  Copy Link
-                </button>
-                <button
-                  data-v-4c49d924
-                  className="nw-affi-add-new-user-btn"
-                  data-bs-target="#ShareAffiliate"
-                  data-bs-toggle="modal"
-                >
-                  Share
-                </button>
-              </div>
+              <button
+                style={{ position: "absolute", right: "10px", top: "0px" }}
+                onClick={() => handleCopyToClipBoard(data?.text)}
+                data-v-4c49d924
+                className="thm-but thm-bdr-btn affi-cancel-btn affi-yellow-btn"
+              >
+                <img data-v-4c49d924 src={images.affiCopy} alt="affi-copy" />
+              </button>
             </div>
           </div>
         </div>

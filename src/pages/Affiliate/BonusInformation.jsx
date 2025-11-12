@@ -10,7 +10,11 @@ const BonusInformation = () => {
         data-v-4c49d924
       />
       <div className="nw-affi-heading-flex" data-v-4c49d924>
-        <h3 className="nw-affi-heading-text" data-v-4c49d924>
+        <h3
+          style={{ margin: "0px" }}
+          className="nw-affi-heading-text"
+          data-v-4c49d924
+        >
           Bonus Information
         </h3>
       </div>

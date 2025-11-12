@@ -2,7 +2,11 @@ const TopFiveLossUser = () => {
   return (
     <div data-v-4c49d924 className="nw-affi-graph-wrapper">
       <div data-v-4c49d924 className="nw-affi-heading-sec">
-        <h3 data-v-4c49d924 className="nw-affi-heading-text">
+        <h3
+          style={{ margin: "0px" }}
+          data-v-4c49d924
+          className="nw-affi-heading-text"
+        >
           Top 5 Loss User
         </h3>
       </div>

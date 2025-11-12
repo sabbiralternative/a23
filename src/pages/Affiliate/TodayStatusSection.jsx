@@ -10,7 +10,11 @@ const TodayStatusSection = () => {
         className="ellip-bg-img"
       />
       <div data-v-4c49d924 className="nw-affi-heading-flex">
-        <h3 data-v-4c49d924 className="nw-affi-heading-text">
+        <h3
+          style={{ margin: "0px" }}
+          data-v-4c49d924
+          className="nw-affi-heading-text"
+        >
           Today Status
         </h3>
       </div>
