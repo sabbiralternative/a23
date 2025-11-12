@@ -800,42 +800,45 @@ const Account = () => {
                 </div>
               </div>
             </li>
-            <li
-              onClick={() => navigate("/affiliate")}
-              className="profile-menu-items ng-star-inserted"
-            >
-              <div className="routingProfile">
-                <div className="profile-menu-items-left">
-                  <span className="profile-menu-icon">
-                    <img
-                      loading="lazy"
-                      alt=""
-                      style={{ height: "24px" }}
-                      src={profileBettingProfitLoss}
-                    />
-                    <div className="skeleton-img ng-star-inserted">
-                      <div className="moving-strip"></div>
-                    </div>
-                  </span>
-                  <span className="profile-menu-left-text">Affiliate</span>
-                </div>
-                <div className="profile-menu-items-right">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M6.87866 2.92393L13.75 9.79528L6.87865 16.6666L5.91667 15.6875L11.8088 9.79528L5.91667 3.9031L6.87866 2.92393Z"
-                      fill="#617293"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
-            </li>
             {Settings.referral && (
+              <li
+                onClick={() => navigate("/affiliate")}
+                className="profile-menu-items ng-star-inserted"
+              >
+                <div className="routingProfile">
+                  <div className="profile-menu-items-left">
+                    <span className="profile-menu-icon">
+                      <img
+                        loading="lazy"
+                        alt=""
+                        style={{ height: "24px" }}
+                        src={profileBettingProfitLoss}
+                      />
+                      <div className="skeleton-img ng-star-inserted">
+                        <div className="moving-strip"></div>
+                      </div>
+                    </span>
+                    <span className="profile-menu-left-text">Affiliate</span>
+                  </div>
+                  <div className="profile-menu-items-right">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                    >
+                      <path
+                        d="M6.87866 2.92393L13.75 9.79528L6.87865 16.6666L5.91667 15.6875L11.8088 9.79528L5.91667 3.9031L6.87866 2.92393Z"
+                        fill="#617293"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </li>
+            )}
+
+            {/* {Settings.referral && (
               <li
                 onClick={() => setShowReferral(true)}
                 className="profile-menu-items ng-star-inserted"
@@ -871,9 +874,9 @@ const Account = () => {
                   </div>
                 </div>
               </li>
-            )}
+            )} */}
 
-            <li
+            {/* <li
               onClick={() => navigate("/referral-statement")}
               className="profile-menu-items ng-star-inserted"
             >
@@ -909,7 +912,7 @@ const Account = () => {
                   </svg>
                 </div>
               </div>
-            </li>
+            </li> */}
 
             {/* {socialLink?.whatsapplink && (
               <li
