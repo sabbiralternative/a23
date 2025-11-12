@@ -1,24 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-
-import { jwtDecode } from "jwt-decode";
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { API, Settings } from "../../api";
 import { AxiosSecure } from "../../lib/AxiosSecure";
+import { useIndex } from "../../hooks";
 
 const AddNewUser = ({ setShowAddNewUserModal }) => {
-  /* Handle close modal click outside */
+  const { mutate: addNewUser } = useIndex();
   const [mobile, setMobile] = useState(null);
-  const token = localStorage.getItem("token");
-  const [orderId, setOrderId] = useState(null);
   const [timer, setTimer] = useState(null);
 
   const addNewUserRef = useRef();
   useCloseModalClickOutside(addNewUserRef, () => {
     setShowAddNewUserModal(false);
   });
+
   const [isFormValid, setIsFormValid] = useState(false);
-  const [bankDetails, setBankDetails] = useState({
+  const [userDetails, setUserDetails] = useState({
     userId: "",
     password: "",
     confirmPassword: "",
@@ -30,54 +28,65 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
   const handleAddBank = async (e) => {
     e.preventDefault();
 
-    if (mobile && !bankDetails.otp && Settings.otp) {
+    if (mobile && !userDetails.otp && Settings.otp) {
       return toast.error("Please enter otp to add new account");
     }
 
     let payload = {
-      userId: bankDetails.userId,
-      password: bankDetails.password,
-      confirmPassword: bankDetails.confirmPassword,
-      selfPassword: bankDetails.selfPassword,
-      type: "addBankAccount",
+      username: userDetails.userId,
+      password: userDetails.password,
+      self_password: userDetails.selfPassword,
+      mobile: mobile,
+      otp: userDetails.otp,
+      type: "add_affiliate",
     };
-    if (mobile) {
-      payload.mobile = mobile;
-      payload.otp = bankDetails.otp;
-      payload.orderId = orderId;
-    }
 
-    const res = await AxiosSecure.post(API.bankAccount, payload);
-    const data = res?.data;
-
-    if (data?.success) {
-      toast.success(data?.result?.message);
-
-      setShowAddNewUserModal(false);
-    } else {
-      toast.error(data?.result?.message);
-    }
+    addNewUser(payload, {
+      onSuccess: (data) => {
+        if (data?.success) {
+          toast.success(data?.result?.message);
+          setShowAddNewUserModal(false);
+        } else {
+          toast.error(data?.result?.message);
+        }
+      },
+      onError: (data) => {
+        toast.error(data?.result?.message);
+      },
+    });
   };
 
-  const validateForm = (bankDetails) => {
+  const validateForm = (userDetails) => {
     const isMobileFilled = mobile && mobile?.trim() !== "";
-    const isOTPFilled = bankDetails.otp.trim() !== "";
-    const isUserIdFilled = bankDetails.userId.trim() !== "";
-    const isPasswordFilled = bankDetails.password.trim() !== "";
-    const isConfirmPasswordFilled = bankDetails.confirmPassword.trim() !== "";
-    const isSelfPasswordFilled = bankDetails.selfPassword.trim() !== "";
+    const isOTPFilled = userDetails.otp.trim() !== "";
+    const isUserIdFilled = userDetails.userId.trim() !== "";
+    const isPasswordFilled = userDetails.password.trim() !== "";
+    const isConfirmPasswordFilled = userDetails.confirmPassword.trim() !== "";
+    const isSelfPasswordFilled = userDetails.selfPassword.trim() !== "";
 
     const isFormValid =
-      (isMobileFilled && isOTPFilled) ||
-      isUserIdFilled ||
-      (isPasswordFilled && isConfirmPasswordFilled && isSelfPasswordFilled) ||
-      (isMobileFilled && isOTPFilled && isUserIdFilled);
+      (isPasswordFilled &&
+        isConfirmPasswordFilled &&
+        isSelfPasswordFilled &&
+        isMobileFilled &&
+        isOTPFilled) ||
+      (isPasswordFilled &&
+        isConfirmPasswordFilled &&
+        isSelfPasswordFilled &&
+        isUserIdFilled) ||
+      (isPasswordFilled &&
+        isConfirmPasswordFilled &&
+        isSelfPasswordFilled &&
+        isUserIdFilled &&
+        isMobileFilled &&
+        isOTPFilled);
+
     setIsFormValid(isFormValid);
   };
 
   useEffect(() => {
-    validateForm(bankDetails);
-  }, [bankDetails]);
+    validateForm(userDetails);
+  }, [userDetails]);
 
   const getOtp = async () => {
     const otpData = {
@@ -88,22 +97,11 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
     const data = res.data;
     if (data?.success) {
       setTimer(60);
-      setOrderId(data?.result?.orderId);
       toast.success(data?.result?.message);
     } else {
       toast.error(data?.error?.errorMessage);
     }
   };
-
-  useEffect(() => {
-    const getMobile = () => {
-      const decode = jwtDecode(token);
-      if (decode?.mobile) {
-        setMobile(decode?.mobile);
-      }
-    };
-    getMobile();
-  }, [token]);
 
   useEffect(() => {
     if (timer > 0) {
@@ -228,8 +226,8 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
 
               <div
                 onChange={(e) => {
-                  setBankDetails({
-                    ...bankDetails,
+                  setUserDetails({
+                    ...userDetails,
                     otp: e.target.value,
                   });
                 }}
@@ -288,8 +286,8 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
               </div>
               <div
                 onChange={(e) => {
-                  setBankDetails({
-                    ...bankDetails,
+                  setUserDetails({
+                    ...userDetails,
                     userId: e.target.value,
                   });
                 }}
@@ -300,8 +298,8 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
               <div className="input-box ">
                 <input
                   onChange={(e) => {
-                    setBankDetails({
-                      ...bankDetails,
+                    setUserDetails({
+                      ...userDetails,
                       password: e.target.value,
                     });
                   }}
@@ -312,8 +310,8 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
               <div className="input-box ">
                 <input
                   onChange={(e) => {
-                    setBankDetails({
-                      ...bankDetails,
+                    setUserDetails({
+                      ...userDetails,
                       confirmPassword: e.target.value,
                     });
                   }}
@@ -324,8 +322,8 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
               <div className="input-box ">
                 <input
                   onChange={(e) => {
-                    setBankDetails({
-                      ...bankDetails,
+                    setUserDetails({
+                      ...userDetails,
                       selfPassword: e.target.value,
                     });
                   }}

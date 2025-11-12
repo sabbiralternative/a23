@@ -1,6 +1,20 @@
 import { images } from "../../assets";
+import { useGetIndex } from "../../hooks";
+
+const fromDate = new Date(new Date().setDate(new Date().getDate() - 7))
+  .toISOString()
+  .split("T")[0];
+const toDate = new Date().toISOString().split("T")[0];
 
 const TodayStatusSection = () => {
+  const payload = {
+    type: "get_affiliate_dashboard",
+    fromDate,
+    toDate,
+  };
+
+  const { data } = useGetIndex(payload);
+
   return (
     <div data-v-4c49d924 className="nw-affi-how-to-get-bonus">
       <img
@@ -24,7 +38,7 @@ const TodayStatusSection = () => {
           className="nw-affi-how-to-get-bonus-content-sec nw-affi-status-digit-para"
         >
           <span data-v-4c49d924 className="nw-affi-status-digit">
-            0
+            {data?.result?.total_deposit}
           </span>
           <p data-v-4c49d924>total deposit</p>
         </div>
@@ -33,7 +47,7 @@ const TodayStatusSection = () => {
           className="nw-affi-how-to-get-bonus-content-sec nw-affi-status-digit-para"
         >
           <span data-v-4c49d924 className="nw-affi-status-digit">
-            0
+            {data?.result?.total_deposit_count}
           </span>
           <p data-v-4c49d924>total deposit count</p>
         </div>
@@ -42,7 +56,7 @@ const TodayStatusSection = () => {
           className="nw-affi-how-to-get-bonus-content-sec nw-affi-status-digit-para"
         >
           <span data-v-4c49d924 className="nw-affi-status-digit">
-            0
+            {data?.result?.total_user}
           </span>
           <p data-v-4c49d924>total user</p>
         </div>
@@ -51,7 +65,7 @@ const TodayStatusSection = () => {
           className="nw-affi-how-to-get-bonus-content-sec nw-affi-status-digit-para"
         >
           <span data-v-4c49d924 className="nw-affi-status-digit">
-            0
+            {data?.result?.total_commision}
           </span>
           <p data-v-4c49d924>total commision</p>
         </div>
