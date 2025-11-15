@@ -1,0 +1,696 @@
+.withdraw-container {
+  width: 100%;
+  height: 100%;
+}
+
+.withdraw-header-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 10px;
+  border-radius: 0.5rem;
+  background-color: white;
+  margin-top: 10px;
+}
+
+.withdraw-title {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.withdraw-instructions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  transition: all 0.1s ease-in-out;
+}
+
+.instruction-item {
+  font-size: 12px;
+  padding-top: 0.25rem;
+  font-weight: 500;
+  line-height: 1rem;
+}
+
+.withdraw-form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  padding-bottom: 2.5rem;
+}
+
+.form-header {
+  font-size: 12px;
+  width: 100%;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.25rem;
+}
+
+.form-header-text {
+  font-size: 12px;
+}
+
+.form-card {
+  border-radius: 0.5rem;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 0.125rem;
+}
+
+.form-content {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.125rem;
+  flex-direction: column;
+}
+
+.available-balance {
+  background: var(--color1);
+  font-size: 12px;
+  margin-top: 0.25rem;
+  border-radius: 0.25rem;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-label {
+  margin-left: 0.25rem;
+  font-size: 12px;
+}
+
+.required-mark {
+  color: red;
+}
+
+.input-error-border {
+  border-color: red;
+}
+
+.input-success {
+  border-color: green;
+}
+
+.currency-symbol {
+  flex-shrink: 0;
+  width: max-content;
+}
+
+.amount-input {
+  font-size: 12px;
+  padding: 0 0.25rem;
+  flex-grow: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.minimum-text {
+  font-size: 12px;
+  flex-shrink: 0;
+  width: max-content;
+}
+
+.input-helper {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: space-between;
+  line-height: normal;
+  padding: 0 0.25rem;
+}
+
+.helper-spacer {
+  width: max-content;
+  min-height: 18px;
+  height: max-content;
+}
+
+.terms-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 8px 0px;
+}
+
+.submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submit-button:not(:disabled):hover {
+  opacity: 0.9;
+}
+
+.bottom-spacer {
+  width: 100%;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.bank-account-container {
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+}
+
+.bank-account-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.bank-account-header {
+  font-size: 12px;
+
+  width: 100%;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.25rem;
+}
+
+.bank-account-header-text {
+  font-size: 12px;
+}
+
+.tab-container {
+  font-size: 12px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.tab-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.375rem;
+  letter-spacing: 0.05em;
+  padding: 0.75rem;
+  font-size: 12px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.tab-button-active {
+  color: white;
+}
+
+.tab-indicator {
+  width: 33.333%;
+  position: absolute;
+  z-index: 9;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  bottom: 0;
+}
+
+.tab-indicator-left {
+  left: 0;
+}
+
+.tab-indicator-center {
+  left: 33.333%;
+}
+
+.tab-indicator-right {
+  right: 0;
+}
+
+.tab-indicator-bg {
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  border-radius: 0.5rem;
+}
+
+/*! Add new bank account css  */
+.new-account-form {
+  width: 100%;
+}
+
+.form-container {
+  border-radius: 0.5rem;
+  background-color: white;
+
+  padding: 0.5rem 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 0.125rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.field-label {
+  margin-left: 0.25rem;
+  font-size: 12px;
+}
+
+.required-asterisk {
+  color: var(--color1);
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(234, 234, 234);
+  padding: 8px;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+}
+
+.form-input {
+  font-size: 12px;
+  padding: 0 0.25rem;
+  flex-grow: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.field-helper {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: space-between;
+  line-height: normal;
+  padding: 0 0.25rem;
+}
+
+.helper-space {
+  width: max-content;
+  min-height: 18px;
+  height: max-content;
+}
+
+.otp-button-container {
+  width: max-content;
+}
+
+.otp-buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.otp-button {
+  display: inline-block;
+  line-height: normal;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.15s ease-in-out;
+  font-weight: 500;
+  height: fit-content;
+  background-color: var(--color1);
+  font-size: 12px;
+  white-space: nowrap;
+  margin-right: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.otp-button:active {
+  transform: scale(0.98);
+  opacity: 0.95;
+}
+
+.otp-button:disabled {
+  opacity: 0.5;
+}
+
+.otp-button-primary {
+  background: var(--color1);
+}
+
+.otp-button-text {
+  color: white;
+}
+
+.terms-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 5px;
+}
+
+.checkbox-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.checkbox-label {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: transparent;
+}
+
+.checkbox-input {
+  border-radius: 0.375rem;
+  position: relative;
+  cursor: pointer;
+  appearance: none;
+  border: 1px solid;
+  transition: all 0.3s;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.checkbox-input::before {
+  content: "";
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  height: max-content;
+  width: max-content;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.checkbox-input:checked {
+  background-color: white;
+}
+
+.checkbox-input:hover::before {
+  opacity: 0.1;
+}
+
+.checkbox-checkmark {
+  pointer-events: none;
+  position: absolute;
+  left: 55%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  color: var(--color1);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.checkbox-input:checked + .checkbox-checkmark {
+  opacity: 1;
+}
+
+.checkmark-icon {
+  height: 0.875rem;
+  width: 0.875rem;
+}
+
+.terms-text {
+  font-size: 12px;
+  color: var(--color1);
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+
+.terms-link {
+  text-decoration: underline;
+  font-size: 12px;
+  background: var(--color1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 400;
+  line-height: 1rem;
+  cursor: pointer;
+}
+
+.submit-container {
+  width: 100%;
+
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.submit-button {
+  position: relative;
+  overflow: hidden;
+  background: var(--color1);
+  width: 100%;
+  color: white;
+  height: 2.5rem;
+  font-size: 12px;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  line-height: 1rem;
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+/*! Add new bank account css  */
+
+/*! Old account css  */
+.old-account-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.account-list {
+  background: #f8f9fa;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.account-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 0.5rem;
+}
+
+.account-card {
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.account-card.selected {
+  border-color: #16a34a;
+}
+
+.account-icon {
+  width: 50px;
+  height: 50px;
+  background: #5a4bff;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.account-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.account-name {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.account-number,
+.account-bank,
+.account-upi {
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.remove-btn {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 50%;
+  color: red;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.remove-btn:active {
+  background: #e2e8f0;
+}
+
+.checkbox-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: 16px;
+  height: 16px;
+  accent-color: #16a34a;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.terms-text {
+  font-size: 12px;
+  color: #222;
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+
+.terms-link {
+  text-decoration: none;
+  color: var(--color1);
+  cursor: pointer;
+}
+
+.submit-section {
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 40px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  background: var(--color1);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+}
+
+.no-account {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-account-content {
+  min-height: calc(100dvh - 150px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-account-text {
+  color: #666;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/*! Old account css  */
