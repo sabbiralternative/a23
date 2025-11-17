@@ -59,7 +59,11 @@ const InviteSection = () => {
             <div data-v-4c49d924 className="nw-affi-share-link-sec">
               <span data-v-4c49d924>{data?.link}</span>
               <button
-                style={{ position: "absolute", right: "10px", top: "0px" }}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "0px",
+                }}
                 onClick={() => handleCopyToClipBoard(data?.text)}
                 data-v-4c49d924
                 className="thm-but thm-bdr-btn affi-cancel-btn affi-yellow-btn"

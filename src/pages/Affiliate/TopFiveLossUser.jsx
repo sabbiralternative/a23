@@ -19,7 +19,7 @@ const TopFiveLossUser = () => {
           <div
             id="apexchartsyt2zq0lsh"
             className="apexcharts-canvas apexchartsyt2zq0lsh apexcharts-theme-"
-            style={{ width: "1147px", height: "250px" }}
+            style={{ width: "100%", height: "250px" }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ const TopFiveLossUser = () => {
               className="apexcharts-svg"
               //   xmlns:data="ApexChartsNS"
               transform="translate(0, 0)"
-              width={1147}
+              width={"100%"}
               height={250}
             >
               <foreignObject x={0} y={0} width={1147} height={250} />
