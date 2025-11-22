@@ -51,6 +51,7 @@ const GameDetails = () => {
       {showMyBets && (
         <OpenBets
           myBets={myBets}
+          refetchCurrentBets={refetchCurrentBets}
           setShowOpenBets={setShowMyBets}
           sportsBook={eventsData?.sportsbook?.Result}
         />

@@ -2,8 +2,14 @@ import { useRef } from "react";
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { useNavigate } from "react-router-dom";
 import useSBCashOut from "../../hooks/sb_cashout";
+import toast from "react-hot-toast";
 
-const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
+const OpenBets = ({
+  setShowOpenBets,
+  myBets,
+  sportsBook,
+  refetchCurrentBets,
+}) => {
   const { mutate: cashOut } = useSBCashOut();
 
   const navigate = useNavigate();
@@ -21,7 +27,7 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
         group?.Name !== "Player Specials"
     );
 
-  const handleCashOut = (betHistory, sportsBook, price) => {
+  const handleCashOut = ({ betHistory, sportsBook, price, cashout_value }) => {
     let item;
     sports?.forEach((group) => {
       group?.Items?.forEach((data) => {
@@ -37,6 +43,7 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
 
     const payload = {
       price,
+      cashout_value,
       back: true,
       side: 0,
       selectionId: column?.Id,
@@ -54,7 +61,16 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
       betId: betHistory?.betId,
     };
 
-    cashOut(payload);
+    cashOut(payload, {
+      onSuccess: (data) => {
+        if (data?.success) {
+          refetchCurrentBets();
+          toast.success(data?.result?.message);
+        } else {
+          toast.error(data?.error);
+        }
+      },
+    });
   };
   return (
     <div className="Modal-Background ng-tns-c159-13 ng-star-inserted">
@@ -128,12 +144,6 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
 
                   return (
                     <div
-                      onClick={() => {
-                        setShowOpenBets(false);
-                        navigate(
-                          `/game-details/${item?.eventTypeId}/${item?.eventId}`
-                        );
-                      }}
                       style={{ cursor: "pointer" }}
                       key={i}
                       className={`allbet-datalist ${
@@ -142,7 +152,14 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
                     >
                       <div className="allbet-gameinfo">
                         <div className="allbet-content">
-                          <h3>
+                          <h3
+                            onClick={() => {
+                              setShowOpenBets(false);
+                              navigate(
+                                `/game-details/${item?.eventTypeId}/${item?.eventId}`
+                              );
+                            }}
+                          >
                             {item?.marketName}: {item?.nation}
                           </h3>
                           <p> {item?.placeDate} </p>
@@ -152,7 +169,12 @@ const OpenBets = ({ setShowOpenBets, myBets, sportsBook }) => {
                         {item?.cashout && (
                           <button
                             onClick={() =>
-                              handleCashOut(item, sportsBook, price)
+                              handleCashOut({
+                                betHistory: item,
+                                sportsBook,
+                                price: column?.Price,
+                                cashout_value: price,
+                              })
                             }
                             type="button"
                             className="btn_box "
