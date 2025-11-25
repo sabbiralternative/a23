@@ -137,9 +137,8 @@ const OpenBets = ({
                   });
 
                   const price = (
-                    0.92 *
-                    item?.amount *
-                    (item?.userRate / column?.Price)
+                    0.92 * item?.amount * (item?.userRate / column?.Price) -
+                    item?.amount
                   )?.toFixed(2);
 
                   return (
@@ -166,7 +165,7 @@ const OpenBets = ({
                         </div>
                       </div>
                       <div className="allbet-odds-stake-wrap">
-                        {item?.cashout && (
+                        {item?.cashout && column && (
                           <button
                             onClick={() =>
                               handleCashOut({
