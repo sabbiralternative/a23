@@ -282,7 +282,7 @@ const BetSlip = ({
   const handleButtonValue = (value) => {
     setIsCashOut(false);
     const buttonValue = Number(value);
-    const prevStake = totalSize === null ? null : Number(totalSize);
+    const prevStake = !totalSize ? null : Number(totalSize);
 
     if (prevStake === null) {
       setTotalSize(buttonValue);
