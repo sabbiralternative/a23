@@ -27,8 +27,22 @@ import affiInviteGift from "./img/invite-gift.66579aaa.svg";
 import affiCopy from "./img/affi-copy.6ddf100b.svg";
 import affiBonus1 from "./img/affi-bonus-1.4907c6fe.svg";
 import affiBonus2 from "./img/affi-bonus-2.b3bc4c43.svg";
+import dashboard from "./img/dashboard-ft.02d913bd.svg";
+import graph from "./img/graph-ft.01703183.svg";
+import userList from "./img/user-list-ft.ad2d77b8.svg";
+import calendar from "./img/affi-calendar.57b07b6a.svg";
+import commission from "./img/affi-commision-icon.ddf556a3.svg";
+import user from "./img/affi-user-icn.b08f83a6.svg";
+import share from "./img/af-share-img.51df8801.svg";
 
 export const images = {
+  share,
+  calendar,
+  commission,
+  user,
+  dashboard,
+  graph,
+  userList,
   affiBonus1,
   affiBonus2,
   affiCopy,
