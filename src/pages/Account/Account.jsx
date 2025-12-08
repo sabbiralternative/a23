@@ -15,7 +15,7 @@ import profileSettings from "../../../src/assets/img/profile-settings.svg";
 // import useBonusBalance from "../../hooks/useBonusBalance";
 // import handleRandomToken from "../../utils/handleRandomToken";
 // import axios from "axios";
-import { Settings } from "../../api";
+
 // import toast from "react-hot-toast";
 import useGetSocialLink from "../../hooks/useGetSocialLink";
 import { images } from "../../assets";
@@ -800,7 +800,7 @@ const Account = () => {
                 </div>
               </div>
             </li>
-            {Settings.referral && (
+            {socialLink?.referral && (
               <li
                 onClick={() => navigate("/affiliate")}
                 className="profile-menu-items ng-star-inserted"
