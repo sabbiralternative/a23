@@ -1,9 +1,20 @@
 import { Fragment, useState } from "react";
 import { images } from "../../assets";
 import AddNewUser from "../../components/modal/AddNewUser";
+import { useGetIndex } from "../../hooks";
+import { Pagination } from "rsuite";
 
 const UserList = () => {
   const [showAddNewUserModal, setShowAddNewUserModal] = useState(false);
+  const [activePage, setActivePage] = useState(1);
+  const { data } = useGetIndex({
+    type: "get_affiliate_users",
+    page: activePage,
+  });
+
+  const meta = data?.pagination;
+
+  console.log(data);
   return (
     <Fragment>
       {showAddNewUserModal && (
@@ -65,7 +76,7 @@ const UserList = () => {
                   </tr>
                 </thead>
                 <tbody data-v-fd406c30>
-                  <tr data-v-fd406c30 className="tabetdat">
+                  {/* <tr data-v-fd406c30 className="tabetdat">
                     <td data-v-fd406c30 colSpan={5}>
                       <div
                         data-v-fd406c30
@@ -74,9 +85,42 @@ const UserList = () => {
                         No Records Found
                       </div>
                     </td>
+                  </tr> */}
+                  <tr data-v-fd406c30="">
+                    <td data-v-fd406c30="">FortunatePonder3470</td>
+                    <td data-v-fd406c30="">
+                      <span data-v-fd406c30="" className="affi-green-text">
+                        200.8
+                      </span>
+                    </td>
+                    <td data-v-fd406c30="">02/12/2025 16:59</td>
+                    <td data-v-fd406c30="">
+                      <button data-v-fd406c30="" className="submit-btn rounded">
+                        View
+                      </button>
+                    </td>
+                    <td data-v-fd406c30="">
+                      <button data-v-fd406c30="" className="submit-btn rounded">
+                        View
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div style={{ display: "flex", justifyContent: "end" }}>
+              <Pagination
+                prev
+                next
+                size="md"
+                total={meta?.totalRecords}
+                limit={1}
+                activePage={activePage}
+                onChangePage={setActivePage}
+                maxButtons={5}
+                ellipsis
+                boundaryLinks
+              />
             </div>
             <div data-v-fd406c30 className="nw-affi-add-new-user-btn-sec">
               <button
