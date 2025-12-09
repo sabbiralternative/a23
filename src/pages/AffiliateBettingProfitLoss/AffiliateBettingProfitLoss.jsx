@@ -1,20 +1,27 @@
-import { useNavigate } from "react-router-dom";
-import usePassbook from "../../hooks/usePassbook";
+import { useLocation, useNavigate } from "react-router-dom";
 import useContextState from "../../hooks/useContextState";
 import moment from "moment";
+import { useGetIndex } from "../../hooks";
 
-const BettingProfitLoss = () => {
-  const { passbook } = usePassbook();
+const AffiliateBettingProfitLoss = () => {
   const navigate = useNavigate();
   const { token } = useContextState();
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const punter_id = params.get("punter_id");
+  const { data } = useGetIndex({
+    type: "get_affiliate_pl",
+    punter_id,
+  });
+
   const handleNavigateSinglePassbook = (item) => {
     if (item?.plDetails) {
-      navigate(`/betting-profit-loss/${item?.marketId}`);
+      navigate(`/affiliate/betting-profit-loss/${item?.marketId}`);
     }
   };
 
   const getUniqueDate = Array.from(
-    new Set(passbook?.map((item) => item?.settledTime))
+    new Set(data?.result?.map((item) => item?.settledTime))
   );
 
   return (
@@ -45,7 +52,7 @@ const BettingProfitLoss = () => {
       {getUniqueDate?.length > 0 && (
         <div>
           {getUniqueDate?.map((date) => {
-            const filterByDate = passbook?.filter(
+            const filterByDate = data?.result?.filter(
               (item) => item?.settledTime === date
             );
             const totalPnl = filterByDate?.reduce((acc, curr) => {
@@ -165,4 +172,4 @@ const BettingProfitLoss = () => {
   );
 };
 
-export default BettingProfitLoss;
+export default AffiliateBettingProfitLoss;
