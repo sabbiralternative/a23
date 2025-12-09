@@ -20,12 +20,6 @@ const AffiliateBettingProfitLoss = () => {
     to_date: toDate,
   });
 
-  const handleNavigateSinglePassbook = (item) => {
-    if (item?.plDetails) {
-      navigate(`/affiliate/betting-profit-loss/${item?.marketId}`);
-    }
-  };
-
   const getUniqueDate = Array.from(
     new Set(data?.result?.map((item) => item?.settledTime))
   );
@@ -122,7 +116,6 @@ const AffiliateBettingProfitLoss = () => {
                 {filterByDate?.map((item, i) => {
                   return (
                     <div
-                      onClick={() => handleNavigateSinglePassbook(item)}
                       key={i}
                       style={{
                         marginBottom: "3px",

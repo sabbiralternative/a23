@@ -32,7 +32,6 @@ import MyBankDetails from "../pages/MyBankDetails/MyBankDetails";
 import Funbar from "../pages/Funbar/Funbar";
 import Affiliate from "../pages/Affiliate/Affiliate";
 import AffiliateBettingProfitLoss from "../pages/AffiliateBettingProfitLoss/AffiliateBettingProfitLoss";
-import AffiliateSingleProfitLoss from "../pages/AffiliateBettingProfitLoss/AffiliateSingleProfitLoss";
 
 export const router = createBrowserRouter(
   [
@@ -160,10 +159,7 @@ export const router = createBrowserRouter(
           path: "affiliate/profit-loss",
           element: <AffiliateBettingProfitLoss />,
         },
-        {
-          path: "affiliate/betting-profit-loss/:marketId",
-          element: <AffiliateSingleProfitLoss />,
-        },
+
         {
           path: "apk",
           element: <APK />,
