@@ -14,7 +14,6 @@ const UserList = () => {
 
   const meta = data?.pagination;
 
-  console.log(data);
   return (
     <Fragment>
       {showAddNewUserModal && (
@@ -76,35 +75,67 @@ const UserList = () => {
                   </tr>
                 </thead>
                 <tbody data-v-fd406c30>
-                  {/* <tr data-v-fd406c30 className="tabetdat">
-                    <td data-v-fd406c30 colSpan={5}>
-                      <div
-                        data-v-fd406c30
-                        className="text-center affiliate-no-recoard-data"
-                      >
-                        No Records Found
-                      </div>
-                    </td>
-                  </tr> */}
-                  <tr data-v-fd406c30="">
-                    <td data-v-fd406c30="">FortunatePonder3470</td>
-                    <td data-v-fd406c30="">
-                      <span data-v-fd406c30="" className="affi-green-text">
-                        200.8
-                      </span>
-                    </td>
-                    <td data-v-fd406c30="">02/12/2025 16:59</td>
-                    <td data-v-fd406c30="">
-                      <button data-v-fd406c30="" className="submit-btn rounded">
-                        View
-                      </button>
-                    </td>
-                    <td data-v-fd406c30="">
-                      <button data-v-fd406c30="" className="submit-btn rounded">
-                        View
-                      </button>
-                    </td>
-                  </tr>
+                  {data?.result?.length > 0 ? (
+                    data?.result?.map((item) => {
+                      return (
+                        <tr key={item?.punter_id} data-v-fd406c30="">
+                          <td data-v-fd406c30="">{item?.username}</td>
+                          <td data-v-fd406c30="">
+                            <span
+                              data-v-fd406c30=""
+                              className="affi-green-text"
+                            >
+                              {item?.credit_limit}
+                            </span>
+                          </td>
+                          <td data-v-fd406c30="">{item?.date_added}</td>
+                          <td data-v-fd406c30="">
+                            <button
+                              style={{
+                                height: "auto",
+                                marginTop: "0px",
+                                width: "auto",
+                                padding: "5px 10px",
+                                borderRadius: "3px",
+                                margin: "auto",
+                              }}
+                              data-v-fd406c30=""
+                              className="submit-btn rounded"
+                            >
+                              View
+                            </button>
+                          </td>
+                          <td data-v-fd406c30="">
+                            <button
+                              style={{
+                                height: "auto",
+                                marginTop: "0px",
+                                width: "auto",
+                                padding: "5px 10px",
+                                borderRadius: "3px",
+                                margin: "auto",
+                              }}
+                              data-v-fd406c30=""
+                              className="submit-btn rounded"
+                            >
+                              View
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })
+                  ) : (
+                    <tr data-v-fd406c30 className="tabetdat">
+                      <td data-v-fd406c30 colSpan={5}>
+                        <div
+                          data-v-fd406c30
+                          className="text-center affiliate-no-recoard-data"
+                        >
+                          No Records Found
+                        </div>
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -114,7 +145,7 @@ const UserList = () => {
                 next
                 size="md"
                 total={meta?.totalRecords}
-                limit={1}
+                limit={meta?.recordsPerPage}
                 activePage={activePage}
                 onChangePage={setActivePage}
                 maxButtons={5}

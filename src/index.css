@@ -1250,3 +1250,9 @@ html * {
   }
 }
 /* Horse banner */
+
+.rs-pagination-btn.rs-pagination-btn-active {
+  color: var(--color1) !important;
+  background-color: transparent;
+  border: 1px solid var(--color1) !important;
+}
