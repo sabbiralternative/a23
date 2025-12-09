@@ -22,55 +22,7 @@ const TodayProfitLoss = () => {
               </td>
             </tr>
             <tr data-v-4c49d924>
-              <td data-v-4c49d924>Worli</td>
-              <td data-v-4c49d924 className="green-font-color">
-                0
-              </td>
-            </tr>
-            <tr data-v-4c49d924>
-              <td data-v-4c49d924>Dream Casino</td>
-              <td data-v-4c49d924 className="green-font-color">
-                0
-              </td>
-            </tr>
-            <tr data-v-4c49d924>
-              <td data-v-4c49d924>Global Casino</td>
-              <td data-v-4c49d924 className="green-font-color">
-                0
-              </td>
-            </tr>
-            <tr data-v-4c49d924>
-              <td data-v-4c49d924>Aura Casino</td>
-              <td data-v-4c49d924 className="green-font-color">
-                0
-              </td>
-            </tr>
-            <tr data-v-4c49d924>
-              <td data-v-4c49d924>Virtual Casino</td>
-              <td data-v-4c49d924 className="green-font-color">
-                0
-              </td>
-            </tr>
-            <tr data-v-4c49d924>
-              <td data-v-4c49d924>Worli Matka</td>
-              <td data-v-4c49d924 className="green-font-color">
-                0
-              </td>
-            </tr>
-            <tr data-v-4c49d924>
-              <td data-v-4c49d924>Super Nowa</td>
-              <td data-v-4c49d924 className="green-font-color">
-                0
-              </td>
-            </tr>
-            <tr data-v-4c49d924>
-              <td data-v-4c49d924>Universe</td>
-              <td data-v-4c49d924 className="green-font-color">
-                0
-              </td>
-            </tr>
-            <tr data-v-4c49d924>
-              <td data-v-4c49d924>Sport Book</td>
+              <td data-v-4c49d924>Casino</td>
               <td data-v-4c49d924 className="green-font-color">
                 0
               </td>

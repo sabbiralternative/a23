@@ -11,10 +11,7 @@ const Footer = ({ setTab, tab }) => {
           setShowShareAffiliateLink={setShowShareAffiliateLink}
         />
       )}
-      <footer
-        data-v-066114c4
-        className="affilate_footer w-[98%] left-0 right-0 lg:right-24  lg:!w-[40%]"
-      >
+      <footer data-v-066114c4 className="affilate_footer">
         <nav data-v-066114c4>
           <a
             data-v-066114c4

@@ -68,6 +68,7 @@ const InviteSection = () => {
                   position: "absolute",
                   right: "10px",
                   top: "0px",
+                  background: "transparent",
                 }}
                 onClick={() => handleCopyToClipBoard(data?.text)}
                 data-v-4c49d924
