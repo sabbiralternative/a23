@@ -1256,3 +1256,10 @@ html * {
   background-color: transparent;
   border: 1px solid var(--color1) !important;
 }
+
+.rs-pagination-md .rs-pagination-btn-active {
+  padding: 3px 5px !important;
+}
+.rs-pagination-md .rs-pagination-btn {
+  padding: 3px 5px !important;
+}

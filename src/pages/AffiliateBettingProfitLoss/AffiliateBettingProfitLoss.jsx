@@ -4,6 +4,10 @@ import moment from "moment";
 import { useGetIndex } from "../../hooks";
 
 const AffiliateBettingProfitLoss = () => {
+  const fromDate = new Date(new Date().setDate(new Date().getDate() - 7))
+    .toISOString()
+    .split("T")[0];
+  const toDate = new Date().toISOString().split("T")[0];
   const navigate = useNavigate();
   const { token } = useContextState();
   const { search } = useLocation();
@@ -12,6 +16,8 @@ const AffiliateBettingProfitLoss = () => {
   const { data } = useGetIndex({
     type: "get_affiliate_pl",
     punter_id,
+    from_date: fromDate,
+    to_date: toDate,
   });
 
   const handleNavigateSinglePassbook = (item) => {
