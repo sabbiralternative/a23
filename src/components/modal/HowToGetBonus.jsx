@@ -34,6 +34,7 @@ const HowToGetBonus = ({ setOpenGetBonusModal }) => {
         <div className="card-body" style={{ overflow: "auto" }}>
           <div className="bank-popup">
             <ul
+              style={{ paddingLeft: "0px" }}
               className="affi-how-bonus-list affi-how-to-get-bonus"
               data-v-4c49d924
             >

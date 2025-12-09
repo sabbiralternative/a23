@@ -416,12 +416,12 @@ button:not(:disabled) {
 .affi-how-bonus-list h5 {
   color: #000;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .affi-how-bonus-list.affi-how-to-get-bonus li {
   margin-left: 40px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .affi-how-bonus-list li {
@@ -443,23 +443,24 @@ button:not(:disabled) {
 .affi-how-bonus-list h5 {
   color: #000;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .affi-how-bonus-list.affi-how-to-get-bonus p {
   color: #000;
   margin-bottom: 10px;
+  font-size: 12px;
 }
 
 .affi-how-bonus-list.affi-how-to-get-bonus h6 {
   color: #000;
   margin: 15px 0;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .affi-how-bonus-list.affi-how-to-get-bonus li {
   margin-left: 40px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .affi-how-bonus-list li {
@@ -491,6 +492,7 @@ table {
   padding: 10px;
   color: #fff;
   text-align: left;
+  font-size: 12px;
 }
 
 .affi-how-bonus-list tr {
@@ -501,6 +503,7 @@ table {
 .affi-how-bonus-list tr td {
   padding: 10px;
   color: #000;
+  font-size: 12px;
 }
 
 /*Footer starts  */
@@ -573,7 +576,7 @@ footer[data-v-066114c4] {
 }
 
 .affilate_footer nav a span[data-v-066114c4] {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -613,7 +616,7 @@ footer[data-v-066114c4] {
 }
 
 tr.tabetdat td {
-  font-size: 13px;
+  font-size: 12px;
 }
 .nw-affi-user-table td {
   font-size: 12px;
@@ -668,7 +671,7 @@ tr {
 }
 .label-pl12 {
   color: #000;
-  font-size: 13px;
+  font-size: 12px;
 }
 .affiliate-pl.affi-date-filter-form .typelabel-main li .form-control {
   font-size: 12px;
@@ -695,7 +698,7 @@ tr {
 .form-control {
   display: block;
   padding: 10px 0;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
   line-height: normal;
   border-radius: 0;
@@ -763,7 +766,7 @@ tr {
 
 .af-share-link-wrapper p {
   color: #000;
-  font-size: 16px;
+  font-size: 12px;
 }
 .af-share-link-sec {
   background-color: #f5f5f5;
@@ -777,7 +780,7 @@ tr {
 
 .af-share-link-sec span {
   color: #666;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   display: block;
   width: calc(100% - 75px);
@@ -787,7 +790,7 @@ tr {
 }
 
 .af-share-link-sec .thm-but {
-  font-size: 14px;
+  font-size: 12px;
   padding: 10px 15px;
   border-radius: 8px;
   border: 0;

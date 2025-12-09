@@ -34,6 +34,7 @@ const CommissionInfo = ({ setOpenCommissionModal }) => {
         <div className="card-body" style={{ overflow: "auto" }}>
           <div className="bank-popup">
             <ul
+              style={{ paddingLeft: "0px" }}
               data-v-4c49d924
               className="affi-how-bonus-list affi-how-to-get-bonus"
             >
