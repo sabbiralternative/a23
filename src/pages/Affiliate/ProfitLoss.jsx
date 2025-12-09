@@ -3,8 +3,12 @@ import { useIndex } from "../../hooks";
 import moment from "moment";
 
 const ProfitLoss = () => {
-  const [fromDate, setFromDate] = useState(null);
-  const [toDate, setToDate] = useState(null);
+  const from = new Date(new Date().setDate(new Date().getDate() - 7))
+    .toISOString()
+    .split("T")[0];
+  const to = new Date().toISOString().split("T")[0];
+  const [fromDate, setFromDate] = useState(from);
+  const [toDate, setToDate] = useState(to);
   const { mutate, data, isSuccess } = useIndex();
 
   const handleSubmit = (e) => {
@@ -47,6 +51,7 @@ const ProfitLoss = () => {
                   type="date"
                   id="open-bet-from"
                   className="form-control"
+                  value={fromDate}
                 />
               </div>
             </li>
@@ -61,6 +66,7 @@ const ProfitLoss = () => {
                   type="date"
                   id="open-bet-from"
                   className="form-control"
+                  value={toDate}
                 />
               </div>
             </li>
@@ -155,7 +161,7 @@ const ProfitLoss = () => {
                           <div className="mat-expansion-panel-header mat-focus-indicator   mat-expansion-toggle-indicator-after  mat-expanded">
                             <span className="mat-content  mat-content-hide-toggle">
                               <div className="mat-expansion-panel-header-title ">
-                                <h3>Event Type Id : {item?.event_type_id}</h3>
+                                <h3> {item?.event_type_id}</h3>
                               </div>
                               <div className="mat-expansion-panel-header-description ">
                                 <span> Amount:</span>{" "}
