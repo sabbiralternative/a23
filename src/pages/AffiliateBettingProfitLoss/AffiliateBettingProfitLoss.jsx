@@ -33,7 +33,7 @@ const AffiliateBettingProfitLoss = () => {
   return (
     <div className="mat-accordion bet-history-accordion ">
       <div
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/affiliate?tab=user-list")}
         style={{ cursor: "pointer" }}
         className="deposit-report-head "
       >

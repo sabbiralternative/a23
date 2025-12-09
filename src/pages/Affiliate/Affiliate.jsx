@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import "./affiliate.css";
 import BonusInformation from "./BonusInformation";
 import InviteSection from "./InviteSection";
@@ -9,13 +9,17 @@ import Reports from "./Reports";
 import Footer from "./Footer";
 import ProfitLoss from "./ProfitLoss";
 import UserList from "./UserList";
+import { useLocation } from "react-router-dom";
 const Affiliate = () => {
-  const [tab, setTab] = useState("dashboard");
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const tab = params.get("tab");
+
   return (
     <div className="main-content" style={{ margin: "0px 10px" }}>
-      <Footer setTab={setTab} tab={tab} />
+      <Footer />
       <div data-v-4c49d924 className="container">
-        {tab === "dashboard" && (
+        {(tab === "dashboard" || !tab) && (
           <Fragment>
             <TodayStatusSection />
             <InviteSection />
