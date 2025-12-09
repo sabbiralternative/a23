@@ -4,11 +4,13 @@ import AddNewUser from "../../components/modal/AddNewUser";
 import { useGetIndex } from "../../hooks";
 import { Pagination } from "rsuite";
 import { useNavigate } from "react-router-dom";
+import useGetSocialLink from "../../hooks/useGetSocialLink";
 
 const UserList = () => {
   const navigate = useNavigate();
   const [showAddNewUserModal, setShowAddNewUserModal] = useState(false);
   const [activePage, setActivePage] = useState(1);
+  const { socialLink } = useGetSocialLink();
   const { data } = useGetIndex({
     type: "get_affiliate_users",
     page: activePage,
@@ -160,17 +162,19 @@ const UserList = () => {
                 boundaryLinks
               />
             </div>
-            <div data-v-fd406c30 className="nw-affi-add-new-user-btn-sec">
-              <button
-                onClick={() => setShowAddNewUserModal(true)}
-                className="nw-affi-add-new-user-btn"
-                data-bs-target="#AfAddNewUser"
-                data-bs-toggle="modal"
-                data-v-4c49d924
-              >
-                <span data-v-4c49d924>ADD NEW USER</span>
-              </button>
-            </div>
+            {socialLink?.referral_create_account && (
+              <div data-v-fd406c30 className="nw-affi-add-new-user-btn-sec">
+                <button
+                  onClick={() => setShowAddNewUserModal(true)}
+                  className="nw-affi-add-new-user-btn"
+                  data-bs-target="#AfAddNewUser"
+                  data-bs-toggle="modal"
+                  data-v-4c49d924
+                >
+                  <span data-v-4c49d924>ADD NEW USER</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
