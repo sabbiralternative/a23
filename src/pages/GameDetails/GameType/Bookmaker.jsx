@@ -11,6 +11,7 @@ import {
 } from "../../../utils/isRunnerSuspended";
 import { Settings } from "../../../api";
 import { handleCashOutPlaceBet } from "../../../utils/handleCashOutPlaceBet";
+import SpeedCashOut from "../../../components/modal/SpeedCashOut";
 
 const Bookmaker = ({
   bookmarker,
@@ -18,6 +19,7 @@ const Bookmaker = ({
   setPlaceBetValues,
   exposer,
 }) => {
+  const [speedCashOut, setSpeedCashOut] = useState(null);
   const { eventId } = useParams();
   const { token } = useContextState();
   const navigate = useNavigate();
@@ -49,7 +51,12 @@ const Bookmaker = ({
     runner2,
     gameId
   ) => {
-    let runner, largerExposure, layValue, oppositeLayValue, lowerExposure;
+    let runner,
+      largerExposure,
+      layValue,
+      oppositeLayValue,
+      lowerExposure,
+      speedCashOut;
 
     const pnlArr = [exposureA, exposureB];
     const isOnePositiveExposure = onlyOnePositive(pnlArr);
@@ -69,7 +76,12 @@ const Bookmaker = ({
       oppositeLayValue = 1 + Number(runner1?.lay?.[0]?.price) / 100;
       lowerExposure = exposureA;
     }
-
+    if (exposureA > 0 && exposureB > 0) {
+      const difference = exposureA - exposureB;
+      if (difference <= 10) {
+        speedCashOut = true;
+      }
+    }
     // Compute the absolute value of the lower exposure.
     let absLowerExposure = Math.abs(lowerExposure);
 
@@ -94,6 +106,11 @@ const Bookmaker = ({
       oppositeLayValue,
       gameId,
       isOnePositiveExposure,
+      exposureA,
+      exposureB,
+      runner1,
+      runner2,
+      speedCashOut,
     };
   };
 
@@ -157,12 +174,20 @@ const Bookmaker = ({
 
   return (
     <>
+      {speedCashOut && (
+        <SpeedCashOut
+          speedCashOut={speedCashOut}
+          setSpeedCashOut={setSpeedCashOut}
+        />
+      )}
       {bookmarker?.map((games, i) => {
         const teamProfitForGame = teamProfit?.find(
           (profit) =>
             profit?.gameId === games?.id && profit?.isOnePositiveExposure
         );
-
+        const speedCashOut = teamProfit?.find(
+          (profit) => profit?.gameId === games?.id && profit?.speedCashOut
+        );
         return (
           <div key={i} className="bt12687">
             <div className="bt12695">
@@ -186,77 +211,101 @@ const Bookmaker = ({
                   Max: {games?.maxLiabilityPerBet}
                 </span>
               </div>
-              {Settings.bookmakerCashOut && games?.runners?.length !== 3 && (
-                <button
-                  disabled={
-                    !teamProfitForGame ||
-                    isGameSuspended(games) ||
-                    teamProfitForGame?.profit === 0
-                  }
-                  onClick={() =>
-                    handleCashOutPlaceBet(
-                      games,
-                      "lay",
-                      setOpenBetSlip,
-                      setPlaceBetValues,
-                      pnlBySelection,
-                      token,
-                      navigate,
-                      teamProfitForGame
-                    )
-                  }
-                  type="button"
-                  className="btn_box "
-                  style={{
-                    width: "100px",
-                    backgroundColor: "#c9c9c9",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    paddingRight: "10px",
-                    paddingLeft: "10px",
-
-                    cursor: `${
+              {Settings.bookmakerCashOut &&
+                games?.runners?.length !== 3 &&
+                !speedCashOut && (
+                  <button
+                    disabled={
                       !teamProfitForGame ||
                       isGameSuspended(games) ||
                       teamProfitForGame?.profit === 0
-                        ? "not-allowed"
-                        : "pointer"
-                    }`,
-                    opacity: `${
-                      !teamProfitForGame ||
-                      isGameSuspended(games) ||
-                      teamProfitForGame?.profit === 0
-                        ? "0.6"
-                        : "1"
-                    }`,
-                  }}
-                >
-                  <span style={{ color: "black", fontSize: "10px" }}>
-                    Cashout
-                  </span>
-                  {teamProfitForGame?.profit !== 0 &&
-                    !isGameSuspended(games) && (
-                      <span style={{ color: "black", fontSize: "10px" }}>
-                        :
-                      </span>
-                    )}
+                    }
+                    onClick={() =>
+                      handleCashOutPlaceBet(
+                        games,
+                        "lay",
+                        setOpenBetSlip,
+                        setPlaceBetValues,
+                        pnlBySelection,
+                        token,
+                        navigate,
+                        teamProfitForGame
+                      )
+                    }
+                    type="button"
+                    className="btn_box "
+                    style={{
+                      width: "100px",
+                      backgroundColor: "#c9c9c9",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      paddingRight: "10px",
+                      paddingLeft: "10px",
 
-                  {teamProfitForGame?.profit !== 0 &&
-                    !isGameSuspended(games) && (
-                      <span
-                        style={{
-                          color: `${
-                            teamProfitForGame?.profit > 0 ? "green" : "red"
-                          }`,
-                          fontSize: "10px",
-                        }}
-                      >
-                        {teamProfitForGame?.profit?.toFixed(2)}
-                      </span>
-                    )}
-                </button>
-              )}
+                      cursor: `${
+                        !teamProfitForGame ||
+                        isGameSuspended(games) ||
+                        teamProfitForGame?.profit === 0
+                          ? "not-allowed"
+                          : "pointer"
+                      }`,
+                      opacity: `${
+                        !teamProfitForGame ||
+                        isGameSuspended(games) ||
+                        teamProfitForGame?.profit === 0
+                          ? "0.6"
+                          : "1"
+                      }`,
+                    }}
+                  >
+                    <span style={{ color: "black", fontSize: "10px" }}>
+                      Cashout
+                    </span>
+                    {teamProfitForGame?.profit !== 0 &&
+                      !isGameSuspended(games) && (
+                        <span style={{ color: "black", fontSize: "10px" }}>
+                          :
+                        </span>
+                      )}
+
+                    {teamProfitForGame?.profit !== 0 &&
+                      !isGameSuspended(games) && (
+                        <span
+                          style={{
+                            color: `${
+                              teamProfitForGame?.profit > 0 ? "green" : "red"
+                            }`,
+                            fontSize: "10px",
+                          }}
+                        >
+                          {teamProfitForGame?.profit?.toFixed(2)}
+                        </span>
+                      )}
+                  </button>
+                )}
+
+              {Settings.bookmakerCashOut &&
+                games?.runners?.length !== 3 &&
+                speedCashOut && (
+                  <button
+                    onClick={() => setSpeedCashOut(speedCashOut)}
+                    disabled={isGameSuspended(games)}
+                    type="button"
+                    className="btn_box "
+                    style={{
+                      width: "100px",
+                      backgroundColor: "#82371b",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#fff",
+                      padding: "3px 2px",
+                    }}
+                  >
+                    Speed Cashout
+                  </button>
+                )}
             </div>
             {games?.runners?.map((runner) => {
               const pnl =
