@@ -95,6 +95,11 @@ const UserList = () => {
                           <td data-v-fd406c30="">{item?.date_added}</td>
                           <td data-v-fd406c30="">
                             <button
+                              onClick={() =>
+                                navigate(
+                                  `/affiliate/user-statement?punter_id=${item?.punter_id}`
+                                )
+                              }
                               style={{
                                 height: "auto",
                                 marginTop: "0px",

@@ -32,6 +32,7 @@ import MyBankDetails from "../pages/MyBankDetails/MyBankDetails";
 import Funbar from "../pages/Funbar/Funbar";
 import Affiliate from "../pages/Affiliate/Affiliate";
 import AffiliateBettingProfitLoss from "../pages/AffiliateBettingProfitLoss/AffiliateBettingProfitLoss";
+import AffiliateUserStatement from "../pages/AffiliateUserStatement/AffiliateUserStatement";
 
 export const router = createBrowserRouter(
   [
@@ -158,6 +159,10 @@ export const router = createBrowserRouter(
         {
           path: "affiliate/profit-loss",
           element: <AffiliateBettingProfitLoss />,
+        },
+        {
+          path: "affiliate/user-statement",
+          element: <AffiliateUserStatement />,
         },
 
         {
