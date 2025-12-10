@@ -4,8 +4,16 @@ import { useRef } from "react";
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { useIndex } from "../../hooks";
 import toast from "react-hot-toast";
+import useCurrentBets from "../../hooks/useCurrentBets";
+import { useParams } from "react-router-dom";
+import useExposer from "../../hooks/useExposer";
+import useBalance from "../../hooks/useBalance";
 
 const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
+  const { eventId } = useParams();
+  const { refetchCurrentBets } = useCurrentBets(eventId);
+  const { refetchExposure } = useExposer(eventId);
+  const { refetchBalance } = useBalance();
   const ref = useRef();
   useCloseModalClickOutside(ref, () => {
     setSpeedCashOut(null);
@@ -29,6 +37,9 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
       onSuccess: (data) => {
         if (data?.success) {
           toast.success(data?.result?.message);
+          refetchBalance();
+          refetchCurrentBets();
+          refetchExposure();
           setSpeedCashOut(null);
         } else {
           toast.error(data?.error?.errorMessage);
