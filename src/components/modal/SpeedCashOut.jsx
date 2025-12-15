@@ -10,7 +10,7 @@ import useExposer from "../../hooks/useExposer";
 import useBalance from "../../hooks/useBalance";
 
 const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
-  const { eventId } = useParams();
+  const { eventTypeId, eventId } = useParams();
   const { refetchCurrentBets } = useCurrentBets(eventId);
   const { refetchExposure } = useExposer(eventId);
   const { refetchBalance } = useBalance();
@@ -32,6 +32,8 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
       type: "speed_cashout",
       market_id: speedCashOut?.gameId,
       amount,
+      event_id: eventId,
+      event_type_id: eventTypeId,
     };
     mutate(payload, {
       onSuccess: (data) => {
