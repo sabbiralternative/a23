@@ -34,6 +34,8 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
       amount,
       event_id: eventId,
       event_type_id: eventTypeId,
+      market_name: speedCashOut?.market_name,
+      event_name: speedCashOut?.event_name,
     };
     mutate(payload, {
       onSuccess: (data) => {
