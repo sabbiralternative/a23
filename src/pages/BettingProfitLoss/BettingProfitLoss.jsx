@@ -48,6 +48,7 @@ const BettingProfitLoss = () => {
             const filterByDate = passbook?.filter(
               (item) => item?.settledTime === date
             );
+
             const totalPnl = filterByDate?.reduce((acc, curr) => {
               return acc + curr.memberWin;
             }, 0);
@@ -101,7 +102,7 @@ const BettingProfitLoss = () => {
                             : "#FFFFFF",
                       }}
                     >
-                      {totalPnl}
+                      {totalPnl?.toFixed(2)}
                     </span>
                   </div>
                 </div>
