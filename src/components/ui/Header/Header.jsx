@@ -13,8 +13,10 @@ import Language from "../../modal/Language.jsx";
 import { languageValue } from "../../../utils/language.js";
 import { LanguageKey } from "../../../constant/constant.js";
 import Notification from "./Notification.jsx";
+import useGetSocialLink from "../../../hooks/useGetSocialLink.jsx";
 
 const Header = () => {
+  const { socialLink } = useGetSocialLink();
   const { language, valueByLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
   const { setSportsType, token, logo, sportsType, wallet } = useContextState();
@@ -291,55 +293,26 @@ const Header = () => {
                     {languageValue(valueByLanguage, LanguageKey.HOME)}
                   </span>
                 </button>
-
-                <button
-                  onClick={() => {
-                    setSportsType(4);
-                    navigate("/");
-                  }}
-                  className={`mb-top-navigate-item ${
-                    location.pathname == "/" && sportsType == 4 ? "active" : ""
-                  }`}
-                >
-                  <svg
-                    width="18"
-                    height="19"
-                    xmlns="http://www.w3.org/2000/svg"
-                    x="0px"
-                    y="0px"
-                    viewBox="0 0 24 24"
-                    //   style="enable-background: new 0 0 24 24"
+                {socialLink?.referral && (
+                  <button
+                    onClick={() => {
+                      setSportsType(4);
+                      navigate("/affiliate");
+                    }}
+                    className={`mb-top-navigate-item ${
+                      location.pathname == "/affiliate" ? "active" : ""
+                    }`}
                   >
-                    <path
-                      fill="#E8B71A"
-                      d="M20.2,23c-0.2,0-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.2-0.2-0.4s0.1-0.3,0.2-0.4l0.7-0.7l-0.7-0.7l-4.5-4.5
-                                         c-0.4-0.4-0.9-0.5-1.5-0.5c-0.7,0-1.4,0.2-2.1,0.3c-0.4,0.1-0.9,0.2-1.1,0.2c-0.1,0-0.2,0-0.3,0L1.1,6.9l5.8-5.8l9.2,9.2
-                                         c0,0.1-0.1,0.3-0.1,0.5c-0.4,1.6-0.9,3.5,0.2,4.6l5.2,5.2l0.7-0.7c0.1-0.1,0.3-0.2,0.4-0.2s0.3,0.1,0.4,0.2
-                                         c0.1,0.1,0.2,0.2,0.2,0.4s-0.1,0.3-0.2,0.4l-2.2,2.2C20.5,22.9,20.4,23,20.2,23z"
+                    <img
+                      style={{
+                        height: "15px",
+                      }}
+                      src={images.affiliate}
+                      alt=""
                     />
-                    <path
-                      d="M6.9,2.5l8.1,8.1c-0.3,1.2-0.7,2.8-0.3,4.1c-0.3-0.1-0.5-0.1-0.8-0.1c-0.8,0-1.6,0.2-2.3,0.4c-0.2,0.1-0.6,0.1-0.8,0.2
-                                         L2.5,6.9L6.9,2.5 M6.9,0C6.7,0,6.5,0.1,6.3,0.2L0.2,6.3c-0.3,0.3-0.3,0.8,0,1.1l9.7,9.7c0.2,0,0.4,0,0.6,0
-                                         c0.7,0,2.2-0.6,3.2-0.6c0.3,0,0.6,0.1,0.8,0.2l4.5,4.5l0,0c-0.6,0.6-0.6,1.6,0,2.2c0.3,0.3,0.7,0.5,1.1,0.5s0.8-0.2,1.1-0.5
-                                         l2.2-2.2c0.6-0.6,0.6-1.6,0-2.2c-0.3-0.3-0.7-0.5-1.1-0.5c-0.4,0-0.8,0.2-1.1,0.5l0,0l-4.5-4.5c-0.9-0.9,0.1-3.4,0.4-4.6
-                                         L7.4,0.2C7.3,0.1,7.1,0,6.9,0L6.9,0z"
-                    />
-                    <circle fill="#E5421C" cx="6.5" cy="17.5" r="5.5" />
-                    <path
-                      d="M6.5,13C9,13,11,15,11,17.5S9,22,6.5,22S2,20,2,17.5S4,13,6.5,13 M6.5,11C2.9,11,0,13.9,0,17.5S2.9,24,6.5,24
-                                 s6.5-2.9,6.5-6.5S10.1,11,6.5,11L6.5,11z"
-                    />
-                    <path
-                      fill="#E5421C"
-                      d="M11.7,15.5c-1.2,1.6-3.1,2.6-5.2,2.6c-2.2,0-4.2-1.1-5.3-2.8"
-                    />
-                    <path d="M6.5,19.1c-2.5,0-4.8-1.2-6.2-3.2L2,14.7c1,1.5,2.7,2.4,4.5,2.4c1.7,0,3.3-0.8,4.4-2.2l1.6,1.2C11.1,18,8.9,19.1,6.5,19.1z" />
-                  </svg>
-                  <span>
-                    {" "}
-                    {languageValue(valueByLanguage, LanguageKey.CRICKET)}
-                  </span>
-                </button>
+                    <span>Affiliate</span>
+                  </button>
+                )}
 
                 <button
                   onClick={() => {
