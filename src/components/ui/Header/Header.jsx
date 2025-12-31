@@ -14,6 +14,7 @@ import { languageValue } from "../../../utils/language.js";
 import { LanguageKey } from "../../../constant/constant.js";
 import Notification from "./Notification.jsx";
 import useGetSocialLink from "../../../hooks/useGetSocialLink.jsx";
+import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK.jsx";
 
 const Header = () => {
   const { socialLink } = useGetSocialLink();
@@ -31,6 +32,7 @@ const Header = () => {
   const [casinoInfo, setCasinoInfo] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showAPKModal, setShowAPKModal] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,11 +46,16 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
+    const apk_modal_shown = sessionStorage.getItem("apk_modal_shown");
     const closePopupForForever = localStorage.getItem("closePopupForForever");
     if (location?.state?.pathname === "/apk" || location.pathname === "/apk") {
+      sessionStorage.setItem("apk_modal_shown", true);
       localStorage.setItem("closePopupForForever", true);
       localStorage.removeItem("installPromptExpiryTime");
     } else {
+      if (!apk_modal_shown) {
+        setShowAPKModal(true);
+      }
       if (!closePopupForForever) {
         const expiryTime = localStorage.getItem("installPromptExpiryTime");
         const currentTime = new Date().getTime();
@@ -105,6 +112,9 @@ const Header = () => {
       )}
       {showModal && (
         <AEDRules setShowModal={setShowModal} casinoInfo={casinoInfo} />
+      )}
+      {Settings?.apkLink && showAPKModal && (
+        <DownloadAPK setShowAPKModal={setShowAPKModal} />
       )}
 
       <div
