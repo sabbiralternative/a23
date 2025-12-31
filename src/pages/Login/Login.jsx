@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import useContextState from "../../hooks/useContextState";
 import { AxiosSecure } from "../../lib/AxiosSecure";
+import { HiArrowNarrowDown } from "react-icons/hi";
+import { GrAndroid } from "react-icons/gr";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -124,6 +126,17 @@ const Login = () => {
         toast.error(data?.error);
       }
     }
+  };
+
+  const handleDownload = (e) => {
+    e.preventDefault();
+    const fileUrl = Settings.apkLink;
+    const link = document.createElement("a");
+    link.href = fileUrl;
+    link.setAttribute("download", "site.apk");
+    document.body.appendChild(link);
+    link.click();
+    link.parentNode.removeChild(link);
   };
   return (
     <div className="e-p-body-bc">
@@ -244,6 +257,25 @@ const Login = () => {
                     >
                       <span>Register</span>
                     </div>
+                    {Settings.apkLink && (
+                      <div
+                        onClick={handleDownload}
+                        className="google-login"
+                        style={{
+                          cursor: "pointer",
+                          border: "none",
+                        }}
+                      >
+                        <span
+                          style={{
+                            display: "flex",
+                            gap: "6px",
+                          }}
+                        >
+                          <GrAndroid /> Download .apk <HiArrowNarrowDown />
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </form>
               </div>
