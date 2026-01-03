@@ -306,8 +306,7 @@ const Header = () => {
                 {socialLink?.referral && (
                   <button
                     onClick={() => {
-                      setSportsType(4);
-                      navigate("/affiliate");
+                      navigate(token ? "/affiliate" : "/login");
                     }}
                     className={`mb-top-navigate-item ${
                       location.pathname == "/affiliate" ? "active" : ""
