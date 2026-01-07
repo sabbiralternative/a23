@@ -1277,29 +1277,11 @@ html * {
 .header-content {
   display: flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 5px 20px;
   background: rgba(255, 255, 255, 0.05);
 }
-
-.phone-mockup {
+.header-content img {
   width: 70px;
-  height: 120px;
-  border-radius: 10px;
-  margin-right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.install-btn {
-  background: var(--color1);
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  font-size: 10px;
-  font-weight: bold;
-  border-radius: 4px;
 }
 
 .main-title {
@@ -1309,7 +1291,7 @@ html * {
 }
 
 .promo-body {
-  padding: 20px;
+  padding: 10px 20px;
 }
 
 .intro-text,
@@ -1381,5 +1363,24 @@ html * {
 .android-icon {
   width: 16px;
   margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .benefits-list li {
+    font-size: 12px;
+  }
+  .benefits-title {
+    font-size: 12px;
+  }
+  .main-title {
+    font-size: 16px;
+  }
+  .intro-text,
+  .closing-text {
+    font-size: 12px;
+  }
+  .download-button {
+    margin-bottom: 5px;
+  }
 }
 /*! Download apk css end  */

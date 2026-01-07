@@ -9,8 +9,10 @@ import { FaSpinner } from "react-icons/fa";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 import axios from "axios";
 import useUTR from "../../hooks/utr";
+import ImageUploadMessage from "../../components/modal/ImageUploadMessage/ImageUploadMessage";
 
 const UploadTransaction = ({ paymentId, amount, tabs }) => {
+  const [imageUploadMessage, setImageUploadMessage] = useState(null);
   const { mutate: getUTR } = useUTR();
   const [utr, setUTR] = useState(null);
   const { token } = useContextState();
@@ -24,6 +26,7 @@ const UploadTransaction = ({ paymentId, amount, tabs }) => {
   useEffect(() => {
     if (image) {
       setLoading(true);
+      setImageUploadMessage("Uploading Image");
       const handleSubmitImage = async () => {
         const formData = new FormData();
         formData.append("image", image);
@@ -34,13 +37,22 @@ const UploadTransaction = ({ paymentId, amount, tabs }) => {
         });
         const data = res.data;
         if (data?.success) {
+          setImageUploadMessage("Image uploaded, Fetching UTR");
           getUTR(data?.filePath, {
             onSuccess: (data) => {
+              setImageUploadMessage(null);
               if (data?.success) {
+                toast.success(data?.message);
                 if (data?.utr !== null) {
                   setUTR(data?.utr);
                 }
+              } else {
+                toast.error(data?.message);
+                setImageUploadMessage(null);
               }
+            },
+            onError: () => {
+              setImageUploadMessage(null);
             },
           });
           setLoading(false);
@@ -49,8 +61,8 @@ const UploadTransaction = ({ paymentId, amount, tabs }) => {
           setFilePath(data?.filePath);
           setImage(null);
         } else {
+          setImageUploadMessage(null);
           setLoading(false);
-
           setImage(null);
           setFilePath("");
           setUploadedImage(null);
@@ -107,6 +119,9 @@ const UploadTransaction = ({ paymentId, amount, tabs }) => {
 
   return (
     <>
+      {imageUploadMessage && (
+        <ImageUploadMessage imageUploadMessage={imageUploadMessage} />
+      )}
       {!filePath && !loading && (
         <div className="utrbox ng-tns-c159-0">
           <div className="utrtxt ng-tns-c159-0">
@@ -232,14 +247,17 @@ const UploadTransaction = ({ paymentId, amount, tabs }) => {
       )}
 
       {loading && (
-        <div _ngcontent-ng-c3816252360="" class="utrbox ng-tns-c159-0">
-          <FaSpinner
-            style={{
-              width: "100%",
-            }}
-            className="animate-spin"
-            size={30}
-          />
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          _ngcontent-ng-c3816252360=""
+          class="utrbox ng-tns-c159-0"
+        >
+          <FaSpinner className="animate-spin" size={30} />
         </div>
       )}
 
