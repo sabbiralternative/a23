@@ -36,8 +36,10 @@ import user from "./img/affi-user-icn.b08f83a6.svg";
 import share from "./img/af-share-img.51df8801.svg";
 import affiliate from "./img/affiliate.png";
 import install_android from "./img/header_image.png";
+import warning from "./img/warning-yellow.svg";
 
 export const images = {
+  warning,
   install_android,
   affiliate,
   share,

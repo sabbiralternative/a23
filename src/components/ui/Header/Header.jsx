@@ -15,8 +15,11 @@ import { LanguageKey } from "../../../constant/constant.js";
 import Notification from "./Notification.jsx";
 import useGetSocialLink from "../../../hooks/useGetSocialLink.jsx";
 import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK.jsx";
+import BuildVersion from "../../modal/BuildVersion/BuildVersion.jsx";
 
 const Header = () => {
+  const [showBuildVersion, setShowBuildVersion] = useState(false);
+  const stored_build_version = localStorage.getItem("build_version");
   const { socialLink } = useGetSocialLink();
   const { language, valueByLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
@@ -69,6 +72,21 @@ const Header = () => {
     }
   }, [location?.state?.pathname, location.pathname, isModalOpen, windowWidth]);
 
+  useEffect(() => {
+    const newVersion = socialLink?.build_version;
+    if (!stored_build_version) {
+      if (newVersion) {
+        setShowBuildVersion(true);
+      }
+    }
+    if (stored_build_version && newVersion) {
+      const parseVersion = JSON.parse(stored_build_version);
+      if (newVersion > parseVersion) {
+        setShowBuildVersion(true);
+      }
+    }
+  }, [socialLink?.build_version, stored_build_version]);
+
   /* handle navigate aviator */
   const handleNavigateToIFrame = (name, id) => {
     if (token) {
@@ -115,6 +133,12 @@ const Header = () => {
       )}
       {Settings?.apkLink && showAPKModal && (
         <DownloadAPK setShowAPKModal={setShowAPKModal} />
+      )}
+      {showBuildVersion && !showAPKModal && (
+        <BuildVersion
+          build_version={socialLink?.build_version}
+          setShowBuildVersion={setShowBuildVersion}
+        />
       )}
 
       <div

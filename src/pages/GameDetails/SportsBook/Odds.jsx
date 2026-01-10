@@ -171,6 +171,7 @@ const Odds = ({
         )}
         {openBetSlip && (
           <BetSlip
+            data={data}
             refetchCurrentBets={refetchCurrentBets}
             refetchExposure={refetchExposure}
             setOpenBetSlip={setOpenBetSlip}
