@@ -37,8 +37,16 @@ import share from "./img/af-share-img.51df8801.svg";
 import affiliate from "./img/affiliate.png";
 import install_android from "./img/header_image.png";
 import warning from "./img/warning-yellow.svg";
+import promotionBanner from "./img/promotionBanner.webp";
+import cashBundle from "./img/cash-bundle.webp";
+import giftCard from "./img/giftCard.webp";
+import redeemCardGift from "./img/redeemCardGift.svg";
 
 export const images = {
+  cashBundle,
+  giftCard,
+  redeemCardGift,
+  promotionBanner,
   warning,
   install_android,
   affiliate,
