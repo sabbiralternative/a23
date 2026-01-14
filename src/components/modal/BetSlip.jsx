@@ -11,6 +11,7 @@ import useBalance from "../../hooks/useBalance";
 import useLanguage from "../../hooks/useLanguage";
 import { v4 as uuidv4 } from "uuid";
 import { useParams } from "react-router-dom";
+import useGetSocialLink from "../../hooks/useGetSocialLink";
 
 const BetSlip = ({
   setOpenBetSlip,
@@ -38,6 +39,7 @@ const BetSlip = ({
   const [totalSize, setTotalSize] = useState("");
   const [loader, setLoader] = useState(false);
   const [betDelay, setBetDelay] = useState("");
+  const { socialLink } = useGetSocialLink();
   const { refetchBalance } = useBalance();
   const [stakeErr, setStakeErr] = useState("");
   const [price, setPrice] = useState(null);
@@ -110,7 +112,7 @@ const BetSlip = ({
         token: generatedToken,
         site: Settings.siteUrl,
         nounce: uuidv4(),
-        isbetDelay: Settings.betDelay,
+        isbetDelay: socialLink?.bet_delay,
       },
     ]);
     let delay = 0;
@@ -131,7 +133,7 @@ const BetSlip = ({
       delay = 9000;
     } else {
       setBetDelay(currentPlaceBetEvent?.betDelay);
-      delay = Settings.betDelay ? currentPlaceBetEvent?.betDelay * 1000 : 0;
+      delay = socialLink?.bet_delay ? currentPlaceBetEvent?.betDelay * 1000 : 0;
     }
 
     setLoader(true);
