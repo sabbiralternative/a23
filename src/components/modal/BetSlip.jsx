@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import handleRandomToken from "../../utils/handleRandomToken";
-import handleEncryptData from "../../utils/handleEncryptData";
 import { API, Settings } from "../../api";
 import useContextState from "../../hooks/useContextState";
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
@@ -12,6 +10,7 @@ import useLanguage from "../../hooks/useLanguage";
 import { v4 as uuidv4 } from "uuid";
 import { useParams } from "react-router-dom";
 import useGetSocialLink from "../../hooks/useGetSocialLink";
+import { AxiosJSEncrypt } from "../../lib/AxiosJSEncrypt";
 
 const BetSlip = ({
   setOpenBetSlip,
@@ -23,7 +22,7 @@ const BetSlip = ({
   const [isCashOut, setIsCashOut] = useState(false);
   const { eventTypeId } = useParams();
   const { language } = useLanguage();
-  const { token, setPredictOdds, predictOdds } = useContextState();
+  const { setPredictOdds, predictOdds } = useContextState();
   /* Close modal click outside */
   const betSlipRef = useRef();
   useCloseModalClickOutside(betSlipRef, () => {
@@ -52,7 +51,7 @@ const BetSlip = ({
   }, [placeBetValues]);
 
   const currentPlaceBetEvent = data?.find(
-    (item) => item?.id === placeBetValues?.marketId
+    (item) => item?.id === placeBetValues?.marketId,
   );
 
   let payload = {};
@@ -103,18 +102,16 @@ const BetSlip = ({
     if (totalSize < 100) {
       return setStakeErr("Min bet amount is 100");
     }
-    /* random token */
-    const generatedToken = handleRandomToken();
+
     /* encrypt post data */
-    const encryptedData = handleEncryptData([
+    const payloadData = [
       {
         ...payload,
-        token: generatedToken,
         site: Settings.siteUrl,
         nounce: uuidv4(),
         isbetDelay: socialLink?.bet_delay,
       },
-    ]);
+    ];
     let delay = 0;
     if (
       (eventTypeId == 4 || eventTypeId == 2) &&
@@ -137,34 +134,23 @@ const BetSlip = ({
     }
 
     setLoader(true);
-    setTimeout(() => {
-      fetch(API.order, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(encryptedData),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data?.success) {
-            refetchExposure();
-            refetchBalance();
-            refetchCurrentBets();
-            setLoader(false);
-            closeBetSlip();
-            toast.success(data?.result?.result?.placed?.[0]?.message);
-          } else {
-            toast.error(
-              data?.error?.status?.[0]?.description || data?.error?.errorMessage
-            );
-            setLoader(false);
-            closeBetSlip();
-            refetchExposure();
-            refetchBalance();
-            refetchCurrentBets();
-          }
-        });
+    setTimeout(async () => {
+      const { data } = await AxiosJSEncrypt.post(API.order, payloadData);
+      if (data?.success) {
+        setBetDelay(null);
+        refetchExposure();
+        refetchBalance();
+        refetchCurrentBets();
+        setLoader(false);
+        closeBetSlip();
+        toast.success(data?.result?.result?.placed?.[0]?.message);
+      } else {
+        setBetDelay(null);
+        toast.error(
+          data?.error?.status?.[0]?.description || data?.error?.errorMessage,
+        );
+        setLoader(false);
+      }
     }, delay);
   };
 
