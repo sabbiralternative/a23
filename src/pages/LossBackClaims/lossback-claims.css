@@ -164,3 +164,34 @@
     transform: rotate(12deg) translateX(2px);
   }
 }
+
+.lossback-card-wrapper {
+  padding: 24px 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.info-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.info-card-inner div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.info-card-inner div h4 {
+  margin: 0px;
+  font-weight: 500 !important;
+}
+.info-card-inner div p {
+  margin: 0px;
+}
+
+@media (max-width: 500px) {
+  .lossback-card-wrapper {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
