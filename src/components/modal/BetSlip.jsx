@@ -19,6 +19,7 @@ const BetSlip = ({
   refetchCurrentBets,
   data,
 }) => {
+  const closePopupForForever = localStorage.getItem("closePopupForForever");
   const [isCashOut, setIsCashOut] = useState(false);
   const { eventTypeId } = useParams();
   const { language } = useLanguage();
@@ -110,6 +111,7 @@ const BetSlip = ({
         site: Settings.siteUrl,
         nounce: uuidv4(),
         isbetDelay: socialLink?.bet_delay,
+        apk: closePopupForForever ? true : false,
       },
     ];
     let delay = 0;

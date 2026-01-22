@@ -12,6 +12,7 @@ import { HiArrowNarrowDown } from "react-icons/hi";
 import { GrAndroid } from "react-icons/gr";
 
 const Login = () => {
+  const closePopupForForever = localStorage.getItem("closePopupForForever");
   const [showPassword, setShowPassword] = useState(false);
   const [disable, setDisable] = useState(false);
   const { handleSubmit, register } = useForm();
@@ -26,6 +27,7 @@ const Login = () => {
       username: username,
       password: password,
       b2c: Settings.b2c,
+      apk: closePopupForForever ? true : false,
     };
 
     const { data } = await AxiosSecure.post(API.login, loginData);
@@ -59,7 +61,7 @@ const Login = () => {
         const referralCode = data.result.referralCode;
         localStorage.setItem(
           "referralCode",
-          referralCode == null ? "show" : referralCode
+          referralCode == null ? "show" : referralCode,
         );
       }
       /* if in locale storage token and login name available and  data?.result?.changePassword === false */
@@ -90,7 +92,8 @@ const Login = () => {
     const loginData = {
       username: "demo",
       password: "",
-      // b2c: Settings.b2c,
+      b2c: Settings.b2c,
+      apk: closePopupForForever ? true : false,
     };
     const { data } = await AxiosSecure.post(API.login, loginData);
     console.log(data);
