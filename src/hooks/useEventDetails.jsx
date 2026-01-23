@@ -15,12 +15,14 @@ const useEventDetails = (eventTypeId, eventId) => {
             "Cache-Control": "public",
             "max-age": 1,
           },
-        }
+        },
       );
       const data = res.data;
-      const decryptionData = await handleDecryptData(JSON.stringify(data));
-
-      return decryptionData;
+      if (data?.ct) {
+        return handleDecryptData(JSON.stringify(data));
+      } else {
+        return data;
+      }
     },
     /* refetching after 2 second */
     refetchInterval: Settings.interval,
