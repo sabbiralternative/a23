@@ -2,7 +2,6 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../ui/Footer/Footer";
 import Header from "../ui/Header/Header";
 import useContextState from "../../hooks/useContextState";
-import { Settings } from "../../api";
 import { useEffect } from "react";
 import disableDevtool from "disable-devtool";
 import { handleLogOut } from "../../utils/handleLogOut";
@@ -13,7 +12,7 @@ const MainLayout = () => {
 
   const location = useLocation();
   const { addBank, setTokenLoading } = useContextState();
-  const disabledDevtool = Settings.disabledDevtool;
+  const disabledDevtool = socialLink?.disabledDevtool;
   const navigate = useNavigate();
 
   /* Disable devtool */

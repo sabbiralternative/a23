@@ -2,7 +2,12 @@ import { useNavigate } from "react-router-dom";
 import "./lossback-claims.css";
 import { useBonusMutation, useBonusQuery } from "../../hooks/bonus";
 import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 const LossBackClaims = () => {
+  const bonusMessage = [
+    "Lossback can be claimed only if you have a net loss on the specified date. If your total bets result in any profit, you are not eligible for this lossback bonus.Loss is calculated after all wins, losses, and settlements for that date.",
+    "लॉसबैक का दावा केवल उसी स्थिति में किया जा सकता है जब निर्धारित तिथि पर आपका कुल शुद्ध नुकसान (नेट लॉस) हो। यदि उस दिन आपकी कुल बेटिंग का परिणाम किसी भी प्रकार का मुनाफ़ा (प्रॉफिट) दिखाता है, तो आप इस लॉसबैक बोनस के लिए पात्र नहीं होंगे। लॉस की गणना उस तिथि की सभी जीत, हार और सेटलमेंट को जोड़ने के बाद की जाएगी।",
+  ];
   const navigate = useNavigate();
   const { mutate: claimBonus } = useBonusMutation();
   const { data, refetch } = useBonusQuery({
@@ -29,8 +34,58 @@ const LossBackClaims = () => {
       },
     );
   };
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // fade out
+      setFade(false);
+
+      setTimeout(() => {
+        setCurrentIndex((prev) => {
+          return (prev + 1) % bonusMessage?.length;
+        });
+        setFade(true);
+      }, 500); // fade out duration
+    }, 30000); // 30s display time
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="lossback-wrapper">
+      <div
+        style={{
+          backgroundColor: "white",
+          textAlign: "start",
+          marginTop: "10px",
+          paddingLeft: "0.625rem", // px-2.5
+          paddingRight: "0.625rem",
+          paddingTop: "0.25rem", // py-1
+          paddingBottom: "0.25rem",
+          color: "var(--text_color_primary1)",
+          borderRadius: "0.25rem", // rounded
+          fontSize: "12px", // text-[12px]
+          boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)", // shadow-sm
+          marginLeft: "12px", // mx-2
+          marginRight: "10px",
+          display: "flex", // flex
+          alignItems: "center", // items-center
+          gap: "0.5rem", // gap-2
+          transitionProperty: "opacity", // transition-opacity
+          transitionDuration: "500ms", // duration-500
+          opacity: fade ? 1 : 0,
+          fontWeight: 500, // for font-medium in <span>
+        }}
+      >
+        <img
+          style={{ height: "15px" }}
+          src="/img/info-icon-svgrepo-com.svg"
+          alt=""
+        />
+        <span>{bonusMessage[currentIndex]}</span>
+      </div>
       {data?.result?.length > 0 && (
         <div className="lossback-card-wrapper">
           {data?.result?.map((item) => {
@@ -82,7 +137,7 @@ const LossBackClaims = () => {
         </div>
       )}
 
-      {data?.length === 0 && (
+      {data?.result?.length === 0 && (
         <div className="lossback-content">
           <div className="icon-wrap">
             <svg
