@@ -26,12 +26,11 @@ import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../constant/constant";
 
 const Account = () => {
-  const closePopupForForever = localStorage.getItem("closePopupForForever");
   const { valueByLanguage } = useLanguage();
   const [showReferral, setShowReferral] = useState(false);
   const { socialLink } = useGetSocialLink();
   // token, setWallet,
-  const { setGetToken, wallet } = useContextState();
+  const { setGetToken, wallet, closePopupForForever } = useContextState();
   const navigate = useNavigate();
   /* get login name from locale storage */
   const loginName = localStorage.getItem("loginName");

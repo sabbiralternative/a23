@@ -73,4 +73,5 @@ export const Settings = {
   otpWhatsapp: "",
   complaint: "",
   registrationWhatsapp: "",
+  appOnly: "",
 };

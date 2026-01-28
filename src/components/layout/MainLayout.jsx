@@ -18,17 +18,19 @@ const MainLayout = () => {
   /* Disable devtool */
   useEffect(() => {
     /* If disable devtool true in notice.json then logout the user */
-    if (disabledDevtool) {
-      disableDevtool({
-        ondevtoolopen: (type) => {
-          const info = "devtool opened!; type =" + type;
-          if (info) {
-            handleLogOut();
-            setTokenLoading(true);
-            window.location.href = "https://www.google.com/";
-          }
-        },
-      });
+    if (window.location.hostname !== "localhost") {
+      if (disabledDevtool) {
+        disableDevtool({
+          ondevtoolopen: (type) => {
+            const info = "devtool opened!; type =" + type;
+            if (info) {
+              handleLogOut();
+              setTokenLoading(true);
+              window.location.href = "https://www.google.com/";
+            }
+          },
+        });
+      }
     }
   }, [navigate, disabledDevtool]);
 

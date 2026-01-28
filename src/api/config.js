@@ -81,6 +81,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         Settings.complaint = data?.result?.settings?.complaint;
         Settings.registrationWhatsapp =
           data?.result?.settings?.registrationWhatsapp;
+        Settings.appOnly = data?.result?.settings?.appOnly;
 
         setNoticeLoaded(true);
       }

@@ -28,7 +28,8 @@
       "betDelay": true,
       "otpWhatsapp": true,
       "complaint": true,
-      "registrationWhatsapp": true
+      "registrationWhatsapp": true,
+      "appOnly": false
     },
     "logo": {
       "height": 55,

@@ -6,6 +6,7 @@ import notice from "../../notice.json";
 const StateProvider = ({ children }) => {
   const baseUrl = notice?.result?.settings?.baseUrl;
   /* Global state this states we are using in full project */
+
   const [logo, setLogo] = useState("");
   const [navTabs, setNavTabs] = useState("live");
   const [token, setToken] = useState("");
@@ -19,6 +20,7 @@ const StateProvider = ({ children }) => {
   const [wallet, setWallet] = useState("main");
   const [showWarning, setShowWarning] = useState(false);
   const [predictOdds, setPredictOdds] = useState([]);
+  const [closePopupForForever, setClosePopUpForForever] = useState(false);
 
   useEffect(() => {
     const fetchAPI = () => {
@@ -80,9 +82,13 @@ const StateProvider = ({ children }) => {
       FavIconLink.href = `${API.assets}/${Settings.siteUrl}/favicon.png`;
       document.head.appendChild(FavIconLink);
       /* Site title */
-      document.title = Settings.siteTitle;
+      if (Settings.appOnly && !closePopupForForever) {
+        document.title = window.location.hostname;
+      } else {
+        document.title = Settings.siteTitle;
+      }
     }
-  }, [noticeLoaded]);
+  }, [noticeLoaded, closePopupForForever]);
 
   if (!noticeLoaded) {
     return;
@@ -113,6 +119,8 @@ const StateProvider = ({ children }) => {
     setShowWarning,
     predictOdds,
     setPredictOdds,
+    closePopupForForever,
+    setClosePopUpForForever,
   };
   return (
     <StateContext.Provider value={stateInfo}>{children}</StateContext.Provider>

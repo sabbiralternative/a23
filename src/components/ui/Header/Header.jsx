@@ -16,6 +16,7 @@ import Notification from "./Notification.jsx";
 import useGetSocialLink from "../../../hooks/useGetSocialLink.jsx";
 import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK.jsx";
 import BuildVersion from "../../modal/BuildVersion/BuildVersion.jsx";
+import Error from "../../modal/Error/Error.jsx";
 
 const Header = () => {
   const [showBuildVersion, setShowBuildVersion] = useState(false);
@@ -23,7 +24,15 @@ const Header = () => {
   const { socialLink } = useGetSocialLink();
   const { language, valueByLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
-  const { setSportsType, token, logo, sportsType, wallet } = useContextState();
+  const {
+    setSportsType,
+    token,
+    logo,
+    sportsType,
+    wallet,
+    closePopupForForever,
+    setClosePopUpForForever,
+  } = useContextState();
   const storedWallet = localStorage.getItem("wallet");
   const navigate = useNavigate();
   const [showNotification, setShowNotification] = useState(false);
@@ -51,9 +60,11 @@ const Header = () => {
   useEffect(() => {
     const apk_modal_shown = sessionStorage.getItem("apk_modal_shown");
     const closePopupForForever = localStorage.getItem("closePopupForForever");
+    setClosePopUpForForever(closePopupForForever ? true : false);
     if (location?.state?.pathname === "/apk" || location.pathname === "/apk") {
       sessionStorage.setItem("apk_modal_shown", true);
       localStorage.setItem("closePopupForForever", true);
+      setClosePopUpForForever(true);
       localStorage.removeItem("installPromptExpiryTime");
     } else {
       if (!apk_modal_shown) {
@@ -122,7 +133,9 @@ const Header = () => {
       return "110px";
     }
   };
-
+  if (Settings.appOnly && !closePopupForForever) {
+    return <Error />;
+  }
   return (
     <>
       {Settings?.apkLink && isModalOpen && windowWidth < 550 && (

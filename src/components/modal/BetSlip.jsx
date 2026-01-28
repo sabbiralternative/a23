@@ -19,11 +19,11 @@ const BetSlip = ({
   refetchCurrentBets,
   data,
 }) => {
-  const closePopupForForever = localStorage.getItem("closePopupForForever");
   const [isCashOut, setIsCashOut] = useState(false);
   const { eventTypeId } = useParams();
   const { language } = useLanguage();
-  const { setPredictOdds, predictOdds } = useContextState();
+  const { setPredictOdds, predictOdds, closePopupForForever } =
+    useContextState();
   /* Close modal click outside */
   const betSlipRef = useRef();
   useCloseModalClickOutside(betSlipRef, () => {

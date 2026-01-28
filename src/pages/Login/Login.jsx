@@ -12,12 +12,11 @@ import { HiArrowNarrowDown } from "react-icons/hi";
 import { GrAndroid } from "react-icons/gr";
 
 const Login = () => {
-  const closePopupForForever = localStorage.getItem("closePopupForForever");
   const [showPassword, setShowPassword] = useState(false);
   const [disable, setDisable] = useState(false);
   const { handleSubmit, register } = useForm();
   const navigate = useNavigate();
-  const { setGetToken } = useContextState();
+  const { setGetToken, closePopupForForever } = useContextState();
 
   /* handle login */
   const onSubmit = async ({ username, password }) => {

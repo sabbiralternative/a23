@@ -8,9 +8,10 @@ import useCurrentBets from "../../hooks/useCurrentBets";
 import { useParams } from "react-router-dom";
 import useExposer from "../../hooks/useExposer";
 import useBalance from "../../hooks/useBalance";
+import useContextState from "../../hooks/useContextState";
 
 const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
-  const closePopupForForever = localStorage.getItem("closePopupForForever");
+  const { closePopupForForever } = useContextState();
   const { eventTypeId, eventId } = useParams();
   const { refetchCurrentBets } = useCurrentBets(eventId);
   const { refetchExposure } = useExposer(eventId);
