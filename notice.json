@@ -7,10 +7,10 @@
     "settings": {
       "siteTitle": "a23money",
       "siteUrl": "a23money.com",
-      "referral": true,
+
       "balanceApiLoop": false,
       "registration": true,
-      "disabledDevtool": false,
+
       "otp": true,
       "interval": "900",
       "apkLink": "https://a23money.com/site.apk",

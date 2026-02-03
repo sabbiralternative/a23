@@ -17,18 +17,19 @@ import profileSettings from "../../../src/assets/img/profile-settings.svg";
 // import axios from "axios";
 
 // import toast from "react-hot-toast";
-import useGetSocialLink from "../../hooks/useGetSocialLink";
+
 import { images } from "../../assets";
 import { useState } from "react";
 import Referral from "../../components/modal/Referral";
 import useLanguage from "../../hooks/useLanguage";
 import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../constant/constant";
+import { Settings } from "../../api";
 
 const Account = () => {
   const { valueByLanguage } = useLanguage();
   const [showReferral, setShowReferral] = useState(false);
-  const { socialLink } = useGetSocialLink();
+
   // token, setWallet,
   const { setGetToken, wallet, closePopupForForever } = useContextState();
   const navigate = useNavigate();
@@ -407,9 +408,9 @@ const Account = () => {
             style={{ paddingLeft: "0px" }}
             className="profile-menu-container active"
           >
-            {socialLink?.branchWhatsapplink && (
+            {Settings?.branchWhatsapplink && (
               <li
-                onClick={() => navigateWhatsApp(socialLink?.branchWhatsapplink)}
+                onClick={() => navigateWhatsApp(Settings?.branchWhatsapplink)}
                 className="profile-menu-items ng-star-inserted"
               >
                 <div className="routingProfile">
@@ -800,7 +801,7 @@ const Account = () => {
                 </div>
               </div>
             </li>
-            {socialLink?.referral && (
+            {Settings?.referral && (
               <li
                 onClick={() => navigate("/affiliate")}
                 className="profile-menu-items ng-star-inserted"
@@ -1030,9 +1031,9 @@ const Account = () => {
               </div>
             </li> */}
 
-            {/* {socialLink?.whatsapplink && (
+            {/* {Settings?.whatsapplink && (
               <li
-                onClick={() => navigateWhatsApp(socialLink?.whatsapplink)}
+                onClick={() => navigateWhatsApp(Settings?.whatsapplink)}
                 className="profile-menu-items ng-star-inserted"
               >
                 <div className="routingProfile">

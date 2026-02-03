@@ -5,14 +5,12 @@ import useContextState from "../../hooks/useContextState";
 import { useEffect } from "react";
 import disableDevtool from "disable-devtool";
 import { handleLogOut } from "../../utils/handleLogOut";
-import useGetSocialLink from "../../hooks/useGetSocialLink";
+import { Settings } from "../../api";
 
 const MainLayout = () => {
-  const { socialLink } = useGetSocialLink();
-
   const location = useLocation();
   const { addBank, setTokenLoading } = useContextState();
-  const disabledDevtool = socialLink?.disabledDevtool;
+  const disabledDevtool = Settings?.disabledDevtool;
   const navigate = useNavigate();
 
   /* Disable devtool */
@@ -57,7 +55,7 @@ const MainLayout = () => {
   }, [location.pathname, navigate]);
 
   useEffect(() => {
-    if (socialLink?.pixel) {
+    if (Settings?.pixel) {
       // Create fb pixel main script
       const script = document.createElement("script");
       script.innerHTML = `
@@ -69,7 +67,7 @@ const MainLayout = () => {
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', ${socialLink?.pixel});
+      fbq('init', ${Settings?.pixel});
       fbq('track', 'PageView');
     `;
       document.head.appendChild(script);
@@ -80,7 +78,7 @@ const MainLayout = () => {
       img.height = 1;
       img.width = 1;
       img.style.display = "none";
-      img.src = `https://www.facebook.com/tr?id=${socialLink?.pixel}&ev=PageView&noscript=1`;
+      img.src = `https://www.facebook.com/tr?id=${Settings?.pixel}&ev=PageView&noscript=1`;
       noscript.appendChild(img);
 
       document.body.appendChild(noscript);
@@ -91,7 +89,7 @@ const MainLayout = () => {
         noscript.remove();
       };
     }
-  }, [socialLink?.pixel]);
+  }, []);
 
   return (
     <div

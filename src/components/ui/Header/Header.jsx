@@ -13,7 +13,6 @@ import Language from "../../modal/Language.jsx";
 import { languageValue } from "../../../utils/language.js";
 import { LanguageKey } from "../../../constant/constant.js";
 import Notification from "./Notification.jsx";
-import useGetSocialLink from "../../../hooks/useGetSocialLink.jsx";
 import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK.jsx";
 import BuildVersion from "../../modal/BuildVersion/BuildVersion.jsx";
 import Error from "../../modal/Error/Error.jsx";
@@ -21,7 +20,6 @@ import Error from "../../modal/Error/Error.jsx";
 const Header = () => {
   const [showBuildVersion, setShowBuildVersion] = useState(false);
   const stored_build_version = localStorage.getItem("build_version");
-  const { socialLink } = useGetSocialLink();
   const { language, valueByLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
   const {
@@ -84,7 +82,7 @@ const Header = () => {
   }, [location?.state?.pathname, location.pathname, isModalOpen, windowWidth]);
 
   useEffect(() => {
-    const newVersion = socialLink?.build_version;
+    const newVersion = Settings?.build_version;
     if (!stored_build_version) {
       if (newVersion) {
         localStorage.setItem("build_version", newVersion);
@@ -96,7 +94,7 @@ const Header = () => {
         setShowBuildVersion(true);
       }
     }
-  }, [socialLink?.build_version, stored_build_version]);
+  }, [stored_build_version]);
 
   /* handle navigate aviator */
   const handleNavigateToIFrame = (name, id) => {
@@ -149,7 +147,7 @@ const Header = () => {
       )}
       {showBuildVersion && !showAPKModal && (
         <BuildVersion
-          build_version={socialLink?.build_version}
+          build_version={Settings?.build_version}
           setShowBuildVersion={setShowBuildVersion}
         />
       )}
@@ -340,7 +338,7 @@ const Header = () => {
                     {languageValue(valueByLanguage, LanguageKey.HOME)}
                   </span>
                 </button>
-                {socialLink?.referral && (
+                {Settings?.referral && (
                   <button
                     onClick={() => {
                       navigate(token ? "/affiliate" : "/login");

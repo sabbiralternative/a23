@@ -1,6 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useContextState from "../../../hooks/useContextState";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import { useEffect, useState } from "react";
 import OpenBets from "../../modal/OpenBets";
 import useCurrentBets from "../../../hooks/useCurrentBets";
@@ -14,7 +13,6 @@ const Footer = () => {
   const { setSportsType, token } = useContextState();
   const navigate = useNavigate();
   const location = useLocation();
-  const { socialLink } = useGetSocialLink();
 
   const loginName = localStorage.getItem("loginName");
   const { myBets } = useCurrentBets();
@@ -73,15 +71,15 @@ const Footer = () => {
   //       window.chaport.open();
   //     });
   //   }
-  //   if (socialLink?.link) {
-  //     window.open(socialLink?.link, "_blank");
+  //   if (Settings?.link) {
+  //     window.open(Settings?.link, "_blank");
   //   }
   // };
   const navigateWhatsApp = () => {
-    if (token && socialLink?.branchWhatsapplink) {
-      window.open(socialLink?.branchWhatsapplink, "_blank");
+    if (token && Settings?.branchWhatsapplink) {
+      window.open(Settings?.branchWhatsapplink, "_blank");
     } else {
-      window.open(socialLink?.whatsapplink, "_blank");
+      window.open(Settings?.whatsapplink, "_blank");
     }
   };
   return (

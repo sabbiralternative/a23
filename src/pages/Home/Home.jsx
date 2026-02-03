@@ -13,7 +13,6 @@ import useBalance from "../../hooks/useBalance";
 import useHomeCasino from "../../hooks/useHomeCasino";
 import useCasinoGames from "../../hooks/useCasinoGames";
 import { images } from "../../assets";
-import useGetSocialLink from "../../hooks/useGetSocialLink";
 import Warning from "../../components/modal/Warning";
 
 const Home = () => {
@@ -24,7 +23,6 @@ const Home = () => {
   const { refetchBalance } = useBalance();
   const { homeCasino } = useHomeCasino();
   const { casinoGames } = useCasinoGames();
-  const { socialLink, refetchSocialLinks } = useGetSocialLink();
 
   useEffect(() => {
     refetchSports();
@@ -36,15 +34,11 @@ const Home = () => {
     }
   }, []);
 
-  useEffect(() => {
-    refetchSocialLinks();
-  }, [token, refetchSocialLinks]);
-
   const navigateWhatsApp = () => {
-    if (token && socialLink?.branchWhatsapplink) {
-      window.open(socialLink?.branchWhatsapplink, "_blank");
+    if (token && Settings?.branchWhatsapplink) {
+      window.open(Settings?.branchWhatsapplink, "_blank");
     } else {
-      window.open(socialLink?.whatsapplink, "_blank");
+      window.open(Settings?.whatsapplink, "_blank");
     }
   };
 
@@ -84,9 +78,9 @@ const Home = () => {
       )}
       {sportsType ? <Sports sportsType={sportsType} sports={sports} /> : null}
 
-      {socialLink?.instagramLink ? (
+      {Settings?.instagramLink ? (
         <div
-          onClick={() => window.open(socialLink?.instagramLink, "_blank")}
+          onClick={() => window.open(Settings?.instagramLink, "_blank")}
           className="tabbar-item"
         >
           <div className="ob_button" style={{ zIndex: 100, bottom: "28%" }}>
@@ -110,9 +104,9 @@ const Home = () => {
           </div>
         </div>
       ) : null}
-      {socialLink?.telegramLink ? (
+      {Settings?.telegramLink ? (
         <div
-          onClick={() => window.open(socialLink?.telegramLink, "_blank")}
+          onClick={() => window.open(Settings?.telegramLink, "_blank")}
           className="tabbar-item"
         >
           <div className="ob_button" style={{ zIndex: 100, bottom: "20%" }}>
@@ -136,7 +130,7 @@ const Home = () => {
           </div>
         </div>
       ) : null}
-      {socialLink?.whatsapplink || socialLink?.branchWhatsapplink ? (
+      {Settings?.whatsapplink || Settings?.branchWhatsapplink ? (
         <div onClick={navigateWhatsApp} className="tabbar-item">
           <div className="ob_button" style={{ zIndex: 100, bottom: "13%" }}>
             <div className="bt1043">

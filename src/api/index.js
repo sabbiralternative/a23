@@ -74,4 +74,16 @@ export const Settings = {
   complaint: "",
   registrationWhatsapp: "",
   appOnly: "",
+
+  whatsapplink: "",
+  instagramLink: "",
+  telegramLink: "",
+  branchWhatsapplink: "",
+  pixel: "",
+  liveUrl: "",
+  pixel2: "",
+  whatsappFloatIconVisible: "",
+  referral_create_account: "",
+  bet_delay: "",
+  build_version: "",
 };

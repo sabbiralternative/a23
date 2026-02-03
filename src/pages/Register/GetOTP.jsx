@@ -2,7 +2,7 @@ import handLogo from "../../../src/assets/img/hand-logo.webp";
 import indFlag from "../../../src/assets/img/ind-flag-icon.svg";
 import { API, Settings } from "../../api";
 import toast from "react-hot-toast";
-import useGetSocialLink from "../../hooks/useGetSocialLink";
+
 // import getOtpOnWhatsapp from "../../utils/getOtpOnWhatsapp";
 import { images } from "../../assets";
 import { AxiosSecure } from "../../lib/AxiosSecure";
@@ -11,7 +11,7 @@ import useContextState from "../../hooks/useContextState";
 const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
   const { token } = useContextState();
   /* get social link */
-  const { socialLink } = useGetSocialLink();
+
   const getOtp = async (e) => {
     e.preventDefault();
     /* Get Otp based on settings*/
@@ -130,7 +130,7 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
               </form>
 
               {!token &&
-                socialLink?.whatsapplink &&
+                Settings?.whatsapplink &&
                 Settings.registrationWhatsapp && (
                   <Fragment>
                     <div
@@ -167,7 +167,7 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
                       />
                     </div>
                     <div
-                      onClick={() => getWhatsAppId(socialLink?.whatsapplink)}
+                      onClick={() => getWhatsAppId(Settings?.whatsapplink)}
                       className="whatsup-card"
                       style={{
                         cursor: "pointer",

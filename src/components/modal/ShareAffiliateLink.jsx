@@ -4,10 +4,9 @@ import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { images } from "../../assets";
 import { handleCopyToClipBoard } from "../../utils/handleCopyToClipBoard";
 import useGetIndex from "../../hooks/useGetIndex";
-import useGetSocialLink from "../../hooks/useGetSocialLink";
+import { Settings } from "../../api";
 
 const ShareAffiliateLink = ({ setShowShareAffiliateLink }) => {
-  const { socialLink } = useGetSocialLink();
   const { data } = useGetIndex();
   const ref = useRef();
   useCloseModalClickOutside(ref, () => {
@@ -59,23 +58,23 @@ const ShareAffiliateLink = ({ setShowShareAffiliateLink }) => {
                   </button>
                 </div>
               </div>
-              {(socialLink?.branchWhatsapplink ||
-                socialLink?.whatsapplink ||
-                socialLink?.instagramLink ||
-                socialLink?.telegramLink) && (
+              {(Settings?.branchWhatsapplink ||
+                Settings?.whatsapplink ||
+                Settings?.instagramLink ||
+                Settings?.telegramLink) && (
                 <div className="af-share-link-wrapper">
                   <div className="affilate-cmn-footer">
                     <div className="shre-text-title">
                       <p>Share this link via</p>
                     </div>
                     <div className="af-share-social-link-sec">
-                      {(socialLink?.branchWhatsapplink ||
-                        socialLink?.whatsapplink) && (
+                      {(Settings?.branchWhatsapplink ||
+                        Settings?.whatsapplink) && (
                         <a
                           onClick={() =>
                             handleNavigateToSocialLink(
-                              socialLink?.branchWhatsapplink ||
-                                socialLink?.whatsapplink
+                              Settings?.branchWhatsapplink ||
+                                Settings?.whatsapplink,
                             )
                           }
                         >
@@ -85,21 +84,19 @@ const ShareAffiliateLink = ({ setShowShareAffiliateLink }) => {
                           />
                         </a>
                       )}
-                      {socialLink?.instagramLink && (
+                      {Settings?.instagramLink && (
                         <a
                           onClick={() =>
-                            handleNavigateToSocialLink(
-                              socialLink?.instagramLink
-                            )
+                            handleNavigateToSocialLink(Settings?.instagramLink)
                           }
                         >
                           <img src={images.instagram} alt="instagram-share" />
                         </a>
                       )}
-                      {socialLink?.telegramLink && (
+                      {Settings?.telegramLink && (
                         <a
                           onClick={() =>
-                            handleNavigateToSocialLink(socialLink?.telegramLink)
+                            handleNavigateToSocialLink(Settings?.telegramLink)
                           }
                         >
                           <img
