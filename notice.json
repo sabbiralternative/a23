@@ -8,7 +8,6 @@
       "siteTitle": "a23money",
       "siteUrl": "a23money.com",
 
-      "balanceApiLoop": false,
       "registration": true,
 
       "otp": true,
