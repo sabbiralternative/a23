@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { API, Settings } from "../api";
+import { Settings } from "../api";
 export const StateContext = createContext(null);
 import { getSetApis } from "../api/config";
 import notice from "../../notice.json";
@@ -23,12 +23,12 @@ const StateProvider = ({ children }) => {
   const [closePopupForForever, setClosePopUpForForever] = useState(false);
 
   useEffect(() => {
-    const fetchAPI = () => {
-      getSetApis(setNoticeLoaded, baseUrl);
-    };
-    fetchAPI();
-    const interval = setInterval(fetchAPI, 300000);
-    return () => clearInterval(interval);
+    if (!noticeLoaded) {
+      const fetchAPI = () => {
+        getSetApis(setNoticeLoaded, baseUrl);
+      };
+      fetchAPI();
+    }
   }, [noticeLoaded, baseUrl]);
 
   /* Get token from locale storage */
@@ -54,33 +54,6 @@ const StateProvider = ({ children }) => {
 
   useEffect(() => {
     if (noticeLoaded) {
-      /* Get site logo */
-      if (Settings.build === "production") {
-        const logo = `${API.assets}/${Settings.siteUrl}/logo.${Settings.logoFormat}`;
-        setLogo(logo);
-      } else {
-        setLogo(`/src/assets/img/logo.${Settings.logoFormat}`);
-      }
-
-      /* Theme css */
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.type = "text/css";
-      if (Settings.build === "production") {
-        link.href = `${API.assets}/${Settings.siteUrl}/theme.css`;
-        document.head.appendChild(link);
-      } else {
-        link.href = `/src/assets/css/theme.css
-        `;
-        document.head.appendChild(link);
-      }
-
-      /* Dynamically append  favicon  */
-      const FavIconLink = document.createElement("link");
-      FavIconLink.rel = "icon";
-      FavIconLink.type = "image/png";
-      FavIconLink.href = `${API.assets}/${Settings.siteUrl}/favicon.png`;
-      document.head.appendChild(FavIconLink);
       /* Site title */
       if (Settings.appOnly && !closePopupForForever) {
         document.title = window.location.hostname;

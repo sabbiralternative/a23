@@ -7,9 +7,7 @@
     "settings": {
       "siteTitle": "a23money",
       "siteUrl": "a23money.com",
-
       "registration": true,
-
       "otp": true,
       "interval": "900",
       "apkLink": "https://a23money.com/site.apk",
