@@ -136,13 +136,13 @@ const Header = () => {
   }
   return (
     <>
-      {Settings?.apkLink && isModalOpen && windowWidth < 550 && (
+      {Settings.apk_link && isModalOpen && windowWidth < 550 && (
         <AppPopup setIsModalOpen={setIsModalOpen} />
       )}
       {showModal && (
         <AEDRules setShowModal={setShowModal} casinoInfo={casinoInfo} />
       )}
-      {Settings?.apkLink && showAPKModal && (
+      {Settings.apk_link && showAPKModal && (
         <DownloadAPK setShowAPKModal={setShowAPKModal} />
       )}
       {showBuildVersion && !showAPKModal && (
