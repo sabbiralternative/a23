@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import useContextState from "../../hooks/useContextState";
 import { useSettingsMutation } from "../../hooks/settings";
+import { API } from "../../api";
 
 const SettingsWrapper = ({ children }) => {
   const { token } = useContextState();
-  const { mutate, isSuccess } = useSettingsMutation();
+  const { mutate } = useSettingsMutation();
 
   useEffect(() => {
     mutate();
   }, [token, mutate]);
 
-  if (!isSuccess) {
+  if (!API.login) {
     return null;
   }
 

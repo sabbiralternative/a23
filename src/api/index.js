@@ -46,6 +46,8 @@ export const API = {
 };
 
 export const Settings = {
+  apk_link: "",
+  maintenance_message: "",
   siteUrl: "",
   interval: "",
   siteTitle: "",
@@ -54,7 +56,7 @@ export const Settings = {
   register: "",
   otp: "",
   disabledDevtool: "",
-  apkLink: "",
+
   casinoCurrency: "",
   chaportAppId: "",
   otpless: "",

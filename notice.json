@@ -10,7 +10,7 @@
       "registration": true,
       "otp": true,
       "interval": "900",
-      "apkLink": "https://a23money.com/site.apk",
+
       "casinoCurrency": "INR",
       "chaportAppId": "",
       "otpless": true,

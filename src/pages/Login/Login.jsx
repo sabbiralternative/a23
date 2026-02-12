@@ -132,7 +132,7 @@ const Login = () => {
 
   const handleDownload = (e) => {
     e.preventDefault();
-    const fileUrl = Settings.apkLink;
+    const fileUrl = Settings.apk_link;
     const link = document.createElement("a");
     link.href = fileUrl;
     link.setAttribute("download", "site.apk");
@@ -259,7 +259,7 @@ const Login = () => {
                     >
                       <span>Register</span>
                     </div>
-                    {Settings.apkLink && (
+                    {Settings.apk_link && (
                       <div
                         onClick={handleDownload}
                         className="google-login"

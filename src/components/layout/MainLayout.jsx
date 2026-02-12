@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import disableDevtool from "disable-devtool";
 import { handleLogOut } from "../../utils/handleLogOut";
 import { Settings } from "../../api";
+import MaintenanceMessage from "../ui/MaintenanceMessage/MaintenanceMessage";
 
 const MainLayout = () => {
   const location = useLocation();
@@ -90,6 +91,10 @@ const MainLayout = () => {
       };
     }
   }, []);
+
+  if (Settings.maintenance_message) {
+    return <MaintenanceMessage />;
+  }
 
   return (
     <div
