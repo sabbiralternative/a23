@@ -5,28 +5,10 @@
   },
   "result": {
     "settings": {
-      "siteTitle": "a23money",
       "siteUrl": "a23money.com",
-      "registration": true,
-      "otp": true,
-      "interval": "900",
-
-      "casinoCurrency": "INR",
-      "chaportAppId": "",
-      "otpless": true,
-      "paymentIntent": false,
-      "betFairCashOut": true,
-      "bookmakerCashOut": true,
-      "baseUrl": "",
-      "mac88": true,
-      "b2c": true,
-      "language": true,
       "build": "development",
-      "betDelay": true,
-      "otpWhatsapp": true,
-      "complaint": true,
-      "registrationWhatsapp": true,
-      "appOnly": false
+      "chaportAppId": "",
+      "paymentIntent": false
     },
     "logo": {
       "height": 55,

@@ -121,21 +121,21 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
     }
   }, [timer]);
 
-  const getOtpOnWhatsapp = async () => {
-    const otpData = {
-      mobile: mobile,
-      type: "otpsend",
-    };
+  // const getOtpOnWhatsapp = async () => {
+  //   const otpData = {
+  //     mobile: mobile,
+  //     type: "otpsend",
+  //   };
 
-    const res = await AxiosSecure.post(API.otpless, otpData);
-    const data = res.data;
+  //   const res = await AxiosSecure.post(API.otpless, otpData);
+  //   const data = res.data;
 
-    if (data?.success) {
-      toast.success(data?.result?.message);
-    } else {
-      toast.error(data?.error?.errorMessage);
-    }
-  };
+  //   if (data?.success) {
+  //     toast.success(data?.result?.message);
+  //   } else {
+  //     toast.error(data?.error?.errorMessage);
+  //   }
+  // };
   return (
     <form onSubmit={handleAddBank} className="new-account-form">
       <div className="form-container">
@@ -291,7 +291,7 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
                   </button>
                 ) : (
                   <div className="otp-buttons-group">
-                    {Settings.otpWhatsapp && (
+                    {/* {Settings.otpWhatsapp && (
                       <button
                         onClick={getOtpOnWhatsapp}
                         className="otp-button otp-button-primary"
@@ -302,7 +302,7 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
                         </span>
                         <span className="shimmer"></span>
                       </button>
-                    )}
+                    )} */}
 
                     <button
                       onClick={getOtp}

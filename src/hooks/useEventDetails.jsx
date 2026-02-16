@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { API, Settings } from "../api";
+import { API } from "../api";
 import handleDecryptData from "../utils/handleDecryptData";
 
 /* get single game details data */
@@ -25,7 +25,7 @@ const useEventDetails = (eventTypeId, eventId) => {
       }
     },
     /* refetching after 2 second */
-    refetchInterval: Settings.interval,
+    refetchInterval: 900,
     gcTime: 0,
   });
 

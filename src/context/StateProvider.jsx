@@ -2,9 +2,8 @@ import { createContext, useEffect, useState } from "react";
 import { Settings } from "../api";
 export const StateContext = createContext(null);
 import { getSetApis } from "../api/config";
-import notice from "../../notice.json";
+
 const StateProvider = ({ children }) => {
-  const baseUrl = notice?.result?.settings?.baseUrl;
   /* Global state this states we are using in full project */
 
   const [logo, setLogo] = useState("");
@@ -25,11 +24,11 @@ const StateProvider = ({ children }) => {
   useEffect(() => {
     if (!noticeLoaded) {
       const fetchAPI = () => {
-        getSetApis(setNoticeLoaded, baseUrl);
+        getSetApis(setNoticeLoaded);
       };
       fetchAPI();
     }
-  }, [noticeLoaded, baseUrl]);
+  }, [noticeLoaded]);
 
   /* Get token from locale storage */
   useEffect(() => {
@@ -55,10 +54,10 @@ const StateProvider = ({ children }) => {
   useEffect(() => {
     if (noticeLoaded) {
       /* Site title */
-      if (Settings.appOnly && !closePopupForForever) {
+      if (Settings.app_only && !closePopupForForever) {
         document.title = window.location.hostname;
       } else {
-        document.title = Settings.siteTitle;
+        document.title = Settings.site_name;
       }
     }
   }, [noticeLoaded, closePopupForForever]);

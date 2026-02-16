@@ -50,7 +50,7 @@ const LiveSlotWolf = ({ api }) => {
       if (wallet === "bonus") {
         return setWarnMessage("Bonus wallet is available only on sports.");
       }
-      if (Settings.casinoCurrency !== "AED") {
+      if (Settings.casino_currency !== "AED") {
         navigate(`/casino/${name.replace(/ /g, "")}/${id}`);
       } else {
         setGameInfo({ gameName: "", gameId: "" });
@@ -117,7 +117,7 @@ const LiveSlotWolf = ({ api }) => {
                                 onClick={() =>
                                   handleLiveSlotCasino(
                                     item?.game_id,
-                                    item?.game_name
+                                    item?.game_name,
                                   )
                                 }
                                 key={i}
@@ -177,7 +177,7 @@ const LiveSlotWolf = ({ api }) => {
                                 onClick={() =>
                                   handleLiveSlotCasino(
                                     item?.game_id,
-                                    item?.game_name
+                                    item?.game_name,
                                   )
                                 }
                                 key={i}
@@ -228,7 +228,7 @@ const LiveSlotWolf = ({ api }) => {
                                 </div>
                               </li>
                             );
-                          }
+                          },
                         )}
                   </ul>
                 </div>

@@ -211,7 +211,7 @@ const Bookmaker = ({
                   Max: {games?.maxLiabilityPerBet}
                 </span>
               </div>
-              {Settings.bookmakerCashOut &&
+              {Settings.cashout &&
                 games?.runners?.length !== 3 &&
                 !speedCashOut && (
                   <button
@@ -285,7 +285,7 @@ const Bookmaker = ({
                   </button>
                 )}
 
-              {Settings.bookmakerCashOut &&
+              {Settings.cashout &&
                 games?.runners?.length !== 3 &&
                 speedCashOut && (
                   <button

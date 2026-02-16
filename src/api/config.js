@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Settings } from "./index";
 
-export const getSetApis = async (setNoticeLoaded, baseUrl) => {
-  const url = baseUrl ? `${baseUrl}/notice.json` : "/notice.json";
+export const getSetApis = async (setNoticeLoaded) => {
+  const url = "/notice.json";
   const { data: settingsResponse } = await axios.get(url);
 
   if (settingsResponse?.result) {

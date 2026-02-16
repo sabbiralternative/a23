@@ -113,21 +113,21 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
     }
   }, [timer]);
 
-  const getOtpOnWhatsapp = async () => {
-    const otpData = {
-      mobile: mobile,
-      type: "otpsend",
-    };
+  // const getOtpOnWhatsapp = async () => {
+  //   const otpData = {
+  //     mobile: mobile,
+  //     type: "otpsend",
+  //   };
 
-    const res = await AxiosSecure.post(API.otpless, otpData);
-    const data = res.data;
+  //   const res = await AxiosSecure.post(API.otpless, otpData);
+  //   const data = res.data;
 
-    if (data?.success) {
-      toast.success(data?.result?.message);
-    } else {
-      toast.error(data?.error?.errorMessage);
-    }
-  };
+  //   if (data?.success) {
+  //     toast.success(data?.result?.message);
+  //   } else {
+  //     toast.error(data?.error?.errorMessage);
+  //   }
+  // };
 
   return (
     <div className="Modal-Background  ">
@@ -190,7 +190,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                       gap: "3px",
                     }}
                   >
-                    {Settings.otpWhatsapp && (
+                    {/* {Settings.otpWhatsapp && (
                       <button
                         onClick={getOtpOnWhatsapp}
                         style={{
@@ -205,7 +205,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                       >
                         Get OTP Whatsapp
                       </button>
-                    )}
+                    )} */}
                     <button
                       onClick={getOtp}
                       style={{

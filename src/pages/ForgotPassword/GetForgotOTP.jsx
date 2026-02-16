@@ -1,7 +1,7 @@
 import indFlag from "../../../src/assets/img/ind-flag-icon.svg";
 import { API, Settings } from "../../api";
 import toast from "react-hot-toast";
-import getOtpOnWhatsapp from "../../utils/getOtpOnWhatsapp";
+// import getOtpOnWhatsapp from "../../utils/getOtpOnWhatsapp";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 const GetForgotOTP = ({ setShowOtp, mobileNo, setMobileNo, setOrderId }) => {
   const getOtp = async (e) => {
@@ -35,9 +35,9 @@ const GetForgotOTP = ({ setShowOtp, mobileNo, setMobileNo, setOrderId }) => {
     }
   };
 
-  const handleGetOtpOnWhatsapp = async () => {
-    await getOtpOnWhatsapp(mobileNo, setOrderId, setShowOtp);
-  };
+  // const handleGetOtpOnWhatsapp = async () => {
+  //   await getOtpOnWhatsapp(mobileNo, setOrderId, setShowOtp);
+  // };
   return (
     <div className="e-p-body-bc" style={{ backdropFilter: "blur(1px)" }}>
       <div className="login-page-abc">
@@ -82,7 +82,7 @@ const GetForgotOTP = ({ setShowOtp, mobileNo, setMobileNo, setOrderId }) => {
                     <span>Get OTP on SMS</span>
                   </button>
 
-                  {Settings.otpless && (
+                  {/* {Settings.otpless && (
                     <button
                       onClick={handleGetOtpOnWhatsapp}
                       disabled={mobileNo?.length < 10}
@@ -91,7 +91,7 @@ const GetForgotOTP = ({ setShowOtp, mobileNo, setMobileNo, setOrderId }) => {
                     >
                       <span> Get OTP on Whatsapp</span>
                     </button>
-                  )}
+                  )} */}
                 </div>
               </form>
             </div>

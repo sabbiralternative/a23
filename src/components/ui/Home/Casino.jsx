@@ -27,11 +27,11 @@ const Casino = ({ casino, title }) => {
   const navigateCasinoVideo = (casino) => {
     if (token) {
       if (wallet === "main") {
-        if (Settings.casinoCurrency !== "AED") {
+        if (Settings.casino_currency !== "AED") {
           navigate(
             `/casino/${casino?.provider_name.replace(/ /g, "")}/${
               casino?.game_id
-            }`
+            }`,
           );
         } else {
           setShowModal(true);

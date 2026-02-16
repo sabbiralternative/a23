@@ -11,16 +11,15 @@ const CasinoCard = ({ games, title }) => {
   const [showModal, setShowModal] = useState(false);
   const [casinoInfo, setCasinoInfo] = useState({});
 
-
   const navigateCasinoVideo = (casino) => {
     if (title !== "Indian") {
       if (token) {
         if (wallet === "main") {
-          if (Settings.casinoCurrency !== "AED") {
+          if (Settings.casino_currency !== "AED") {
             navigate(
               `/casino/${casino?.game_name.replace(/ /g, "")}/${
                 casino?.game_id
-              }`
+              }`,
             );
           } else {
             setShowModal(true);
@@ -37,7 +36,7 @@ const CasinoCard = ({ games, title }) => {
         navigate("/login");
       }
     }
-    if (title === "Indian" || title === 'Royal') {
+    if (title === "Indian" || title === "Royal") {
       if (wallet === "bonus") {
         setShowWarning(true);
       } else {
@@ -46,7 +45,7 @@ const CasinoCard = ({ games, title }) => {
             ? `/casino/${casino?.game_name.replace(/ /g, "")}/${
                 casino?.game_id
               }`
-            : navigate("/login")
+            : navigate("/login"),
         );
       }
     }

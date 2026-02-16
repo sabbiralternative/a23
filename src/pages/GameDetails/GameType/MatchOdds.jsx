@@ -204,7 +204,7 @@ const MatchOdds = ({
                       Max: {games?.maxLiabilityPerBet}
                     </span>
                   </div>
-                  {Settings.betFairCashOut &&
+                  {Settings.cashout &&
                     games?.runners?.length !== 3 &&
                     !speedCashOut && (
                       <button
@@ -261,7 +261,7 @@ const MatchOdds = ({
                           )}
                       </button>
                     )}
-                  {Settings.betFairCashOut &&
+                  {Settings.cashout &&
                     games?.runners?.length !== 3 &&
                     speedCashOut && (
                       <button

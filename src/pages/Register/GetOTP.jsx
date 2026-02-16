@@ -131,7 +131,7 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
 
               {!token &&
                 Settings?.whatsapplink &&
-                Settings.registrationWhatsapp && (
+                Settings.registration_whatsapp && (
                   <Fragment>
                     <div
                       style={{
