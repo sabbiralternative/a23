@@ -4,23 +4,40 @@ import ImageModal from "./ImageModal";
 import { RxCrossCircled } from "react-icons/rx";
 import { MdOutlinePendingActions } from "react-icons/md";
 import Complaint from "../../components/modal/Complaint/Complaint";
-import { Settings } from "../../api";
+import { API, Settings } from "../../api";
+import { AxiosSecure } from "../../lib/AxiosSecure";
+import toast from "react-hot-toast";
 
 const WithdrawReport = () => {
   const [complaintId, setComplaintId] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState("");
-  const { withdrawStatement } = useWithdrawStatement();
+  const { withdrawStatement, refetch } = useWithdrawStatement();
   const [category, setCategory] = useState();
 
   useEffect(() => {
     if (withdrawStatement?.length > 0) {
       const categories = Array.from(
-        new Set(withdrawStatement?.map((item) => item?.date?.split(" ")?.[0]))
+        new Set(withdrawStatement?.map((item) => item?.date?.split(" ")?.[0])),
       );
       setCategory(categories);
     }
   }, [withdrawStatement]);
+
+  const handleDeleteWithdraw = async (withdraw_id) => {
+    const payload = {
+      type: "withdrawDelete",
+      withdraw_id,
+    };
+    const { data } = await AxiosSecure.post(API.bankAccount, payload);
+
+    if (data?.success) {
+      refetch();
+      toast.success(data?.result?.message);
+    } else {
+      toast.error(data?.error?.errorMessage);
+    }
+  };
 
   return (
     <>
@@ -141,25 +158,63 @@ const WithdrawReport = () => {
                               {" "}
                               {data?.remark}{" "}
                             </span>
-                            {Settings.complaint && (
-                              <button
-                                style={{
-                                  backgroundColor: "rgb(255 131 46)",
-                                  borderTopLeftRadius: "5px",
-                                  borderBottomRightRadius: "5px",
-                                  fontSize: "12px",
-                                  padding: "5px 8px",
-                                  color: "white",
-                                  height: "fit-content",
-                                  marginTop: "auto",
-                                }}
-                                onClick={() =>
-                                  setComplaintId(data?.referenceNo)
-                                }
-                              >
-                                Report Issue
-                              </button>
-                            )}
+
+                            <div style={{ display: "flex", gap: "0px 5px" }}>
+                              {data.status === "PENDING" &&
+                                data?.reject_request === 0 && (
+                                  <button
+                                    style={{
+                                      backgroundColor: "rgb(255 131 46)",
+                                      borderTopLeftRadius: "5px",
+                                      borderTopRightRadius: "5px",
+                                      fontSize: "12px",
+                                      padding: "5px 8px",
+                                      color: "white",
+                                      height: "fit-content",
+                                      marginTop: "auto",
+                                    }}
+                                    onClick={() =>
+                                      handleDeleteWithdraw(data?.withdraw_id)
+                                    }
+                                  >
+                                    Delete Withdraw
+                                  </button>
+                                )}
+
+                              {data.status === "PENDING" &&
+                                data?.reject_request === 1 && (
+                                  <p
+                                    style={{
+                                      fontSize: "12px",
+                                      padding: "5px 8px",
+                                      color: "black",
+                                      marginTop: "auto",
+                                    }}
+                                  >
+                                    Withdraw delete request sent.
+                                  </p>
+                                )}
+                              {Settings.complaint && (
+                                <button
+                                  style={{
+                                    backgroundColor: "rgb(255 131 46)",
+                                    borderTopLeftRadius: "5px",
+                                    borderBottomRightRadius: "5px",
+                                    fontSize: "12px",
+                                    padding: "5px 8px",
+                                    color: "white",
+                                    height: "fit-content",
+                                    marginTop: "auto",
+                                  }}
+                                  onClick={() =>
+                                    setComplaintId(data?.referenceNo)
+                                  }
+                                >
+                                  Report Issue
+                                </button>
+                              )}
+                            </div>
+
                             {/* <span className="right-bottom-date ">
                               {" "}
                               {data?.date}{" "}
