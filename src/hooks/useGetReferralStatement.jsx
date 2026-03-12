@@ -8,7 +8,7 @@ const useGetReferralStatement = (
   from_date,
   to_date,
   fetchData,
-  setFetchData
+  setFetchData,
 ) => {
   const { data, refetch, isLoading } = useQuery({
     queryKey: ["ReferralStatement"],
@@ -16,7 +16,6 @@ const useGetReferralStatement = (
     queryFn: async () => {
       const generatedToken = handleRandomToken();
       const payload = {
-        site: Settings.siteUrl,
         token: generatedToken,
         type: "referral_statement",
         from_date: moment(from_date).format("YYYY-MM-DD"),

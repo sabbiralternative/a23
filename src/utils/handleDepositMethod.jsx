@@ -9,7 +9,6 @@ const handleDepositMethod = (token) => {
     let bankData = {
       type: "depositMethods",
       token: generatedToken,
-      site: Settings.siteUrl,
     };
     if (Settings.language) {
       bankData.language = localStorage.getItem("language") || "english";
