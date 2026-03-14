@@ -31,6 +31,7 @@ const Login = () => {
 
     const { data } = await AxiosSecure.post(API.login, loginData);
     console.log(data);
+    console.log(loginData);
     if (data.success) {
       setDisable(false);
       if (Settings.deposit) {
