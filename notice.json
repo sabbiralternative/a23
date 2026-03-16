@@ -6,15 +6,10 @@
   "result": {
     "settings": {
       "siteUrl": "magicwin.zip",
-      "build": "development",
       "chaportAppId": "",
       "paymentIntent": false
     },
-    "logo": {
-      "height": 55,
-      "width": 125,
-      "format": "png"
-    },
+
     "endpoint": {
       "login": "https://api7.live/api/account/diamond/login",
       "balance": "https://api7.live/api/account/diamond/balance",

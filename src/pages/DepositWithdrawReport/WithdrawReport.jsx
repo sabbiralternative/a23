@@ -177,7 +177,7 @@ const WithdrawReport = () => {
                                       handleDeleteWithdraw(data?.withdraw_id)
                                     }
                                   >
-                                    Delete Withdraw
+                                    Cancel Withdraw
                                   </button>
                                 )}
 

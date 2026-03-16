@@ -10,13 +10,7 @@ export const getSetApis = async (setNoticeLoaded) => {
     const { settings = {} } = settingsResponse.result;
     // Dynamically update Settings object
     Object.keys(settings).forEach((key) => {
-      if (key === "logo") {
-        Settings.logoHeight = settings?.["logo"]?.height;
-        Settings.logoWidth = settings?.["logo"]?.width;
-        Settings.logoFormat = settings?.["logo"]?.format;
-      } else {
-        Settings[key] = settings[key];
-      }
+      Settings[key] = settings[key];
     });
 
     setNoticeLoaded(true);

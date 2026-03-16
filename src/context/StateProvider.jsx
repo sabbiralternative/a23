@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { Settings } from "../api";
 export const StateContext = createContext(null);
 import { getSetApis } from "../api/config";
 
@@ -50,17 +49,6 @@ const StateProvider = ({ children }) => {
       }
     }
   }, [token, getToken, noticeLoaded]);
-
-  useEffect(() => {
-    if (noticeLoaded) {
-      /* Site title */
-      if (Settings.app_only && !closePopupForForever) {
-        document.title = window.location.hostname;
-      } else {
-        document.title = Settings.site_name;
-      }
-    }
-  }, [noticeLoaded, closePopupForForever]);
 
   if (!noticeLoaded) {
     return;

@@ -79,7 +79,13 @@ const Header = () => {
         }
       }
     }
-  }, [location?.state?.pathname, location.pathname, isModalOpen, windowWidth]);
+  }, [
+    location?.state?.pathname,
+    location.pathname,
+    isModalOpen,
+    windowWidth,
+    setClosePopUpForForever,
+  ]);
 
   useEffect(() => {
     const newVersion = Settings?.build_version;
@@ -172,8 +178,8 @@ const Header = () => {
             <img
               alt="logo"
               style={{
-                height: `${Settings.logoHeight}px`,
-                width: `${Settings.logoWidth}px`,
+                height: `${Settings.logo_height}px`,
+                width: `${Settings.logo_width}px`,
                 objectFit: "contain",
               }}
               className="header-logo"
