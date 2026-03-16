@@ -5,9 +5,7 @@
   },
   "result": {
     "settings": {
-      "siteUrl": "magicwin.zip",
-      "chaportAppId": "",
-      "paymentIntent": false
+      "siteUrl": "magicwin.zip"
     },
 
     "endpoint": {

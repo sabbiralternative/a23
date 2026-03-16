@@ -98,14 +98,14 @@ const PaymentMethods = ({
       const data = res?.data;
 
       if (data?.success) {
-        if (Settings?.paymentIntent) {
-          setPgPaymentMethods(data?.result);
-          setTime(60 * 20);
-          setQrcode(data?.result?.upi);
-          setOrderId(data?.result?.orderId);
-        } else {
-          window.location.href = data?.result?.link;
-        }
+        // if (Settings?.paymentIntent) {
+        //   setPgPaymentMethods(data?.result);
+        //   setTime(60 * 20);
+        //   setQrcode(data?.result?.upi);
+        //   setOrderId(data?.result?.orderId);
+        // } else {
+        window.location.href = data?.result?.link;
+        // }
       } else {
         toast.error(data?.result?.message);
       }
