@@ -4,7 +4,7 @@ import { getSetApis } from "../api/config";
 
 const StateProvider = ({ children }) => {
   /* Global state this states we are using in full project */
-
+  const isLocalhost = window.location.hostname === "localhost";
   const [logo, setLogo] = useState("");
   const [navTabs, setNavTabs] = useState("live");
   const [token, setToken] = useState("");
@@ -21,13 +21,16 @@ const StateProvider = ({ children }) => {
   const [closePopupForForever, setClosePopUpForForever] = useState(false);
 
   useEffect(() => {
-    if (!noticeLoaded) {
+    if (!noticeLoaded && isLocalhost) {
       const fetchAPI = () => {
         getSetApis(setNoticeLoaded);
       };
       fetchAPI();
     }
-  }, [noticeLoaded]);
+    if (!noticeLoaded && !isLocalhost) {
+      setNoticeLoaded(true);
+    }
+  }, [noticeLoaded, isLocalhost]);
 
   /* Get token from locale storage */
   useEffect(() => {
