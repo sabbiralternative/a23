@@ -3,6 +3,7 @@ import { AxiosSecure } from "../lib/AxiosSecure";
 import { settingsAPI } from "../const";
 import { API, Settings } from "../api";
 import useContextState from "./useContextState";
+import { getSiteURL } from "../utils/getSiteURL";
 
 export const useSettingsMutation = () => {
   const isLocalhost = window.location.hostname === "localhost";
@@ -10,7 +11,14 @@ export const useSettingsMutation = () => {
   return useMutation({
     mutationKey: ["settings"],
     mutationFn: async () => {
-      const { data } = await AxiosSecure.post(settingsAPI);
+      let payload = {};
+      const { siteURL } = getSiteURL();
+
+      if (siteURL) {
+        payload.site = siteURL;
+      }
+
+      const { data } = await AxiosSecure.post(settingsAPI, payload);
       if (data?.success) {
         if (data?.result) {
           const { endpoint = {}, ...settings } = data.result;
