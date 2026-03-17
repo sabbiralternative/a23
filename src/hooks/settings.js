@@ -29,7 +29,7 @@ export const useSettingsMutation = () => {
           document.title = Settings.site_name;
         }
         if (!isLocalhost) {
-          const logo = `${API.assets}/${Settings.siteUrl}/logo.${Settings.logo_format}`;
+          const logo = `${API.assets}/${Settings.site}/logo.${Settings.logo_format}`;
           setLogo(logo);
         } else {
           setLogo(`/src/assets/img/logo.${Settings.logo_format}`);
@@ -40,7 +40,7 @@ export const useSettingsMutation = () => {
         link.rel = "stylesheet";
         link.type = "text/css";
         if (!isLocalhost) {
-          link.href = `${API.assets}/${Settings.siteUrl}/theme.css`;
+          link.href = `${API.assets}/${Settings.site}/theme.css`;
           document.head.appendChild(link);
         } else {
           link.href = `/src/assets/css/theme.css
@@ -52,7 +52,7 @@ export const useSettingsMutation = () => {
         const FavIconLink = document.createElement("link");
         FavIconLink.rel = "icon";
         FavIconLink.type = "image/png";
-        FavIconLink.href = `${API.assets}/${Settings.siteUrl}/favicon.png`;
+        FavIconLink.href = `${API.assets}/${Settings.site}/favicon.png`;
         document.head.appendChild(FavIconLink);
       }
       return data;

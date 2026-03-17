@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import handleRandomToken from "../utils/handleRandomToken";
-import { API, Settings } from "../api";
+import { API } from "../api";
 import { AxiosSecure } from "../lib/AxiosSecure";
 
 const useGetReferralStatement = (
