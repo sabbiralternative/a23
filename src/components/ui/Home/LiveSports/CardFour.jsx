@@ -4,6 +4,7 @@ import { handleNavigateEventPage } from "../../../../utils/handleNavigateEventPa
 const CardFour = ({ liveSports, keys }) => {
   const navigate = useNavigate();
   // console.log(liveSports[keys]?.timeStatus);
+
   return (
     <div
       onClick={() => {
@@ -122,9 +123,13 @@ const CardFour = ({ liveSports, keys }) => {
                         }
                       </h4>
                       <p style={{ fontSize: "10px" }} className="odds_volume">
-                        {liveSports?.[keys]?.[0]?.ex?.availableToBack?.[0]?.size
+                        {/* {liveSports?.[keys]?.[0]?.ex?.availableToBack?.[0]?.size
                           ?.split(".")?.[0]
-                          ?.slice(0, 4)}
+                          ?.slice(0, 4)} */}
+                        {
+                          liveSports?.[keys]?.[0]?.ex?.availableToBack?.[0]
+                            ?.size
+                        }
                       </p>
                     </span>
                   </div>
@@ -147,9 +152,10 @@ const CardFour = ({ liveSports, keys }) => {
                         }
                       </h4>
                       <p style={{ fontSize: "10px" }} className="odds_volume">
-                        {liveSports?.[keys]?.[0]?.ex?.availableToLay?.[0]?.size
+                        {/* {liveSports?.[keys]?.[0]?.ex?.availableToLay?.[0]?.size
                           ?.split(".")?.[0]
-                          ?.slice(0, 4)}
+                          ?.slice(0, 4)} */}
+                        {liveSports?.[keys]?.[0]?.ex?.availableToLay?.[0]?.size}
                       </p>
                     </span>
                   </div>
@@ -187,11 +193,15 @@ const CardFour = ({ liveSports, keys }) => {
                           }
                         </h4>
                         <p style={{ fontSize: "10px" }} className="odds_volume">
-                          {liveSports?.[
+                          {/* {liveSports?.[
                             keys
                           ]?.[2]?.ex?.availableToBack?.[0]?.size
                             ?.split(".")?.[0]
-                            ?.slice(0, 4)}
+                            ?.slice(0, 4)} */}
+                          {
+                            liveSports?.[keys]?.[2]?.ex?.availableToBack?.[0]
+                              ?.size
+                          }
                         </p>
                       </span>
                     </div>
@@ -214,11 +224,15 @@ const CardFour = ({ liveSports, keys }) => {
                           }
                         </h4>
                         <p style={{ fontSize: "10px" }} className="odds_volume">
-                          {liveSports?.[
+                          {/* {liveSports?.[
                             keys
                           ]?.[2]?.ex?.availableToLay?.[0]?.size
                             ?.split(".")?.[0]
-                            ?.slice(0, 4)}
+                            ?.slice(0, 4)} */}
+                          {
+                            liveSports?.[keys]?.[2]?.ex?.availableToLay?.[0]
+                              ?.size
+                          }
                         </p>
                       </span>
                     </div>
@@ -247,9 +261,13 @@ const CardFour = ({ liveSports, keys }) => {
                         }
                       </h4>
                       <p style={{ fontSize: "10px" }} className="odds_volume">
-                        {liveSports?.[keys]?.[1]?.ex?.availableToBack?.[0]?.size
+                        {/* {liveSports?.[keys]?.[1]?.ex?.availableToBack?.[0]?.size
                           ?.split(".")?.[0]
-                          ?.slice(0, 4)}
+                          ?.slice(0, 4)} */}
+                        {
+                          liveSports?.[keys]?.[1]?.ex?.availableToBack?.[0]
+                            ?.size
+                        }
                       </p>
                     </span>
                   </div>
@@ -272,9 +290,10 @@ const CardFour = ({ liveSports, keys }) => {
                         }
                       </h4>
                       <p style={{ fontSize: "10px" }} className="odds_volume">
-                        {liveSports?.[keys]?.[1]?.ex?.availableToLay?.[0]?.size
+                        {/* {liveSports?.[keys]?.[1]?.ex?.availableToLay?.[0]?.size
                           ?.split(".")?.[0]
-                          ?.slice(0, 4)}
+                          ?.slice(0, 4)} */}
+                        {liveSports?.[keys]?.[1]?.ex?.availableToLay?.[0]?.size}
                       </p>
                     </span>
                   </div>
