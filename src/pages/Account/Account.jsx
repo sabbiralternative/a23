@@ -426,10 +426,7 @@ const Account = () => {
                       </div>
                     </span>
                     <span className="profile-menu-left-text">
-                      {languageValue(
-                        valueByLanguage,
-                        LanguageKey.DEPOSIT_SUPPORT,
-                      )}
+                      Customer Support
                     </span>
                   </div>
                   <div className="profile-menu-items-right">
