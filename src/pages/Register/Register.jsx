@@ -11,6 +11,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 
 const Register = () => {
+  const affnook_token = localStorage.getItem("affnook_token");
   const referralCode = localStorage.getItem("referralCode");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
@@ -85,6 +86,7 @@ const Register = () => {
       referralCode: referralCode || user.referralCode,
       orderId: orderId.orderId,
       otpMethod: orderId.otpMethod,
+      affnook_token: affnook_token || null,
     };
 
     const { data } = await AxiosSecure.post(API.register, registerData);
