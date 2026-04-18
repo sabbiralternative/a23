@@ -102,7 +102,7 @@ const MyBankDetails = () => {
             <button onClick={() => setTab(1)} className="btn-inactive ">
               <span className="">Active</span>
             </button>
-            <button onClick={() => setTab(2)} className="btn-inactive ">
+            <button onClick={() => setTab(0)} className="btn-inactive ">
               <span className="">Deleted</span>
             </button>
           </div>
