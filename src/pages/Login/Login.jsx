@@ -27,6 +27,7 @@ const Login = () => {
       password: password,
       b2c: Settings.b2c,
       apk: closePopupForForever ? true : false,
+      nonce: crypto.randomUUID(),
     };
 
     const { data } = await AxiosSecure.post(API.login, loginData);
@@ -94,6 +95,7 @@ const Login = () => {
       password: "",
       b2c: Settings.b2c,
       apk: closePopupForForever ? true : false,
+      nonce: crypto.randomUUID(),
     };
     const { data } = await AxiosSecure.post(API.login, loginData);
     console.log(data);
