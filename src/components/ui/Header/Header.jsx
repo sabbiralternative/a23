@@ -472,6 +472,26 @@ const Header = () => {
                 </button>
                 <button
                   onClick={() => {
+                    setSportsType(6);
+                    navigate("/");
+                  }}
+                  className={`mb-top-navigate-item ${
+                    location.pathname == "/" && sportsType == 6 ? "active" : ""
+                  }`}
+                >
+                  <img
+                    style={{
+                      height: "18px",
+                      width: "18px",
+                      filter: "invert(1)",
+                    }}
+                    src={"/img/poll.svg"}
+                    alt=""
+                  />
+                  <span> Politics</span>
+                </button>
+                <button
+                  onClick={() => {
                     navigate("/horse-racing");
                   }}
                   className={`mb-top-navigate-item ${
