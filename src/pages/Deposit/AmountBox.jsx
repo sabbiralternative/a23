@@ -44,6 +44,13 @@ const AmountBox = ({ amount, setAmount, setShowModal }) => {
           <span className=""> +1,000</span>
         </button>
         <button
+          onClick={() => setAmount(2000)}
+          type="button"
+          className="btn_box "
+        >
+          <span className=""> +2,000</span>
+        </button>
+        <button
           onClick={() => setAmount(5000)}
           type="button"
           className="btn_box "
@@ -57,13 +64,7 @@ const AmountBox = ({ amount, setAmount, setShowModal }) => {
         >
           <span className=""> +10,000</span>
         </button>
-        <button
-          onClick={() => setAmount(50000)}
-          type="button"
-          className="btn_box "
-        >
-          <span className=""> +50,000</span>
-        </button>
+
         <button
           onClick={() => setAmount(1000000000)}
           type="button"
