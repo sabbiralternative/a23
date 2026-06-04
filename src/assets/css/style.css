@@ -265,9 +265,20 @@ button {
 
 button {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 button {
@@ -361,8 +372,8 @@ button {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2)
     format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-    U+FE2E-FE2F;
+  unicode-range:
+    U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
 @font-face {
@@ -389,8 +400,8 @@ button {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2)
     format("woff2");
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
-    U+03A3-03FF;
+  unicode-range:
+    U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
 }
 
 @font-face {
@@ -399,7 +410,8 @@ button {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2)
     format("woff2");
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+  unicode-range:
+    U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
     U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
     U+1EA0-1EF9, U+20AB;
 }
@@ -410,8 +422,9 @@ button {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7SUc.woff2)
     format("woff2");
-  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
-    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
@@ -420,9 +433,10 @@ button {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2)
     format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /*! CSS Used from: https://bc.co/assets/index.8c347120.css */
@@ -631,9 +645,20 @@ button {
 a,
 button {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 a,
@@ -754,8 +779,8 @@ a:active:hover {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2)
     format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-    U+FE2E-FE2F;
+  unicode-range:
+    U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
 @font-face {
@@ -782,8 +807,8 @@ a:active:hover {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2)
     format("woff2");
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
-    U+03A3-03FF;
+  unicode-range:
+    U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
 }
 
 @font-face {
@@ -792,7 +817,8 @@ a:active:hover {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2)
     format("woff2");
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+  unicode-range:
+    U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
     U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
     U+1EA0-1EF9, U+20AB;
 }
@@ -803,8 +829,9 @@ a:active:hover {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7SUc.woff2)
     format("woff2");
-  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
-    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
@@ -813,9 +840,10 @@ a:active:hover {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2)
     format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /*! captain */
@@ -1554,9 +1582,20 @@ a:active:hover {
 
 a {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 a {
@@ -1616,8 +1655,8 @@ p {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-    U+FE2E-FE2F;
+  unicode-range:
+    U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
 @font-face {
@@ -1644,8 +1683,8 @@ p {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
-    U+03A3-03FF;
+  unicode-range:
+    U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
 }
 
 @font-face {
@@ -1654,7 +1693,8 @@ p {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+  unicode-range:
+    U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
     U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
     U+1EA0-1EF9, U+20AB;
 }
@@ -1665,8 +1705,9 @@ p {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
-    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
@@ -1675,9 +1716,10 @@ p {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2)
     format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* slots start */
@@ -2107,9 +2149,20 @@ button {
 a,
 button {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 a,
@@ -2247,8 +2300,8 @@ a:active:hover {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-    U+FE2E-FE2F;
+  unicode-range:
+    U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
 @font-face {
@@ -2275,8 +2328,8 @@ a:active:hover {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
-    U+03A3-03FF;
+  unicode-range:
+    U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
 }
 
 @font-face {
@@ -2285,7 +2338,8 @@ a:active:hover {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+  unicode-range:
+    U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
     U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
     U+1EA0-1EF9, U+20AB;
 }
@@ -2296,8 +2350,9 @@ a:active:hover {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
-    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
@@ -2306,9 +2361,10 @@ a:active:hover {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2)
     format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* slot ends */
@@ -3990,7 +4046,9 @@ a:active:hover {
     rgb(255, 255, 255) 25%,
     rgba(255, 255, 255, 0) 100%
   );
-  transition: transform 0.3s linear 0s, opacity;
+  transition:
+    transform 0.3s linear 0s,
+    opacity;
   transform-origin: center top;
 }
 
@@ -4007,7 +4065,9 @@ a:active:hover {
     rgb(255, 255, 255) 25%,
     rgba(255, 255, 255, 0) 100%
   );
-  transition: transform 0.3s linear 0s, opacity;
+  transition:
+    transform 0.3s linear 0s,
+    opacity;
   transform-origin: center bottom;
 }
 
@@ -4024,7 +4084,9 @@ a:active:hover {
     rgb(255, 255, 255) 25%,
     rgba(255, 255, 255, 0) 100%
   );
-  transition: transform 0.3s linear 0s, opacity;
+  transition:
+    transform 0.3s linear 0s,
+    opacity;
   transform-origin: left center;
 }
 
@@ -4041,7 +4103,9 @@ a:active:hover {
     rgb(255, 255, 255) 25%,
     rgba(255, 255, 255, 0) 100%
   );
-  transition: transform 0.3s linear 0s, opacity;
+  transition:
+    transform 0.3s linear 0s,
+    opacity;
   transform-origin: right center;
 }
 
@@ -4057,7 +4121,9 @@ a:active:hover {
     rgb(255, 255, 255) 25%,
     rgba(255, 255, 255, 0) 100%
   );
-  transition: transform 0.3s linear 0s, opacity;
+  transition:
+    transform 0.3s linear 0s,
+    opacity;
   transform-origin: center top;
 }
 
@@ -4074,7 +4140,9 @@ a:active:hover {
     rgb(255, 255, 255) 25%,
     rgba(255, 255, 255, 0) 100%
   );
-  transition: transform 0.3s linear 0s, opacity;
+  transition:
+    transform 0.3s linear 0s,
+    opacity;
   transform-origin: center bottom;
 }
 
@@ -4091,7 +4159,9 @@ a:active:hover {
     rgb(255, 255, 255) 25%,
     rgba(255, 255, 255, 0) 100%
   );
-  transition: transform 0.3s linear 0s, opacity;
+  transition:
+    transform 0.3s linear 0s,
+    opacity;
   transform-origin: left center;
 }
 
@@ -4108,7 +4178,9 @@ a:active:hover {
     rgb(255, 255, 255) 25%,
     rgba(255, 255, 255, 0) 100%
   );
-  transition: transform 0.3s linear 0s, opacity;
+  transition:
+    transform 0.3s linear 0s,
+    opacity;
   transform-origin: right center;
 }
 
@@ -4409,7 +4481,9 @@ a:active:hover {
   .bt257:hover {
     color: rgb(49, 55, 61);
     cursor: pointer;
-    transition: color 0s ease 0s, opacity 0.3s ease 0s;
+    transition:
+      color 0s ease 0s,
+      opacity 0.3s ease 0s;
   }
 }
 
@@ -6081,9 +6155,20 @@ input,
 a,
 button {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 input,
@@ -6264,8 +6349,8 @@ p {
   width: 29rem;
   height: 720px;
   margin: -375px 0 0 -280px;
-  -webkit-transition-property: width, height, margin-left, margin-top,
-    background-color;
+  -webkit-transition-property:
+    width, height, margin-left, margin-top, background-color;
   transition-property: width, height, margin-left, margin-top, background-color;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -7012,8 +7097,8 @@ p {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-    U+FE2E-FE2F;
+  unicode-range:
+    U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
 @font-face {
@@ -7040,8 +7125,8 @@ p {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
-    U+03A3-03FF;
+  unicode-range:
+    U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
 }
 
 @font-face {
@@ -7050,7 +7135,8 @@ p {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+  unicode-range:
+    U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
     U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
     U+1EA0-1EF9, U+20AB;
 }
@@ -7061,8 +7147,9 @@ p {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7W0Q5n-wU.woff2)
     format("woff2");
-  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
-    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
@@ -7071,9 +7158,10 @@ p {
   font-weight: 400 900;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2)
     format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* register end */
@@ -7383,9 +7471,20 @@ button {
 
 button {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 button {
@@ -7906,7 +8005,8 @@ p {
 }
 
 .blug9f .bl-l .li-quests {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       26.79deg,
       rgba(109, 43, 255, 0.480402) 1.86%,
       rgba(109, 43, 255, 0.04) 85.25%,
@@ -7916,7 +8016,8 @@ p {
 }
 
 .blug9f .bl-l .li-spin {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       19.92deg,
       rgba(175, 13, 132, 0.511772) -6.45%,
       rgba(175, 13, 132, 0.04) 78.77%
@@ -8197,9 +8298,20 @@ button {
 a,
 button {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 a,
@@ -8400,9 +8512,20 @@ button {
 input,
 button {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 input,
@@ -8572,8 +8695,8 @@ p {
   width: 29rem;
   height: 720px;
   margin: -375px 0 0 -280px;
-  -webkit-transition-property: width, height, margin-left, margin-top,
-    background-color;
+  -webkit-transition-property:
+    width, height, margin-left, margin-top, background-color;
   transition-property: width, height, margin-left, margin-top, background-color;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -8853,9 +8976,20 @@ button {
 input,
 button {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 input,
@@ -9025,8 +9159,8 @@ p {
   width: 29rem;
   height: 720px;
   margin: -375px 0 0 -280px;
-  -webkit-transition-property: width, height, margin-left, margin-top,
-    background-color;
+  -webkit-transition-property:
+    width, height, margin-left, margin-top, background-color;
   transition-property: width, height, margin-left, margin-top, background-color;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -9406,9 +9540,20 @@ button {
 input,
 button {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 input,
@@ -9532,8 +9677,8 @@ li {
   width: 29rem;
   height: 720px;
   margin: -375px 0 0 -280px;
-  -webkit-transition-property: width, height, margin-left, margin-top,
-    background-color;
+  -webkit-transition-property:
+    width, height, margin-left, margin-top, background-color;
   transition-property: width, height, margin-left, margin-top, background-color;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -9900,7 +10045,10 @@ img,
 
 @media all {
   .mat-typography h2 {
-    font: 500 20px/32px "Inter", Helvetica Neue, sans-serif;
+    font:
+      500 20px/32px "Inter",
+      Helvetica Neue,
+      sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
   }
@@ -9910,7 +10058,10 @@ img,
   }
 
   .mat-icon-button {
-    font-family: "Inter", Helvetica Neue, sans-serif;
+    font-family:
+      "Inter",
+      Helvetica Neue,
+      sans-serif;
     font-size: 14px;
     font-weight: 500;
   }
@@ -9919,7 +10070,10 @@ img,
     font-size: inherit;
     font-weight: 400;
     line-height: 1.125;
-    font-family: "Inter", Helvetica Neue, sans-serif;
+    font-family:
+      "Inter",
+      Helvetica Neue,
+      sans-serif;
     letter-spacing: normal;
   }
 
@@ -10107,8 +10261,8 @@ img,
     --bs-btn-border-color: transparent;
     --bs-btn-border-radius: var(--bs-border-radius);
     --bs-btn-hover-border-color: transparent;
-    --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
-      0 1px 1px rgba(0, 0, 0, 0.075);
+    --bs-btn-box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
     --bs-btn-disabled-opacity: 0.65;
     --bs-btn-focus-box-shadow: 0 0 0 0.25rem
       rgba(var(--bs-btn-focus-shadow-rgb), 0.5);
@@ -10128,8 +10282,11 @@ img,
     border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
     border-radius: var(--bs-btn-border-radius);
     background-color: var(--bs-btn-bg);
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+      color 0.15s ease-in-out,
+      background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -10722,7 +10879,10 @@ img,
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
-    transition: color 0.24s, background 0.24s, border-color 0.24s;
+    transition:
+      color 0.24s,
+      background 0.24s,
+      border-color 0.24s;
     transition: 0.24s;
   }
 
@@ -11292,8 +11452,8 @@ img,
     --bs-btn-border-color: transparent;
     --bs-btn-border-radius: var(--bs-border-radius);
     --bs-btn-hover-border-color: transparent;
-    --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
-      0 1px 1px rgba(0, 0, 0, 0.075);
+    --bs-btn-box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
     --bs-btn-disabled-opacity: 0.65;
     --bs-btn-focus-box-shadow: 0 0 0 0.25rem
       rgba(var(--bs-btn-focus-shadow-rgb), 0.5);
@@ -11313,8 +11473,11 @@ img,
     border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
     border-radius: var(--bs-btn-border-radius);
     background-color: var(--bs-btn-bg);
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+      color 0.15s ease-in-out,
+      background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -11907,7 +12070,10 @@ img,
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
-    transition: color 0.24s, background 0.24s, border-color 0.24s;
+    transition:
+      color 0.24s,
+      background 0.24s,
+      border-color 0.24s;
     transition: 0.24s;
   }
 
@@ -12511,11 +12677,12 @@ img,
 }
 
 .stack-button {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  /* justify-content: space-between;
+  align-items: flex-start; */
   gap: 0.75rem;
-  align-self: stretch;
+  /* align-self: stretch; */
   height: 2.3125rem;
 }
 
@@ -13027,7 +13194,8 @@ img,
   left: 0;
   width: 100%;
   height: 0px;
-  background: linear-gradient(135deg, #000c24 12px, transparent 0%),
+  background:
+    linear-gradient(135deg, #000c24 12px, transparent 0%),
     linear-gradient(-135deg, #000c24 12px, transparent 0%);
   background-size: 30px;
 }
@@ -13152,7 +13320,8 @@ img,
   text-overflow: ellipsis;
   overflow: hidden;
   transform-origin: 0 0;
-  transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+  transition:
+    transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
     color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
     width 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
   display: none;
@@ -13372,7 +13541,8 @@ img,
 
 .mat-button-focus-overlay {
   opacity: 0;
-  transition: opacity 200ms cubic-bezier(0.35, 0, 0.25, 1),
+  transition:
+    opacity 200ms cubic-bezier(0.35, 0, 0.25, 1),
     background-color 200ms cubic-bezier(0.35, 0, 0.25, 1);
 }
 
@@ -17194,7 +17364,9 @@ form {
 .bt12585:hover {
   color: rgb(49, 55, 61);
   cursor: pointer;
-  transition: color 0s ease 0s, opacity 0.3s ease 0s;
+  transition:
+    color 0s ease 0s,
+    opacity 0.3s ease 0s;
 }
 
 .bt12580 {
@@ -17272,7 +17444,9 @@ form {
   .bt12585:hover {
     color: rgb(49, 55, 61);
     cursor: pointer;
-    transition: color 0s ease 0s, opacity 0.3s ease 0s;
+    transition:
+      color 0s ease 0s,
+      opacity 0.3s ease 0s;
   }
 }
 
@@ -18953,9 +19127,20 @@ button {
 a,
 button {
   font-weight: 400;
-  font-family: Inter, -apple-system, Framedcn, Helvetica Neue, Condensed,
-    DisplayRegular, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
-    WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Framedcn,
+    Helvetica Neue,
+    Condensed,
+    DisplayRegular,
+    Helvetica,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    WenQuanYi Micro Hei,
+    Microsoft Yahei,
+    sans-serif;
 }
 
 @media screen and (min-width: 621px) {
@@ -20442,7 +20627,10 @@ img,
 
 @media all {
   .mat-typography h2 {
-    font: 500 20px/32px "Inter", Helvetica Neue, sans-serif;
+    font:
+      500 20px/32px "Inter",
+      Helvetica Neue,
+      sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
   }
@@ -21323,7 +21511,10 @@ div {
 
 @media all {
   .mat-typography h2 {
-    font: 500 20px/32px "Inter", Helvetica Neue, sans-serif;
+    font:
+      500 20px/32px "Inter",
+      Helvetica Neue,
+      sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
   }
@@ -22867,13 +23058,19 @@ div {
 
 @media all {
   .mat-typography h1 {
-    font: 400 24px/32px "Inter", Helvetica Neue, sans-serif;
+    font:
+      400 24px/32px "Inter",
+      Helvetica Neue,
+      sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
   }
 
   .mat-typography h2 {
-    font: 500 20px/32px "Inter", Helvetica Neue, sans-serif;
+    font:
+      500 20px/32px "Inter",
+      Helvetica Neue,
+      sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
   }
@@ -24595,7 +24792,8 @@ img,
   display: block;
   margin: 0;
   overflow: hidden;
-  transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: var(--mat-expansion-container-background-color);
@@ -24768,7 +24966,8 @@ img,
   display: block;
   margin: 0;
   overflow: hidden;
-  transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: #fff;
@@ -24917,7 +25116,8 @@ img,
   display: block;
   margin: 0;
   overflow: hidden;
-  transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: var(--mat-expansion-container-background-color);
@@ -24987,7 +25187,8 @@ img,
   display: block;
   margin: 0;
   overflow: hidden;
-  transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: var(--mat-expansion-container-background-color);
@@ -25077,7 +25278,8 @@ img,
   display: block;
   margin: 0;
   overflow: hidden;
-  transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: var(--mat-expansion-container-background-color);
@@ -25235,7 +25437,8 @@ p {
   display: block;
   margin: 0;
   overflow: hidden;
-  transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: var(--mat-expansion-container-background-color);
@@ -25427,7 +25630,8 @@ p {
   display: block;
   margin: 0;
   overflow: hidden;
-  transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: var(--mat-expansion-container-background-color);
@@ -25791,7 +25995,8 @@ p {
   display: block;
   margin: 0;
   overflow: hidden;
-  transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: var(--mat-expansion-container-background-color);
@@ -25952,7 +26157,8 @@ p {
   display: block;
   margin: 0;
   overflow: hidden;
-  transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: var(--mat-expansion-container-background-color);
@@ -26092,7 +26298,8 @@ p {
   display: block;
   margin: 0;
   overflow: hidden;
-  transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: var(--mat-expansion-container-background-color);
