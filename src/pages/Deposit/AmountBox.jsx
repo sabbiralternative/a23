@@ -9,7 +9,11 @@ const AmountBox = ({ amount, setAmount, setShowModal }) => {
           <div className="w-100 deposit_form_input ">
             <div className="inputBox " style={{ backgroundColor: "#ebedf4" }}>
               <input
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) =>
+                  setAmount(
+                    e.target.value <= 10000000 ? e.target.value : 10000000,
+                  )
+                }
                 value={amount !== null && amount !== undefined ? amount : ""}
                 id="depositamount"
                 name="depositamount"
@@ -66,11 +70,11 @@ const AmountBox = ({ amount, setAmount, setShowModal }) => {
         </button>
 
         <button
-          onClick={() => setAmount(1000000000)}
+          onClick={() => setAmount(50000)}
           type="button"
           className="btn_box "
         >
-          <span className=""> +10,00,000,000 </span>
+          <span className=""> +50,000 </span>
         </button>
       </div>
 
