@@ -15,7 +15,9 @@ const Language = ({ setShowLanguage }) => {
     setShowLanguage(false);
   });
 
-  const languages = data?.[0]?.CRICKET;
+  console.log(data);
+
+  const languages = data?.CRICKET;
 
   const handleSetLanguage = (language) => {
     localStorage.setItem("language", language);
@@ -24,7 +26,10 @@ const Language = ({ setShowLanguage }) => {
   };
 
   return (
-    <div className="cdk-overlay-container" style={{ position: "absolute" }}>
+    <div
+      className="cdk-overlay-container"
+      style={{ position: "absolute", zIndex: 9999 }}
+    >
       <div className="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing"></div>
       <div
         className="cdk-global-overlay-wrapper"
@@ -41,6 +46,7 @@ const Language = ({ setShowLanguage }) => {
             top: "50px",
             right: "5px",
             marginBottom: "10px",
+            zIndex: 9999,
           }}
           ref={languageRef}
           initial={{ scale: 0.9 }}
@@ -61,6 +67,8 @@ const Language = ({ setShowLanguage }) => {
               margin: "auto",
               position: "static",
               display: "block",
+              zIndex: 9999,
+              backgroundColor: "white",
             }}
           >
             <div className="mdc-dialog__container">
@@ -73,7 +81,7 @@ const Language = ({ setShowLanguage }) => {
                     <div
                       _ngcontent-ng-c526813732=""
                       className="modal-body"
-                      style={{ backgroundColor: "white" }}
+                      style={{ backgroundColor: "white", zIndex: 9999 }}
                     >
                       <h1
                         style={{
@@ -97,6 +105,7 @@ const Language = ({ setShowLanguage }) => {
                           gap: "1px",
                           marginTop: "0px",
                           fontSize: "11px",
+                          zIndex: 9999,
                         }}
                       >
                         {languages &&

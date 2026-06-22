@@ -3,7 +3,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 const Banner = ({ bannerImage }) => {
   return (
     <div className="banner" style={{ padding: "0 10px" }}>
-      <div className="s1sfm7zm">
+      <div className="s1sfm7zm" style={{ zIndex: 0 }}>
         <Swiper
           autoplay={{
             delay: 5000,
@@ -30,17 +30,13 @@ const Banner = ({ bannerImage }) => {
             >
               {bannerImage?.map((image, i) => {
                 return (
-                  <SwiperSlide  key={i}>
+                  <SwiperSlide key={i}>
                     <div
                       className="swiper-slide"
                       style={{ marginRight: "8px" }}
                       draggable="false"
                     >
-                      <a
-                       
-                        className="img-box w-1"
-                        draggable="false"
-                      >
+                      <a className="img-box w-1" draggable="false">
                         <img src={image} alt="" draggable="false" />
                       </a>
                     </div>

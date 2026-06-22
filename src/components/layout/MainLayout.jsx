@@ -7,8 +7,10 @@ import disableDevtool from "disable-devtool";
 import { handleLogOut } from "../../utils/handleLogOut";
 import { Settings } from "../../api";
 import MaintenanceMessage from "../ui/MaintenanceMessage/MaintenanceMessage";
+import useLanguage from "../../hooks/useLanguage";
 
 const MainLayout = () => {
+  const { setLanguage } = useLanguage();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const affnook_token = params.get("token");
@@ -97,6 +99,10 @@ const MainLayout = () => {
       };
     }
   }, []);
+
+  useEffect(() => {
+    setLanguage(localStorage.getItem("language") || "english");
+  }, [setLanguage]);
 
   if (Settings.maintenance_message) {
     return <MaintenanceMessage />;
