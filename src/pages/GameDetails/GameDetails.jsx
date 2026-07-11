@@ -23,7 +23,7 @@ const GameDetails = () => {
   const [match_odds, setMatch_odds] = useState([]);
   const { eventsData, refetchEventsData } = useEventDetails(
     eventTypeId,
-    eventId
+    eventId,
   );
 
   const { myBets, refetchCurrentBets } = useCurrentBets(eventId);
@@ -59,6 +59,7 @@ const GameDetails = () => {
       <ScoreCardSlider />
       {Array.isArray(eventsData?.result?.[0]?.score2) &&
         eventsData?.score &&
+        Object.keys(eventsData?.score).length > 1 &&
         eventTypeId != 4 && (
           <ScoreBoardCard
             eventTypeId={eventTypeId}
@@ -89,6 +90,7 @@ const GameDetails = () => {
           setPrevPrices={setPrevPrices}
           myBets={myBets}
           setShowMyBets={setShowMyBets}
+          premium={eventsData?.premium}
         />
       )}
 

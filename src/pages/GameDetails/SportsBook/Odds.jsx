@@ -11,6 +11,7 @@ import useContextState from "../../../hooks/useContextState";
 import { useParams } from "react-router-dom";
 import useExposer from "../../../hooks/useExposer";
 import HorseGreyhound from "../GameType/HorseGreyhound";
+import Premium from "../Premium";
 
 const Odds = ({
   sportsBook,
@@ -25,6 +26,7 @@ const Odds = ({
   refetchCurrentBets,
   myBets,
   setShowMyBets,
+  premium,
 }) => {
   const { eventId } = useParams();
   const { placeBetValues, setPlaceBetValues, openBetSlip, setOpenBetSlip } =
@@ -48,13 +50,15 @@ const Odds = ({
       (group) =>
         group?.Name !== "Bet Builder" &&
         group?.Name !== "Fast Markets" &&
-        group?.Name !== "Player Specials"
+        group?.Name !== "Player Specials",
     );
 
   const itemsLengthArray =
     (sports && sports?.map((group) => group?.Items?.length)) || [];
   const [openItems, setOpenItems] = useState(
-    new Array(itemsLengthArray[0] || 0).fill(false).map((_, index) => index < 5)
+    new Array(itemsLengthArray[0] || 0)
+      .fill(false)
+      .map((_, index) => index < 5),
   );
 
   const toggleItem = (index) => {
@@ -67,7 +71,7 @@ const Odds = ({
     setOpenItems(
       new Array(itemsLengthArray[0] || 0)
         .fill(false)
-        .map((_, index) => index < 15)
+        .map((_, index) => index < 15),
     );
   }, [eventTypeId]);
 
@@ -77,13 +81,13 @@ const Odds = ({
       (match_odd) =>
         match_odd?.btype === "MATCH_ODDS" &&
         match_odd?.visible == true &&
-        match_odd?.name !== "tied match"
+        match_odd?.name !== "tied match",
     );
     setMatch_odds(filterMatch_odds);
 
     const bookmarkerFilter = data?.filter(
       (bookmarker) =>
-        bookmarker?.btype === "BOOKMAKER" && bookmarker?.visible == true
+        bookmarker?.btype === "BOOKMAKER" && bookmarker?.visible == true,
     );
     setBookmarker(bookmarkerFilter);
 
@@ -97,7 +101,7 @@ const Odds = ({
       (normal) =>
         normal?.btype === "FANCY" &&
         normal?.tabGroupName === "Normal" &&
-        normal?.visible == true
+        normal?.visible == true,
     );
     setNormal(normalFilter);
 
@@ -122,7 +126,7 @@ const Odds = ({
     (tiedMatch) =>
       tiedMatch?.btype === "MATCH_ODDS" &&
       tiedMatch?.visible == true &&
-      tiedMatch?.name === "tied match"
+      tiedMatch?.name === "tied match",
   );
 
   return (
@@ -169,6 +173,7 @@ const Odds = ({
             match_odds={tiedMatch}
           />
         )}
+        {premium && premium?.eventId && <Premium premium={premium} />}
         {openBetSlip && (
           <BetSlip
             data={data}
@@ -183,7 +188,7 @@ const Odds = ({
           group?.Items?.map((item, iIdx) => {
             const isOpen = openItems[iIdx];
             const cashOutMarket = myBets?.find(
-              (bet) => bet?.marketId == item?.Id
+              (bet) => bet?.marketId == item?.Id,
             );
 
             return (
@@ -267,7 +272,7 @@ const Odds = ({
                 )}
               </div>
             );
-          })
+          }),
         )}
       </div>
     </div>
