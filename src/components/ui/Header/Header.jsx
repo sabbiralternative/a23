@@ -17,6 +17,7 @@ import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK.jsx";
 import BuildVersion from "../../modal/BuildVersion/BuildVersion.jsx";
 import Error from "../../modal/Error/Error.jsx";
 import { latestEvent } from "../../../static/latest-event.js";
+import { eventNameList } from "../../../static/event-name-list.js";
 
 const Header = () => {
   const [showBuildVersion, setShowBuildVersion] = useState(false);
@@ -565,6 +566,33 @@ const Header = () => {
                     {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
                   </span>
                 </button>
+                {eventNameList.map((item) => {
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        setSportsType(item.id);
+                        navigate("/");
+                      }}
+                      className={`mb-top-navigate-item ${
+                        location.pathname == "/" && sportsType == item.id
+                          ? "active"
+                          : ""
+                      }`}
+                    >
+                      <img
+                        style={{
+                          height: "18px",
+                          width: "18px",
+                          // filter: "invert(1)",
+                        }}
+                        src={item.image}
+                        alt=""
+                      />
+                      <span> {item.name}</span>
+                    </button>
+                  );
+                })}
                 <button
                   onClick={() => {
                     navigate(token ? "/funbar" : "/login");
