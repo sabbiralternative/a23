@@ -14,8 +14,10 @@ import useHomeCasino from "../../hooks/useHomeCasino";
 import useCasinoGames from "../../hooks/useCasinoGames";
 import { images } from "../../assets";
 import Warning from "../../components/modal/Warning";
+import MiniGames from "../../components/modal/MiniGames/MiniGames";
 
 const Home = () => {
+  const [showMiniGamesModal, setShowMiniGamesModal] = useState(false);
   const { sportsType, tokenLoading, showWarning, setShowWarning, token } =
     useContextState();
   const { bannerImage } = useBannerImage();
@@ -78,13 +80,22 @@ const Home = () => {
       )}
       {sportsType ? <Sports sportsType={sportsType} sports={sports} /> : null}
 
-      {Settings?.instagramLink ? (
+      <div className="tabbar-item">
         <div
-          onClick={() => window.open(Settings?.instagramLink, "_blank")}
-          className="tabbar-item"
+          className="ob_button"
+          style={{
+            zIndex: 100,
+            bottom: "10%",
+            display: "flex",
+            flexDirection: "column",
+            gap: "15px",
+          }}
         >
-          <div className="ob_button" style={{ zIndex: 100, bottom: "28%" }}>
-            <div className="bt1043">
+          {Settings?.instagramLink ? (
+            <div
+              onClick={() => window.open(Settings?.instagramLink, "_blank")}
+              className="bt1043"
+            >
               <div
                 style={{ background: "none", height: "32px", width: "32px" }}
                 className="open_bets_button"
@@ -101,16 +112,12 @@ const Home = () => {
                 ></div>
               </div>
             </div>
-          </div>
-        </div>
-      ) : null}
-      {Settings?.telegramLink ? (
-        <div
-          onClick={() => window.open(Settings?.telegramLink, "_blank")}
-          className="tabbar-item"
-        >
-          <div className="ob_button" style={{ zIndex: 100, bottom: "20%" }}>
-            <div className="bt1043">
+          ) : null}
+          {Settings?.telegramLink ? (
+            <div
+              onClick={() => window.open(Settings?.telegramLink, "_blank")}
+              className="bt1043"
+            >
               <div
                 style={{ background: "none", height: "32px", width: "32px" }}
                 className="open_bets_button"
@@ -127,13 +134,9 @@ const Home = () => {
                 ></div>
               </div>
             </div>
-          </div>
-        </div>
-      ) : null}
-      {Settings?.whatsapplink || Settings?.branchWhatsapplink ? (
-        <div onClick={navigateWhatsApp} className="tabbar-item">
-          <div className="ob_button" style={{ zIndex: 100, bottom: "13%" }}>
-            <div className="bt1043">
+          ) : null}
+          {Settings?.whatsapplink || Settings?.branchWhatsapplink ? (
+            <div onClick={navigateWhatsApp} className="bt1043">
               <div
                 style={{ background: "none", height: "30px", width: "30px" }}
                 className="open_bets_button"
@@ -150,9 +153,30 @@ const Home = () => {
                 ></div>
               </div>
             </div>
+          ) : null}
+
+          <div onClick={() => setShowMiniGamesModal(true)} className="bt1043">
+            <div
+              style={{ background: "none", height: "30px", width: "30px" }}
+              className="open_bets_button"
+              data-editor-id="betslipMobileButtonGradient"
+            >
+              <img
+                style={{ height: "50px", width: "50px" }}
+                src="/img/uv_games-CkYT1PYz.gif"
+                alt=""
+              />
+              <div
+                id="bt-header-total"
+                className="bt1054 bt1063 bt1052 bt1042"
+              ></div>
+            </div>
           </div>
         </div>
-      ) : null}
+      </div>
+      {showMiniGamesModal && (
+        <MiniGames setShowMiniGamesModal={setShowMiniGamesModal} />
+      )}
       {showWarning && <Warning setShowModal={setShowWarning} />}
     </>
   );

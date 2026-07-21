@@ -22,7 +22,7 @@ import { eventNameList } from "../../../static/event-name-list.js";
 const Header = () => {
   const [showBuildVersion, setShowBuildVersion] = useState(false);
   const stored_build_version = localStorage.getItem("build_version");
-  const { language, valueByLanguage } = useLanguage();
+  const { valueByLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
   const {
     setSportsType,
@@ -261,7 +261,7 @@ const Header = () => {
                       justifyContent: "end",
                       background: "transparent",
                       border: "none",
-                      marginTop: "14px",
+                      // marginTop: "14px",
                     }}
                   >
                     <div>
@@ -281,7 +281,7 @@ const Header = () => {
                           textTransform: "capitalize",
                         }}
                       >
-                        {language || "EN"}
+                        {/* {language || "EN"} */}
                       </p>
                     </div>
                   </button>
