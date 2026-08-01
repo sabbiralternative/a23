@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import useExposer from "../../../hooks/useExposer";
 import HorseGreyhound from "../GameType/HorseGreyhound";
 import Premium from "../Premium";
+import ToggleButtons from "../ToggleButtons";
 
 const Odds = ({
   sportsBook,
@@ -28,6 +29,7 @@ const Odds = ({
   setShowMyBets,
   premium,
 }) => {
+  const [fancyPremiumTab, setFancyPremiumTab] = useState("");
   const { eventId } = useParams();
   const { placeBetValues, setPlaceBetValues, openBetSlip, setOpenBetSlip } =
     useContextState();
@@ -149,13 +151,24 @@ const Odds = ({
             exposer={exposer}
           />
         )}
-        {normal?.length > 0 && (
+        {data && (
+          <ToggleButtons
+            data={data}
+            fancy={normal}
+            setFancyPremiumTab={setFancyPremiumTab}
+            fancyPremiumTab={fancyPremiumTab}
+          />
+        )}
+        {normal?.length > 0 && fancyPremiumTab === "fancy" && (
           <Fancy
             normal={normal}
             setOpenBetSlip={setOpenBetSlip}
             setPlaceBetValues={setPlaceBetValues}
             exposer={exposer}
           />
+        )}
+        {premium && premium?.eventId && fancyPremiumTab === "premium" && (
+          <Premium premium={premium} />
         )}
         {eventTypeId == 7 || eventTypeId == 4339 ? (
           <HorseGreyhound
@@ -173,7 +186,7 @@ const Odds = ({
             match_odds={tiedMatch}
           />
         )}
-        {premium && premium?.eventId && <Premium premium={premium} />}
+
         {openBetSlip && (
           <BetSlip
             data={data}
