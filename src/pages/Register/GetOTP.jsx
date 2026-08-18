@@ -8,8 +8,11 @@ import { images } from "../../assets";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 import { Fragment } from "react";
 import useContextState from "../../hooks/useContextState";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
   const { token } = useContextState();
+  const { getLanguage } = useLanguage();
   /* get social link */
 
   const getOtp = async (e) => {
@@ -60,7 +63,7 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
               <div className="register-card-header">
                 {/* <span>New Member?</span> */}
                 <div className="register-text">
-                  <p>Register Now,</p>
+                  <p>{getLanguage(LanguageKey.REGISTER)},</p>
                   <img
                     src={handLogo}
                     alt=""
@@ -73,7 +76,7 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
                 className="ng-untouched ng-pristine ng-invalid"
               >
                 <div className="mobile-input">
-                  <span>Mobile Number*</span>
+                  <span>{getLanguage(LanguageKey.MOBILE_NUMBER)}*</span>
                   <div className="input-box">
                     <span className="drp-btn">+91</span>
                     <img
@@ -113,7 +116,12 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
                     type="submit"
                     className="otp-btn"
                   >
-                    <span> {Settings.otp ? "Get OTP on SMS" : "Proceed"}</span>
+                    <span>
+                      {" "}
+                      {Settings.otp
+                        ? getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)
+                        : getLanguage(LanguageKey.PROCEED)}
+                    </span>
                   </button>
 
                   {/* {Settings.otpWhatsapp && (
@@ -156,7 +164,7 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
                           fontSize: "13px",
                         }}
                       >
-                        Or
+                        {getLanguage(LanguageKey.OR)}
                       </span>
                       <div
                         style={{
@@ -182,7 +190,7 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
                         src={images.whatsapp}
                         alt=""
                       />
-                      <span>Get OTP on Whatsapp</span>
+                      <span>{getLanguage(LanguageKey.GET_ID_ON_WHATSAPP)}</span>
                     </div>
                   </Fragment>
                 )}

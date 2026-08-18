@@ -1,8 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import useSinglePassbook from "../../hooks/useSinglePassbook";
 import moment from "moment";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const SingleProfitLoss = () => {
+  const { getLanguage } = useLanguage();
   const { marketId } = useParams();
   const navigate = useNavigate();
   const { singlePassbook } = useSinglePassbook(marketId);
@@ -48,7 +51,7 @@ const SingleProfitLoss = () => {
             ></path>
           </svg>
           <span className="deposit-withdraw-head-title  ng-star-inserted">
-            Back
+            {getLanguage(LanguageKey.BACK)}
           </span>
         </div>
         <div className="mat-expansion-panel mat-expanded mat-expansion-panel-spacing">
@@ -74,7 +77,7 @@ const SingleProfitLoss = () => {
             <span className="mat-content mat-content-hide-toggle">
               <div className="mat-expansion-panel-header-title">
                 <p className="win-team">
-                  <label>Result:</label>
+                  <label>{getLanguage(LanguageKey.RESULT)}:</label>
                   <span> {singlePassbook[0]?.winner}</span>
                 </p>
               </div>
@@ -90,9 +93,9 @@ const SingleProfitLoss = () => {
                     <h3>Selection</h3>
                   </div>
                   <div className="allbet-headcol">
-                    <h3>Odds</h3>
-                    <h3>Stake</h3>
-                    <h3>Amt</h3>
+                    <h3>{getLanguage(LanguageKey.ODDS)}</h3>
+                    <h3>{getLanguage(LanguageKey.STAKE)}</h3>
+                    <h3>{getLanguage(LanguageKey.AMOUNT)}</h3>
                     <h3>P/L</h3>
                   </div>
                 </div>

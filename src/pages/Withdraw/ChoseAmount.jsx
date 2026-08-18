@@ -1,7 +1,10 @@
+import { LanguageKey } from "../../constant/constant";
+import useLanguage from "../../hooks/use-language";
 import useWithdrawBreakdown from "../../hooks/useWithdrawBreakdown";
 import "./withdraw.css";
 
 const ChooseAmount = ({ setTab, setAmount, amount }) => {
+  const { getLanguage } = useLanguage();
   const { data } = useWithdrawBreakdown();
 
   const handleShowBank = () => {
@@ -19,7 +22,9 @@ const ChooseAmount = ({ setTab, setAmount, amount }) => {
     <div>
       <div className="withdraw-container">
         <div className="withdraw-header-card">
-          <div className="withdraw-title">Withdraw Funds</div>
+          <div className="withdraw-title">
+            {getLanguage(LanguageKey.WITHDRAW_FUNDS)}
+          </div>
           <div className="withdraw-instructions">
             <div className="instruction-item">
               1. This form is for withdrawing the amount from the main wallet
@@ -49,19 +54,21 @@ const ChooseAmount = ({ setTab, setAmount, amount }) => {
         <div className="withdraw-form-section">
           <div className="form-header">
             <span className="form-header-text">
-              Please fill in all required fields*
+              {getLanguage(LanguageKey.PLEASE_FILL_IN_ALL_REQUIRED_FIELDS)}*
             </span>
           </div>
 
           <div className="form-card">
             <div className="form-content">
               <span className="available-balance">
-                Available to withdrawal : ₹ {data?.result?.mainWallet}
+                {getLanguage(LanguageKey.AVAILABLE_TO_WITHDRAW)} : ₹{" "}
+                {data?.result?.mainWallet}
               </span>
 
               <div className="input-group">
                 <div className="input-label">
-                  Amount <span className="required-mark">*</span>
+                  {getLanguage(LanguageKey.AMOUNT)}{" "}
+                  <span className="required-mark">*</span>
                 </div>
                 <div
                   className={`input-wrapper ${
@@ -84,7 +91,8 @@ const ChooseAmount = ({ setTab, setAmount, amount }) => {
                     value={amount}
                   />
                   <div className="minimum-text">
-                    Minimum {data?.result?.minimumWithdraw}
+                    {getLanguage(LanguageKey.MIN)}{" "}
+                    {data?.result?.minimumWithdraw}
                   </div>
                 </div>
                 <div className="input-helper">
@@ -118,7 +126,7 @@ const ChooseAmount = ({ setTab, setAmount, amount }) => {
               className="submit-button"
               type="button"
             >
-              <span>Submit</span>
+              <span>{getLanguage(LanguageKey.SUBMIT)}</span>
             </button>
           </div>
         </div>

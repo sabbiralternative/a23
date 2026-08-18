@@ -5,8 +5,11 @@ import { API, Settings } from "../../api";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 import { useBankMutation } from "../../hooks/bankAccount";
 import useContextState from "../../hooks/useContextState";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
+  const { getLanguage } = useLanguage();
   const { token } = useContextState();
   const { mutate: addNewBank } = useBankMutation();
   const [isFormValid, setIsFormValid] = useState(false);
@@ -142,7 +145,9 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
       <div className="form-container">
         {/* UPI ID Field */}
         <div className="form-field">
-          <div className="field-label">UPI ID (Optional)</div>
+          <div className="field-label">
+            {getLanguage(LanguageKey.UPI_ID)} (Optional)
+          </div>
           <div className="input-wrapper">
             <input
               className="form-input"
@@ -167,7 +172,7 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
         {/* Account Name Field */}
         <div className="form-field">
           <div className="field-label">
-            Account Name
+            {getLanguage(LanguageKey.ACCOUNT_NAME)}
             <span className="required-asterisk">*</span>
           </div>
           <div className="input-wrapper">
@@ -194,7 +199,8 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
         {/* Account No Field */}
         <div className="form-field">
           <div className="field-label">
-            Account No <span className="required-asterisk">*</span>
+            {getLanguage(LanguageKey.ACCOUNT_NO)}{" "}
+            <span className="required-asterisk">*</span>
           </div>
           <div className="input-wrapper">
             <input
@@ -220,7 +226,8 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
         {/* Confirm Account No Field */}
         <div className="form-field">
           <div className="field-label">
-            Confirm Account No <span className="required-asterisk">*</span>
+            {getLanguage(LanguageKey.CONFIRM_ACCOUNT_NO)}{" "}
+            <span className="required-asterisk">*</span>
           </div>
           <div className="input-wrapper">
             <input
@@ -246,7 +253,8 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
         {/* IFSC Code Field */}
         <div className="form-field">
           <div className="field-label">
-            IFSC Code <span className="required-asterisk">*</span>
+            {getLanguage(LanguageKey.IFSC_CODE)}{" "}
+            <span className="required-asterisk">*</span>
           </div>
           <div className="input-wrapper">
             <input
@@ -273,7 +281,8 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
         {mobile && Settings.otp && (
           <div className="form-field">
             <div className="field-label">
-              Mobile <span className="required-asterisk">*</span>
+              {getLanguage(LanguageKey.MOBILE_NUMBER)}{" "}
+              <span className="required-asterisk">*</span>
             </div>
             <div className="input-wrapper">
               <input
@@ -288,7 +297,9 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
               <div className="otp-button-container">
                 {timer ? (
                   <button onClick={getOtp} className="otp-button" type="button">
-                    <span>Retry in {timer}</span>
+                    <span>
+                      {getLanguage(LanguageKey.RETRY_IN)} {timer}
+                    </span>
                   </button>
                 ) : (
                   <div className="otp-buttons-group">
@@ -310,7 +321,9 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
                       className="otp-button otp-button-primary"
                       type="button"
                     >
-                      <span className="otp-button-text">Get OTP SMS</span>
+                      <span className="otp-button-text">
+                        {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                      </span>
                       <span className="shimmer"></span>
                     </button>
                   </div>
@@ -327,7 +340,8 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
         {mobile && Settings.otp && (
           <div className="form-field">
             <div className="field-label">
-              OTP <span className="required-asterisk">*</span>
+              {getLanguage(LanguageKey.OTP)}{" "}
+              <span className="required-asterisk">*</span>
             </div>
             <div className="input-wrapper">
               <input
@@ -371,7 +385,7 @@ const AddBankAccount = ({ setTab, refetchBankAccounts }) => {
       {/* Submit Button */}
       <div className="submit-container">
         <button disabled={!isFormValid} className="submit-button" type="submit">
-          <span>Submit</span>
+          <span>{getLanguage(LanguageKey.SUBMIT)}</span>
         </button>
       </div>
     </form>

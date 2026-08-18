@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const Warning = ({ setShowModal }) => {
+  const { getLanguage } = useLanguage();
   const warningRef = useRef();
 
   useCloseModalClickOutside(warningRef, () => {
@@ -11,7 +14,9 @@ const Warning = ({ setShowModal }) => {
     <div className="Modal-Background ng-tns-c159-13 ng-star-inserted">
       <div className="depositpop ng-tns-c159-13" ref={warningRef}>
         <div className="depositbreak ng-tns-c159-13">
-          <p className="ng-tns-c159-13">Please note</p>
+          <p className="ng-tns-c159-13">
+            {getLanguage(LanguageKey.PLEASE_NOTE)}
+          </p>
           <div
             onClick={() => setShowModal(false)}
             className="close-svg ng-tns-c159-13"
@@ -50,7 +55,10 @@ const Warning = ({ setShowModal }) => {
               >
                 <div style={{ fontSize: "16px" }}>
                   {" "}
-                  Bonus wallet is available only on sports.
+                  {getLanguage(
+                    LanguageKey.BONUS_WALLET__IS_AVAILABLE_ONLY_ON_SPORTS,
+                  )}
+                  .
                 </div>
               </div>
             </div>

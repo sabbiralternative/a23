@@ -2,6 +2,8 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../constant/constant";
 
 const Dropdown = ({
   showLeftDropdown,
@@ -14,6 +16,7 @@ const Dropdown = ({
   product,
   gameList,
 }) => {
+  const { getLanguage } = useLanguage();
   /* Close drop down click out side */
   const dropdownRef = useRef();
   useCloseModalClickOutside(dropdownRef, () => {
@@ -29,7 +32,9 @@ const Dropdown = ({
     >
       <div _ngcontent-ng-c1965075897="" className="select-wrap">
         <div _ngcontent-ng-c1965075897="" className="label-cont">
-          <label _ngcontent-ng-c1965075897="">Game Provider</label>
+          <label _ngcontent-ng-c1965075897="">
+            {getLanguage(LanguageKey.GAME_PROVIDERS)}
+          </label>
         </div>
         <div
           _ngcontent-ng-c1965075897=""
@@ -167,7 +172,9 @@ const Dropdown = ({
       )}
       <div _ngcontent-ng-c1965075897="" className="select-wrap">
         <div _ngcontent-ng-c1965075897="" className="label-cont">
-          <label _ngcontent-ng-c1965075897="">Game Type</label>
+          <label _ngcontent-ng-c1965075897="">
+            {getLanguage(LanguageKey.GAME_TYPE)}
+          </label>
         </div>
         <div
           _ngcontent-ng-c1965075897=""

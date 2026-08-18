@@ -12,6 +12,8 @@ import {
 import { Settings } from "../../../api";
 import { handleCashOutPlaceBet } from "../../../utils/handleCashOutPlaceBet";
 import SpeedCashOut from "../../../components/modal/SpeedCashOut";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../constant/constant";
 
 const MatchOdds = ({
   match_odds,
@@ -19,6 +21,7 @@ const MatchOdds = ({
   setPlaceBetValues,
   exposer,
 }) => {
+  const { getLanguage } = useLanguage();
   const [speedCashOut, setSpeedCashOut] = useState(null);
   const { token } = useContextState();
   const navigate = useNavigate();
@@ -201,7 +204,8 @@ const MatchOdds = ({
                     </div>
                     <span style={{ fontSize: "9px", color: "#959595" }}>
                       {" "}
-                      Max: {games?.maxLiabilityPerBet}
+                      {getLanguage(LanguageKey.MAX)}:{" "}
+                      {games?.maxLiabilityPerBet}
                     </span>
                   </div>
                   {Settings.cashout &&
@@ -235,7 +239,7 @@ const MatchOdds = ({
                         }}
                       >
                         <span style={{ fontSize: "10px", color: "black" }}>
-                          Cashout
+                          {getLanguage(LanguageKey.CASHOUT)}
                         </span>
                         {teamProfitForGame?.profit > 0 &&
                           !isGameSuspended(games) && (
@@ -285,7 +289,7 @@ const MatchOdds = ({
                           padding: "3px 2px",
                         }}
                       >
-                        Speed Cashout
+                        {getLanguage(LanguageKey.SPEED_CASHOUT)}
                       </button>
                     )}
                 </div>

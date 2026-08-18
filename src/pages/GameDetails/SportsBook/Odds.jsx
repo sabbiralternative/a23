@@ -13,6 +13,8 @@ import useExposer from "../../../hooks/useExposer";
 import HorseGreyhound from "../GameType/HorseGreyhound";
 import Premium from "../Premium";
 import ToggleButtons from "../ToggleButtons";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../constant/constant";
 
 const Odds = ({
   sportsBook,
@@ -29,6 +31,7 @@ const Odds = ({
   setShowMyBets,
   premium,
 }) => {
+  const { getLanguage } = useLanguage();
   const [fancyPremiumTab, setFancyPremiumTab] = useState("");
   const { eventId } = useParams();
   const { placeBetValues, setPlaceBetValues, openBetSlip, setOpenBetSlip } =
@@ -244,7 +247,7 @@ const Odds = ({
                       }}
                     >
                       <span style={{ fontSize: "10px", color: "black" }}>
-                        Cashout
+                        {getLanguage(LanguageKey.CASHOUT)}
                       </span>
                     </button>
                   )}

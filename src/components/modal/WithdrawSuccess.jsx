@@ -1,18 +1,26 @@
 import { useNavigate } from "react-router-dom";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const WithdrawSuccess = ({ setWithdrawSuccess }) => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   return (
     <div className="Modal-Background ng-tns-c159-13 ng-star-inserted">
       <div className="depositpop ng-tns-c159-13">
         <div className="depositbreak ng-tns-c159-13">
-          <p className="ng-tns-c159-13">Congratulations!</p>
-          <div style={{cursor:'pointer'}}
-               onClick={() => {
-                setWithdrawSuccess(false);
-                navigate("/account");
-              }} className="close-svg ng-tns-c159-13">
-            <svg 
+          <p className="ng-tns-c159-13">
+            {getLanguage(LanguageKey.CONGRATULATIONS)}!
+          </p>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setWithdrawSuccess(false);
+              navigate("/account");
+            }}
+            className="close-svg ng-tns-c159-13"
+          >
+            <svg
               width="14"
               height="15"
               viewBox="0 0 14 15"

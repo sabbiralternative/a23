@@ -12,6 +12,8 @@ import {
 import { Settings } from "../../../api";
 import { handleCashOutPlaceBet } from "../../../utils/handleCashOutPlaceBet";
 import SpeedCashOut from "../../../components/modal/SpeedCashOut";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../constant/constant";
 
 const Bookmaker = ({
   bookmarker,
@@ -19,6 +21,7 @@ const Bookmaker = ({
   setPlaceBetValues,
   exposer,
 }) => {
+  const { getLanguage } = useLanguage();
   const [speedCashOut, setSpeedCashOut] = useState(null);
   const { eventId } = useParams();
   const { token } = useContextState();
@@ -208,7 +211,7 @@ const Bookmaker = ({
                 </div>
                 <span style={{ fontSize: "9px", color: "#959595" }}>
                   {" "}
-                  Max: {games?.maxLiabilityPerBet}
+                  {getLanguage(LanguageKey.MAX)}: {games?.maxLiabilityPerBet}
                 </span>
               </div>
               {Settings.cashout &&
@@ -260,7 +263,7 @@ const Bookmaker = ({
                     }}
                   >
                     <span style={{ color: "black", fontSize: "10px" }}>
-                      Cashout
+                      {getLanguage(LanguageKey.CASHOUT)}
                     </span>
                     {teamProfitForGame?.profit !== 0 &&
                       !isGameSuspended(games) && (
@@ -309,7 +312,7 @@ const Bookmaker = ({
                       padding: "3px 2px",
                     }}
                   >
-                    Speed Cashout
+                    {getLanguage(LanguageKey.SPEED_CASHOUT)}
                   </button>
                 )}
             </div>

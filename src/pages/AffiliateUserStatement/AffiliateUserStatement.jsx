@@ -2,8 +2,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useGetIndex } from "../../hooks";
 import { images } from "../../assets";
 import { from_date, to_date } from "../../utils/default-date";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const AffiliateUserStatement = () => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const { search } = useLocation();
   const params = new URLSearchParams(search);
@@ -38,14 +41,14 @@ const AffiliateUserStatement = () => {
           ></path>
         </svg>
         <span className="deposit-withdraw-head-title  ng-star-inserted">
-          Back
+          {getLanguage(LanguageKey.BACK)}
         </span>
       </div>
       <section data-v-fd406c30 className="nw-affi-user-wrapper affi-pd-bot">
         <div data-v-fd406c30 className>
           <div data-v-fd406c30 className="nw-affi-user-list-wrapper">
             <h3 data-v-fd406c30 className="nw-affi-heading-text">
-              User Statement
+              {getLanguage(LanguageKey.USER_STATEMENT)}
             </h3>
             <div
               data-v-fd406c30
@@ -60,7 +63,7 @@ const AffiliateUserStatement = () => {
                         src={images.calendar}
                         alt="affi-calendar"
                       />{" "}
-                      Date
+                      {getLanguage(LanguageKey.DATE)}
                     </th>
                     <th data-v-fd406c30>
                       <img
@@ -68,7 +71,7 @@ const AffiliateUserStatement = () => {
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAZVJREFUWIXtl08rhUEUxn8HO4qVKAtEwsKflSxYyEe4X4PIRkpkK/kcvoIit9ydv0UWtq66K3S3t8finVvX28vMdSdv5NnMvOc9c55nZs6pOZAzLMsoqQeYBzoj8VSBkpm9ej0lDUt6VnyUJQ2l+ToyNKwCfcAV8Njq1h1GgBlgBVj70lPSkVNciESOpIKLeZT+1xaL5LsIEiBpWtJULgIc8QVwWRch6Swg6U6jCEjradLfi6wq+AAzu5E06+a3blz8MQF1EbEI08i9CrwnIKkXKLrPBTOrSFoH5jxLS2Z22LIAYAoYa5gfAxtAv2fdPBBFwAmwR1IBJ862DEx41t0HxA6qghqwnbLdAXchBD78iiRsB3ZJrmDHzGqSJgm4AndSrQkAloAtNy+SJOEx/iR8AgZiCLgGHkhO4NrZ9gkow4DYQUlYAcZTtoOQ4CHIPQn/3HvgRdJoVAFpPU36e/H/Hsi9CrJO4NmNmxF7g3piPnk9lbRm5SZarlCUJQ2m+T5rTrtJHhRdLey6EVXg3MzeIsWLh3fh94EUshpERQAAAABJRU5ErkJggg=="
                         alt="affi-calendar"
                       />{" "}
-                      Type
+                      {getLanguage(LanguageKey.TYPE)}
                     </th>
                     <th data-v-fd406c30>
                       <img
@@ -76,7 +79,7 @@ const AffiliateUserStatement = () => {
                         src={images.commission}
                         alt="affi-commision-icon"
                       />{" "}
-                      Amount
+                      {getLanguage(LanguageKey.AMOUNT)}
                     </th>
                   </tr>
                 </thead>
@@ -106,7 +109,7 @@ const AffiliateUserStatement = () => {
                           data-v-fd406c30
                           className="text-center affiliate-no-recoard-data"
                         >
-                          No Records Found
+                          {getLanguage(LanguageKey.NO_RECORD_FOUND)}
                         </div>
                       </td>
                     </tr>

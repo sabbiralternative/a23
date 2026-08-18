@@ -2,8 +2,11 @@ import { Fragment, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useBankMutation } from "../../hooks/bankAccount";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const OldAccount = ({ amount, bankAccounts, refetchBankAccounts }) => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const { mutate: handleBank } = useBankMutation();
   const [bankId, setBankId] = useState("");
@@ -141,7 +144,11 @@ const OldAccount = ({ amount, bankAccounts, refetchBankAccounts }) => {
               className="submit-button"
               type="submit"
             >
-              <span>{bankId ? "SUBMIT" : "Please select bank account"}</span>
+              <span>
+                {bankId
+                  ? getLanguage(LanguageKey.SUBMIT)
+                  : getLanguage(LanguageKey.PLEASE_SELECT_BANK_ACCOUNT)}
+              </span>
             </button>
           </div>
         </form>
@@ -149,7 +156,9 @@ const OldAccount = ({ amount, bankAccounts, refetchBankAccounts }) => {
         <div className="no-account">
           <div className="no-account-content">
             <div className="no-account-animation">{/* SVG TODO */}</div>
-            <span className="no-account-text">No Accounts Added.</span>
+            <span className="no-account-text">
+              {getLanguage(LanguageKey.NO_ACCOUNT_ADDED)}.
+            </span>
           </div>
         </div>
       )}

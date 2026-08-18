@@ -1,8 +1,11 @@
 import { useRef } from "react";
 
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const HowToGetBonus = ({ setOpenGetBonusModal }) => {
+  const { getLanguage } = useLanguage();
   const ref = useRef();
   useCloseModalClickOutside(ref, () => {
     setOpenGetBonusModal(false);
@@ -12,7 +15,9 @@ const HowToGetBonus = ({ setOpenGetBonusModal }) => {
     <div className="Modal-Background ">
       <div className="card-add-bank" ref={ref} style={{ maxHeight: "60vh" }}>
         <div className="card-header">
-          <h2 style={{ color: "black" }}>How to get bonus?</h2>
+          <h2 style={{ color: "black" }}>
+            {getLanguage(LanguageKey.HOW_TO_GET_BONUS)}?
+          </h2>
           <div className="close-btn">
             <svg
               onClick={() => setOpenGetBonusModal(false)}

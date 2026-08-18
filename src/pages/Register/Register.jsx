@@ -9,8 +9,11 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AxiosSecure } from "../../lib/AxiosSecure";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const Register = () => {
+  const { getLanguage } = useLanguage();
   const affnook_token = localStorage.getItem("affnook_token");
   const referralCode = localStorage.getItem("referralCode");
   const [showPassword, setShowPassword] = useState(false);
@@ -185,7 +188,7 @@ const Register = () => {
                     data-gtm-form-interact-id="4"
                   >
                     <div className="mobile-input">
-                      <span>Mobile Number*</span>
+                      <span>{getLanguage(LanguageKey.MOBILE_NUMBER)}*</span>
                       <div className="input-box">
                         <span className="drp-btn">+91</span>
                         <img
@@ -235,7 +238,7 @@ const Register = () => {
                     </div> */}
                     <div>
                       <div className="otp-input-box">
-                        <span>Enter OTP*</span>
+                        <span>{getLanguage(LanguageKey.ENTER_OTP)}*</span>
                         <div className="input-boxes">
                           {[...Array(4)].map((_, index) => (
                             <input
@@ -252,11 +255,11 @@ const Register = () => {
                         </div>
                         {countDown <= 0 ? (
                           <span onClick={getOtp} className="resend-otp">
-                            Resend
+                            {getLanguage(LanguageKey.RESEND)}
                           </span>
                         ) : (
                           <span className="resend-otp">
-                            Resend in 00:{countDown}
+                            {getLanguage(LanguageKey.RESEND_IN)} 00:{countDown}
                           </span>
                         )}
                       </div>
@@ -270,7 +273,9 @@ const Register = () => {
                       }}
                     >
                       <div className="pwd-box">
-                        <span className="pwd-text">Password*</span>
+                        <span className="pwd-text">
+                          {getLanguage(LanguageKey.PASSWORD)}*
+                        </span>
                         <input
                           onChange={(e) => {
                             setUser({
@@ -299,7 +304,9 @@ const Register = () => {
                         </span>
                       </div>
                       <div className="pwd-box">
-                        <span className="pwd-text">Confirm Password*</span>
+                        <span className="pwd-text">
+                          {getLanguage(LanguageKey.CONFIRM_PASSWORD)}*
+                        </span>
                         <input
                           onChange={(e) => {
                             setUser({
@@ -332,7 +339,9 @@ const Register = () => {
                         </span>
                       </div>
                       <div className="pwd-box">
-                        <span className="pwd-text">Referral Code</span>
+                        <span className="pwd-text">
+                          {getLanguage(LanguageKey.REFERRAL_CODE)}
+                        </span>
                         <input
                           onChange={(e) => {
                             setUser({
@@ -349,7 +358,7 @@ const Register = () => {
                       </div>
                     </div>
                     <button type="submit" className="submit-btn">
-                      <span>Register</span>
+                      <span>{getLanguage(LanguageKey.REGISTER)}</span>
                     </button>
                   </form>
                 </div>

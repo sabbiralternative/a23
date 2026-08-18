@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { useNavigate } from "react-router-dom";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 const AEDRules = ({ casinoInfo, setShowModal }) => {
+  const { getLanguage } = useLanguage();
   /* close modal click outside */
   const aedRef = useRef();
   const navigate = useNavigate();
@@ -12,7 +15,7 @@ const AEDRules = ({ casinoInfo, setShowModal }) => {
   const handleNavigate = () => {
     setShowModal(false);
     navigate(
-      `/${casinoInfo?.base}/${casinoInfo?.provider_name}/${casinoInfo?.game_id}`
+      `/${casinoInfo?.base}/${casinoInfo?.provider_name}/${casinoInfo?.game_id}`,
     );
   };
 
@@ -20,7 +23,9 @@ const AEDRules = ({ casinoInfo, setShowModal }) => {
     <div className="Modal-Background ng-tns-c159-13 ng-star-inserted">
       <div className="depositpop ng-tns-c159-13" ref={aedRef}>
         <div className="depositbreak ng-tns-c159-13">
-          <p className="ng-tns-c159-13">Please note</p>
+          <p className="ng-tns-c159-13">
+            {getLanguage(LanguageKey.PLEASE_NOTE)}
+          </p>
           <div
             onClick={() => setShowModal(false)}
             className="close-svg ng-tns-c159-13"
@@ -57,7 +62,7 @@ const AEDRules = ({ casinoInfo, setShowModal }) => {
                 }}
               >
                 <div style={{ fontSize: "16px" }}> (1 Point = ₹ 100)</div>
-                <div style={{fontSize:'12px'}}>
+                <div style={{ fontSize: "12px" }}>
                   {" "}
                   Immerse yourself in the excitement of live casino action, an
                   array of captivating slots, and a diverse range of games. With
@@ -73,7 +78,7 @@ const AEDRules = ({ casinoInfo, setShowModal }) => {
           >
             <div className="madepay ng-tns-c159-13">
               <button type="button" className="ng-tns-c159-13">
-                Confirm
+                {getLanguage(LanguageKey.CONFIRM)}
               </button>
             </div>
           </div>

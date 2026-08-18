@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import { API } from "../../api";
 import toast from "react-hot-toast";
 import { AxiosSecure } from "../../lib/AxiosSecure";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const EditStake = () => {
+  const { getLanguage } = useLanguage();
   window.scrollTo(0, 0);
   const navigate = useNavigate();
   const buttonGameValue = JSON.parse(localStorage.getItem("buttonValue"));
@@ -107,7 +110,7 @@ const EditStake = () => {
             <div className="login-box">
               <div className="login-card">
                 <div className="login-card-header">
-                  <span>Edit Stake</span>
+                  <span>{getLanguage(LanguageKey.EDIT_STAKE)}</span>
                 </div>
 
                 <form
@@ -201,7 +204,7 @@ const EditStake = () => {
                   </div>
 
                   <button type="submit" className="login-btn">
-                    <span>Update</span>
+                    <span>{getLanguage(LanguageKey.UPDATE)}</span>
                   </button>
                 </form>
               </div>

@@ -2,8 +2,11 @@ import { useState } from "react";
 import { from_date, to_date } from "../../utils/default-date";
 import { useIndex } from "../../hooks";
 import { images } from "../../assets";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const Reports = () => {
+  const { getLanguage } = useLanguage();
   const [fromDate, setFromDate] = useState(from_date);
   const [toDate, setToDate] = useState(to_date);
   const { mutate, data, isSuccess } = useIndex();
@@ -32,7 +35,7 @@ const Reports = () => {
           <li data-v-81c2ddd8>
             <div data-v-81c2ddd8 className="form-group">
               <label data-v-81c2ddd8 className="label-pl12">
-                From Date
+                {getLanguage(LanguageKey.FROM_DATE)}
               </label>
               <input
                 onChange={(e) => setFromDate(e.target.value)}
@@ -47,7 +50,7 @@ const Reports = () => {
           <li data-v-81c2ddd8>
             <div data-v-81c2ddd8 className="form-group">
               <label data-v-81c2ddd8 className="label-pl12">
-                To Date
+                {getLanguage(LanguageKey.TO_DATE)}
               </label>
               <input
                 onChange={(e) => setToDate(e.target.value)}
@@ -68,7 +71,7 @@ const Reports = () => {
             data-bs-toggle="modal"
             data-v-4c49d924
           >
-            <span data-v-4c49d924>Submit</span>
+            <span data-v-4c49d924>{getLanguage(LanguageKey.SUBMIT)}</span>
           </button>
         </div>
       </form>
@@ -89,7 +92,7 @@ const Reports = () => {
                           src={images.calendar}
                           alt="affi-calendar"
                         />{" "}
-                        Date
+                        {getLanguage(LanguageKey.DATE)}
                       </th>
 
                       <th data-v-fd406c30>
@@ -98,7 +101,7 @@ const Reports = () => {
                           src={images.commission}
                           alt="affi-commision-icon"
                         />{" "}
-                        Amount
+                        {getLanguage(LanguageKey.AMOUNT)}
                       </th>
                       <th data-v-fd406c30>
                         <img
@@ -106,7 +109,7 @@ const Reports = () => {
                           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAZVJREFUWIXtl08rhUEUxn8HO4qVKAtEwsKflSxYyEe4X4PIRkpkK/kcvoIit9ydv0UWtq66K3S3t8finVvX28vMdSdv5NnMvOc9c55nZs6pOZAzLMsoqQeYBzoj8VSBkpm9ej0lDUt6VnyUJQ2l+ToyNKwCfcAV8Njq1h1GgBlgBVj70lPSkVNciESOpIKLeZT+1xaL5LsIEiBpWtJULgIc8QVwWRch6Swg6U6jCEjradLfi6wq+AAzu5E06+a3blz8MQF1EbEI08i9CrwnIKkXKLrPBTOrSFoH5jxLS2Z22LIAYAoYa5gfAxtAv2fdPBBFwAmwR1IBJ862DEx41t0HxA6qghqwnbLdAXchBD78iiRsB3ZJrmDHzGqSJgm4AndSrQkAloAtNy+SJOEx/iR8AgZiCLgGHkhO4NrZ9gkow4DYQUlYAcZTtoOQ4CHIPQn/3HvgRdJoVAFpPU36e/H/Hsi9CrJO4NmNmxF7g3piPnk9lbRm5SZarlCUJQ2m+T5rTrtJHhRdLey6EVXg3MzeIsWLh3fh94EUshpERQAAAABJRU5ErkJggg=="
                           alt="affi-calendar"
                         />{" "}
-                        Remark
+                        {getLanguage(LanguageKey.REMARK)}
                       </th>
                     </tr>
                   </thead>
@@ -138,7 +141,7 @@ const Reports = () => {
                             data-v-fd406c30
                             className="text-center affiliate-no-recoard-data"
                           >
-                            No Records Found
+                            {getLanguage(LanguageKey.NO_RECORD_FOUND)}
                           </div>
                         </td>
                       </tr>

@@ -5,6 +5,8 @@ import useContextState from "../../../hooks/useContextState";
 import { useNavigate } from "react-router-dom";
 import { isHorseGreyhoundRunnerSuspended } from "../../../utils/isRunnerSuspended";
 import { handleHorsePlaceBet } from "../../../utils/handleHorsePlaceBet";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../constant/constant";
 
 const HorseGreyhound = ({
   data,
@@ -12,6 +14,7 @@ const HorseGreyhound = ({
   setOpenBetSlip,
   setPlaceBetValues,
 }) => {
+  const { getLanguage } = useLanguage();
   const [timeDiff, setTimeDiff] = useState({
     day: 0,
     hour: 0,
@@ -56,7 +59,7 @@ const HorseGreyhound = ({
 
         const day = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
         const hour = Math.floor(
-          (diffInMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          (diffInMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
         );
         const minute = Math.floor((diffInMs % (1000 * 60 * 60)) / (1000 * 60));
         const second = Math.floor((diffInMs % (1000 * 60)) / 1000);
@@ -79,7 +82,7 @@ const HorseGreyhound = ({
           className="img-fluid"
         />
         <div className="horse-banner-detail">
-          <div className="text-success">OPEN</div>
+          <div className="text-success">{getLanguage(LanguageKey.OPEN)}</div>
           {timeDiff?.day ||
           timeDiff?.hour ||
           timeDiff?.minute ||
@@ -88,26 +91,30 @@ const HorseGreyhound = ({
               <span style={{ display: "flex", gap: "5px" }}>
                 {timeDiff?.day > 0 && (
                   <span>
-                    {timeDiff?.day} <small>Day</small>
+                    {timeDiff?.day}{" "}
+                    <small>{getLanguage(LanguageKey.DAY)}</small>
                   </span>
                 )}
                 {timeDiff?.hour > 0 && (
                   <span>
-                    {timeDiff?.hour} <small>Hour</small>
+                    {timeDiff?.hour}{" "}
+                    <small>{getLanguage(LanguageKey.HOUR)}</small>
                   </span>
                 )}
                 {timeDiff?.minute > 0 && (
                   <span>
-                    {timeDiff?.minute} <small>Minutes</small>
+                    {timeDiff?.minute}{" "}
+                    <small>{getLanguage(LanguageKey.MINUTE)}</small>
                   </span>
                 )}
                 {timeDiff?.hour === 0 && timeDiff?.minute < 60 && (
                   <span>
-                    {timeDiff?.second} <small>Seconds</small>
+                    {timeDiff?.second}{" "}
+                    <small>{getLanguage(LanguageKey.SECOND)}</small>
                   </span>
                 )}
               </span>
-              <span>Remaining</span>
+              <span>{getLanguage(LanguageKey.REMAINING)}</span>
             </div>
           ) : null}
 
@@ -255,7 +262,7 @@ const HorseGreyhound = ({
                               setPlaceBetValues,
                               pnlBySelection,
                               token,
-                              navigate
+                              navigate,
                             )
                           }
                           data-editor-id="tableOutcomePlate"
@@ -278,13 +285,13 @@ const HorseGreyhound = ({
                                 {" "}
                                 {!isHorseGreyhoundRunnerSuspended(
                                   games,
-                                  runner
+                                  runner,
                                 ) && runner?.back?.[0]?.price}
                               </h4>
                               <p className="odds_volume">
                                 {!isHorseGreyhoundRunnerSuspended(
                                   games,
-                                  runner
+                                  runner,
                                 ) && runner?.back?.[0]?.size}
                               </p>
                             </span>
@@ -301,7 +308,7 @@ const HorseGreyhound = ({
                               setPlaceBetValues,
                               pnlBySelection,
                               token,
-                              navigate
+                              navigate,
                             )
                           }
                           data-editor-id="tableOutcomePlate"
@@ -321,14 +328,14 @@ const HorseGreyhound = ({
                                 {" "}
                                 {!isHorseGreyhoundRunnerSuspended(
                                   games,
-                                  runner
+                                  runner,
                                 ) && runner?.lay?.[0]?.price}
                               </h4>
                               <p className="odds_volume">
                                 {" "}
                                 {!isHorseGreyhoundRunnerSuspended(
                                   games,
-                                  runner
+                                  runner,
                                 ) && runner?.lay?.[0]?.price}
                               </p>
                             </span>

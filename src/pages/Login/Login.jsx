@@ -10,8 +10,11 @@ import useContextState from "../../hooks/useContextState";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 import { HiArrowNarrowDown } from "react-icons/hi";
 import { GrAndroid } from "react-icons/gr";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const Login = () => {
+  const { getLanguage } = useLanguage();
   const [showPassword, setShowPassword] = useState(false);
   const [disable, setDisable] = useState(false);
   const { handleSubmit, register } = useForm();
@@ -171,7 +174,10 @@ const Login = () => {
                 >
                   <div className="whatsup-login-box">
                     <div className="mobile-input">
-                      <span>User ID / Mobile Number*</span>
+                      <span>
+                        {getLanguage(LanguageKey.USER_ID)} /{" "}
+                        {getLanguage(LanguageKey.MOBILE_NUMBER)}*
+                      </span>
                       <div className="input-box">
                         <div className=""></div>
                         <input
@@ -186,7 +192,7 @@ const Login = () => {
                       </div>
 
                       <div className="password-input password-input-1">
-                        <span>Password*</span>
+                        <span>{getLanguage(LanguageKey.PASSWORD)}*</span>
                         <input
                           {...register("password", {
                             required: true,
@@ -227,7 +233,9 @@ const Login = () => {
                           }}
                           className="forgot"
                         >
-                          <span>Forgot Password?</span>
+                          <span>
+                            {getLanguage(LanguageKey.FORGOT_PASSWORD)}?
+                          </span>
                         </div>
                       )}
                     </div>
@@ -237,11 +245,11 @@ const Login = () => {
                     type="submit"
                     className="login-btn"
                   >
-                    <span>Log in</span>
+                    <span>{getLanguage(LanguageKey.LOGIN)}</span>
                   </button>
                   <div className="login-with">
                     <div className="line"></div>
-                    <span>OR </span>
+                    <span>{getLanguage(LanguageKey.OR)} </span>
                     <div className="line"></div>
                   </div>
                   <div className="login-box1">
@@ -251,7 +259,7 @@ const Login = () => {
                       id="buttonDiv"
                       className="google-login"
                     >
-                      <span>Demo Login</span>
+                      <span>{getLanguage(LanguageKey.DEMO_LOGIN)}</span>
                     </div>
                     <div
                       onClick={() => {
@@ -260,7 +268,7 @@ const Login = () => {
                       className="google-login"
                       style={{ cursor: "pointer", border: "none" }}
                     >
-                      <span>Register</span>
+                      <span>{getLanguage(LanguageKey.REGISTER)}</span>
                     </div>
                     {Settings.apk_link && (
                       <div
@@ -277,7 +285,8 @@ const Login = () => {
                             gap: "6px",
                           }}
                         >
-                          <GrAndroid /> Download .apk <HiArrowNarrowDown />
+                          <GrAndroid /> {getLanguage(LanguageKey.DOWNLOAD_APK)}{" "}
+                          <HiArrowNarrowDown />
                         </span>
                       </div>
                     )}

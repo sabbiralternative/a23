@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSportsVideo } from "../../hooks/useIFrame";
 import { Settings } from "../../api";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const MatchTrackerTab = ({ score }) => {
+  const { getLanguage } = useLanguage();
   const [toggle, setToggle] = useState("");
   const { eventId, eventTypeId } = useParams();
   const { mutate } = useSportsVideo();
@@ -84,7 +87,9 @@ const MatchTrackerTab = ({ score }) => {
                         ></path>
                       </svg>
                     </span>
-                    <span className="bt12847">Video</span>
+                    <span className="bt12847">
+                      {getLanguage(LanguageKey.VIDEO)}
+                    </span>
                   </div>
                 )}
                 {score && score?.tracker !== null && (
@@ -117,7 +122,9 @@ const MatchTrackerTab = ({ score }) => {
                         ></path>
                       </svg>
                     </span>
-                    <span className="bt12847">Tracker</span>
+                    <span className="bt12847">
+                      {getLanguage(LanguageKey.TRACKER)}
+                    </span>
                   </div>
                 )}
               </div>

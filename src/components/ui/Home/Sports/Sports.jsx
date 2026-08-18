@@ -1,6 +1,9 @@
+import { LanguageKey } from "../../../../constant/constant";
+import useLanguage from "../../../../hooks/use-language";
 import Card from "../LiveSports/Card";
 
 const Sports = ({ sports, sportsType }) => {
+  const { getLanguage } = useLanguage();
   /* filtered visible = true sports */
 
   const filterSports =
@@ -13,12 +16,11 @@ const Sports = ({ sports, sportsType }) => {
     return (
       <div className="profile-menu-box">
         <div className="card-blank">
-          <span> No events available right now</span>
+          <span>{getLanguage(LanguageKey.NO_RECORD_FOUND)}</span>
         </div>
       </div>
     );
   }
-
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
@@ -55,7 +57,7 @@ const Sports = ({ sports, sportsType }) => {
       ) : (
         <div className="profile-menu-box">
           <div className="card-blank">
-            <span> No events available right now</span>
+            <span>{getLanguage(LanguageKey.NO_RECORD_FOUND)}</span>
           </div>
         </div>
       )}

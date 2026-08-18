@@ -5,8 +5,11 @@ import { useBankMutation } from "../../hooks/bankAccount";
 import { API, Settings } from "../../api";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 import useContextState from "../../hooks/useContextState";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const AddUSDTAccount = ({ setTab, refetchBankAccounts }) => {
+  const { getLanguage } = useLanguage();
   const { token } = useContextState();
   const { mutate: addNewUSDTAccount } = useBankMutation();
   const [isFormValid, setIsFormValid] = useState(false);
@@ -133,7 +136,8 @@ const AddUSDTAccount = ({ setTab, refetchBankAccounts }) => {
         {/* Wallet Address Field */}
         <div className="form-field">
           <div className="field-label">
-            USDT Type <span className="required-asterisk">*</span>
+            {getLanguage(LanguageKey.USDT_TYPE)}{" "}
+            <span className="required-asterisk">*</span>
           </div>
           <div
             className="input-wrapper"
@@ -185,7 +189,8 @@ const AddUSDTAccount = ({ setTab, refetchBankAccounts }) => {
         {/* Wallet Address Field */}
         <div className="form-field">
           <div className="field-label">
-            Wallet Address <span className="required-asterisk">*</span>
+            {getLanguage(LanguageKey.WALLET_ADDRESS)}{" "}
+            <span className="required-asterisk">*</span>
           </div>
           <div className="input-wrapper">
             <input
@@ -210,7 +215,8 @@ const AddUSDTAccount = ({ setTab, refetchBankAccounts }) => {
         {mobile && Settings.otp && (
           <div className="form-field">
             <div className="field-label">
-              Mobile <span className="required-asterisk">*</span>
+              {getLanguage(LanguageKey.MOBILE_NUMBER)}{" "}
+              <span className="required-asterisk">*</span>
             </div>
             <div className="input-wrapper">
               <input
@@ -225,7 +231,9 @@ const AddUSDTAccount = ({ setTab, refetchBankAccounts }) => {
               <div className="otp-button-container">
                 {timer ? (
                   <button onClick={getOtp} className="otp-button" type="button">
-                    <span>Retry in {timer}</span>
+                    <span>
+                      {getLanguage(LanguageKey.RETRY_IN)} {timer}
+                    </span>
                   </button>
                 ) : (
                   <div className="otp-buttons-group">
@@ -247,7 +255,9 @@ const AddUSDTAccount = ({ setTab, refetchBankAccounts }) => {
                       className="otp-button otp-button-primary"
                       type="button"
                     >
-                      <span className="otp-button-text">Get OTP SMS</span>
+                      <span className="otp-button-text">
+                        {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                      </span>
                       <span className="shimmer"></span>
                     </button>
                   </div>
@@ -264,7 +274,8 @@ const AddUSDTAccount = ({ setTab, refetchBankAccounts }) => {
         {mobile && Settings.otp && (
           <div className="form-field">
             <div className="field-label">
-              OTP <span className="required-asterisk">*</span>
+              {getLanguage(LanguageKey.OTP)}{" "}
+              <span className="required-asterisk">*</span>
             </div>
             <div className="input-wrapper">
               <input
@@ -308,7 +319,7 @@ const AddUSDTAccount = ({ setTab, refetchBankAccounts }) => {
       {/* Submit Button */}
       <div className="submit-container">
         <button disabled={!isFormValid} className="submit-button" type="submit">
-          <span>Submit</span>
+          <span>{getLanguage(LanguageKey.SUBMIT)}</span>
         </button>
       </div>
     </form>

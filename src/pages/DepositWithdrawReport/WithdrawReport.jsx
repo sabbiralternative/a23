@@ -7,8 +7,11 @@ import Complaint from "../../components/modal/Complaint/Complaint";
 import { API, Settings } from "../../api";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 import toast from "react-hot-toast";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const WithdrawReport = () => {
+  const { getLanguage } = useLanguage();
   const [complaintId, setComplaintId] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState("");
@@ -177,7 +180,7 @@ const WithdrawReport = () => {
                                       handleDeleteWithdraw(data?.withdraw_id)
                                     }
                                   >
-                                    Cancel Withdraw
+                                    {getLanguage(LanguageKey.CANCEL_WITHDRAWAL)}
                                   </button>
                                 )}
 
@@ -191,7 +194,10 @@ const WithdrawReport = () => {
                                       marginTop: "auto",
                                     }}
                                   >
-                                    Withdraw delete request sent.
+                                    {getLanguage(
+                                      LanguageKey.WITHDRAW_DELETE_REQUEST_SENT,
+                                    )}
+                                    .
                                   </p>
                                 )}
                               {Settings.complaint && (
@@ -210,7 +216,7 @@ const WithdrawReport = () => {
                                     setComplaintId(data?.referenceNo)
                                   }
                                 >
-                                  Report Issue
+                                  {getLanguage(LanguageKey.REPORT_ISSUE)}
                                 </button>
                               )}
                             </div>
@@ -229,7 +235,7 @@ const WithdrawReport = () => {
           })
         ) : (
           <div className="no-data ng-star-inserted">
-            <p>No transaction yet!</p>
+            <p>{getLanguage(LanguageKey.NO_TRANSACTION_YET)}!</p>
           </div>
         )}
       </div>

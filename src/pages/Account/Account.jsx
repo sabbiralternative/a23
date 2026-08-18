@@ -21,13 +21,12 @@ import profileSettings from "../../../src/assets/img/profile-settings.svg";
 import { images } from "../../assets";
 import { useState } from "react";
 import Referral from "../../components/modal/Referral";
-import useLanguage from "../../hooks/useLanguage";
-import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../constant/constant";
 import { Settings } from "../../api";
+import useLanguage from "../../hooks/use-language";
 
 const Account = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const [showReferral, setShowReferral] = useState(false);
 
   // token, setWallet,
@@ -90,8 +89,7 @@ const Account = () => {
                   style={{ color: "#000", fontSize: "14px", fontWeight: "500" }}
                 >
                   {" "}
-                  {languageValue(valueByLanguage, LanguageKey.USER_ID)} :{" "}
-                  {memberId}
+                  {getLanguage(LanguageKey.USER_ID)} : {memberId}
                 </span>
                 {/* <span
                   className="card-profile-page-upper-div-left-main-wallet"
@@ -160,7 +158,7 @@ const Account = () => {
               <div className="card-profile-image-lower-div-left">
                 <span className="card-profile-image-lower-div-left-text">
                   <span className="text-left-profile" style={{ color: "#000" }}>
-                    {languageValue(valueByLanguage, LanguageKey.BALANCE)}
+                    {getLanguage(LanguageKey.BALANCE)}
                   </span>
                   <span className="info-profile-left">
                     <svg
@@ -211,7 +209,7 @@ const Account = () => {
                   className="card-profile-image-lower-div-left-text"
                   style={{ color: "#000" }}
                 >
-                  {languageValue(valueByLanguage, LanguageKey.EXPOSURE)}
+                  {getLanguage(LanguageKey.EXPOSURE)}
                 </span>
                 <span
                   className="card-profile-image-lower-div-left-amount"
@@ -384,7 +382,7 @@ const Account = () => {
                   <img src={withdrawIcon} alt="Withdraw" />
                 </span>
                 <span className="button-container-profile-page-1-text">
-                  {languageValue(valueByLanguage, LanguageKey.WITHDRAW)}
+                  {getLanguage(LanguageKey.WITHDRAW)}
                 </span>
               </div>
               <div
@@ -397,7 +395,7 @@ const Account = () => {
                   <img src={depositProfileIcon} alt="Deposit" />
                 </span>
                 <span className="button-container-profile-page-2-text">
-                  {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
+                  {getLanguage(LanguageKey.DEPOSIT)}
                 </span>
               </div>
             </div>
@@ -426,7 +424,7 @@ const Account = () => {
                       </div>
                     </span>
                     <span className="profile-menu-left-text">
-                      Customer Support
+                      {getLanguage(LanguageKey.CUSTOMER_SUPPORT)}
                     </span>
                   </div>
                   <div className="profile-menu-items-right">
@@ -467,7 +465,7 @@ const Account = () => {
                       </div>
                     </span>
                     <span className="profile-menu-left-text">
-                      Deposit Report
+                      {getLanguage(LanguageKey.DEPOSIT_STATEMENT)}
                     </span>
                   </div>
                   <div className="profile-menu-items-right">
@@ -508,7 +506,7 @@ const Account = () => {
                       </div>
                     </span>
                     <span className="profile-menu-left-text">
-                      Withdraw Report
+                      {getLanguage(LanguageKey.WITHDRAW_STATMENT)}
                     </span>
                   </div>
                   <div className="profile-menu-items-right">
@@ -547,7 +545,9 @@ const Account = () => {
                       <div className="moving-strip"></div>
                     </div>
                   </span>
-                  <span className="profile-menu-left-text">Open Bets</span>
+                  <span className="profile-menu-left-text">
+                    {getLanguage(LanguageKey.OPEN_BETS)}
+                  </span>
                 </div>
                 <div className="profile-menu-items-right">
                   <svg
@@ -617,7 +617,7 @@ const Account = () => {
                     </div>
                   </span>
                   <span className="profile-menu-left-text">
-                    Betting Profit Loss
+                    {getLanguage(LanguageKey.BETTING_PROFIT_AND_LOSS)}
                   </span>
                 </div>
                 <div className="profile-menu-items-right">
@@ -654,10 +654,7 @@ const Account = () => {
                     </div>
                   </span>
                   <span className="profile-menu-left-text">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.MY_BANK_DETAILS,
-                    )}
+                    {getLanguage(LanguageKey.MY_BANK_DETAILS)}
                   </span>
                 </div>
                 <div className="profile-menu-items-right">
@@ -694,10 +691,7 @@ const Account = () => {
                     </div>
                   </span>
                   <span className="profile-menu-left-text">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.BONUS_STATEMENT,
-                    )}
+                    {getLanguage(LanguageKey.BONUS_STATEMENT)}
                   </span>
                 </div>
                 <div className="profile-menu-items-right">
@@ -737,10 +731,7 @@ const Account = () => {
                       </div>
                     </span>
                     <span className="profile-menu-left-text">
-                      {languageValue(
-                        valueByLanguage,
-                        LanguageKey.CHANGE_PASSWORD,
-                      )}
+                      {getLanguage(LanguageKey.CHANGE_PASSWORD)}
                     </span>
                   </div>
                   <div className="profile-menu-items-right">
@@ -780,7 +771,9 @@ const Account = () => {
                       <div className="moving-strip"></div>
                     </div>
                   </span>
-                  <span className="profile-menu-left-text">Edit Stake</span>
+                  <span className="profile-menu-left-text">
+                    {getLanguage(LanguageKey.EDIT_STAKE)}
+                  </span>
                 </div>
                 <div className="profile-menu-items-right">
                   <svg
@@ -816,7 +809,9 @@ const Account = () => {
                         <div className="moving-strip"></div>
                       </div>
                     </span>
-                    <span className="profile-menu-left-text">Affiliate</span>
+                    <span className="profile-menu-left-text">
+                      {getLanguage(LanguageKey.AFFILIATE)}
+                    </span>
                   </div>
                   <div className="profile-menu-items-right">
                     <svg
@@ -854,7 +849,7 @@ const Account = () => {
                   </span>
                   <span className="profile-menu-left-text">
                     {" "}
-                    Promos & Bonus
+                    {getLanguage(LanguageKey.PROMOTION_AND_BONUSES)}
                   </span>
                 </div>
                 <div className="profile-menu-items-right">
@@ -892,7 +887,7 @@ const Account = () => {
                   </span>
                   <span className="profile-menu-left-text">
                     {" "}
-                    Lossback Bonus
+                    {getLanguage(LanguageKey.LOSSBACK_BONUS)}
                   </span>
                 </div>
                 <div className="profile-menu-items-right">
@@ -931,7 +926,7 @@ const Account = () => {
                     </span>
                     <span className="profile-menu-left-text">
                       {" "}
-                      App Only Bonus
+                      {getLanguage(LanguageKey.APP_ONLY_BONUS)}
                     </span>
                   </div>
                   <div className="profile-menu-items-right">
@@ -1046,7 +1041,7 @@ const Account = () => {
                       </div>
                     </span>
                     <span className="profile-menu-left-text">
-                      {languageValue(valueByLanguage, LanguageKey.ALL_SUPPORT)}
+                      {getLanguage( LanguageKey.ALL_SUPPORT)}
                     </span>
                   </div>
                   <div className="profile-menu-items-right">
@@ -1080,7 +1075,7 @@ const Account = () => {
             <div className="download-card"></div>
             <button className="logout-btn">
               <span style={{ color: "#000" }}>
-                {languageValue(valueByLanguage, LanguageKey.LOGOUT)}
+                {getLanguage(LanguageKey.LOGOUT)}
               </span>
             </button>
           </div>

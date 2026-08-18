@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import useCurrentBets from "../../hooks/useCurrentBets";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const OpenBets = () => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const { myBets } = useCurrentBets();
 
@@ -25,8 +28,8 @@ const OpenBets = () => {
                 <div className="allbet-headcol">
                   <h3></h3>
                   <h3></h3>
-                  <h3>Odds</h3>
-                  <h3>Stake</h3>
+                  <h3>{getLanguage(LanguageKey.ODDS)}</h3>
+                  <h3>{getLanguage(LanguageKey.STAKE)}</h3>
                 </div>
               </div>
               {myBets?.map((item, i) => {
@@ -59,9 +62,7 @@ const OpenBets = () => {
       ) : (
         <div className="profile-menu-box">
           <div className="card-blank">
-            <span>
-              You {"don't"} have any {"bet's"} matched
-            </span>
+            <span>{getLanguage(LanguageKey.YOU_HAVE_NO_MATCHED_BETS)}</span>
           </div>
         </div>
       )}

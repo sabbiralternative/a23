@@ -4,12 +4,11 @@ import { useEffect, useState } from "react";
 import OpenBets from "../../modal/OpenBets";
 import useCurrentBets from "../../../hooks/useCurrentBets";
 import { Settings } from "../../../api";
-import useLanguage from "../../../hooks/useLanguage";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../constant/constant";
+import useLanguage from "../../../hooks/use-language";
 
 const Footer = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const { setSportsType, token } = useContextState();
   const navigate = useNavigate();
   const location = useLocation();
@@ -116,7 +115,7 @@ const Footer = () => {
               </clipPath>
             </defs>
           </svg>
-          <span>More</span>
+          <span>{getLanguage(LanguageKey.MORE)}</span>
         </div>
         <div
           onClick={() => {
@@ -134,7 +133,7 @@ const Footer = () => {
               d="M14.3212 2.12156L21.258 7.89881C21.8707 8.40881 22.2247 9.16481 22.2247 9.96206V19.8148C22.2247 21.2976 21.0225 22.4998 19.5397 22.4998H14.6029V18.599C14.6029 18.0467 14.1552 17.599 13.6029 17.599H11.6029C11.0507 17.599 10.6029 18.0467 10.6029 18.599V22.4998H5.6662C4.18345 22.4998 2.9812 21.2976 2.9812 19.8148V9.96206C2.9812 9.16481 3.3352 8.40881 3.94795 7.89881L10.8847 2.12156C11.88 1.29281 13.326 1.29281 14.3212 2.12156Z"
             ></path>
           </svg>
-          <span> {languageValue(valueByLanguage, LanguageKey.HOME)}</span>
+          <span> {getLanguage(LanguageKey.HOME)}</span>
         </div>
         {token ? (
           <div
@@ -167,7 +166,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <span>Open Bets</span>
+            <span>{getLanguage(LanguageKey.OPEN_BETS)}</span>
           </div>
         ) : (
           <div
@@ -202,7 +201,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <span>Promotion</span>
+            <span>{getLanguage(LanguageKey.PROMOTIONS)}</span>
           </div>
         )}
         <div
@@ -225,7 +224,7 @@ const Footer = () => {
               </clipPath>
             </defs>
           </svg>
-          <span>Account</span>
+          <span>{getLanguage(LanguageKey.ACCOUNT)}</span>
         </div>
         <div
           onClick={navigateWhatsApp}

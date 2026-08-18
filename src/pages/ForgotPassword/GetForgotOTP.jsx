@@ -3,7 +3,10 @@ import { API, Settings } from "../../api";
 import toast from "react-hot-toast";
 // import getOtpOnWhatsapp from "../../utils/getOtpOnWhatsapp";
 import { AxiosSecure } from "../../lib/AxiosSecure";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 const GetForgotOTP = ({ setShowOtp, mobileNo, setMobileNo, setOrderId }) => {
+  const { getLanguage } = useLanguage();
   const getOtp = async (e) => {
     e.preventDefault();
     /* Get Otp based on settings*/
@@ -46,7 +49,7 @@ const GetForgotOTP = ({ setShowOtp, mobileNo, setMobileNo, setOrderId }) => {
             <div className="register-card">
               <div className="register-card-header">
                 <div className="register-text">
-                  <p>Forgot Password</p>
+                  <p>{getLanguage(LanguageKey.FORGOT_PASSWORD)}</p>
                 </div>
               </div>
               <form
@@ -54,7 +57,7 @@ const GetForgotOTP = ({ setShowOtp, mobileNo, setMobileNo, setOrderId }) => {
                 className="ng-untouched ng-pristine ng-invalid"
               >
                 <div className="mobile-input">
-                  <span>Mobile Number*</span>
+                  <span>{getLanguage(LanguageKey.MOBILE_NUMBER)}*</span>
                   <div className="input-box">
                     <span className="drp-btn">+91</span>
                     <img
@@ -79,7 +82,7 @@ const GetForgotOTP = ({ setShowOtp, mobileNo, setMobileNo, setOrderId }) => {
                     type="submit"
                     className="otp-btn"
                   >
-                    <span>Get OTP on SMS</span>
+                    <span>{getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}</span>
                   </button>
 
                   {/* {Settings.otpless && (

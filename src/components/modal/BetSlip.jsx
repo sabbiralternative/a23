@@ -6,11 +6,12 @@ import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { FaSpinner } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import useBalance from "../../hooks/useBalance";
-import useLanguage from "../../hooks/useLanguage";
 import { v4 as uuidv4 } from "uuid";
 import { useParams } from "react-router-dom";
 import { AxiosJSEncrypt } from "../../lib/AxiosJSEncrypt";
 import { isBetDelay, isDelay } from "../../utils/isBetDelay";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const BetSlip = ({
   setOpenBetSlip,
@@ -21,7 +22,7 @@ const BetSlip = ({
 }) => {
   const [isCashOut, setIsCashOut] = useState(false);
   const { eventTypeId } = useParams();
-  const { language } = useLanguage();
+  const { language, getLanguage } = useLanguage();
   const { setPredictOdds, predictOdds, closePopupForForever } =
     useContextState();
   /* Close modal click outside */
@@ -326,7 +327,11 @@ const BetSlip = ({
                     }`}
                   >
                     <div className="modal-header">
-                      <h2> Place Bet | {placeBetValues?.marketName}</h2>
+                      <h2>
+                        {" "}
+                        {getLanguage(LanguageKey.PLACE_BET)} |{" "}
+                        {placeBetValues?.marketName}
+                      </h2>
                       <div
                         className="action-btns"
                         style={{ top: "-5px", right: "-5px" }}
@@ -374,13 +379,16 @@ const BetSlip = ({
                                 </span> */}
                               </span>
                               <span style={{ fontWeight: "500" }}>
-                                Your bet is being processed...
+                                {getLanguage(
+                                  LanguageKey.YOUR_BET_IS_BEING_PROCESSED,
+                                )}
+                                ...
                               </span>
                               <span
                                 style={{ fontWeight: "500" }}
                                 className="font-semibold"
                               >
-                                Please Wait...
+                                {getLanguage(LanguageKey.PLEASE_WAIT)}...
                               </span>
                             </div>
                           </div>
@@ -469,7 +477,9 @@ const BetSlip = ({
                               className="slip-btn notranslate mdc-button mdc-button--unelevated mat-mdc-unelevated-button mat-unthemed mat-mdc-button-base"
                             >
                               <span className="mat-mdc-button-persistent-ripple mdc-button__ripple"></span>
-                              <span className="mdc-button__label">Submit</span>
+                              <span className="mdc-button__label">
+                                {getLanguage(LanguageKey.SUBMIT)}
+                              </span>
                             </button>
                           </div>
                         </div>
@@ -554,7 +564,7 @@ const BetSlip = ({
                                 fontSize: "10px",
                               }}
                             >
-                              Max:
+                              {getLanguage(LanguageKey.MAX)}:
                               {placeBetValues?.maxLiabilityPerBet}
                             </h2>
                           </div>

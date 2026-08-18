@@ -5,8 +5,11 @@ import { RxCrossCircled } from "react-icons/rx";
 import { MdOutlinePendingActions } from "react-icons/md";
 import Complaint from "../../components/modal/Complaint/Complaint";
 import { Settings } from "../../api";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const DepositReport = () => {
+  const { getLanguage } = useLanguage();
   const [complaintId, setComplaintId] = useState(null);
   const { accountStatement } = useDepositStatement();
   const [category, setCategory] = useState();
@@ -16,7 +19,7 @@ const DepositReport = () => {
   useEffect(() => {
     if (accountStatement?.length > 0) {
       const categories = Array.from(
-        new Set(accountStatement?.map((item) => item?.date?.split(" ")?.[0]))
+        new Set(accountStatement?.map((item) => item?.date?.split(" ")?.[0])),
       );
       setCategory(categories);
     }
@@ -161,7 +164,7 @@ const DepositReport = () => {
                                   setComplaintId(data?.referenceNo)
                                 }
                               >
-                                Report Issue
+                                {getLanguage(LanguageKey.REPORT_ISSUE)}
                               </button>
                             )}
                             {/* <span className="right-bottom-date ">
@@ -178,7 +181,7 @@ const DepositReport = () => {
           })
         ) : (
           <div className="no-data ng-star-inserted">
-            <p>No transaction yet!</p>
+            <p>{getLanguage(LanguageKey.NO_TRANSACTION_YET)}!</p>
           </div>
         )}
       </div>

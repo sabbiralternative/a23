@@ -3,8 +3,11 @@ import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside"
 import { Settings } from "../../../api";
 import { GrAndroid } from "react-icons/gr";
 import { images } from "../../../assets";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../constant/constant";
 
 const DownloadAPK = ({ setShowAPKModal }) => {
+  const { getLanguage } = useLanguage();
   const modalRef = useRef();
   useCloseModalClickOutside(modalRef, () => {
     closeModal();
@@ -81,7 +84,9 @@ const DownloadAPK = ({ setShowAPKModal }) => {
               <div className="header-content">
                 <img src={images.install_android} alt="install_android" />
                 <h1 className="main-title">
-                  Download APK for Premium Gaming Experience
+                  {getLanguage(
+                    LanguageKey.DOWNLOAD_APK_FOR_PREMIUM_GAMING_EXPERIENCE,
+                  )}
                 </h1>
               </div>
             </header>
@@ -122,7 +127,9 @@ const DownloadAPK = ({ setShowAPKModal }) => {
 
               <a onClick={handleDownload} className="download-button">
                 <GrAndroid className="android-icon" />
-                <span>Download Official App Now ↓</span>
+                <span>
+                  {getLanguage(LanguageKey.DOWNLOAD_OFFICIAL_APP_NOW)} ↓
+                </span>
               </a>
             </main>
           </div>

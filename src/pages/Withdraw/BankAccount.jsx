@@ -3,8 +3,11 @@ import AddBankAccount from "./AddBankAccount";
 import AddUSDTAccount from "./AddUSDTAccount";
 import OldAccount from "./OldAccount";
 import useBankAccount from "../../hooks/useBankAccount";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const BankAccount = ({ amount }) => {
+  const { getLanguage } = useLanguage();
   const bankData = {
     type: "getBankAccounts",
     status: "1",
@@ -25,7 +28,7 @@ const BankAccount = ({ amount }) => {
       <div className="bank-account-content">
         <div className="bank-account-header">
           <span className="bank-account-header-text">
-            Please fill in all required fields*
+            {getLanguage(LanguageKey.PLEASE_FILL_IN_ALL_REQUIRED_FIELDS)}*
           </span>
           <div className="tab-container">
             <div id="step-selectMode" className="tab-wrapper">
@@ -35,7 +38,7 @@ const BankAccount = ({ amount }) => {
                   tab === "add-bank-account" ? "tab-button-active" : ""
                 }`}
               >
-                Add Bank Account
+                {getLanguage(LanguageKey.ADD_BANK_ACCOUNT)}
               </button>
               <button
                 onClick={() => setTab("add-usdt-account")}
@@ -43,7 +46,7 @@ const BankAccount = ({ amount }) => {
                   tab === "add-usdt-account" ? "tab-button-active" : ""
                 }`}
               >
-                Add USDT Account
+                {getLanguage(LanguageKey.ADD_USDT_ACCOUNT)}
               </button>
               <button
                 onClick={() => setTab("oldAccount")}
@@ -51,15 +54,15 @@ const BankAccount = ({ amount }) => {
                   tab === "oldAccount" ? "tab-button-active" : ""
                 }`}
               >
-                Use Previous Account
+                {getLanguage(LanguageKey.USE_PREVIOUS_ACCOUNT)}
               </button>
               <div
                 className={`tab-indicator ${
                   tab === "oldAccount"
                     ? "tab-indicator-right"
                     : tab === "add-bank-account"
-                    ? "tab-indicator-left"
-                    : "tab-indicator-center"
+                      ? "tab-indicator-left"
+                      : "tab-indicator-center"
                 }`}
               >
                 <div className="tab-indicator-bg" />

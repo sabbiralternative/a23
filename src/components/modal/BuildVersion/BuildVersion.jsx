@@ -1,8 +1,11 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
 import { images } from "../../../assets";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../constant/constant";
 
 const BuildVersion = ({ build_version, setShowBuildVersion }) => {
+  const { getLanguage } = useLanguage();
   const modalRef = useRef();
   useCloseModalClickOutside(modalRef, () => {
     closeModal();
@@ -66,14 +69,17 @@ const BuildVersion = ({ build_version, setShowBuildVersion }) => {
                 className="main-title"
                 style={{ marginBottom: "0px", fontSize: "18px" }}
               >
-                New version available !
+                {getLanguage(LanguageKey.NEW_VERSION_AVAILABLE)} !
               </h1>
             </div>
           </header>
 
           <main className="promo-body">
             <p className="intro-text">
-              Please update to the new version to experience latest feature 🚀
+              {getLanguage(
+                LanguageKey.PLEASE_UPDATE_TO_THE_NEW_VERSION_TO_EXPERIENCE_LATEST_FEATURE,
+              )}
+              🚀
             </p>
 
             <div
@@ -92,14 +98,16 @@ const BuildVersion = ({ build_version, setShowBuildVersion }) => {
                 }}
                 className="download-button"
               >
-                <span style={{ color: "black" }}>Cancel</span>
+                <span style={{ color: "black" }}>
+                  {getLanguage(LanguageKey.CANCEL)}
+                </span>
               </a>
               <a
                 onClick={closeModal}
                 style={{ width: "100%" }}
                 className="download-button text-primary"
               >
-                <span>Update</span>
+                <span>{getLanguage(LanguageKey.UPDATE)}</span>
               </a>
             </div>
           </main>

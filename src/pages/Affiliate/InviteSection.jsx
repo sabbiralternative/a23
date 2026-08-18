@@ -4,8 +4,11 @@ import useGetIndex from "../../hooks/useGetIndex";
 import { handleCopyToClipBoard } from "../../utils/handleCopyToClipBoard";
 import AddNewUser from "../../components/modal/AddNewUser";
 import { Settings } from "../../api";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const InviteSection = () => {
+  const { getLanguage } = useLanguage();
   const [showAddNewUserModal, setShowAddNewUserModal] = useState(false);
   const { data } = useGetIndex();
 
@@ -17,8 +20,14 @@ const InviteSection = () => {
       <div data-v-4c49d924 className="nw-affi-invite-sec">
         <div className="nw-affi-invite-content-wrapper" data-v-4c49d924>
           <div className="nw-affi-invite-content" data-v-4c49d924>
-            <h2 data-v-4c49d924>Invite your friends</h2>
-            <p data-v-4c49d924>to join and you can receive huge bonuses</p>
+            <h2 data-v-4c49d924>
+              {getLanguage(LanguageKey.INVITE_YOUR_FRIENDS)}
+            </h2>
+            <p data-v-4c49d924>
+              {getLanguage(
+                LanguageKey.TO_JOIN_AND_YOU_CAN_RECEIVE_HUGE_BONUSES,
+              )}
+            </p>
           </div>
           <div className="nw-affi-invite-img" data-v-4c49d924>
             <img
@@ -44,7 +53,7 @@ const InviteSection = () => {
                   alt="affi-add-user"
                   data-v-4c49d924
                 />{" "}
-                ADD NEW USER
+                {getLanguage(LanguageKey.ADD_NEW_USER)}
               </span>
             </button>
           </div>
@@ -58,7 +67,9 @@ const InviteSection = () => {
                 src={images.affiInviteGift}
                 alt="invite-gift"
               />
-              <h3 data-v-4c49d924>Invitation Code</h3>
+              <h3 data-v-4c49d924>
+                {getLanguage(LanguageKey.INVITATION_CODE)}
+              </h3>
             </div>
             <div data-v-4c49d924 className="nw-affi-share-link-sec">
               <span data-v-4c49d924>{data?.link}</span>

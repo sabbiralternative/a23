@@ -7,7 +7,8 @@ import useContextState from "../../hooks/useContextState";
 import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { FaSpinner } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import useLanguage from "../../hooks/useLanguage";
+import useLanguage from "../../hooks/use-language";
+
 const BetSlip = ({
   setOpenBetSlip,
   placeBetValues,
@@ -108,7 +109,7 @@ const BetSlip = ({
           toast.success(data?.result?.result?.placed?.[0]?.message);
         } else {
           toast.error(
-            data?.error?.status?.[0]?.description || data?.error?.errorMessage
+            data?.error?.status?.[0]?.description || data?.error?.errorMessage,
           );
           setLoader(false);
           setOpenBetSlip(false);

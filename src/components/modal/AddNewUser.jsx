@@ -4,8 +4,11 @@ import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { API, Settings } from "../../api";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 import { useIndex } from "../../hooks";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const AddNewUser = ({ setShowAddNewUserModal }) => {
+  const { getLanguage } = useLanguage();
   const { mutate: addNewUser } = useIndex();
   const [mobile, setMobile] = useState(null);
   const [timer, setTimer] = useState(null);
@@ -133,7 +136,9 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
     <div className="Modal-Background  ">
       <div className="card-add-bank" ref={addNewUserRef}>
         <div className="card-header">
-          <h2 style={{ color: "black" }}>Add New User</h2>
+          <h2 style={{ color: "black" }}>
+            {getLanguage(LanguageKey.ADD_NEW_USER)}
+          </h2>
           <div className="close-btn">
             <svg
               onClick={() => setShowAddNewUserModal(false)}
@@ -180,7 +185,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                       justifyContent: "center",
                     }}
                   >
-                    Retry in {timer}
+                    {getLanguage(LanguageKey.RETRY_IN)} {timer}
                   </div>
                 ) : (
                   <div
@@ -218,7 +223,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                       }}
                       type="button"
                     >
-                      Get OTP Message
+                      {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
                     </button>
                   </div>
                 )}
@@ -272,7 +277,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                     letterSpacing: "0.01875rem",
                   }}
                 >
-                  OR{" "}
+                  {getLanguage(LanguageKey.OR)}{" "}
                 </span>
                 <div
                   style={{
@@ -338,14 +343,16 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                   onClick={() => setShowAddNewUserModal(false)}
                   className="cancel-btn "
                 >
-                  <span className="">Cancel</span>
+                  <span className="">{getLanguage(LanguageKey.CANCEL)}</span>
                 </button>
                 <button
                   disabled={!isFormValid}
                   className="add-btn "
                   type="submit"
                 >
-                  <span className="">Add New User</span>
+                  <span className="">
+                    {getLanguage(LanguageKey.ADD_NEW_USER)}
+                  </span>
                 </button>
               </div>
             </form>

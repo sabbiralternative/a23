@@ -8,9 +8,7 @@ import { Settings } from "../../../api/index.js";
 import AEDRules from "../../modal/AEDRules";
 import useBonusBalance from "../../../hooks/useBonusBalance";
 import { images } from "../../../assets";
-import useLanguage from "../../../hooks/useLanguage.jsx";
 import Language from "../../modal/Language.jsx";
-import { languageValue } from "../../../utils/language.js";
 import { LanguageKey } from "../../../constant/constant.js";
 import Notification from "./Notification.jsx";
 import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK.jsx";
@@ -18,11 +16,12 @@ import BuildVersion from "../../modal/BuildVersion/BuildVersion.jsx";
 import Error from "../../modal/Error/Error.jsx";
 import { latestEvent } from "../../../static/latest-event.js";
 import { eventNameList } from "../../../static/event-name-list.js";
+import useLanguage from "../../../hooks/use-language.js";
 
 const Header = () => {
   const [showBuildVersion, setShowBuildVersion] = useState(false);
   const stored_build_version = localStorage.getItem("build_version");
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
   const {
     setSportsType,
@@ -220,7 +219,7 @@ const Header = () => {
                     className="ui-button button-normal s-conic"
                   >
                     <div className="button-inner">
-                      {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
+                      {getLanguage(LanguageKey.DEPOSIT)}
                     </div>
                   </button>
                 </>
@@ -234,7 +233,7 @@ const Header = () => {
                   >
                     <div className="button-inner">
                       {" "}
-                      {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+                      {getLanguage(LanguageKey.LOGIN)}
                     </div>
                   </button>
                   {Settings.register && (
@@ -244,7 +243,7 @@ const Header = () => {
                     >
                       <div className="button-inner">
                         {" "}
-                        {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+                        {getLanguage(LanguageKey.REGISTER)}
                       </div>
                     </button>
                   )}
@@ -341,10 +340,7 @@ const Header = () => {
                       </clipPath>
                     </defs>
                   </svg>
-                  <span>
-                    {" "}
-                    {languageValue(valueByLanguage, LanguageKey.HOME)}
-                  </span>
+                  <span> {getLanguage(LanguageKey.HOME)}</span>
                 </button>
                 {Settings?.referral && (
                   <button
@@ -362,7 +358,7 @@ const Header = () => {
                       src={images.affiliate}
                       alt=""
                     />
-                    <span>Affiliate</span>
+                    <span>{getLanguage(LanguageKey.AFFILIATE)}</span>
                   </button>
                 )}
                 {latestEvent?.map((item) => {
@@ -418,10 +414,7 @@ const Header = () => {
                       d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm7.1 15.6l1.2 2c-1 1.5-2.5 2.7-4.2 3.5l-.8-1.4h-4.9l-1.1 1.9c-2.4-.7-4.4-2.3-5.7-4.3L5 14.8l-2.5-4.3h-.4c.3-1.7.9-3.2 2-4.6h2.4l1.9-3.2C9.5 2.3 10.7 2 12 2c.9 0 1.7.1 2.5.3l2.1 3.6H20c1.2 1.5 1.9 3.4 2 5.4h-.4l-2.5 4.3zm-9.6-8L7 11.9l2.5 4.3h4.9l2.5-4.3-2.5-4.3H9.5z"
                     />
                   </svg>
-                  <span>
-                    {" "}
-                    {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
-                  </span>
+                  <span> {getLanguage(LanguageKey.FOOTBALL)}</span>
                 </button>
 
                 <button
@@ -452,10 +445,7 @@ const Header = () => {
                       d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zM2 12c0-2.8 1.1-5.3 3-7.1C6.8 6.7 8 9.2 8 12s-1.2 5.3-3 7.1c-1.9-1.8-3-4.3-3-7.1zm4.6 8.4C8.7 18.2 10 15.3 10 12c0-3.3-1.3-6.2-3.4-8.4C8.1 2.6 10 2 12 2s3.9.6 5.4 1.6C15.3 5.8 14 8.7 14 12c0 3.3 1.3 6.2 3.4 8.4-1.5 1-3.4 1.6-5.4 1.6s-3.9-.6-5.4-1.6zM19 19.1c-1.9-1.8-3-4.3-3-7.1s1.2-5.3 3-7.1c1.8 1.8 3 4.3 3 7.1s-1.1 5.3-3 7.1z"
                     />
                   </svg>
-                  <span>
-                    {" "}
-                    {languageValue(valueByLanguage, LanguageKey.TENNIS)}
-                  </span>
+                  <span> {getLanguage(LanguageKey.TENNIS)}</span>
                 </button>
                 <button
                   onClick={() => handleNavigateToIFrame("sportsbook", "550000")}
@@ -472,7 +462,7 @@ const Header = () => {
                   >
                     <path d="M400 0L176 0c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8L24 64C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9L192 448c-17.7 0-32 14.3-32 32s14.3 32 32 32l192 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-26.1 0C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24L446.4 64c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112l84.4 0c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6l84.4 0c-5.1 66.3-31.1 111.2-63 142.3z"></path>
                   </svg>
-                  <span> Sportsbook</span>
+                  <span> {getLanguage(LanguageKey.SPORTSBOOK)}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -491,10 +481,7 @@ const Header = () => {
                     src={images.kabaddi}
                     alt=""
                   />
-                  <span>
-                    {" "}
-                    {languageValue(valueByLanguage, LanguageKey.KABADDI)}
-                  </span>
+                  <span> {getLanguage(LanguageKey.KABADDI)}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -514,7 +501,7 @@ const Header = () => {
                     src={"/img/poll.svg"}
                     alt=""
                   />
-                  <span> Politics</span>
+                  <span> {getLanguage(LanguageKey.POLITICS)}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -536,10 +523,7 @@ const Header = () => {
                       fill="#864D44"
                     ></path>
                   </svg>
-                  <span>
-                    {" "}
-                    {languageValue(valueByLanguage, LanguageKey.HORSE)}
-                  </span>
+                  <span> {getLanguage(LanguageKey.HORSE)}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -561,10 +545,7 @@ const Header = () => {
                       fill="#305765"
                     ></path>
                   </svg>
-                  <span>
-                    {" "}
-                    {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
-                  </span>
+                  <span> {getLanguage(LanguageKey.GREYHOUND)}</span>
                 </button>
                 {eventNameList.map((item) => {
                   return (
@@ -589,7 +570,7 @@ const Header = () => {
                         src={item.image}
                         alt=""
                       />
-                      <span> {item.name}</span>
+                      <span> {getLanguage(item.name)}</span>
                     </button>
                   );
                 })}
@@ -615,7 +596,7 @@ const Header = () => {
                       fill="#65C316"
                     ></path>
                   </svg>
-                  <span> Funbar</span>
+                  <span> {getLanguage(LanguageKey.FUNBAR)}</span>
                 </button>
 
                 <button
@@ -640,10 +621,7 @@ const Header = () => {
                       fill="#65C316"
                     ></path>
                   </svg>
-                  <span>
-                    {" "}
-                    {languageValue(valueByLanguage, LanguageKey.MAC88)}
-                  </span>
+                  <span> {getLanguage(LanguageKey.MAC88)}</span>
                 </button>
 
                 <button
@@ -668,7 +646,7 @@ const Header = () => {
                       fill="#65C316"
                     ></path>
                   </svg>
-                  <span>Royal Casino</span>
+                  <span>{getLanguage(LanguageKey.ROYAL_CASINO)}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -690,7 +668,7 @@ const Header = () => {
                       fill="orange"
                     ></path>
                   </svg>
-                  <span>Int Casino</span>
+                  <span>{getLanguage(LanguageKey.INT_CASINO)}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -714,7 +692,7 @@ const Header = () => {
                       fill="#65C316"
                     ></path>
                   </svg>
-                  <span>Indian Casino</span>
+                  <span>{getLanguage(LanguageKey.INDIAN_CASINO)}</span>
                 </button>
 
                 <button
@@ -733,7 +711,7 @@ const Header = () => {
                       fill="#e50539"
                     ></path>
                   </svg>
-                  <span>Aviator</span>
+                  <span>{getLanguage(LanguageKey.AVIATOR)}</span>
                 </button>
                 <button
                   onClick={() => navigate("/slots")}
@@ -800,7 +778,7 @@ const Header = () => {
                       ></path>
                     </g>
                   </svg>
-                  <span>Slots</span>
+                  <span>{getLanguage(LanguageKey.SLOTS)}</span>
                 </button>
               </div>
             </div>

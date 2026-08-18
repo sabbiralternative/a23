@@ -7,7 +7,7 @@ import disableDevtool from "disable-devtool";
 import { handleLogOut } from "../../utils/handleLogOut";
 import { Settings } from "../../api";
 import MaintenanceMessage from "../ui/MaintenanceMessage/MaintenanceMessage";
-import useLanguage from "../../hooks/useLanguage";
+import useLanguage from "../../hooks/use-language";
 
 const MainLayout = () => {
   const { setLanguage } = useLanguage();

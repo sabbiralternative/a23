@@ -4,8 +4,11 @@ import { Settings } from "../../../api";
 import { useState } from "react";
 import AEDRules from "../../modal/AEDRules";
 import Warning from "../../modal/Warning";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../constant/constant";
 
 const CasinoCard = ({ games, title }) => {
+  const { getLanguage } = useLanguage();
   const { token, wallet, setShowWarning, showWarning } = useContextState();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -58,7 +61,9 @@ const CasinoCard = ({ games, title }) => {
         <AEDRules setShowModal={setShowModal} casinoInfo={casinoInfo} />
       )}
       <div className="s15yntg2">
-        <div className="title">{title} Casino Games</div>
+        <div className="title">
+          {title} {getLanguage(LanguageKey.CASINO)}
+        </div>
         <div className="s1qvj928 game-list">
           <div className="game-list">
             {games?.map((casino, i) => {

@@ -6,8 +6,11 @@ import { useState } from "react";
 import useContextState from "../../hooks/useContextState";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AxiosSecure } from "../../lib/AxiosSecure";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const ChangePassword = () => {
+  const { getLanguage } = useLanguage();
   window.scrollTo(0, 0);
   const { setGetToken } = useContextState();
   const [showPassword, setShowPassword] = useState(false);
@@ -52,7 +55,7 @@ const ChangePassword = () => {
             <div className="login-box">
               <div className="login-card">
                 <div className="login-card-header">
-                  <span>Change Password</span>
+                  <span>{getLanguage(LanguageKey.CHANGE_PASSWORD)}</span>
                 </div>
 
                 <form
@@ -63,7 +66,7 @@ const ChangePassword = () => {
                 >
                   <div className="whatsup-login-box">
                     <div className="mobile-input">
-                      <span>Old Password*</span>
+                      <span>{getLanguage(LanguageKey.OLD_PASSWORD)}*</span>
                       <div className="input-box">
                         <div className=""></div>
                         <input
@@ -76,7 +79,7 @@ const ChangePassword = () => {
                       </div>
 
                       <div className="password-input password-input-1">
-                        <span>New Password*</span>
+                        <span>{getLanguage(LanguageKey.NEW_PASSWORD)}*</span>
                         <input
                           {...register("newPassword", {
                             required: true,
@@ -107,7 +110,9 @@ const ChangePassword = () => {
                       </div>
 
                       <div className="password-input password-input-1">
-                        <span>Confirm Password*</span>
+                        <span>
+                          {getLanguage(LanguageKey.CONFIRM_PASSWORD)}*
+                        </span>
                         <input
                           {...register("newPasswordConfirm", {
                             required: true,
@@ -142,7 +147,7 @@ const ChangePassword = () => {
                     </div>
                   </div>
                   <button type="submit" className="login-btn">
-                    <span>Change Password</span>
+                    <span>{getLanguage(LanguageKey.CHANGE_PASSWORD)}</span>
                   </button>
                 </form>
               </div>

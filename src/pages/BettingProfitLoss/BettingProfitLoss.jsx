@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom";
 import usePassbook from "../../hooks/usePassbook";
 import useContextState from "../../hooks/useContextState";
 import moment from "moment";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const BettingProfitLoss = () => {
+  const { getLanguage } = useLanguage();
   const { passbook } = usePassbook();
   const navigate = useNavigate();
   const { token } = useContextState();
@@ -14,7 +17,7 @@ const BettingProfitLoss = () => {
   };
 
   const getUniqueDate = Array.from(
-    new Set(passbook?.map((item) => item?.settledTime))
+    new Set(passbook?.map((item) => item?.settledTime)),
   );
 
   return (
@@ -39,14 +42,14 @@ const BettingProfitLoss = () => {
           ></path>
         </svg>
         <span className="deposit-withdraw-head-title  ng-star-inserted">
-          Back
+          {getLanguage(LanguageKey.BACK)}
         </span>
       </div>
       {getUniqueDate?.length > 0 && (
         <div>
           {getUniqueDate?.map((date) => {
             const filterByDate = passbook?.filter(
-              (item) => item?.settledTime === date
+              (item) => item?.settledTime === date,
             );
 
             const totalPnl = filterByDate?.reduce((acc, curr) => {
@@ -86,7 +89,7 @@ const BettingProfitLoss = () => {
                       justifyContent: "center",
                     }}
                   >
-                    <span>Total PL</span>
+                    <span>{getLanguage(LanguageKey.TOTAL_PL)}</span>
                     <span style={{ marginTop: "-2px", marginLeft: "4px" }}>
                       :
                     </span>
@@ -98,8 +101,8 @@ const BettingProfitLoss = () => {
                           totalPnl > 0
                             ? "#48BB78"
                             : totalPnl < 0
-                            ? "#F56565"
-                            : "#FFFFFF",
+                              ? "#F56565"
+                              : "#FFFFFF",
                       }}
                     >
                       {totalPnl?.toFixed(2)}
@@ -121,7 +124,10 @@ const BettingProfitLoss = () => {
                         <span className="mat-content  mat-content-hide-toggle">
                           <div className="mat-expansion-panel-header-title ">
                             <h3>{item?.narration}</h3>
-                            <h3>Balance: {item?.balance}</h3>
+                            <h3>
+                              {getLanguage(LanguageKey.BALANCE)}:{" "}
+                              {item?.balance}
+                            </h3>
                             <h3 style={{ color: "gray" }}>{item?.time}</h3>
                           </div>
                           <div className="mat-expansion-panel-header-description ">
@@ -153,13 +159,17 @@ const BettingProfitLoss = () => {
 
       {getUniqueDate?.length === 0 && (
         <div className="no-data ng-star-inserted">
-          <p>Passbook not found</p>
+          <p>{getLanguage(LanguageKey.NO_RECORD_FOUND)}</p>
         </div>
       )}
 
       {!token && (
         <div className="no-data ng-star-inserted">
-          <p>Please login to view your passbook entries</p>
+          <p>
+            {getLanguage(
+              LanguageKey.PLEASE_LOGIN_TO_VIEW_YOUR_PASSBOOK_ENTRIES,
+            )}
+          </p>
         </div>
       )}
     </div>

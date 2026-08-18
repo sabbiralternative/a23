@@ -1,5 +1,5 @@
 import useBankAccount from "../../hooks/useBankAccount";
-import { API, Settings } from "../../api";
+import { API } from "../../api";
 import { useEffect, useRef, useState } from "react";
 import contactOne from "../../../src/assets/img/contact_one.svg";
 import clipboardIcon from "../../../src/assets/img/clipboard_icon.svg";
@@ -17,6 +17,8 @@ import { ProgressBar } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import useGetPGStatus from "../../hooks/useGetPGStatus";
 import { AxiosSecure } from "../../lib/AxiosSecure";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 /* eslint-disable react/no-unknown-property */
 const PaymentMethods = ({
@@ -35,6 +37,7 @@ const PaymentMethods = ({
     type: "depositMethods",
     amount,
   });
+  const { getLanguage } = useLanguage();
   const paymentMethodRef = useRef();
   const [qrcode, setQrcode] = useState("");
   const [depositData, setDepositData] = useState({});
@@ -159,7 +162,7 @@ const PaymentMethods = ({
             className="make ng-tns-c159-13"
             style={{ marginBottom: "0.75rem", color: "black" }}
           >
-            Payment Methods
+            {getLanguage(LanguageKey.PAYMENT_METHODS)}
           </p>
 
           {Array.isArray(depositMethods) &&
@@ -231,7 +234,9 @@ const PaymentMethods = ({
               })}
 
           {isFetched && depositMethods?.length === 0 && (
-            <h2>No payment method available right now.</h2>
+            <h2>
+              {getLanguage(LanguageKey.NO_PAYMENT_METHOD_AVAILABLE_RIGHT_NOW)}.
+            </h2>
           )}
 
           {/*    <!-- Add more divs as needed --> */}
@@ -250,7 +255,7 @@ const PaymentMethods = ({
                 className="make ng-tns-c159-13"
                 style={{ marginBottom: "0.75rem", color: "black" }}
               >
-                Use below details to make payment
+                {getLanguage(LanguageKey.USE_BELOW_DETAILS_TO_MAKE_PAYMENT)}
               </p>
               <div
                 _ngcontent-kdb-c159=""
@@ -277,7 +282,7 @@ const PaymentMethods = ({
                     className="banknum ng-tns-c159-13"
                   >
                     {" "}
-                    Account Number{" "}
+                    {getLanguage(LanguageKey.ACCOUNT_NUMBER)}{" "}
                     <div _ngcontent-kdb-c159="" className="icon ng-tns-c159-13">
                       <p
                         _ngcontent-kdb-c159=""
@@ -325,7 +330,7 @@ const PaymentMethods = ({
                     className="banknum ng-tns-c159-13"
                   >
                     {" "}
-                    Account Name{" "}
+                    {getLanguage(LanguageKey.ACCOUNT_NAME)}{" "}
                     <div _ngcontent-kdb-c159="" className="icon ng-tns-c159-13">
                       <p
                         _ngcontent-kdb-c159=""
@@ -419,7 +424,7 @@ const PaymentMethods = ({
                     className="banknum ng-tns-c159-13"
                   >
                     {" "}
-                    Bank Name{" "}
+                    {getLanguage(LanguageKey.BANK_NAME)}{" "}
                     <div _ngcontent-kdb-c159="" className="icon ng-tns-c159-13">
                       <p
                         _ngcontent-kdb-c159=""
@@ -458,7 +463,7 @@ const PaymentMethods = ({
               >
                 <div _ngcontent-kdb-c159="" className="madepay ng-tns-c159-13">
                   <button _ngcontent-kdb-c159="" className="ng-tns-c159-13">
-                    I have Made The Payment
+                    {getLanguage(LanguageKey.I_HAVE_MADE_THE_PAYMENT)}
                   </button>
                 </div>
               </div>
@@ -476,7 +481,7 @@ const PaymentMethods = ({
                 className="make ng-tns-c159-13"
                 style={{ marginBottom: "0.75rem", color: "black" }}
               >
-                Use below details to make payment
+                {getLanguage(LanguageKey.USE_BELOW_DETAILS_TO_MAKE_PAYMENT)}
               </p>
               <div
                 _ngcontent-kdb-c159=""
@@ -545,7 +550,7 @@ const PaymentMethods = ({
                     className="banknum ng-tns-c159-13"
                   >
                     {" "}
-                    Display Name{" "}
+                    {getLanguage(LanguageKey.DISPLAY_NAME)}{" "}
                     <div _ngcontent-kdb-c159="" className="icon ng-tns-c159-13">
                       <p
                         _ngcontent-kdb-c159=""
@@ -593,7 +598,7 @@ const PaymentMethods = ({
                     className="banknum ng-tns-c159-13"
                   >
                     {" "}
-                    UPI Details
+                    {getLanguage(LanguageKey.UPI_DETAILS)}
                     <div _ngcontent-kdb-c159="" className="icon ng-tns-c159-13">
                       <p
                         _ngcontent-kdb-c159=""
@@ -674,7 +679,7 @@ const PaymentMethods = ({
               >
                 <div _ngcontent-kdb-c159="" className="madepay ng-tns-c159-13">
                   <button _ngcontent-kdb-c159="" className="ng-tns-c159-13">
-                    I have Made The Payment
+                    {getLanguage(LanguageKey.I_HAVE_MADE_THE_PAYMENT)}
                   </button>
                 </div>
               </div>
@@ -696,7 +701,7 @@ const PaymentMethods = ({
                   color: "black",
                 }}
               >
-                QR code for payment
+                {getLanguage(LanguageKey.QR_CODE_FOR_PAYMENT)}
               </p>
               <div
                 style={{
@@ -749,7 +754,7 @@ const PaymentMethods = ({
                           alt=""
                           className="ng-tns-c159-13"
                         />{" "}
-                        <span> Display Name </span>
+                        <span>{getLanguage(LanguageKey.DISPLAY_NAME)}</span>
                       </span>
                       <div
                         _ngcontent-kdb-c159=""
@@ -793,7 +798,7 @@ const PaymentMethods = ({
               >
                 <div _ngcontent-kdb-c159="" className="madepay ng-tns-c159-13">
                   <button _ngcontent-kdb-c159="" className="ng-tns-c159-13">
-                    I have Made The Payment
+                    {getLanguage(LanguageKey.I_HAVE_MADE_THE_PAYMENT)}
                   </button>
                 </div>
               </div>
@@ -816,7 +821,7 @@ const PaymentMethods = ({
                     className="make ng-tns-c159-13"
                     style={{ marginBottom: "0.75rem", color: "black" }}
                   >
-                    Use below details to make payment
+                    {getLanguage(LanguageKey.USE_BELOW_DETAILS_TO_MAKE_PAYMENT)}
                   </p>
                   <div
                     style={{ margin: "0px" }}
@@ -844,7 +849,7 @@ const PaymentMethods = ({
                         className="banknum ng-tns-c159-13"
                       >
                         {" "}
-                        Wallet Address
+                        {getLanguage(LanguageKey.WALLET_ADDRESS)}
                         <div
                           _ngcontent-kdb-c159=""
                           className="icon ng-tns-c159-13"
@@ -895,7 +900,7 @@ const PaymentMethods = ({
                         className="banknum ng-tns-c159-13"
                       >
                         {" "}
-                        Amount
+                        {getLanguage(LanguageKey.AMOUNT)}
                         <div
                           _ngcontent-kdb-c159=""
                           className="icon ng-tns-c159-13"
@@ -939,7 +944,7 @@ const PaymentMethods = ({
                   color: "black",
                 }}
               >
-                QR code for payment
+                {getLanguage(LanguageKey.QR_CODE_FOR_PAYMENT)}
               </p>
               <div
                 style={{
@@ -987,7 +992,7 @@ const PaymentMethods = ({
               >
                 <div _ngcontent-kdb-c159="" className="madepay ng-tns-c159-13">
                   <button _ngcontent-kdb-c159="" className="ng-tns-c159-13">
-                    I have Made The Payment
+                    {getLanguage(LanguageKey.I_HAVE_MADE_THE_PAYMENT)}
                   </button>
                 </div>
               </div>
@@ -1009,7 +1014,7 @@ const PaymentMethods = ({
                   color: "black",
                 }}
               >
-                QR code for payment
+                {getLanguage(LanguageKey.QR_CODE_FOR_PAYMENT)}
               </p>
               <div
                 style={{
@@ -1046,7 +1051,7 @@ const PaymentMethods = ({
                   }}
                 >
                   <p style={{ fontSize: "12px" }}>
-                    Scan to pay with any UPI app.
+                    {getLanguage(LanguageKey.SCAN_TO_PAY_WITH_ANY_UPI_APP)}.
                   </p>
                   <p
                     style={{
@@ -1055,7 +1060,8 @@ const PaymentMethods = ({
                       fontSize: "12px",
                     }}
                   >
-                    checking payment status..
+                    {getLanguage(LanguageKey.CHECKING_PAYMENT_STATUS)}
+                    ..
                     <span style={{ color: "green" }}>{formatTime(time)}</span>
                   </p>
                   {time && (
@@ -1106,7 +1112,7 @@ const PaymentMethods = ({
                   color: "black",
                 }}
               >
-                QR code for payment
+                {getLanguage(LanguageKey.QR_CODE_FOR_PAYMENT)}
               </p>
               {pgPaymentMethods?.upi && (
                 <div
@@ -1123,7 +1129,7 @@ const PaymentMethods = ({
                     }}
                     className="payment_container"
                   >
-                    <span>Instant UPI</span>
+                    <span>{getLanguage(LanguageKey.INSTANT_UPI)}</span>
 
                     <img
                       style={{ height: "20px", width: "20px" }}
@@ -1147,7 +1153,7 @@ const PaymentMethods = ({
                     }}
                     className="payment_container"
                   >
-                    <span>Instant Google Pay</span>
+                    <span>{getLanguage(LanguageKey.INSTANT_GOOGLE_PAY)}</span>
 
                     <img
                       style={{ height: "20px", width: "20px" }}
@@ -1171,7 +1177,7 @@ const PaymentMethods = ({
                     }}
                     className="payment_container"
                   >
-                    <span>Instant Paytm</span>
+                    <span>{getLanguage(LanguageKey.INSTANT_PAYTM)}</span>
 
                     <img
                       style={{ height: "20px", width: "20px" }}
@@ -1195,7 +1201,7 @@ const PaymentMethods = ({
                     }}
                     className="payment_container"
                   >
-                    <span>Instant Phone Pe</span>
+                    <span>{getLanguage(LanguageKey.INSTANT_PHONE_PE)}</span>
 
                     <img
                       style={{ height: "20px", width: "20px" }}

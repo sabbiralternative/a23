@@ -3,6 +3,8 @@ import useCloseModalClickOutside from "../../hooks/useCloseModalClickOutside";
 import { useNavigate } from "react-router-dom";
 import useSBCashOut from "../../hooks/sb_cashout";
 import toast from "react-hot-toast";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const OpenBets = ({
   setShowOpenBets,
@@ -11,7 +13,7 @@ const OpenBets = ({
   refetchCurrentBets,
 }) => {
   const { mutate: cashOut } = useSBCashOut();
-
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const openBetsRef = useRef();
   useCloseModalClickOutside(openBetsRef, () => {
@@ -24,7 +26,7 @@ const OpenBets = ({
       (group) =>
         group?.Name !== "Bet Builder" &&
         group?.Name !== "Fast Markets" &&
-        group?.Name !== "Player Specials"
+        group?.Name !== "Player Specials",
     );
 
   const handleCashOut = ({ betHistory, sportsBook, price, cashout_value }) => {
@@ -38,7 +40,7 @@ const OpenBets = ({
     });
 
     const column = item?.Items?.find(
-      (col) => col?.Id === betHistory?.selectionId
+      (col) => col?.Id === betHistory?.selectionId,
     );
 
     const payload = {
@@ -81,7 +83,7 @@ const OpenBets = ({
       >
         <div className="depositbreak ng-tns-c159-13" style={{ height: "25px" }}>
           <p className="ng-tns-c159-13" style={{ fontSize: "11px" }}>
-            Open Bets
+            {getLanguage(LanguageKey.OPEN_BETS)}
           </p>
           <div
             onClick={() => setShowOpenBets(false)}
@@ -120,8 +122,8 @@ const OpenBets = ({
                   <div className="allbet-headcol">
                     <h3></h3>
                     <h3></h3>
-                    <h3>Odd</h3>
-                    <h3>Stake</h3>
+                    <h3>{getLanguage(LanguageKey.ODDS)}</h3>
+                    <h3>{getLanguage(LanguageKey.STAKE)}</h3>
                   </div>
                 </div>
                 {myBets?.map((item, i) => {
@@ -130,7 +132,7 @@ const OpenBets = ({
                     group?.Items?.forEach((data) => {
                       if (item?.marketId == data?.Id) {
                         column = data?.Items?.find(
-                          (col) => col?.Id === item?.selectionId
+                          (col) => col?.Id === item?.selectionId,
                         );
                       }
                     });
@@ -155,7 +157,7 @@ const OpenBets = ({
                             onClick={() => {
                               setShowOpenBets(false);
                               navigate(
-                                `/game-details/${item?.eventTypeId}/${item?.eventId}`
+                                `/game-details/${item?.eventTypeId}/${item?.eventId}`,
                               );
                             }}
                           >
@@ -186,7 +188,7 @@ const OpenBets = ({
                             }}
                           >
                             <span style={{ fontSize: "10px", color: "black" }}>
-                              Cashout
+                              {getLanguage(LanguageKey.CASHOUT)}
                             </span>
                             {price && (
                               <span
@@ -222,7 +224,7 @@ const OpenBets = ({
         ) : (
           <div className="profile-menu-box" style={{ marginTop: "12px" }}>
             <div className="card-blank">
-              <span> No open bets!!!</span>
+              <span> {getLanguage(LanguageKey.YOU_HAVE_NO_OPEN_BETS)}!!!</span>
             </div>
           </div>
         )}

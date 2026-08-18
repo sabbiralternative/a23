@@ -8,8 +8,11 @@ import { API } from "../../api";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AxiosSecure } from "../../lib/AxiosSecure";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../constant/constant";
 
 const ForgotPassword = () => {
+  const { getLanguage } = useLanguage();
   const [showOtp, setShowOtp] = useState(false);
   const [mobileNo, setMobileNo] = useState("");
   const [countDown, setCountDown] = useState(45);
@@ -77,7 +80,7 @@ const ForgotPassword = () => {
 
     const { data } = await AxiosSecure.post(
       API.forgotPassword,
-      forgotPasswordData
+      forgotPasswordData,
     );
 
     if (data?.success) {
@@ -137,7 +140,7 @@ const ForgotPassword = () => {
                 <div className="register-card">
                   <div className="register-card-header">
                     <div className="register-text">
-                      <p>Forgot Password</p>
+                      <p>{getLanguage(LanguageKey.FORGOT_PASSWORD)}</p>
                     </div>
                   </div>
                   <form
@@ -146,7 +149,7 @@ const ForgotPassword = () => {
                     data-gtm-form-interact-id="4"
                   >
                     <div className="mobile-input">
-                      <span>Mobile Number*</span>
+                      <span>{getLanguage(LanguageKey.MOBILE_NUMBER)}*</span>
                       <div className="input-box">
                         <span className="drp-btn">+91</span>
                         <img
@@ -185,7 +188,7 @@ const ForgotPassword = () => {
 
                     <div>
                       <div className="otp-input-box">
-                        <span>Enter OTP*</span>
+                        <span>{getLanguage(LanguageKey.ENTER_OTP)}*</span>
                         <div className="input-boxes">
                           {[...Array(4)].map((_, index) => (
                             <input
@@ -202,11 +205,11 @@ const ForgotPassword = () => {
                         </div>
                         {countDown <= 0 ? (
                           <span onClick={getOtp} className="resend-otp">
-                            Resend
+                            {getLanguage(LanguageKey.RESEND)}
                           </span>
                         ) : (
                           <span className="resend-otp">
-                            Resend in 00:{countDown}
+                            {getLanguage(LanguageKey.RESEND_IN)} 00:{countDown}
                           </span>
                         )}
                       </div>
@@ -220,7 +223,9 @@ const ForgotPassword = () => {
                       }}
                     >
                       <div className="pwd-box">
-                        <span className="pwd-text">Password*</span>
+                        <span className="pwd-text">
+                          {getLanguage(LanguageKey.PASSBOOK)}*
+                        </span>
                         <input
                           onChange={(e) => {
                             setUser({
@@ -249,7 +254,9 @@ const ForgotPassword = () => {
                         </span>
                       </div>
                       <div className="pwd-box">
-                        <span className="pwd-text">Confirm Password*</span>
+                        <span className="pwd-text">
+                          {getLanguage(LanguageKey.CONFIRM_PASSWORD)}*
+                        </span>
                         <input
                           onChange={(e) => {
                             setUser({
@@ -283,7 +290,7 @@ const ForgotPassword = () => {
                       </div>
                     </div>
                     <button disabled={!isFormValid} className="submit-btn">
-                      <span>Submit</span>
+                      <span>{getLanguage(LanguageKey.SUBMIT)}</span>
                     </button>
                   </form>
                 </div>
