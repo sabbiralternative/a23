@@ -10,7 +10,17 @@ import { Fragment } from "react";
 import useContextState from "../../hooks/useContextState";
 import useLanguage from "../../hooks/use-language";
 import { LanguageKey } from "../../constant/constant";
-const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
+import { FaMobileAlt, FaRegUser } from "react-icons/fa";
+const GetOTP = ({
+  setMobileNo,
+  mobileNo,
+  setShowRegister,
+  setOrderId,
+  setTab,
+  tab,
+  setUser,
+  user,
+}) => {
   const { token } = useContextState();
   const { getLanguage } = useLanguage();
   /* get social link */
@@ -75,28 +85,114 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
                 onSubmit={getOtp}
                 className="ng-untouched ng-pristine ng-invalid"
               >
-                <div className="mobile-input">
-                  <span>{getLanguage(LanguageKey.MOBILE_NUMBER)}*</span>
-                  <div className="input-box">
-                    <span className="drp-btn">+91</span>
-                    <img
-                      loading="lazy"
-                      src={indFlag}
-                      alt=""
-                      className="india-flag"
-                    />
-                    <div className="str-line">
-                      <img loading="lazy" src={images.straightLine1} alt="" />
+                {Settings.registration_mobile &&
+                  Settings.registration_username && (
+                    <div
+                      style={{
+                        width: "100%",
+                        background:
+                          "color-mix(in srgb, var(--color1) 30%, transparent)",
+                        marginBottom: "12px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          alignItems: "center",
+                          justifyContent: "flex-start",
+                          position: "relative",
+                          width: "100%",
+                        }}
+                      >
+                        <div
+                          onClick={() => setTab("mobile")}
+                          style={{
+                            cursor: "pointer",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "6px",
+                            width: "100%",
+                            gap: "6px",
+                            color: tab === "mobile" ? "white" : "black",
+                            background:
+                              tab === "mobile" ? "var(--color1)" : undefined,
+                          }}
+                        >
+                          <FaMobileAlt />
+
+                          <span>{getLanguage(LanguageKey.BY_PHONE)}</span>
+                        </div>
+
+                        <div
+                          onClick={() => setTab("username")}
+                          style={{
+                            cursor: "pointer",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "6px",
+                            width: "100%",
+                            gap: "6px",
+                            color: tab === "username" ? "white" : "black",
+                            background:
+                              tab === "username" ? "var(--color1)" : undefined,
+                          }}
+                        >
+                          <FaRegUser />
+
+                          <span>{getLanguage(LanguageKey.BY_USERNAME)}</span>
+                        </div>
+                      </div>
                     </div>
-                    <input
-                      onChange={(e) => handleMobileNo(e)}
-                      type="number"
-                      value={mobileNo}
-                      className="mobile-input ng-untouched ng-pristine ng-invalid"
-                      placeholder="Enter your Phone Number"
-                    />
+                  )}
+                {tab === "mobile" && Settings.registration_mobile && (
+                  <div className="mobile-input">
+                    <span>{getLanguage(LanguageKey.MOBILE_NUMBER)}*</span>
+                    <div className="input-box">
+                      <span className="drp-btn">+91</span>
+                      <img
+                        loading="lazy"
+                        src={indFlag}
+                        alt=""
+                        className="india-flag"
+                      />
+                      <div className="str-line">
+                        <img loading="lazy" src={images.straightLine1} alt="" />
+                      </div>
+                      <input
+                        onChange={(e) => handleMobileNo(e)}
+                        type="number"
+                        value={mobileNo}
+                        className="mobile-input ng-untouched ng-pristine ng-invalid"
+                        placeholder="Enter your Phone Number"
+                      />
+                    </div>
                   </div>
-                </div>
+                )}
+                {tab === "username" && Settings.registration_username && (
+                  <div className="mobile-input">
+                    <span>{getLanguage(LanguageKey.USERNAME)}*</span>
+                    <div className="input-box">
+                      <input
+                        onChange={(e) => {
+                          setUser({
+                            ...user,
+                            username: e.target.value,
+                          });
+                        }}
+                        type="number"
+                        value={user.username}
+                        className="mobile-input ng-untouched ng-pristine ng-invalid"
+                        placeholder="Enter your Username"
+                      />
+                    </div>
+                  </div>
+                )}
+
                 <div className="terms">
                   <div className="radio-check">
                     <img
@@ -111,18 +207,30 @@ const GetOTP = ({ setMobileNo, mobileNo, setShowRegister, setOrderId }) => {
                   </span>
                 </div>
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <button
-                    disabled={Settings.otp && mobileNo?.length < 10}
-                    type="submit"
-                    className="otp-btn"
-                  >
-                    <span>
-                      {" "}
-                      {Settings.otp
-                        ? getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)
-                        : getLanguage(LanguageKey.PROCEED)}
-                    </span>
-                  </button>
+                  {tab === "mobile" && Settings.registration_mobile && (
+                    <button
+                      disabled={Settings.otp && mobileNo?.length < 10}
+                      type="submit"
+                      className="otp-btn"
+                    >
+                      <span>
+                        {" "}
+                        {Settings.otp
+                          ? getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)
+                          : getLanguage(LanguageKey.PROCEED)}
+                      </span>
+                    </button>
+                  )}
+                  {tab === "username" && Settings.registration_username && (
+                    <button
+                      onClick={() => setShowRegister(true)}
+                      disabled={!user.username}
+                      type="button"
+                      className="otp-btn"
+                    >
+                      <span> {getLanguage(LanguageKey.NEXT)}</span>
+                    </button>
+                  )}
 
                   {/* {Settings.otpWhatsapp && (
                     <button

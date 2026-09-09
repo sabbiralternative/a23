@@ -412,4 +412,7 @@ export const LanguageKey = {
   RESEND_IN: "RESEND_IN",
   VIDEO: "VIDEO",
   TRACKER: "TRACKER",
+  BY_USERNAME: "BY_USERNAME",
+  BY_PHONE: "BY_PHONE",
+  NEXT: "NEXT",
 };

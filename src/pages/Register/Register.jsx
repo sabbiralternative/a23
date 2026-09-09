@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import indFlag from "../../../src/assets/img/ind-flag-icon.svg";
 import { API, Settings } from "../../api";
 import GetOTP from "./GetOTP";
@@ -13,6 +13,9 @@ import useLanguage from "../../hooks/use-language";
 import { LanguageKey } from "../../constant/constant";
 
 const Register = () => {
+  const [tab, setTab] = useState(
+    Settings.registration_mobile ? "mobile" : "username",
+  );
   const { getLanguage } = useLanguage();
   const affnook_token = localStorage.getItem("affnook_token");
   const referralCode = localStorage.getItem("referralCode");
@@ -29,7 +32,7 @@ const Register = () => {
   const navigate = useNavigate();
   const inputs = useRef([]);
   const [user, setUser] = useState({
-    userName: "",
+    username: "",
     password: "",
     confirmPassword: "",
     referralCode: "",
@@ -80,7 +83,7 @@ const Register = () => {
     }
 
     const registerData = {
-      username: user?.userName,
+      username: user?.username,
       password: user?.password,
       confirmPassword: user?.confirmPassword,
       mobile: mobileNo,
@@ -90,6 +93,8 @@ const Register = () => {
       orderId: orderId.orderId,
       otpMethod: orderId.otpMethod,
       affnook_token: affnook_token || null,
+      registration_mobile: Settings.registration_mobile,
+      registration_username: Settings.registration_username,
     };
 
     const { data } = await AxiosSecure.post(API.register, registerData);
@@ -164,6 +169,10 @@ const Register = () => {
           mobileNo={mobileNo}
           setShowRegister={setShowRegister}
           setOrderId={setOrderId}
+          setTab={setTab}
+          tab={tab}
+          setUser={setUser}
+          user={user}
         />
       ) : (
         <div className="">
@@ -187,43 +196,45 @@ const Register = () => {
                     className="ng-invalid ng-submitted ng-untouched ng-pristine"
                     data-gtm-form-interact-id="4"
                   >
-                    <div className="mobile-input">
-                      <span>{getLanguage(LanguageKey.MOBILE_NUMBER)}*</span>
-                      <div className="input-box">
-                        <span className="drp-btn">+91</span>
-                        <img
-                          loading="lazy"
-                          src={indFlag}
-                          alt=""
-                          className="india-flag"
-                        />
-                        <div className="str-line">
-                          <img
-                            loading="lazy"
-                            src="assets/img/straight-line1.svg"
-                            alt=""
-                          />
+                    {tab === "mobile" && Settings.registration_mobile && (
+                      <Fragment>
+                        <div className="mobile-input">
+                          <span>{getLanguage(LanguageKey.MOBILE_NUMBER)}*</span>
+                          <div className="input-box">
+                            <span className="drp-btn">+91</span>
+                            <img
+                              loading="lazy"
+                              src={indFlag}
+                              alt=""
+                              className="india-flag"
+                            />
+                            <div className="str-line">
+                              <img
+                                loading="lazy"
+                                src="assets/img/straight-line1.svg"
+                                alt=""
+                              />
+                            </div>
+                            <input
+                              type="tel"
+                              className="mobile-input ng-dirty ng-touched"
+                              placeholder="Enter your Phone Number"
+                              value={mobileNo}
+                              readOnly
+                              data-gtm-form-interact-field-id="8"
+                            />
+                            <img
+                              src="assets/img/right-click-check.svg"
+                              alt=""
+                              style={{
+                                position: "absolute",
+                                right: "-1rem",
+                                marginRight: "1.5rem",
+                              }}
+                            />
+                          </div>
                         </div>
-                        <input
-                          type="tel"
-                          className="mobile-input ng-dirty ng-touched"
-                          placeholder="Enter your Phone Number"
-                          value={mobileNo}
-                          readOnly
-                          data-gtm-form-interact-field-id="8"
-                        />
-                        <img
-                          src="assets/img/right-click-check.svg"
-                          alt=""
-                          style={{
-                            position: "absolute",
-                            right: "-1rem",
-                            marginRight: "1.5rem",
-                          }}
-                        />
-                      </div>
-                    </div>
-                    {/* <div className="terms">
+                        {/* <div className="terms">
                       <div className="radio-check">
                         <img
                           src="assets/img/checked.webp"
@@ -236,34 +247,37 @@ const Register = () => {
                         the terms and conditions.
                       </span>
                     </div> */}
-                    <div>
-                      <div className="otp-input-box">
-                        <span>{getLanguage(LanguageKey.ENTER_OTP)}*</span>
-                        <div className="input-boxes">
-                          {[...Array(4)].map((_, index) => (
-                            <input
-                              key={index}
-                              ref={(el) => (inputs.current[index] = el)}
-                              onChange={(e) => handleInput(index, e)}
-                              placeholder="_"
-                              id="first"
-                              type="number"
-                              value={otpValues[index]}
-                              className="ng-untouched ng-pristine ng-invalid"
-                            />
-                          ))}
+                        <div>
+                          <div className="otp-input-box">
+                            <span>{getLanguage(LanguageKey.ENTER_OTP)}*</span>
+                            <div className="input-boxes">
+                              {[...Array(4)].map((_, index) => (
+                                <input
+                                  key={index}
+                                  ref={(el) => (inputs.current[index] = el)}
+                                  onChange={(e) => handleInput(index, e)}
+                                  placeholder="_"
+                                  id="first"
+                                  type="number"
+                                  value={otpValues[index]}
+                                  className="ng-untouched ng-pristine ng-invalid"
+                                />
+                              ))}
+                            </div>
+                            {countDown <= 0 ? (
+                              <span onClick={getOtp} className="resend-otp">
+                                {getLanguage(LanguageKey.RESEND)}
+                              </span>
+                            ) : (
+                              <span className="resend-otp">
+                                {getLanguage(LanguageKey.RESEND_IN)} 00:
+                                {countDown}
+                              </span>
+                            )}
+                          </div>
                         </div>
-                        {countDown <= 0 ? (
-                          <span onClick={getOtp} className="resend-otp">
-                            {getLanguage(LanguageKey.RESEND)}
-                          </span>
-                        ) : (
-                          <span className="resend-otp">
-                            {getLanguage(LanguageKey.RESEND_IN)} 00:{countDown}
-                          </span>
-                        )}
-                      </div>
-                    </div>
+                      </Fragment>
+                    )}
 
                     <div
                       style={{
@@ -272,6 +286,21 @@ const Register = () => {
                         marginBottom: "1rem",
                       }}
                     >
+                      {tab === "username" && Settings.registration_username && (
+                        <div className="pwd-box">
+                          <span className="pwd-text">
+                            {getLanguage(LanguageKey.USERNAME)}*
+                          </span>
+                          <input
+                            readOnly
+                            value={user?.username}
+                            placeholder="Enter your username"
+                            type={"text"}
+                            className="ng-untouched ng-pristine ng-invalid"
+                          />
+                        </div>
+                      )}
+
                       <div className="pwd-box">
                         <span className="pwd-text">
                           {getLanguage(LanguageKey.PASSWORD)}*
