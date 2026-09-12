@@ -292,7 +292,12 @@ const Register = () => {
                             {getLanguage(LanguageKey.USERNAME)}*
                           </span>
                           <input
-                            readOnly
+                            onChange={(e) => {
+                              setUser({
+                                ...user,
+                                username: e.target.value,
+                              });
+                            }}
                             value={user?.username}
                             placeholder="Enter your username"
                             type={"text"}
